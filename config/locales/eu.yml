@@ -1,0 +1,4 @@
+eu:
+  devise:
+    invitations:
+      invitation_token_invalid: Gonbidapen token hori ez da baliozkoa!

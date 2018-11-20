@@ -1,0 +1,4 @@
+es:
+  devise:
+    invitations:
+      invitation_token_invalid: '¡El token de invitación proporcionado no es válido!'

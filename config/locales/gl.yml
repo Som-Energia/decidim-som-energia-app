@@ -1,0 +1,4 @@
+gl:
+  devise:
+    invitations:
+      invitation_token_invalid: O token de invitación proporcionado non é válido.

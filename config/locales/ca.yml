@@ -1,0 +1,4 @@
+ca:
+  devise:
+    invitations:
+      invitation_token_invalid: El token de invitació proporcionat no és vàlid!
