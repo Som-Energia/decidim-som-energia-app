@@ -9,10 +9,10 @@ GIT
 
 GIT
   remote: git@gitlab.coditdev.net:decidim/decidim-cas-client.git
-  revision: 96f44093e838ef7d342b540cdcd0ce1a71cd3da3
-  tag: v0.0.10
+  revision: fae0c87a70cff8300bfe6a089df8efcf2fc5a1d2
+  tag: v0.0.15
   specs:
-    decidim-cas_client (0.0.8)
+    decidim-cas_client (0.0.12)
       decidim-core (~> 0.14.1)
       decidim-verifications (~> 0.14.1)
 
@@ -727,4 +727,4 @@ RUBY VERSION
    ruby 2.5.1p57
 
 BUNDLED WITH
-   1.16.3
+   1.16.6
