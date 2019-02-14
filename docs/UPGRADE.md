@@ -24,3 +24,4 @@ bin/rails db:migrate
 ## Change Logs
 Follow the instructions desribed in the Change Log for each decidim version:
 - [0.15](https://github.com/decidim/decidim/blob/0.15-stable/CHANGELOG.md)
+- [0.16](https://github.com/decidim/decidim/blob/0.16-stable/CHANGELOG.md)
