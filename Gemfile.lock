@@ -9,10 +9,10 @@ GIT
 
 GIT
   remote: git@gitlab.coditdev.net:decidim/decidim-cas-client.git
-  revision: f626ff69114bb28062780969242902f6244c1928
-  tag: f626ff69
+  revision: 8928dbb9ac34b24761cf7d1869f6659674cd7317
+  tag: v0.0.18
   specs:
-    decidim-cas_client (0.0.17.1)
+    decidim-cas_client (0.0.18)
       decidim-core (~> 0.16.0)
       decidim-verifications (~> 0.16.0)
 
