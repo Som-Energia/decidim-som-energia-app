@@ -1,0 +1,28 @@
+.question-vote-cabin{
+  margin-bottom: 3em;
+
+  .vote-button-caption{
+    font-size: 1.5em;
+    text-transform: uppercase;
+    font-weight: bold;
+    color: white;
+  }
+
+  .small-buttons div{
+    margin-top: 1em;
+  }
+
+  .next-question{
+    margin-top: 5px;
+  }
+
+  .previous-question{
+    margin-top: 5px;
+  }
+}
+
+.consultations-card{
+  .button.expanded.button--sc.success{
+    color: white;
+  }
+}
