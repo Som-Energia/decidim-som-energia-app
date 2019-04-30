@@ -1,4 +1,8 @@
 gl:
+  decidim:
+    questions:
+      next_button: "Pregunta seguinte"
+      previous_button: "Pregunta anterior"
   devise:
     invitations:
       invitation_token_invalid: O token de invitación proporcionado non é válido.

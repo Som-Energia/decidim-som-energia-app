@@ -1,4 +1,8 @@
 eu:
+  decidim:
+    questions:
+      next_button: "Hurrengo galdera"
+      previous_button: "Aurreko galdera"
   devise:
     invitations:
       invitation_token_invalid: Gonbidapen token hori ez da baliozkoa!

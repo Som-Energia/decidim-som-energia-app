@@ -30,4 +30,7 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  decidim:
+    questions:
+      next_button: "Next question"
+      previous_button: "Previous question"
