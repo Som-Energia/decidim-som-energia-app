@@ -1,14 +1,11 @@
 .question-vote-cabin{
+  margin-bottom: 3em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
   .small-buttons div{
     margin-top: 1em;
-  }
-
-  .next-question{
-    margin-top: 5px;
-  }
-
-  .previous-question{
-    margin-top: 5px;
   }
 }
 
