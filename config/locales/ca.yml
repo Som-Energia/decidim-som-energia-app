@@ -1,4 +1,9 @@
 ca:
+  decidim:
+    meetings:
+      registration_mailer:
+        confirmation:
+          confirmed_html: La teva <a href="%{url}">%{title}</a> ha estat confirmada. Gràcies per participar.
   devise:
     invitations:
       invitation_token_invalid: El token de invitació proporcionat no és vàlid!

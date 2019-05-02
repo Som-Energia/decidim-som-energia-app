@@ -1,4 +1,9 @@
 eu:
+  decidim:
+    meetings:
+      registration_mailer:
+        confirmation:
+          confirmed_html: Bere <a href="%{url}">%{title}</a> egiaztatu da. Eskerrik asko parte hartzeagatik
   devise:
     invitations:
       invitation_token_invalid: Gonbidapen token hori ez da baliozkoa!

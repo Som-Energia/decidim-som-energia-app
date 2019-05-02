@@ -1,4 +1,9 @@
 es:
+  decidim:
+    meetings:
+      registration_mailer:
+        confirmation:
+          confirmed_html: Su <a href="%{url}">%{title}</a> ha sido confirmada. Gracias por participar.
   devise:
     invitations:
       invitation_token_invalid: '¡El token de invitación proporcionado no es válido!'
