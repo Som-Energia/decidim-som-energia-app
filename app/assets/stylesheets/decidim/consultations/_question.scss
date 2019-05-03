@@ -1,0 +1,16 @@
+.question-vote-cabin{
+  margin-bottom: 3em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .small-buttons div{
+    margin-top: 1em;
+  }
+}
+
+.consultations-card{
+  .button.expanded.button--sc.success{
+    color: white;
+  }
+}
