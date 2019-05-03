@@ -4,6 +4,9 @@ eu:
       registration_mailer:
         confirmation:
           confirmed_html: Bere <a href="%{url}">%{title}</a> egiaztatu da. Eskerrik asko parte hartzeagatik
+    questions:
+      next_button: "Hurrengo galdera"
+      previous_button: "Aurreko galdera"
   devise:
     invitations:
       invitation_token_invalid: Gonbidapen token hori ez da baliozkoa!

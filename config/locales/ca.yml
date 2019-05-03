@@ -4,6 +4,9 @@ ca:
       registration_mailer:
         confirmation:
           confirmed_html: La teva <a href="%{url}">%{title}</a> ha estat confirmada. Gràcies per participar.
+    questions:
+      next_button: "Pregunta següent"
+      previous_button: "Pregunta anterior"
   devise:
     invitations:
       invitation_token_invalid: El token de invitació proporcionat no és vàlid!
