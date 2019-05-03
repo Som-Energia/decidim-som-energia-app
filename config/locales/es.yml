@@ -1,5 +1,9 @@
 es:
   decidim:
+    meetings:
+      registration_mailer:
+        confirmation:
+          confirmed_html: Su <a href="%{url}">%{title}</a> ha sido confirmada. Gracias por participar.
     questions:
       next_button: "Pregunta siguiente"
       previous_button: "Pregunta anterior"

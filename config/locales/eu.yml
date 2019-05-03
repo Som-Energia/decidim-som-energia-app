@@ -1,5 +1,9 @@
 eu:
   decidim:
+    meetings:
+      registration_mailer:
+        confirmation:
+          confirmed_html: Bere <a href="%{url}">%{title}</a> egiaztatu da. Eskerrik asko parte hartzeagatik
     questions:
       next_button: "Hurrengo galdera"
       previous_button: "Aurreko galdera"

@@ -1,5 +1,9 @@
 ca:
   decidim:
+    meetings:
+      registration_mailer:
+        confirmation:
+          confirmed_html: La teva <a href="%{url}">%{title}</a> ha estat confirmada. Gràcies per participar.
     questions:
       next_button: "Pregunta següent"
       previous_button: "Pregunta anterior"
