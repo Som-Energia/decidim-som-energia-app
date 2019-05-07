@@ -2,7 +2,7 @@ source "https://rubygems.org"
 
 ruby RUBY_VERSION
 
-DECIDIM_VERSION = "~> 0.16.1"
+DECIDIM_VERSION = "~> 0.17.0"
 
 gem 'puma', '~> 3.0'
 gem 'uglifier', '>= 1.3.0'
@@ -14,7 +14,7 @@ gem 'figaro', '>= 1.1.1'
 
 gem 'decidim', DECIDIM_VERSION
 gem 'decidim-consultations', DECIDIM_VERSION
-gem "decidim-cas_client", git: "git@gitlab.coditdev.net:decidim/decidim-cas-client.git", tag: "v0.0.18"
+gem "decidim-cas_client", git: "git@gitlab.coditdev.net:decidim/decidim-cas-client.git", tag: "v0.0.19"
 gem "codit-devise-cas-authenticable", git: "git@gitlab.coditdev.net:decidim/codit-devise-cas-authenticable.git", tag: "v0.0.4"
 
 group :development, :test do
