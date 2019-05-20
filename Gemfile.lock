@@ -1,9 +1,9 @@
 GIT
   remote: git@gitlab.coditdev.net:decidim/codit-devise-cas-authenticable.git
-  revision: 4ebbf848e9ae99316525eb3c555bda9eb1d54d07
-  tag: v0.0.4
+  revision: f86c0b2a132bfd9f93f27209a0962d1e5a1bf5a3
+  tag: v0.0.5
   specs:
-    codit-devise-cas-authenticable (0.0.4)
+    codit-devise-cas-authenticable (0.0.5)
       devise (>= 1.2.0)
       rubycas-client (>= 2.2.1)
 
