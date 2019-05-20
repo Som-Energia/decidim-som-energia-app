@@ -14,8 +14,8 @@ gem 'figaro', '>= 1.1.1'
 
 gem 'decidim', DECIDIM_VERSION
 gem 'decidim-consultations', DECIDIM_VERSION
-gem "decidim-cas_client", git: "git@gitlab.coditdev.net:decidim/decidim-cas-client.git", tag: "v0.0.19"
-gem "codit-devise-cas-authenticable", git: "git@gitlab.coditdev.net:decidim/codit-devise-cas-authenticable.git", tag: "v0.0.5"
+gem "decidim-cas_client", git: "git@gitlab.coditdev.net:decidim/decidim-cas-client.git", tag: "v0.0.20"
+gem "codit-devise-cas-authenticable", git: "git@gitlab.coditdev.net:decidim/codit-devise-cas-authenticable.git", tag: "v0.0.6"
 
 group :development, :test do
   gem 'byebug', platform: :mri
