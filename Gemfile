@@ -10,6 +10,8 @@ gem 'delayed_job_active_record'
 gem 'daemons'
 gem 'whenever'
 
+gem 'figaro', '>= 1.1.1'
+
 # Force gem version to fix:
 # undefined method `polymorphic?' for ActiveRecord::Reflection::PolymorphicReflection
 # See: https://github.com/activerecord-hackery/ransack/issues/1039
