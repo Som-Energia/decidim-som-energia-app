@@ -16,6 +16,8 @@ module DecidimSomenergiaApp
 
     # Default app time zone
     config.time_zone = 'Madrid'
+    config.active_record.default_timezone = :local
+    config.active_record.time_zone_aware_attributes = false
 
     # Make decorators available
     config.to_prepare do
