@@ -158,6 +158,17 @@ GIT
       decidim-core (= 0.19.0)
     decidim-generators (0.19.0)
       decidim-core (= 0.19.0)
+    decidim-initiatives (0.19.0)
+      decidim-admin (= 0.19.0)
+      decidim-comments (= 0.19.0)
+      decidim-core (= 0.19.0)
+      decidim-verifications (= 0.19.0)
+      kaminari (~> 1.1)
+      origami (~> 2.1)
+      virtus-multiparams (~> 0.1)
+      wicked (~> 1.3)
+      wicked_pdf (~> 1.4)
+      wkhtmltopdf-binary (~> 0.12)
     decidim-meetings (0.19.0)
       cells-erb (~> 0.1.0)
       cells-rails (~> 0.0.9)
@@ -333,6 +344,7 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.12.2)
+    colorize (0.8.1)
     concurrent-ruby (1.1.5)
     crack (0.4.3)
       safe_yaml (~> 1.0.0)
@@ -547,6 +559,8 @@ GEM
     omniauth-twitter (1.4.0)
       omniauth-oauth (~> 1.1)
       rack
+    origami (2.1.0)
+      colorize (~> 0.7)
     orm_adapter (0.5.0)
     paper_trail (10.3.1)
       activerecord (>= 4.2)
@@ -751,6 +765,8 @@ GEM
       coercible (~> 1.0)
       descendants_tracker (~> 0.0, >= 0.0.3)
       equalizer (~> 0.0, >= 0.0.9)
+    virtus-multiparams (0.1.1)
+      virtus (~> 1.0)
     warden (1.2.8)
       rack (>= 2.0.6)
     web-console (3.7.0)
@@ -767,8 +783,13 @@ GEM
     websocket-extensions (0.1.4)
     whenever (1.0.0)
       chronic (>= 0.6.3)
+    wicked (1.3.4)
+      railties (>= 3.0.7)
+    wicked_pdf (1.4.0)
+      activesupport
     wisper (2.0.1)
     wisper-rspec (1.1.0)
+    wkhtmltopdf-binary (0.12.5)
     xpath (3.2.0)
       nokogiri (~> 1.8)
 
@@ -783,6 +804,7 @@ DEPENDENCIES
   decidim-cas_client!
   decidim-consultations!
   decidim-dev!
+  decidim-initiatives
   decidim-term_customizer!
   delayed_job_active_record
   faker (~> 1.8.4)
@@ -797,6 +819,7 @@ DEPENDENCIES
   uglifier (>= 1.3.0)
   web-console
   whenever
+  wicked_pdf
 
 RUBY VERSION
    ruby 2.5.1p57

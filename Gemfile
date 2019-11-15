@@ -19,11 +19,14 @@ gem 'ransack', '~> 2.1.1'
 
 gem 'decidim', DECIDIM_VERSION
 gem 'decidim-consultations', DECIDIM_VERSION
+gem 'decidim-initiatives'
 gem "decidim-cas_client", git: "ssh://git@gitlab.coditdev.net:534/decidim/decidim-cas-client.git", tag: "v0.0.20"
 gem "codit-devise-cas-authenticable", git: "ssh://git@gitlab.coditdev.net:534/decidim/codit-devise-cas-authenticable.git", tag: "v0.0.6"
 
 # A Decidim module to customize the localized terms in the system.
 gem "decidim-term_customizer", git: "https://github.com/CodiTramuntana/decidim-module-term_customizer"
+# Compability with decidim initiatives module
+gem 'wicked_pdf'
 
 group :development, :test do
   gem 'byebug', platform: :mri
