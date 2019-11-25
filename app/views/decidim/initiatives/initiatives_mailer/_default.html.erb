@@ -1,0 +1,9 @@
+<%= render partial: "top" %>
+<%= decidim_sanitize @body %>
+<br><br>
+<% if @link %>
+  <p>
+    <%= t(".check_initiative_details") %> <%= link_to t(".here"), @link %>.
+  </p>
+<% end %>
+<%= render partial: "bottom" %>

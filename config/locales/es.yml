@@ -1,12 +1,38 @@
+---
 es:
   decidim:
+    initiatives:
+      initiatives_mailer:
+        bottom:
+          greeting: "¡Gracias por participar!"
+          help: Si tienes alguna duda, puedes escribirnos a <a href="mailto:participa@somenergia.coop">participa@somenergia.coop</a>.
+        creation_subject: Ya has empezado a trabajar tu moción '%{title}'
+        default:
+          check_initiative_details: Puedes ver los detalles de la moción
+          here: aquí
+        discarted: La moción %{title} no ha pasado el trámite de validación técnica,
+          por lo tanto, ha quedado descartada.
+        more_information: Recuerda que para presentarla correctamente, tienes que
+          <a href="%{link}">acceder al menú de participante</a>, donde verás la moción
+          que estás trabajando y podrás <strong>enviarla a validación técnica para
+          que sea tramitada</strong>.
+        published: 'La moción %{title} ha pasado el trámite de validación técnica
+          con un resultado positivo y consta, por lo tanto, como: Publicada.'
+        status_change_body_for: 'La moción %{title} ha cambiado su estado a: %{state}'
+        status_change_for: La moción %{title} ha cambiado su estado
+        technical_validation_body_for: La moción %{title} ha solicitado validación
+          técnica.
+        technical_validation_for: La moción %{title} ha solicitado validación técnica.
+        top:
+          greeting: Hola %{name}!
     meetings:
       registration_mailer:
         confirmation:
-          confirmed_html: Su <a href="%{url}">%{title}</a> ha sido confirmada. Gracias por participar.
+          confirmed_html: Su <a href="%{url}">%{title}</a> ha sido confirmada. Gracias
+            por participar.
     questions:
-      next_button: "Pregunta siguiente"
-      previous_button: "Pregunta anterior"
+      next_button: Pregunta siguiente
+      previous_button: Pregunta anterior
   devise:
     invitations:
-      invitation_token_invalid: '¡El token de invitación proporcionado no es válido!'
+      invitation_token_invalid: "¡El token de invitación proporcionado no es válido!"

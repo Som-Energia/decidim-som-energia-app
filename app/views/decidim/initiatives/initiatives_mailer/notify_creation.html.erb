@@ -1,0 +1,9 @@
+<%= render partial: "top" %>
+<p>
+  <%= t "decidim.initiatives.initiatives_mailer.creation_subject", title: translated_attribute(@initiative.title) %>.
+</p>
+<p>
+  <%= decidim_sanitize t("decidim.initiatives.initiatives_mailer.more_information",
+                        link: decidim_admin_initiatives.initiatives_url(host: @organization.host)) %>
+</p>
+<%= render partial: "bottom" %>
