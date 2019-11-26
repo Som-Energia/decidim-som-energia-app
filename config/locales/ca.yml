@@ -1,12 +1,37 @@
+---
 ca:
   decidim:
+    initiatives:
+      initiatives_mailer:
+        bottom:
+          greeting: Gràcies per participar-hi!
+          help: Si tens cap dubte, pots escriure’ns a <a href="mailto:participa@somenergia.coop">participa@somenergia.coop</a>.
+        creation_subject: Ja has començat a treballar la teva moció '%{title}'
+        default:
+          check_initiative_details: Pots veure els detalls de la moció
+          here: aquí
+        discarted: La moció %{title} no ha passat el tràmit de validació tècnica,
+          per tant, ha quedat descartada.
+        more_information: Recorda que per presentar-la correctament, has d'<a href="%{link}">accedir
+          al menú de participant</a>, on veuràs la moció que estàs treballant i podràs
+          <strong>enviar-la a validació tècnica per tal que sigui tramitada</strong>.
+        published: 'La moció %{title} ha passat el tràmit de validació tècnica amb
+          un resultat positiu i consta, per tant, com a: Publicada.'
+        status_change_body_for: 'La moció %{title} ha canviat el seu estat a: %{state}'
+        status_change_for: La moció %{title} ha canviat el seu estat
+        technical_validation_body_for: La moció %{title}, ha sol·licitat validació
+          tècnica.
+        technical_validation_for: La moció %{title} ha sol·licitat validació tècnica.
+        top:
+          greeting: Hola %{name}!
     meetings:
       registration_mailer:
         confirmation:
-          confirmed_html: La teva <a href="%{url}">%{title}</a> ha estat confirmada. Gràcies per participar.
+          confirmed_html: La teva <a href="%{url}">%{title}</a> ha estat confirmada.
+            Gràcies per participar.
     questions:
-      next_button: "Pregunta següent"
-      previous_button: "Pregunta anterior"
+      next_button: Pregunta següent
+      previous_button: Pregunta anterior
   devise:
     invitations:
       invitation_token_invalid: El token de invitació proporcionat no és vàlid!
