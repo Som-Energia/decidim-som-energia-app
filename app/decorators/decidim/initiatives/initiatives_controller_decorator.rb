@@ -11,7 +11,7 @@ Decidim::Initiatives::InitiativesController.class_eval do
   # Assigns the value "closed" to the :state key until the given date is reached.
   def default_filter_params
     original_default_filter_params.tap do |default_params|
-      default_params[:state] = "closed"
+      default_params[:state] = Time.current < SIGNATURE_START_DATE ? "open" : "closed"
     end
   end
 end
