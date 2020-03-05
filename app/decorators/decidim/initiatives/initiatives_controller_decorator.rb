@@ -8,10 +8,10 @@ Decidim::Initiatives::InitiativesController.class_eval do
   alias original_default_filter_params default_filter_params
 
   # Method overrided.
-  # Assigns the value "closed" to the :state key until the given date is reached.
+  # Assigns the value "closed" to the :state key after the given date is reached.
   def default_filter_params
     original_default_filter_params.tap do |default_params|
-      default_params[:state] = Time.current < SIGNATURE_START_DATE ? "open" : "closed"
+      default_params[:state] = "closed" if Time.current > SIGNATURE_START_DATE
     end
   end
 end
