@@ -14,3 +14,12 @@ After the given date, we will have to think what to do with this decorator. Remo
 
 Files:
 - `app/decorators/decidim/initiatives/initiatives_controller_decorator.rb`
+
+## Views
+
+**Decidim:Proposals:Proposals::show.html.erb**
+
+The `strip_tags` parameter is changed to `"false"`. This change fix the links that are not showing in the body.
+
+Files:
+- `app/views/decidim/proposals/show.html.erb`
