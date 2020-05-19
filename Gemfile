@@ -4,7 +4,7 @@ ruby RUBY_VERSION
 
 DECIDIM_VERSION = { git: 'https://github.com/decidim/decidim.git', branch: '0.19-stable' }
 
-gem 'puma', '~> 3.0'
+#gem 'puma', '~> 4.0'
 gem 'uglifier', '>= 1.3.0'
 gem 'delayed_job_active_record'
 gem 'daemons'
@@ -27,6 +27,25 @@ gem "codit-devise-cas-authenticable", git: "ssh://git@gitlab.coditdev.net:534/de
 gem "decidim-term_customizer", git: "https://github.com/mainio/decidim-module-term_customizer"
 # Compability with decidim initiatives module
 gem 'wicked_pdf'
+
+# Security fixes:
+# actionview: GHSA-65cv-r6x7-79hv
+gem "rails", ">= 5.2.4.2"
+# gem "actionview", ">= 5.2.4.2"
+# nokogiri: CVE-2020-7595
+gem "nokogiri", ">= 1.10.8"
+# puma: GHSA-33vf-4xgg-9r58
+gem "puma", ">= 3.12.4"
+# rack-cors: CVE-2019-18978
+gem "rack-cors", ">= 1.0.4"
+# loofah: CVE-2019-15587
+gem "loofah", ">= 2.3.1"
+# rubyzip: CVE-2019-16892
+gem "rubyzip", ">= 1.3.0"
+# devise: CVE-2019-16109
+gem "devise", ">= 4.7.1"
+# mini_magick: CVE-2019-13574
+gem "mini_magick", ">= 4.9.4"
 
 group :development, :test do
   gem 'byebug', platform: :mri
