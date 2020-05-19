@@ -1,4 +1,13 @@
 GIT
+  remote: git@github.com:CodiTramuntana/decidim-cas-client.git
+  revision: 1000d69cb32836da9c9b4415ea07e16109282d76
+  tag: v0.0.20
+  specs:
+    decidim-cas_client (0.0.20)
+      decidim-core (>= 0.16.0)
+      decidim-verifications (>= 0.16.0)
+
+GIT
   remote: https://github.com/decidim/decidim.git
   revision: 9d6335479047f5f83e36b34b16622f1dce33d7d8
   branch: 0.19-stable
@@ -222,15 +231,6 @@ GIT
     codit-devise-cas-authenticable (0.0.6)
       devise (>= 1.2.0)
       rubycas-client (>= 2.2.1)
-
-GIT
-  remote: ssh://git@gitlab.coditdev.net:534/decidim/decidim-cas-client.git
-  revision: 13d5ffd562a6f86bc26fc972b6fdf656b140faa8
-  tag: v0.0.20
-  specs:
-    decidim-cas_client (0.0.20)
-      decidim-core (>= 0.16.0)
-      decidim-verifications (>= 0.16.0)
 
 GEM
   remote: https://rubygems.org/
