@@ -2,7 +2,7 @@
 
 This document lists all the overrides that have been done at the Decidim platform. Those overrides can conflict with platform updates. During a platform upgrade they need to be compared to the ones of the Decidim project.
 
-The best way to spot these problems is revewing the changes in the files that are overriden using git history and apply the changes manually.
+The best way to spot these problems is by reviewing the changes in the files that are overridden using git history and apply the changes manually.
 
 ## Controllers
 
@@ -14,6 +14,11 @@ After the given date, we will have to think what to do with this decorator. Remo
 
 Files:
 - `app/decorators/decidim/initiatives/initiatives_controller_decorator.rb`
+
+**Save proposal ordination**
+Files:
+- `app/controllers/concerns/decidim/proposals/orderable.rb`
+- `app/controllers/decidim/proposals/proposals_controller.rb`
 
 ## Views
 
