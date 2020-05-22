@@ -9,6 +9,7 @@ gem 'uglifier', '>= 1.3.0'
 gem 'delayed_job_active_record'
 gem 'daemons'
 gem 'whenever'
+gem 'geocoder', '~> 1.5.2'
 
 gem 'figaro', '>= 1.1.1'
 
@@ -20,7 +21,7 @@ gem 'ransack', '~> 2.1.1'
 gem 'decidim', DECIDIM_VERSION
 gem 'decidim-consultations', DECIDIM_VERSION
 gem 'decidim-initiatives'
-gem "decidim-cas_client", git: "git@github.com:CodiTramuntana/decidim-cas-client.git", tag: "v0.0.20"
+gem "decidim-cas_client", git: "git@github.com:CodiTramuntana/decidim-cas-client.git"
 gem "codit-devise-cas-authenticable", git: "ssh://git@gitlab.coditdev.net:534/decidim/codit-devise-cas-authenticable.git", tag: "v0.0.6"
 
 # A Decidim module to customize the localized terms in the system.
@@ -30,7 +31,7 @@ gem 'wicked_pdf'
 
 # Security fixes:
 # actionview: GHSA-65cv-r6x7-79hv
-gem "rails", ">= 5.2.4.2"
+gem "rails", "< 6"
 # gem "actionview", ">= 5.2.4.2"
 # nokogiri: CVE-2020-7595
 gem "nokogiri", ">= 1.10.8"

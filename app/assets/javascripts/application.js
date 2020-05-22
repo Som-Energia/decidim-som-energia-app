@@ -13,6 +13,7 @@
 //= require rails-ujs
 //= require_tree .
 //= require decidim
+//= require cas_client
 
 $(function(){
   bindCasClientRoutes();
