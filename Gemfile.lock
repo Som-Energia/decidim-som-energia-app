@@ -1,6 +1,6 @@
 GIT
   remote: git@github.com:CodiTramuntana/decidim-cas-client.git
-  revision: c80369421af6b40edf5fbb0968a04081048602eb
+  revision: fe6b1c0b3c96e4e74472d8b67f9f88a1c16bf4c3
   specs:
     decidim-cas_client (0.0.20)
       decidim-core (>= 0.16.0)
