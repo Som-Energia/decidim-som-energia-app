@@ -1,6 +1,6 @@
 GIT
   remote: git@github.com:CodiTramuntana/decidim-cas-client.git
-  revision: 7f189f7e4819231a286e53c6eed8cff655be2b32
+  revision: c80369421af6b40edf5fbb0968a04081048602eb
   specs:
     decidim-cas_client (0.0.20)
       decidim-core (>= 0.16.0)
@@ -829,7 +829,7 @@ DEPENDENCIES
   wicked_pdf
 
 RUBY VERSION
-   ruby 2.6.3p62
+   ruby 2.5.1p57
 
 BUNDLED WITH
    1.17.3
