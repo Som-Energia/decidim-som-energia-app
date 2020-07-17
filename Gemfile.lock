@@ -25,7 +25,7 @@ GIT
 GIT
   remote: https://github.com/decidim/decidim.git
   revision: c52fae50438a218d136d6d0385b62d7e4bc0eef5
-  branch: 0.20-stable
+  branch: release/0.20-stable
   specs:
     decidim (0.20.1)
       decidim-accountability (= 0.20.1)
