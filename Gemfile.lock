@@ -1,4 +1,20 @@
 GIT
+  remote: git@github.com:CodiTramuntana/codit-devise-cas-authenticable.git
+  revision: 27f87ab349d397224185cae5232dcb30d523d025
+  specs:
+    codit-devise-cas-authenticable (0.0.6)
+      devise (>= 1.2.0)
+      rubycas-client (>= 2.2.1)
+
+GIT
+  remote: git@github.com:CodiTramuntana/decidim-cas-client.git
+  revision: fe6b1c0b3c96e4e74472d8b67f9f88a1c16bf4c3
+  specs:
+    decidim-cas_client (0.0.20)
+      decidim-core (>= 0.16.0)
+      decidim-verifications (>= 0.16.0)
+
+GIT
   remote: https://github.com/decidim/decidim.git
   revision: c52fae50438a218d136d6d0385b62d7e4bc0eef5
   branch: 0.20-stable
@@ -214,22 +230,6 @@ GIT
       decidim-admin (~> 0.20.0)
       decidim-core (~> 0.20.0)
 
-GIT
-  remote: https://gitlab.coditdev.net/decidim/codit-devise-cas-authenticable.git
-  revision: 0ebb4e8695aa32814a14f61a9c5aea1e5d0b3e43
-  tag: v0.0.6
-  specs:
-    codit-devise-cas-authenticable (0.0.6)
-      devise (>= 1.2.0)
-      rubycas-client (>= 2.2.1)
-
-PATH
-  remote: ../decidim-cas-client
-  specs:
-    decidim-cas_client (0.0.20)
-      decidim-core (>= 0.16.0)
-      decidim-verifications (>= 0.16.0)
-
 GEM
   remote: https://rubygems.org/
   specs:
@@ -283,7 +283,7 @@ GEM
       public_suffix (>= 2.0.2, < 5.0)
     anchored (1.1.0)
     arel (9.0.0)
-    ast (2.4.0)
+    ast (2.4.1)
     autoprefixer-rails (8.6.5)
       execjs
     axiom-types (0.1.1)
@@ -307,7 +307,7 @@ GEM
     bindex (0.8.1)
     builder (3.2.4)
     byebug (11.1.3)
-    capybara (3.32.2)
+    capybara (3.33.0)
       addressable
       mini_mime (>= 0.1.3)
       nokogiri (~> 1.8)
@@ -366,7 +366,7 @@ GEM
       delayed_job (>= 3.0, < 5)
     descendants_tracker (0.0.4)
       thread_safe (~> 0.3, >= 0.3.1)
-    devise (4.7.1)
+    devise (4.7.2)
       bcrypt (~> 3.0)
       orm_adapter (~> 0.1)
       railties (>= 4.1.0)
@@ -377,7 +377,7 @@ GEM
     devise_invitable (1.7.5)
       actionmailer (>= 4.1.0)
       devise (>= 4.0.0)
-    diff-lcs (1.3)
+    diff-lcs (1.4.4)
     diffy (3.3.0)
     doc2text (0.4.2)
       nokogiri (~> 1.10.0)
@@ -433,7 +433,7 @@ GEM
     graphiql-rails (1.4.11)
       railties
       sprockets-rails
-    graphql (1.10.10)
+    graphql (1.11.1)
     hashdiff (1.0.1)
     hashie (4.1.0)
     highline (2.0.3)
@@ -442,10 +442,10 @@ GEM
     http-accept (1.7.0)
     http-cookie (1.0.3)
       domain_name (~> 0.5)
-    httparty (0.18.0)
+    httparty (0.18.1)
       mime-types (~> 3.0)
       multi_xml (>= 0.5.2)
-    i18n (1.8.2)
+    i18n (1.8.3)
       concurrent-ruby (~> 1.0)
     i18n-tasks (0.9.31)
       activesupport (>= 4.0.2)
@@ -470,7 +470,7 @@ GEM
       thor (>= 0.14, < 2.0)
     jquery-tmpl-rails (1.1.0)
       rails (>= 3.1.0)
-    json (2.3.0)
+    json (2.3.1)
     jwt (2.2.1)
     kaminari (1.2.1)
       activesupport (>= 4.1.0)
@@ -520,14 +520,14 @@ GEM
     mixlib-cli (1.7.0)
     mixlib-config (2.2.18)
       tomlrb
-    multi_json (1.14.1)
+    multi_json (1.15.0)
     multi_xml (0.6.0)
     multipart-post (2.1.1)
     mustache (1.1.1)
     netrc (0.11.0)
     nio4r (2.5.2)
-    nobspw (0.6.1)
-    nokogiri (1.10.9)
+    nobspw (0.6.2)
+    nokogiri (1.10.10)
       mini_portile2 (~> 2.4.0)
     oauth (0.5.4)
     oauth2 (1.4.4)
@@ -563,14 +563,14 @@ GEM
     paper_trail (10.3.1)
       activerecord (>= 4.2)
       request_store (~> 1.1)
-    parallel (1.19.1)
-    parser (2.7.1.3)
-      ast (~> 2.4.0)
+    parallel (1.19.2)
+    parser (2.7.1.4)
+      ast (~> 2.4.1)
     pg (1.1.4)
     pg_search (2.3.2)
       activerecord (>= 5.2)
       activesupport (>= 5.2)
-    premailer (1.11.1)
+    premailer (1.12.1)
       addressable
       css_parser (>= 1.6.0)
       htmlentities (>= 4.0.0)
@@ -579,7 +579,7 @@ GEM
       premailer (~> 1.7, >= 1.7.9)
     public_suffix (4.0.5)
     puma (3.12.6)
-    rack (2.2.2)
+    rack (2.2.3)
     rack-attack (6.3.1)
       rack (>= 1.0, < 3)
     rack-cors (1.1.1)
@@ -599,10 +599,10 @@ GEM
       bundler (>= 1.3.0)
       railties (= 5.2.4.3)
       sprockets-rails (>= 2.0.0)
-    rails-controller-testing (1.0.4)
-      actionpack (>= 5.0.1.x)
-      actionview (>= 5.0.1.x)
-      activesupport (>= 5.0.1.x)
+    rails-controller-testing (1.0.5)
+      actionpack (>= 5.0.1.rc1)
+      actionview (>= 5.0.1.rc1)
+      activesupport (>= 5.0.1.rc1)
     rails-dom-testing (2.0.3)
       activesupport (>= 4.2.0)
       nokogiri (>= 1.6)
@@ -634,11 +634,11 @@ GEM
       virtus (~> 1.0.5)
       wisper (>= 1.6.1)
     redcarpet (3.5.0)
-    redis (4.1.4)
-    regexp_parser (1.7.0)
+    redis (4.2.1)
+    regexp_parser (1.7.1)
     request_store (1.5.0)
       rack (>= 1.4)
-    responders (3.0.0)
+    responders (3.0.1)
       actionpack (>= 5.0)
       railties (>= 5.0)
     rest-client (2.1.0)
@@ -776,9 +776,9 @@ GEM
       addressable (>= 2.3.6)
       crack (>= 0.3.2)
       hashdiff (>= 0.4.0, < 2.0.0)
-    websocket-driver (0.7.2)
+    websocket-driver (0.7.3)
       websocket-extensions (>= 0.1.0)
-    websocket-extensions (0.1.4)
+    websocket-extensions (0.1.5)
     whenever (1.0.0)
       chronic (>= 0.6.3)
     wicked (1.3.4)
@@ -787,7 +787,7 @@ GEM
       activesupport
     wisper (2.0.1)
     wisper-rspec (1.1.0)
-    wkhtmltopdf-binary (0.12.5.4)
+    wkhtmltopdf-binary (0.12.6.2)
     xpath (3.2.0)
       nokogiri (~> 1.8)
 
