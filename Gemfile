@@ -25,7 +25,7 @@ gem "decidim-cas_client", git: "git@github.com:CodiTramuntana/decidim-cas-client
 gem "codit-devise-cas-authenticable", git: "git@github.com:CodiTramuntana/codit-devise-cas-authenticable.git"
 
 # A Decidim module to customize the localized terms in the system.
-gem "decidim-term_customizer", git: "https://github.com/mainio/decidim-module-term_customizer"
+gem "decidim-term_customizer", git: "git@github.com:CodiTramuntana/decidim-module-term_customizer.git"
 # Compability with decidim initiatives module
 gem 'wicked_pdf'
 
