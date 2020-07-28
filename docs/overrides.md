@@ -27,4 +27,4 @@ Files:
 The `strip_tags` parameter is changed to `"false"`. This change fix the links that are not showing in the body.
 
 Files:
-- `app/views/decidim/proposals/show.html.erb`
+- `app/views/decidim/proposals/proposals/show.html.erb`

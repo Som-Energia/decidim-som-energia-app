@@ -226,7 +226,7 @@ module Decidim
         {
           search_text: "",
           origin: "all",
-          activity: "",
+          activity: "all",
           category_id: "",
           state: "except_rejected",
           scope_id: nil,
