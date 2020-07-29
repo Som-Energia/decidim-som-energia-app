@@ -11,9 +11,10 @@
 // about supported directives.
 //
 //= require rails-ujs
+//= require cas_client
 //= require_tree .
 //= require decidim
-//= require cas_client
+//= require_self
 
 $(function(){
   bindCasClientRoutes();
