@@ -14,11 +14,6 @@ module DecidimSomenergiaApp
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
 
-    # Default app time zone
-    config.time_zone = 'Madrid'
-    config.active_record.default_timezone = :local
-    config.active_record.time_zone_aware_attributes = false
-
     # Make decorators available
     config.to_prepare do
       Dir.glob(Rails.root + 'app/decorators/**/*_decorator*.rb').each do |c|
