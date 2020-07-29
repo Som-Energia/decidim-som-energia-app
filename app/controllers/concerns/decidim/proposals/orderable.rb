@@ -50,13 +50,13 @@ module Decidim
 
         def reorder(proposals)
           case order
-          when "most_commented" 
+          when "most_commented"
             proposals.left_joins(:comments).group(:id).order(Arel.sql("COUNT(decidim_comments_comments.id) DESC"))  
-          when "most_endorsed"  
+          when "most_endorsed"
             proposals.order(proposal_endorsements_count: :desc) 
-          when "most_followed"  
+          when "most_followed"
             proposals.left_joins(:follows).group(:id).order(Arel.sql("COUNT(decidim_follows.id) DESC")) 
-          when "most_voted" 
+          when "most_voted"
             proposals.order(proposal_votes_count: :desc)
           when "random"
             proposals.order_randomly(random_seed)

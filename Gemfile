@@ -2,9 +2,9 @@ source "https://rubygems.org"
 
 ruby RUBY_VERSION
 
-DECIDIM_VERSION = { git: 'https://github.com/decidim/decidim.git', branch: 'release/0.20-stable' }
+DECIDIM_VERSION = { git: 'https://github.com/decidim/decidim.git', branch: 'release/0.21-stable' }
 
-#gem 'puma', '~> 4.0'
+gem 'puma', '~> 4.0'
 gem 'uglifier', '>= 1.3.0'
 gem 'delayed_job_active_record'
 gem 'daemons'
@@ -35,8 +35,6 @@ gem "rails", "< 6"
 # gem "actionview", ">= 5.2.4.2"
 # nokogiri: CVE-2020-7595
 gem "nokogiri", ">= 1.10.8"
-# puma: GHSA-33vf-4xgg-9r58
-gem "puma", ">= 3.12.4"
 # rack-cors: CVE-2019-18978
 gem "rack-cors", ">= 1.0.4"
 # loofah: CVE-2019-15587

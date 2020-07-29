@@ -24,7 +24,7 @@ Files:
 
 **Decidim:Proposals:Proposals::show.html.erb**
 
-The `strip_tags` parameter is changed to `"false"`. This change fix the links that are not showing in the body.
+The `strip_tags` parameter is changed to `false` by overriding `safe_content?` and making it always `true`. This change allows all links to show in the body.
 
 Files:
-- `app/views/decidim/proposals/proposals/show.html.erb`
+- `app/decorators/decidim/proposals/application_helper_decorator.rb`
