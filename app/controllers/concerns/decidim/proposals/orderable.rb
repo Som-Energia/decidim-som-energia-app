@@ -25,8 +25,8 @@ module Decidim
           @available_orders ||= begin
             available_orders = %w(random recent)
             available_orders << "most_voted" if most_voted_order_available?
-            available_orders << "most_endorsed" if current_settings.endorsements_enabled? 
-            available_orders << "most_commented" if component_settings.comments_enabled?  
+            available_orders << "most_endorsed" if current_settings.endorsements_enabled?
+            available_orders << "most_commented" if component_settings.comments_enabled? 
             available_orders << "most_followed" << "with_more_authors"
             available_orders
           end
@@ -53,7 +53,7 @@ module Decidim
           when "most_commented"
             proposals.left_joins(:comments).group(:id).order(Arel.sql("COUNT(decidim_comments_comments.id) DESC"))  
           when "most_endorsed"
-            proposals.order(proposal_endorsements_count: :desc) 
+            proposals.order(endorsements_count: :desc)
           when "most_followed"
             proposals.left_joins(:follows).group(:id).order(Arel.sql("COUNT(decidim_follows.id) DESC")) 
           when "most_voted"
@@ -64,7 +64,7 @@ module Decidim
             proposals.order(proposal_votes_count: :desc)
           when "recent"
             proposals.order(published_at: :desc)
-          when "with_more_authors" 
+          when "with_more_authors"
             proposals.order(coauthorships_count: :desc)
           end
         end
