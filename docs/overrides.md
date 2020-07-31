@@ -19,12 +19,3 @@ Files:
 Files:
 - `app/controllers/concerns/decidim/proposals/orderable.rb`
 - `app/controllers/decidim/proposals/proposals_controller.rb`
-
-## Views
-
-**Decidim:Proposals:Proposals::show.html.erb**
-
-The `strip_tags` parameter is changed to `"false"`. This change fix the links that are not showing in the body.
-
-Files:
-- `app/views/decidim/proposals/proposals/show.html.erb`
