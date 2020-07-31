@@ -19,12 +19,3 @@ Files:
 Files:
 - `app/controllers/concerns/decidim/proposals/orderable.rb`
 - `app/controllers/decidim/proposals/proposals_controller.rb`
-
-## Views
-
-**Decidim:Proposals:Proposals::show.html.erb**
-
-The `strip_tags` parameter is changed to `false` by overriding `safe_content?` and making it always `true`. This change allows all links to show in the body.
-
-Files:
-- `app/decorators/decidim/proposals/application_helper_decorator.rb`
