@@ -40,8 +40,7 @@ module Decidim
                        .results
                        .published
                        .not_hidden
-                       .includes(:category)
-                       .includes(:scope)
+                       .includes(:amendable, :category, :component, :resource_permission, :scope)
 
           @voted_proposals = if current_user
                                ProposalVote.where(
@@ -241,16 +240,20 @@ module Decidim
         filter_origin_params << "user_group" if current_organization.user_groups_enabled?
         filter_origin_params
       end
+
       def default_filter_category_params
         return "all" unless current_component.participatory_space.categories.any?
-        ["all"] + current_component.participatory_space.categories.map { |category| category.id.to_s }
+
+        ["all"] + current_component.participatory_space.categories.pluck(:id).map(&:to_s)
       end
+
       def default_filter_scope_params
         return "all" unless current_component.participatory_space.scopes.any?
+
         if current_component.participatory_space.scope
           ["all", current_component.participatory_space.scope.id] + current_component.participatory_space.scope.children.map { |scope| scope.id.to_s }
         else
-          %w(all global) + current_component.participatory_space.scopes.map { |scope| scope.id.to_s }
+          %w(all global) + current_component.participatory_space.scopes.pluck(:id).map(&:to_s)
         end
       end
 
@@ -294,7 +297,7 @@ module Decidim
       end
 
       def form_attachment_new
-        form(AttachmentForm).from_params({})
+        form(AttachmentForm).from_model(Attachment.new)
       end
 
       def edit_form
