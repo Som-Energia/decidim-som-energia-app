@@ -24,7 +24,7 @@ GIT
 
 GIT
   remote: https://github.com/decidim/decidim.git
-  revision: e7a6d6e50222e38de46d6c368959c74044bc8565
+  revision: 7b40c244de405253ff5af3607e0da8c51c0cb4bc
   branch: release/0.23-stable
   specs:
     decidim (0.23.1)
@@ -317,7 +317,7 @@ GEM
     browser (2.7.1)
     builder (3.2.4)
     byebug (11.1.3)
-    capybara (3.33.0)
+    capybara (3.34.0)
       addressable
       mini_mime (>= 0.1.3)
       nokogiri (~> 1.8)
@@ -341,7 +341,7 @@ GEM
       actionpack (>= 3.0)
       cells (>= 4.1.6, < 5.0.0)
     charlock_holmes (0.7.7)
-    chef-utils (16.6.14)
+    chef-utils (16.7.61)
     childprocess (3.0.0)
     chronic (0.10.2)
     coercible (1.0.0)
@@ -535,7 +535,7 @@ GEM
     mixlib-cli (2.1.8)
     mixlib-config (3.0.9)
       tomlrb
-    mixlib-shellout (3.1.7)
+    mixlib-shellout (3.2.2)
       chef-utils
     multi_json (1.15.0)
     multi_xml (0.6.0)
@@ -580,11 +580,11 @@ GEM
     paper_trail (10.3.1)
       activerecord (>= 4.2)
       request_store (~> 1.1)
-    parallel (1.20.0)
+    parallel (1.20.1)
     parser (2.7.2.0)
       ast (~> 2.4.1)
     pg (1.1.4)
-    pg_search (2.3.4)
+    pg_search (2.3.5)
       activerecord (>= 5.2)
       activesupport (>= 5.2)
     premailer (1.14.2)
@@ -652,7 +652,7 @@ GEM
       virtus (~> 1.0.5)
       wisper (>= 1.6.1)
     redcarpet (3.5.0)
-    redis (4.2.2)
+    redis (4.2.5)
     regexp_parser (1.8.2)
     request_store (1.5.0)
       rack (>= 1.4)
@@ -767,7 +767,7 @@ GEM
     thor (1.0.1)
     thread_safe (0.3.6)
     tilt (2.0.10)
-    tomlrb (1.3.0)
+    tomlrb (2.0.0)
     truncato (0.7.11)
       htmlentities (~> 4.3.1)
       nokogiri (>= 1.7.0, <= 2.0)
@@ -797,7 +797,7 @@ GEM
       activemodel (>= 5.0)
       bindex (>= 0.4.0)
       railties (>= 5.0)
-    webmock (3.9.5)
+    webmock (3.10.0)
       addressable (>= 2.3.6)
       crack (>= 0.3.2)
       hashdiff (>= 0.4.0, < 2.0.0)
