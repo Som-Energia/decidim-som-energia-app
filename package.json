@@ -1,5 +1,5 @@
 {
-  "name": "decidim_agusti_int_app",
+  "name": "decidim_somenergia_app",
   "private": true,
   "dependencies": {
     "quill-html-edit-button": "^1.0.16"
