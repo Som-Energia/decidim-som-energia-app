@@ -1,22 +1,22 @@
 default: &default
   adapter: postgresql
   encoding: unicode
-  pool: <%= ENV['DB_POOL'] %>
-  host: <%= ENV['DB_HOST'] %>
-  database: <%= ENV['DB_DATABASE'] %>
-  username: <%= ENV['DB_USERNAME'] %>
-  password: <%= ENV['DB_PASSWORD'] %>
-  port: <%= ENV['DB_PORT'] %>
+  # For details on connection pooling, see rails configuration guide
+  # http://guides.rubyonrails.org/configuring.html#database-pooling
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  host: <%= ENV.fetch("DATABASE_HOST") { "localhost" } %>
+  port: <%= ENV.fetch("DATABASE_PORT") { "5432" } %>
+  username: <%= ENV.fetch("DATABASE_USERNAME") { "" } %>
+  password: <%= ENV.fetch("DATABASE_PASSWORD") { "" } %>
 
 development:
   <<: *default
+  database: somenergia_development
   min_messages: notice
 
 test:
   <<: *default
-
-integration:
-  <<: *default
+  database: somenergia_test
 
 production:
   <<: *default

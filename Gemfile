@@ -4,20 +4,6 @@ ruby RUBY_VERSION
 
 DECIDIM_VERSION = { git: 'https://github.com/decidim/decidim.git', branch: 'release/0.23-stable' }
 
-gem 'puma', '~> 4.0'
-gem 'uglifier', '>= 1.3.0'
-gem 'delayed_job_active_record'
-gem 'daemons'
-gem 'whenever'
-gem 'geocoder', '~> 1.5.2'
-
-gem 'figaro', '>= 1.1.1'
-
-# Force gem version to fix (prevent to being upgraded to 2.3):
-# undefined method `polymorphic?' for ActiveRecord::Reflection::PolymorphicReflection
-# See: https://github.com/activerecord-hackery/ransack/issues/1039
-gem 'ransack', '~> 2.1.1'
-
 gem 'decidim', DECIDIM_VERSION
 gem 'decidim-consultations', DECIDIM_VERSION
 gem 'decidim-initiatives'
@@ -26,40 +12,51 @@ gem "codit-devise-cas-authenticable", git: "git@github.com:CodiTramuntana/codit-
 
 # A Decidim module to customize the localized terms in the system.
 gem "decidim-term_customizer", git: "git@github.com:CodiTramuntana/decidim-module-term_customizer.git"
-# Compability with decidim initiatives module
-gem 'wicked_pdf'
 
-# Security fixes:
-# actionview: GHSA-65cv-r6x7-79hv
-gem "rails", "< 6"
-# gem "actionview", ">= 5.2.4.2"
-# nokogiri: CVE-2020-7595
-gem "nokogiri", ">= 1.10.8"
-# rack-cors: CVE-2019-18978
-gem "rack-cors", ">= 1.0.4"
-# loofah: CVE-2019-15587
-gem "loofah", ">= 2.3.1"
-# rubyzip: CVE-2019-16892
-gem "rubyzip", ">= 1.3.0"
-# devise: CVE-2019-16109
-gem "devise", ">= 4.7.1"
-# mini_magick: CVE-2019-13574
-gem "mini_magick", ">= 4.9.4"
+gem "bootsnap", "~> 1.4"
+
+gem "puma", ">= 4.3.5"
+gem "uglifier", "~> 4.1"
+
+gem "faker", "~> 1.9"
+
+gem "wicked_pdf", "~> 1.4"
+
+gem "sentry-rails"
+gem "sentry-ruby"
+
+gem "whenever", require: false
+
 
 group :development, :test do
-  gem 'byebug', platform: :mri
-  gem 'faker', "~> 1.8.4"
+  gem "byebug", "~> 11.0", platform: :mri
+
+  gem "decidim-dev", DECIDIM_VERSION
 end
 
 group :development do
-  gem 'decidim-dev', DECIDIM_VERSION
-  gem 'web-console'
-  gem 'listen', '~> 3.1.0'
-  gem 'spring'
-  gem 'spring-watcher-listen', '~> 2.0.0'
-  gem 'letter_opener_web', '~> 1.3.0'
+  gem "letter_opener_web", "~> 1.3"
+  gem "listen", "~> 3.1"
+  gem "spring", "~> 2.0"
+  gem "spring-watcher-listen", "~> 2.0"
+  gem "web-console", "~> 3.5"
+
+  gem "capistrano", "~> 3.15"
+  gem "capistrano-bundler", "~> 2.0", require: false
+  gem "capistrano-figaro-yml", "~> 1.0.2", require: false
+  gem "capistrano-passenger", "~> 0.2.0", require: false
+  gem "capistrano-rails", "~> 1.6", require: false
+  gem "capistrano-rails-console", require: false
+  gem "capistrano-rbenv", "~> 2.2", require: false
+  gem "passenger", "~> 6.0"
 end
 
+group :production do
+  gem "daemons", "~> 1.3"
+  gem "delayed_job_active_record", "~> 4.1"
+  gem "figaro", "~> 1.2"
+
+end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]

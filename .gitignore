@@ -18,13 +18,26 @@
 
 .byebug_history
 
+
+
 # Ignore public uploads
 public/uploads
 # Ignore application configuration
-/config/application.yml
 /RailsApplication1/nbproject/private/
 
-# Ignore deploy secrets
-/config/deploy.rb
-/config/deploy/*
-/Capfile
+# Ignore .rbenv-vars
+.rbenv-vars
+
+# Ignore .rspec-failures
+.rspec-failures
+.s3cfg
+
+# Ignore capistrano
+Capfile
+config/application.yml
+config/deploy/*
+config/deploy
+config/deploy.rb
+
+decidim_dummy_app
+.vscode
