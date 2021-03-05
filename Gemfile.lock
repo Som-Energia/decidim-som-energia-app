@@ -1,5 +1,13 @@
 GIT
-  remote: git@github.com:CodiTramuntana/codit-devise-cas-authenticable.git
+  remote: git@github.com:CodiTramuntana/decidim-module-term_customizer.git
+  revision: c4ed0ffa87bd9977c6b470aa815d5dc2ed9f88a5
+  specs:
+    decidim-term_customizer (0.18.0)
+      decidim-admin (>= 0.18.0)
+      decidim-core (>= 0.18.0)
+
+GIT
+  remote: git@github.com:Som-Energia/codit-devise-cas-authenticable.git
   revision: 27f87ab349d397224185cae5232dcb30d523d025
   specs:
     codit-devise-cas-authenticable (0.0.6)
@@ -7,20 +15,12 @@ GIT
       rubycas-client (>= 2.2.1)
 
 GIT
-  remote: git@github.com:CodiTramuntana/decidim-cas-client.git
+  remote: git@github.com:Som-Energia/decidim-cas-client.git
   revision: c412d59766607f4c8ce75810ed5069751eaeca2f
   specs:
     decidim-cas_client (0.0.20)
       decidim-core (>= 0.16.0)
       decidim-verifications (>= 0.16.0)
-
-GIT
-  remote: git@github.com:CodiTramuntana/decidim-module-term_customizer.git
-  revision: c4ed0ffa87bd9977c6b470aa815d5dc2ed9f88a5
-  specs:
-    decidim-term_customizer (0.18.0)
-      decidim-admin (>= 0.18.0)
-      decidim-core (>= 0.18.0)
 
 GIT
   remote: https://github.com/decidim/decidim.git

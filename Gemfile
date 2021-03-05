@@ -7,8 +7,8 @@ DECIDIM_VERSION = { git: 'https://github.com/decidim/decidim.git', branch: 'rele
 gem 'decidim', DECIDIM_VERSION
 gem 'decidim-consultations', DECIDIM_VERSION
 gem 'decidim-initiatives'
-gem "decidim-cas_client", git: "git@github.com:CodiTramuntana/decidim-cas-client.git"
-gem "codit-devise-cas-authenticable", git: "git@github.com:CodiTramuntana/codit-devise-cas-authenticable.git"
+gem "decidim-cas_client", git: "git@github.com:Som-Energia/decidim-cas-client.git"
+gem "codit-devise-cas-authenticable", git: "git@github.com:Som-Energia/codit-devise-cas-authenticable.git"
 
 # A Decidim module to customize the localized terms in the system.
 gem "decidim-term_customizer", git: "git@github.com:CodiTramuntana/decidim-module-term_customizer.git"
