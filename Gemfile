@@ -24,7 +24,7 @@ gem "wicked_pdf", "~> 1.4"
 
 gem "sentry-rails"
 gem "sentry-ruby"
-
+gem "progressbar"
 gem "whenever", require: false
 
 
