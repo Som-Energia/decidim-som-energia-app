@@ -11,6 +11,12 @@ Decidim.configure do |config|
 
   config.enable_html_header_snippets = true
   config.track_newsletter_links = true
+
+  config.etherpad = {
+    server: Rails.application.secrets.etherpad[:server],
+    api_key: Rails.application.secrets.etherpad[:api_key],
+    api_version: Rails.application.secrets.etherpad[:api_version]
+  }
 end
 
 Rails.application.config.i18n.available_locales = Decidim.available_locales
