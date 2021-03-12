@@ -6,5 +6,9 @@ require_relative 'config/application'
 Rails.application.load_tasks
 
 task :test_app do
-  system("bundle exec rake decidim:generate_external_test_app RAILS_ENV=test")
+  # Seems migrations are failing due to `decidim-cas_client` gem requiring the
+  # user table via devise in the routes. https://stackoverflow.com/a/35844553
+  ENV["RAILS_ENV"] = "test"
+  system("bundle exec rake decidim:generate_external_test_app")
+  system("bundle exec rake db:create db:schema:load")
 end
