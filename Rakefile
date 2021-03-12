@@ -4,3 +4,7 @@
 require_relative 'config/application'
 
 Rails.application.load_tasks
+
+task :test_app do
+  system("bundle exec rake decidim:generate_external_test_app RAILS_ENV=test")
+end
