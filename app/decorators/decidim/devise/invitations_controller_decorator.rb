@@ -29,10 +29,4 @@ Decidim::Devise::InvitationsController.class_eval do
 
     "/users/cas/sign_in"
   end
-
-  # Devise::InvitationsController#update_resource_params returns an empty Hash.
-  # Probably a view customization on our side is at fault.
-  def update_resource_params
-    params.permit(:invitation_token)
-  end
 end
