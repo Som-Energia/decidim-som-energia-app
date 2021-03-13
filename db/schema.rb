@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_04_165709) do
+ActiveRecord::Schema.define(version: 2021_03_12_232006) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "ltree"
@@ -1168,6 +1168,7 @@ ActiveRecord::Schema.define(version: 2021_03_04_165709) do
     t.string "privatable_to_type"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "cas_user", default: false, null: false
     t.index ["decidim_user_id"], name: "index_decidim_spaces_users_on_private_user_id"
     t.index ["privatable_to_type", "privatable_to_id"], name: "space_privatable_to_privatable_id"
   end

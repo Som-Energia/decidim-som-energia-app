@@ -1,5 +1,11 @@
 eu:
   decidim:
+    admin:
+      participatory_space_private_users:
+        form:
+          name: "name eu"
+          email: "email eu"
+          cas_user: "cas_user eu"
     meetings:
       registration_mailer:
         confirmation:

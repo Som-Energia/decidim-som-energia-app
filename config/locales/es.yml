@@ -1,6 +1,12 @@
 ---
 es:
   decidim:
+    admin:
+      participatory_space_private_users:
+        form:
+          name: "name es"
+          email: "email es"
+          cas_user: "cas_user es"
     initiatives:
       initiatives_mailer:
         bottom:

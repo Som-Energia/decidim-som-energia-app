@@ -1,5 +1,11 @@
 gl:
   decidim:
+    admin:
+      participatory_space_private_users:
+        form:
+          name: "name gl"
+          email: "email gl"
+          cas_user: "cas_user gl"
     meetings:
       registration_mailer:
         confirmation:
