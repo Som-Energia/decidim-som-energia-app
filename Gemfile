@@ -1,14 +1,16 @@
+# frozen_string_literal: true
+
 source "https://rubygems.org"
 
 ruby RUBY_VERSION
 
-DECIDIM_VERSION = { git: 'https://github.com/decidim/decidim.git', branch: 'release/0.23-stable' }
+DECIDIM_VERSION = { git: "https://github.com/decidim/decidim.git", branch: "release/0.23-stable" }.freeze
 
-gem 'decidim', DECIDIM_VERSION
-gem 'decidim-consultations', DECIDIM_VERSION
-gem 'decidim-initiatives'
-gem "decidim-cas_client", git: "https://github.com/Som-Energia/decidim-cas-client.git"
 gem "codit-devise-cas-authenticable", git: "https://github.com/Som-Energia/codit-devise-cas-authenticable.git"
+gem "decidim", DECIDIM_VERSION
+gem "decidim-cas_client", git: "https://github.com/Som-Energia/decidim-cas-client.git"
+gem "decidim-consultations", DECIDIM_VERSION
+gem "decidim-initiatives"
 
 # A Decidim module to customize the localized terms in the system.
 gem "decidim-term_customizer", git: "https://github.com/CodiTramuntana/decidim-module-term_customizer.git"
@@ -22,11 +24,10 @@ gem "faker", "~> 1.9"
 
 gem "wicked_pdf", "~> 1.4"
 
+gem "progressbar"
 gem "sentry-rails"
 gem "sentry-ruby"
-gem "progressbar"
 gem "whenever", require: false
-
 
 group :development, :test do
   gem "byebug", "~> 11.0", platform: :mri
@@ -55,8 +56,7 @@ group :production do
   gem "daemons", "~> 1.3"
   gem "delayed_job_active_record", "~> 4.1"
   gem "figaro", "~> 1.2"
-
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
-gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+gem "tzinfo-data", platforms: [:mingw, :mswin, :x64_mingw, :jruby]

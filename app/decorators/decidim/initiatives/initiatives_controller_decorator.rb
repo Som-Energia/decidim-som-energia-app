@@ -5,7 +5,7 @@ Decidim::Initiatives::InitiativesController.class_eval do
   # This is the date that the Product Owner has chosen. See docs/overrides.md
   SIGNATURE_START_DATE = Date.new(2020, 2, 1).in_time_zone
 
-  alias original_default_filter_params default_filter_params
+  alias_method :original_default_filter_params, :default_filter_params
 
   # Method overrided.
   # Assigns the value "closed" to the :state key after the given date is reached.

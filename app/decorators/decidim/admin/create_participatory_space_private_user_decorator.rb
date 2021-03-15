@@ -11,13 +11,13 @@ Decidim::Admin::CreateParticipatorySpacePrivateUser.class_eval do
       current_user,
       resource: {
         title: user.name,
-        cas_user: form.cas_user,
+        cas_user: form.cas_user
       }
     ) do
       Decidim::ParticipatorySpacePrivateUser.find_or_create_by!(
         user: user,
         privatable_to: @private_user_to,
-        cas_user: form.cas_user,
+        cas_user: form.cas_user
       )
     end
   end

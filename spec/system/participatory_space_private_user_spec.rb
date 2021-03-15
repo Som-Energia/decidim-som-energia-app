@@ -4,9 +4,9 @@ require "rails_helper"
 
 describe "Admin checks participatory space private users", type: :system do
   let(:organization) { create(:organization) }
-  let(:user)         { create(:user, :admin, :confirmed, organization: organization) }
-  let(:assembly)     { create(:assembly, organization: organization) }
-  let(:setup)        { nil }
+  let(:user) { create(:user, :admin, :confirmed, organization: organization) }
+  let(:assembly) { create(:assembly, organization: organization) }
+  let(:setup) { nil }
   let(:assembly_private_user) do
     user = create :user, organization: organization
     create(:assembly_private_user, user: user, privatable_to: assembly)
@@ -56,16 +56,18 @@ describe "Admin checks participatory space private users", type: :system do
     class Decidim::User
       private
 
+      # rubocop:disable RSpec/InstanceVariable
       def generate_invitation_token
         @raw_invitation_token = "raw_invitation_token"
         self.invitation_token = Devise.token_generator.digest(self, :invitation_token, @raw_invitation_token)
       end
+      # rubocop:enable RSpec/InstanceVariable
     end
 
     before do
       find("a[href*='participatory_space_private_users/new']").click
-      fill_in :participatory_space_private_user_name,   with: "Whatever"
-      fill_in :participatory_space_private_user_email,  with: "what@ever.com"
+      fill_in :participatory_space_private_user_name, with: "Whatever"
+      fill_in :participatory_space_private_user_email, with: "what@ever.com"
       fill_cas_user_checkbox
       perform_enqueued_jobs { find("*[type=submit]").click }
     end

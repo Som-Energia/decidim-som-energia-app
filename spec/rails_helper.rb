@@ -1,21 +1,21 @@
 # frozen_string_literal: true
 
 # This file is copied to spec/ when you run 'rails generate rspec:install'
-require 'spec_helper'
-ENV['RAILS_ENV'] ||= 'test'
+require "spec_helper"
+ENV["RAILS_ENV"] ||= "test"
 
-require File.expand_path('../config/environment', __dir__)
+require File.expand_path("../config/environment", __dir__)
 
 # Prevent database truncation if the environment is production
-abort('The Rails environment is running in production mode!') if Rails.env.production?
-require 'rspec/rails'
+abort("The Rails environment is running in production mode!") if Rails.env.production?
+require "rspec/rails"
 # Add additional requires below this line. Rails is not loaded until this point!
 
-require 'decidim/dev'
+require "decidim/dev"
 
-Decidim::Dev.dummy_app_path = File.expand_path(File.join(__dir__, '..'))
+Decidim::Dev.dummy_app_path = File.expand_path(File.join(__dir__, ".."))
 
-require 'decidim/dev/test/base_spec_helper'
+require "decidim/dev/test/base_spec_helper"
 
 # Requires supporting ruby files with custom matchers and macros, etc, in
 # spec/support/ and its subdirectories. Files matching `spec/**/*_spec.rb` are
@@ -73,14 +73,14 @@ RSpec.configure do |config|
 
   # Make :en locale available in tests.
   config.before do
-    available_locales         = Decidim.available_locales + [:en]
-    default_locale            = :en
+    available_locales = Decidim.available_locales + [:en]
+    default_locale = :en
 
-    I18n.available_locales    = available_locales
-    I18n.default_locale       = default_locale
-    I18n.locale               = default_locale
+    I18n.available_locales = available_locales
+    I18n.default_locale = default_locale
+    I18n.locale = default_locale
 
     Decidim.available_locales = available_locales
-    Decidim.default_locale    = default_locale
+    Decidim.default_locale = default_locale
   end
 end
