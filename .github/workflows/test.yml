@@ -39,8 +39,7 @@ jobs:
 
       - name: Setup & create Database
         run: |
-          bundle exec rake decidim:generate_external_test_app
-          bundle exec rails db:create db:schema:load
+          bundle exec rails test_app
         env:
           RAILS_ENV: test
           DATABASE_USERNAME: postgres
@@ -57,3 +56,4 @@ jobs:
           RAILS_ENV: test
           DATABASE_USERNAME: postgres
           DATABASE_PASSWORD: postgres
+          CAS_BASE_URL: ${{ secrets.CAS_BASE_URL }}
