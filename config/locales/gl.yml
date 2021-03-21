@@ -6,10 +6,15 @@ gl:
           name: "name gl"
           email: "email gl"
           cas_user: "cas_user gl"
+    assemblies:
+      alternative_assembly_types:
+        work_groups: work_groups gl
     meetings:
       registration_mailer:
         confirmation:
           confirmed_html: A súa <a href="%{url}">%{title}</a> foi confirmada. Grazas por participar
+    menu:
+      assemblies: menu_assemblies gl
     questions:
       next_button: "Pregunta seguinte"
       previous_button: "Pregunta anterior"

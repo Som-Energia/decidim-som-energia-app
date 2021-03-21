@@ -6,6 +6,9 @@ eu:
           name: "name eu"
           email: "email eu"
           cas_user: "cas_user eu"
+    assemblies:
+      alternative_assembly_types:
+        work_groups: work_groups eu
     meetings:
       registration_mailer:
         confirmation:
@@ -13,6 +16,8 @@ eu:
     questions:
       next_button: "Hurrengo galdera"
       previous_button: "Aurreko galdera"
+    menu:
+      assemblies: menu_assemblies eu
   devise:
     invitations:
       invitation_token_invalid: Gonbidapen token hori ez da baliozkoa!

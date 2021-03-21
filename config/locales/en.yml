@@ -37,6 +37,11 @@ en:
           name: "Name"
           email: "Email"
           cas_user: "CAS User"
+    assemblies:
+      alternative_assembly_types:
+        work_groups: Work groups
+    menu:
+      assemblies: Management
     questions:
       next_button: "Next question"
       previous_button: "Previous question"

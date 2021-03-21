@@ -7,6 +7,9 @@ ca:
           name: "name ca"
           email: "email ca"
           cas_user: "cas_user ca"
+    assemblies:
+      alternative_assembly_types:
+        work_groups: work_groups ca
     initiatives:
       initiatives_mailer:
         bottom:
@@ -35,6 +38,8 @@ ca:
         confirmation:
           confirmed_html: La teva <a href="%{url}">%{title}</a> ha estat confirmada.
             Gràcies per participar.
+    menu:
+      assemblies: menu_assemblies ca
     questions:
       next_button: Pregunta següent
       previous_button: Pregunta anterior
