@@ -7,7 +7,7 @@ Decidim::Devise::InvitationsController.class_eval do
     resource.invitation_token = params[:invitation_token]
 
     if cas_user?
-      redirect_to cas_user_path
+      redirect_to new_user_cas_session_path
     else
       render :edit
     end
@@ -16,17 +16,6 @@ Decidim::Devise::InvitationsController.class_eval do
   private
 
   def cas_user?
-    Decidim::ParticipatorySpacePrivateUser.find_by(user: resource)&.cas_user?
-  end
-
-  def cas_user_path
-    # The following view:
-    #   decidim-cas-client/app/views/decidim/shared/_login_modal.html.erb
-    # Calls the following url_helper:
-    #   new_user_cas_session_path
-    # But I dunno how to call it. Tried the following without luck:
-    #   Rails.application.routes.url_helpers.new_user_cas_session_path
-
-    "/users/cas/sign_in"
+    Decidim::ParticipatorySpacePrivateUser.find_by(user: resource, cas_user: true)
   end
 end

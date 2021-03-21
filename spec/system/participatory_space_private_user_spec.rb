@@ -30,19 +30,19 @@ describe "Admin checks participatory space private users", type: :system do
     end
   end
 
-  describe "invite new participatory space private user" do
-    shared_examples "delivered email has correct invitation link" do
+  describe "invites" do
+    shared_examples "invitation email" do
       let(:last_email_body) { ActionMailer::Base.deliveries.last.encoded }
       let(:expected_invitation_link) do
         decidim.accept_user_invitation_url(invitation_token: invitation_token, host: organization.host)
       end
 
-      it "proof that we are following the correct invitation link" do
+      it "has correct invitation link" do
         expect(last_email_body).to have_content(expected_invitation_link)
       end
     end
 
-    shared_examples "following invitation link" do
+    shared_examples "invitation link" do
       before do
         logout :user
         visit accept_invitation_path
@@ -83,10 +83,20 @@ describe "Admin checks participatory space private users", type: :system do
         check :participatory_space_private_user_cas_user
       end
 
-      include_examples "delivered email has correct invitation link"
+      it_behaves_like "invitation email"
 
-      include_examples "following invitation link" do
-        let(:expected_path) { "/users/cas/sign_in" }
+      it_behaves_like "invitation link" do
+        # Regexp to match String starting with "/login?service="
+        # followed by anything (escaped host and port)
+        # and ending with "%2Fusers%2Fcas%2Fservice&locale=en"
+        let(:expected_path_with_cas_server_running) { %r{\A/login\?service=.*%2Fusers%2Fcas%2Fservice&locale=en\z} }
+        let(:expected_path_without_cas_server_running) { "users/cas/sign_in" }
+        let(:expected_path) do
+          Regexp.union(
+            expected_path_with_cas_server_running,
+            expected_path_without_cas_server_running
+          )
+        end
       end
     end
 
@@ -95,9 +105,9 @@ describe "Admin checks participatory space private users", type: :system do
         uncheck :participatory_space_private_user_cas_user
       end
 
-      include_examples "delivered email has correct invitation link"
+      it_behaves_like "invitation email"
 
-      include_examples "following invitation link" do
+      it_behaves_like "invitation link" do
         let(:expected_path) { accept_invitation_path }
       end
     end
