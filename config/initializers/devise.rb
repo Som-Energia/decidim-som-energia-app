@@ -1,5 +1,6 @@
-Devise.setup do |config|
+# frozen_string_literal: true
 
+Devise.setup do |config|
   config.cas_base_url = ENV["CAS_BASE_URL"]
 
   # you can override these if you need to, but cas_base_url is usually enough

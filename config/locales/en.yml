@@ -31,6 +31,12 @@
 
 en:
   decidim:
+    admin:
+      participatory_space_private_users:
+        form:
+          name: "Name"
+          email: "Email"
+          cas_user: "CAS User"
     questions:
       next_button: "Next question"
       previous_button: "Previous question"
