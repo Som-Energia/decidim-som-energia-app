@@ -15,6 +15,9 @@ gem "decidim-initiatives"
 # A Decidim module to customize the localized terms in the system.
 gem "decidim-term_customizer", git: "https://github.com/CodiTramuntana/decidim-module-term_customizer.git"
 
+# Usability and UX tweaks for Decidim.
+gem "decidim-decidim_awesome", "~> 0.6.6"
+
 gem "bootsnap", "~> 1.4"
 
 gem "puma", ">= 4.3.5"
