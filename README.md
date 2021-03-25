@@ -1,6 +1,5 @@
 # PARTICIPA.SOMENERGIA.COOP
 
-
 This is the open-source repository for https://participa.somenergia.coop, based on [Decidim](https://github.com/decidim/decidim).
 
 ![Test](https://github.com/Som-Energia/decidim-som-energia-app/workflows/Test/badge.svg?branch=staging)
@@ -19,7 +18,7 @@ Be sure to define an ENV variable with a route to a CAS server (not ending with 
 
 IE: in a `.rbenv-vars` file:
 
-```
+```bash
 CAS_BASE_URL=https://some-cas-url
 ```
 
@@ -33,7 +32,7 @@ This Decidim application comes with a bunch of customizations, some of them done
 - Decidim Awesome: https://github.com/Platoniq/decidim-module-decidim_awesome/
 - Term Customizer: https://github.com/mainio/decidim-module-term_customizer
 
-### Customizations:
+### Customizations
 
 - Different emails sent for users belonging to CAS or administrators
 - Custom technical menu only of members of such assembly
