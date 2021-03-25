@@ -4,12 +4,15 @@ en:
     admin:
       participatory_space_private_users:
         form:
-          cas_user: CAS User
-          email: Email
-          name: Name
+          name: "Name"
+          email: "Email"
+          cas_user: "CAS User"
+    assemblies:
+      alternative_assembly_types:
+        local_groups: Local Groups
     questions:
-      next_button: Next question
-      previous_button: Previous question
+      next_button: "Next question"
+      previous_button: "Previous question"
   somenergia:
     menu:
       team_et: Technical team

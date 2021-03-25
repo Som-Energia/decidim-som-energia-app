@@ -7,6 +7,9 @@ es:
           name: "Nombre"
           email: "Email"
           cas_user: "Es usuario del CAS"
+    assemblies:
+      alternative_assembly_types:
+        local_groups: Grupos Locales
     initiatives:
       initiatives_mailer:
         bottom:
@@ -36,6 +39,8 @@ es:
         confirmation:
           confirmed_html: Su <a href="%{url}">%{title}</a> ha sido confirmada. Gracias
             por participar.
+      menu:
+        assemblies: menu_assemblies es
     questions:
       next_button: Pregunta siguiente
       previous_button: Pregunta anterior

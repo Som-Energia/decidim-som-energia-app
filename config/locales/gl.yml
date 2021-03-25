@@ -6,10 +6,15 @@ gl:
           name: "Nombre"
           email: "Email"
           cas_user: "Es usuario de CAS "
+    assemblies:
+      alternative_assembly_types:
+        local_groups: Grupos Locais
     meetings:
       registration_mailer:
         confirmation:
           confirmed_html: A súa <a href="%{url}">%{title}</a> foi confirmada. Grazas por participar
+    menu:
+      assemblies: menu_assemblies gl
     questions:
       next_button: "Pregunta seguinte"
       previous_button: "Pregunta anterior"

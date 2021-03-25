@@ -6,6 +6,9 @@ eu:
           name: "Izena"
           email: "Email"
           cas_user: "CAS erabiltzailea zara "
+    assemblies:
+      alternative_assembly_types:
+        local_groups: Tokiko Taldeen
     meetings:
       registration_mailer:
         confirmation:
@@ -13,6 +16,8 @@ eu:
     questions:
       next_button: "Hurrengo galdera"
       previous_button: "Aurreko galdera"
+    menu:
+      assemblies: menu_assemblies eu
   devise:
     invitations:
       invitation_token_invalid: Gonbidapen token hori ez da baliozkoa!
