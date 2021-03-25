@@ -1,33 +1,44 @@
 # PARTICIPA.SOMENERGIA.COOP
 
+This is the open-source repository for https://participa.somenergia.coop, based on [Decidim](https://github.com/decidim/decidim).
+
+![Test](https://github.com/Som-Energia/decidim-som-energia-app/workflows/Test/badge.svg?branch=staging)
+
+![Participa Homepage](app/assets/images/screenshot.png)
+
 ## Deploying the app
 
 Deployed with [Capistrano](http://capistranorb.com/) using [Figaro](https://github.com/laserlemon/figaro) for `ENV` configuration.
 
+Please refer to the private documentation repository for details.
+
+**Developers note**:
+
+Be sure to define an ENV variable with a route to a CAS server (not ending with `/`) to be able to start the app:
+
+IE: in a `.rbenv-vars` file:
+
 ```bash
-cap integration deploy
+CAS_BASE_URL=https://some-cas-url
 ```
 
-## Setting up the application
+## Applied hacks & customizations
 
-You will need to do some steps before having the app working properly once you've deployed it:
+This Decidim application comes with a bunch of customizations, some of them done via some initializer or monkey patching. Other with external plugins.
 
-1. Open a Rails console in the server: `bundle exec rails console`
-2. Create a System Admin user:
+### Plugins
 
-```ruby
-user = Decidim::System::Admin.new(email: <email>, password: <password>, password_confirmation: <password>)
-user.save!
-```
+- Custom CAS authentication: https://github.com/Som-Energia/codit-devise-cas-authenticable and https://github.com/Som-Energia/decidim-cas-client
+- Decidim Awesome: https://github.com/Platoniq/decidim-module-decidim_awesome/
+- Term Customizer: https://github.com/mainio/decidim-module-term_customizer
 
-1. Visit `<your app url>/system` and login with your system admin credentials
-2. Create a new organization. Check the locales you want to use for that organization, and select a default locale.
-3. Set the correct default host for the organization, otherwise the app will not work properly. Note that you need to include any subdomain you might be using.
-4. Fill the rest of the form and submit it.
+### Customizations
 
-You're good to go!
+#### Different emails sent for users belonging to CAS or administrators
 
-## The Awesome Alternative Assembies Hack
+#### Custom technical menu only of members of such assembly
+
+#### The Awesome Alternative Assembies Hack
 
 Introduces an experimental feature that allows to add an alternative Assemblies menu.
 It uses the Assemblies types to divide the assemblies into the original and the different alternative menus.
@@ -60,12 +71,13 @@ It is configured via the `secrets.yml` file in a new section `alternative_assemb
 default: &default
   alternative_assembly_types:
     -
-      key: work_groups # used to search a I18n key and a route path
+      key: local_groups # used to search a I18n key and a route path
       position_in_menu: 2.6
       assembly_type_ids: [17]
 ```
 
 - **alternative_assembly_types**: must be an array in YAML format, each entry will correspond to a new entry in the main Decidim menu next to the "ASSEMBLIES" item.
-- **key**: the identifier for the menu and URL path. For instance, if it is `work_groups` we will have a new menu entry for the url `<host>/work_groups` and the name specified in the I18n key `decidim.assemblies.alternative_assembly_types.work_groups`.
+- **key**: the identifier for the menu and URL path. For instance, if it is `local_groups` we will have a new menu entry for the url `<host>/local_groups` and the name specified in the I18n key `decidim.assemblies.alternative_assembly_types.local_groups`.
 - **position_in_menu**: Where to place the item in the main menu, the usual "ASSEMBLIES" item have the value `2.5`, lower this number will put it before and vice-versa.
 - **types**: and array of IDs for the model `Decidim::AssembliesType`. All assemblies assigned to this ID will be listed here and not in the normal "ASSEMBLIES" menu.
+

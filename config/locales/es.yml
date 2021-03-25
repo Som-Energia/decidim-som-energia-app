@@ -4,12 +4,12 @@ es:
     admin:
       participatory_space_private_users:
         form:
-          name: "name es"
-          email: "email es"
-          cas_user: "cas_user es"
+          name: "Nombre"
+          email: "Email"
+          cas_user: "Es usuario del CAS"
     assemblies:
       alternative_assembly_types:
-        work_groups: work_groups es
+        local_groups: Grupos Locales
     initiatives:
       initiatives_mailer:
         bottom:
@@ -47,3 +47,7 @@ es:
   devise:
     invitations:
       invitation_token_invalid: "¡El token de invitación proporcionado no es válido!"
+  somenergia:
+    menu:
+      team_et: Equipo técnico
+      team_it: Equipo IT

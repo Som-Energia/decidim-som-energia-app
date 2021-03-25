@@ -3,12 +3,12 @@ eu:
     admin:
       participatory_space_private_users:
         form:
-          name: "name eu"
-          email: "email eu"
-          cas_user: "cas_user eu"
+          name: "Izena"
+          email: "Email"
+          cas_user: "CAS erabiltzailea zara "
     assemblies:
       alternative_assembly_types:
-        work_groups: work_groups eu
+        local_groups: Tokiko Taldeen
     meetings:
       registration_mailer:
         confirmation:
@@ -21,3 +21,7 @@ eu:
   devise:
     invitations:
       invitation_token_invalid: Gonbidapen token hori ez da baliozkoa!
+  somenergia:
+    menu:
+      team_et: Equipo técnico
+      team_it: Equipo IT
