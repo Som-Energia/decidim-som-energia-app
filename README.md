@@ -13,6 +13,16 @@ Deployed with [Capistrano](http://capistranorb.com/) using [Figaro](https://gith
 
 Please refer to the private documentation repository for details.
 
+**Developers note**:
+
+Be sure to define an ENV variable with a route to a CAS server (not ending with `/`) to be able to start the app:
+
+IE: in a `.rbenv-vars` file:
+
+```
+CAS_BASE_URL=https://some-cas-url
+```
+
 ## Applied hacks & customizations
 
 This Decidim application comes with a bunch of customizations, some of them done via some initializer or monkey patching. Other with external plugins.
@@ -25,4 +35,6 @@ This Decidim application comes with a bunch of customizations, some of them done
 
 ### Customizations:
 
-...todo...
+- Different emails sent for users belonging to CAS or administrators
+- Custom technical menu only of members of such assembly
+

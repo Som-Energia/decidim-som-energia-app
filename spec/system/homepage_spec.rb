@@ -3,7 +3,7 @@
 require "rails_helper"
 
 describe "Visit the home page", type: :system do
-  let(:official_url) { "http://mytesturl.me" }
+  let(:official_url) { "http://mytesturl.lvh.me" }
   let(:organization) { create(:organization, official_url: official_url) }
 
   before do
@@ -14,4 +14,9 @@ describe "Visit the home page", type: :system do
   it "renders the home page" do
     expect(page).to have_content("Home")
   end
+
+  # it "has matomo tracker" do
+  #   expect(page.execute_script("return typeof window._paq")).not_to eq("undefined")
+  #   expect(page.execute_script("return typeof window._paq")).to eq("object")
+  # end
 end
