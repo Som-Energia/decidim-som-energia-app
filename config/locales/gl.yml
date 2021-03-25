@@ -3,9 +3,9 @@ gl:
     admin:
       participatory_space_private_users:
         form:
-          name: "name gl"
-          email: "email gl"
-          cas_user: "cas_user gl"
+          name: "Nombre"
+          email: "Email"
+          cas_user: "Es usuario de CAS "
     meetings:
       registration_mailer:
         confirmation:
@@ -16,3 +16,7 @@ gl:
   devise:
     invitations:
       invitation_token_invalid: O token de invitación proporcionado non é válido.
+  somenergia:
+    menu:
+      team_et: Equipo técnico
+      team_it: Equipo IT

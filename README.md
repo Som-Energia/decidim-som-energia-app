@@ -1,28 +1,39 @@
 # PARTICIPA.SOMENERGIA.COOP
 
+This is the open-source repository for https://participa.somenergia.coop, based on [Decidim](https://github.com/decidim/decidim).
+
+![Test](https://github.com/Som-Energia/decidim-som-energia-app/workflows/Test/badge.svg?branch=staging)
+
+![Participa Homepage](app/assets/images/screenshot.png)
+
 ## Deploying the app
 
 Deployed with [Capistrano](http://capistranorb.com/) using [Figaro](https://github.com/laserlemon/figaro) for `ENV` configuration.
 
+Please refer to the private documentation repository for details.
+
+**Developers note**:
+
+Be sure to define an ENV variable with a route to a CAS server (not ending with `/`) to be able to start the app:
+
+IE: in a `.rbenv-vars` file:
+
 ```bash
-cap integration deploy
+CAS_BASE_URL=https://some-cas-url
 ```
 
-## Setting up the application
+## Applied hacks & customizations
 
-You will need to do some steps before having the app working properly once you've deployed it:
+This Decidim application comes with a bunch of customizations, some of them done via some initializer or monkey patching. Other with external plugins.
 
-1. Open a Rails console in the server: `bundle exec rails console`
-2. Create a System Admin user:
+### Plugins
 
-```ruby
-user = Decidim::System::Admin.new(email: <email>, password: <password>, password_confirmation: <password>)
-user.save!
-```
+- Custom CAS authentication: https://github.com/Som-Energia/codit-devise-cas-authenticable and https://github.com/Som-Energia/decidim-cas-client
+- Decidim Awesome: https://github.com/Platoniq/decidim-module-decidim_awesome/
+- Term Customizer: https://github.com/mainio/decidim-module-term_customizer
 
-1. Visit `<your app url>/system` and login with your system admin credentials
-2. Create a new organization. Check the locales you want to use for that organization, and select a default locale.
-3. Set the correct default host for the organization, otherwise the app will not work properly. Note that you need to include any subdomain you might be using.
-4. Fill the rest of the form and submit it.
+### Customizations
 
-You're good to go!
+- Different emails sent for users belonging to CAS or administrators
+- Custom technical menu only of members of such assembly
+
