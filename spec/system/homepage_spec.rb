@@ -5,7 +5,7 @@ require "rails_helper"
 describe "Visit the home page", type: :system do
   let(:official_url) { "http://mytesturl.lvh.me" }
   let(:organization) { create(:organization, official_url: official_url) }
-  let!(:local_groups) { create :assemblies_type, id: 2 }
+  let!(:local_groups) { create :assemblies_type, id: 5 }
 
   before do
     switch_to_host(organization.host)
@@ -15,8 +15,8 @@ describe "Visit the home page", type: :system do
   it "renders the home page" do
     within ".main-nav" do
       expect(page).to have_content("Home")
-      expect(page).not_to have_content("Management")
-      expect(page).not_to have_content("Work groups")
+      expect(page).not_to have_content("Assemblies")
+      expect(page).not_to have_content("Local Groups")
     end
   end
 
@@ -28,8 +28,8 @@ describe "Visit the home page", type: :system do
 
       within ".main-nav" do
         expect(page).to have_content("Home")
-        expect(page).to have_content("Management")
-        expect(page).not_to have_content("Work groups")
+        expect(page).to have_content("Assemblies")
+        expect(page).not_to have_content("Local Groups")
       end
     end
   end
@@ -43,8 +43,8 @@ describe "Visit the home page", type: :system do
 
       within ".main-nav" do
         expect(page).to have_content("Home")
-        expect(page).to have_content("Management")
-        expect(page).to have_content("Work groups")
+        expect(page).to have_content("Assemblies")
+        expect(page).to have_content("Local Groups")
       end
     end
   end

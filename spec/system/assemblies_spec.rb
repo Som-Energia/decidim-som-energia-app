@@ -4,7 +4,7 @@ require "rails_helper"
 
 describe "Visit assemblies", type: :system do
   let(:organization) { create :organization }
-  let!(:local_groups) { create :assemblies_type, id: 2 }
+  let!(:local_groups) { create :assemblies_type, id: 5 }
   let!(:type2) { create :assemblies_type }
   let!(:alternative_assembly) { create(:assembly, slug: "slug1", assembly_type: local_groups, organization: organization) }
   let!(:assembly) { create(:assembly, slug: "slug3", assembly_type: nil, organization: organization) }
@@ -34,14 +34,14 @@ describe "Visit assemblies", type: :system do
 
     it "shows the original assembly menu" do
       within ".main-nav" do
-        expect(page).to have_content("Management")
+        expect(page).to have_content("Assemblies")
         expect(page).to have_link(href: "/assemblies")
       end
     end
 
     it "shows the extra configured menu" do
       within ".main-nav" do
-        expect(page).to have_content("Work groups")
+        expect(page).to have_content("Local Groups")
         expect(page).to have_link(href: "/local_groups")
       end
     end
@@ -49,7 +49,7 @@ describe "Visit assemblies", type: :system do
     context "and navigating to original assemblies" do
       before do
         within ".main-nav" do
-          click_link "Management"
+          click_link "Assemblies"
         end
       end
 
@@ -69,7 +69,7 @@ describe "Visit assemblies", type: :system do
     context "and navigating to alternative assemblies" do
       before do
         within ".main-nav" do
-          click_link "Work groups"
+          click_link "Local Groups"
         end
       end
 
