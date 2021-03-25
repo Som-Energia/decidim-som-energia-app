@@ -5,7 +5,7 @@ require "rails_helper"
 describe "Visit the home page", type: :system do
   let(:official_url) { "http://mytesturl.lvh.me" }
   let(:organization) { create(:organization, official_url: official_url) }
-  let!(:work_groups) { create :assemblies_type, id: 2 }
+  let!(:local_groups) { create :assemblies_type, id: 2 }
 
   before do
     switch_to_host(organization.host)
@@ -36,7 +36,7 @@ describe "Visit the home page", type: :system do
 
   context "when there is alternative assemblies" do
     let!(:assembly) { create(:assembly, :published, organization: organization) }
-    let!(:assembly2) { create(:assembly, :published, assembly_type: work_groups, organization: organization) }
+    let!(:assembly2) { create(:assembly, :published, assembly_type: local_groups, organization: organization) }
 
     it "renders the expected menu" do
       visit decidim.root_path

@@ -4,15 +4,15 @@ require "rails_helper"
 
 describe "Visit assemblies", type: :system do
   let(:organization) { create :organization }
-  let!(:work_groups) { create :assemblies_type, id: 2 }
+  let!(:local_groups) { create :assemblies_type, id: 2 }
   let!(:type2) { create :assemblies_type }
-  let!(:alternative_assembly) { create(:assembly, slug: "slug1", assembly_type: work_groups, organization: organization) }
+  let!(:alternative_assembly) { create(:assembly, slug: "slug1", assembly_type: local_groups, organization: organization) }
   let!(:assembly) { create(:assembly, slug: "slug3", assembly_type: nil, organization: organization) }
   let!(:assembly2) { create(:assembly, slug: "slug2", assembly_type: type2, organization: organization) }
 
-  let(:route) { "work_groups" } # same as defined in secrets.yml!!
+  let(:route) { "local_groups" } # same as defined in secrets.yml!!
   let(:position) { 2.4 }
-  let(:types) { [work_groups.id] }
+  let(:types) { [local_groups.id] }
   let(:alternative_assembly_types) do
     [
       {
@@ -42,7 +42,7 @@ describe "Visit assemblies", type: :system do
     it "shows the extra configured menu" do
       within ".main-nav" do
         expect(page).to have_content("Work groups")
-        expect(page).to have_link(href: "/work_groups")
+        expect(page).to have_link(href: "/local_groups")
       end
     end
 
@@ -82,14 +82,14 @@ describe "Visit assemblies", type: :system do
       end
 
       it "has the alternative path" do
-        expect(page).to have_current_path work_groups_path
+        expect(page).to have_current_path local_groups_path
       end
     end
   end
 
   context "when accessing original assemblies with an alternative path" do
     before do
-      visit "/work_groups/#{assembly2.slug}"
+      visit "/local_groups/#{assembly2.slug}"
     end
 
     it "redirects to the original path" do
@@ -103,13 +103,13 @@ describe "Visit assemblies", type: :system do
     end
 
     it "redirects to the alternative path" do
-      expect(page).to have_current_path work_group_path(alternative_assembly.slug)
+      expect(page).to have_current_path local_group_path(alternative_assembly.slug)
     end
   end
 
   context "when accessing non typed assemblies with the alternative path" do
     before do
-      visit "/work_groups/#{assembly.slug}"
+      visit "/local_groups/#{assembly.slug}"
     end
 
     it "redirects to the original path" do

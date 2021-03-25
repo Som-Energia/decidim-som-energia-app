@@ -2,7 +2,7 @@
 
 # Provides a way for the application to scope assemblies depending on their type
 # A url scope will be generated for every alternative assembly type that needs its own
-# section, (e.g `/assemblies` and `/work_groups`)
+# section, (e.g `/assemblies` and `/local_groups`)
 #
 # It also manages redirects for individual assemblies to the proper url path if the
 # requested assembly belongs into another scope:
