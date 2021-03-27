@@ -5,7 +5,8 @@
       <div class="columns mediumlarge-9 consultations-header__info">
         <div>
           <h1 class="text-highlight heading2">
-            <%= translated_attribute(current_consultation.title) %>
+            <%= link_to translated_attribute(question.consultation.title),
+                        "#{decidim_consultations.consultation_path(question.consultation)}/summary" %>
           </h1>
         </div>
       </div>

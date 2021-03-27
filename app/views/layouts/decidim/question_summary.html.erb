@@ -1,29 +1,10 @@
+<%= render "layouts/decidim/summary" do %>
+  <%# The commented div adds more padding %>
+  <%# <div class="wrapper"> %>
+    <%= render partial: "decidim/consultations/question_summaries/question_header",      locals: { question: current_participatory_space } %>
+    <%= render partial: "decidim/consultations/question_summaries/question_components",  locals: { question: current_participatory_space } %>
+    <%= render partial: "decidim/consultations/questions/results",                       locals: { question: current_participatory_space } %>
 
-<!DOCTYPE html>
-<html lang="<%= I18n.locale %>" class="no-js">
-  <head>
-    <%= stylesheet_link_tag    "application", media: "all" %>
-    <%= javascript_include_tag "application" %>
-  </head>
-
-  <body>
-    <div class="off-canvas-wrapper">
-      <div class="off-canvas-wrapper-inner" data-off-canvas-wrapper>
-        <div class="off-canvas-content" data-off-canvas-content>
-          <div class="footer-separator">
-            <main id="content">
-              <%# The commented div adds more padding %>
-              <%# <div class="wrapper"> %>
-                <%= render partial: "decidim/consultations/question_summaries/question_header",      locals: { question: current_participatory_space } %>
-                <%= render partial: "decidim/consultations/question_summaries/question_components",  locals: { question: current_participatory_space } %>
-                <%= render partial: "decidim/consultations/questions/results",                       locals: { question: current_participatory_space } %>
-
-                <%= yield %>
-              <%# </div> %>
-            </main>
-          </div>
-        </div>
-      </div>
-    </div>
-  </body>
-</html>
+    <%= yield %>
+  <%# </div> %>
+<% end %>
