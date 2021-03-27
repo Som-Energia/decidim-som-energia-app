@@ -4,9 +4,12 @@ ca:
     admin:
       participatory_space_private_users:
         form:
-          name: "name ca"
-          email: "email ca"
-          cas_user: "cas_user ca"
+          name: "Nom"
+          email: "Email"
+          cas_user: "Es usuari del CAS"
+    assemblies:
+      alternative_assembly_types:
+        local_groups: Grups Locals
     initiatives:
       initiatives_mailer:
         bottom:
@@ -35,9 +38,15 @@ ca:
         confirmation:
           confirmed_html: La teva <a href="%{url}">%{title}</a> ha estat confirmada.
             Gràcies per participar.
+    menu:
+      assemblies: menu_assemblies ca
     questions:
       next_button: Pregunta següent
       previous_button: Pregunta anterior
   devise:
     invitations:
       invitation_token_invalid: El token de invitació proporcionat no és vàlid!
+  somenergia:
+    menu:
+      team_et: Equip tècnic
+      team_it: Equip IT

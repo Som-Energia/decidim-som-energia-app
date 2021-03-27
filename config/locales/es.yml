@@ -4,9 +4,12 @@ es:
     admin:
       participatory_space_private_users:
         form:
-          name: "name es"
-          email: "email es"
-          cas_user: "cas_user es"
+          name: "Nombre"
+          email: "Email"
+          cas_user: "Es usuario del CAS"
+    assemblies:
+      alternative_assembly_types:
+        local_groups: Grupos Locales
     initiatives:
       initiatives_mailer:
         bottom:
@@ -36,9 +39,15 @@ es:
         confirmation:
           confirmed_html: Su <a href="%{url}">%{title}</a> ha sido confirmada. Gracias
             por participar.
+      menu:
+        assemblies: menu_assemblies es
     questions:
       next_button: Pregunta siguiente
       previous_button: Pregunta anterior
   devise:
     invitations:
       invitation_token_invalid: "¡El token de invitación proporcionado no es válido!"
+  somenergia:
+    menu:
+      team_et: Equipo técnico
+      team_it: Equipo IT
