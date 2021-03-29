@@ -63,6 +63,24 @@ Then, another menu item will appear next to "ASSEMBLIES" called "PARTICIPATIVE A
 
 Finally, incorrect routes will be automatically redirected to the correct ones.
 
+#### Alternative Processes Hack
+
+Introduces an experimental feature that allows to add an alternative Processes menu.
+It uses the ParticipatoryProcess slug to divide the processes into the original and the different alternative menus.
+
+For instance, imagine you have these processes:
+
+- Process 1 (slug: "normal-slug-1")
+- Process 2 (slug: "normal-slug-2")
+- Special Process 1 (slug: "special-slug-1")
+- Special Process 2 (slug: "special-slug-2")
+
+And let's imagine we have configured that processes with a slug starting with "special" should be in a different main menu than the normal "PROCESSES", called for instance "SPECIAL PROCESSES".
+
+Now, "Process 1" and "Process 2" will be listed under the normal "ASSEMBLIES" menu, and "Special Process 1" and "Special Process 2" will appear in the new menu item called "SPECIAL PROCESSES".
+
+Finally, incorrect routes will be automatically redirected to the correct ones.
+
 ### configuration
 
 It is configured via the `secrets.yml` file in a new section `alternative_assembly_types`:
