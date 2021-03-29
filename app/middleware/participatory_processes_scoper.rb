@@ -25,29 +25,24 @@ class ParticipatoryProcessesScoper
 
     return @app.call(env) unless @request.get? # only run middleware for GET requests
 
-    Decidim::ParticipatoryProcess.scope_from_slug_prefixes(nil, nil)
+    reset_participatory_process_model_default_scope
 
     @organization = env["decidim.current_organization"]
-    @scoped_slug_prefixes = scoped_slug_prefixes
-    @request_path_parts = request_path_parts(@request)
+    @request_path_parts = request_path_parts
     @current_participatory_process = find_participatory_process
 
     return @app.call(env) if out_of_scope?
 
-    alternative_namespace = find_alternative_namespace
+    @alternative_namespace = find_alternative_namespace
 
-    if request_namespace == DEFAULT_NAMESPACE
-      # redirect to the alternative namespace if matches the slug prefix
-      return redirect(alternative_namespace) unless alternative_namespace.nil?
+    if requesting_default_processes?
+      return redirect(@alternative_namespace) if alternative_current_participatory_process?
 
-      # just exclude all types specified as alternative
-      Decidim::ParticipatoryProcess.scope_from_slug_prefixes(@scoped_slug_prefixes.values.flatten, :exclude)
-    elsif request_namespace && @scoped_slug_prefixes[request_namespace]
-      # redirect to default namespace if not matches the slug prefix
-      return redirect(DEFAULT_NAMESPACE) if @current_participatory_process && alternative_namespace.nil?
+      exclude_alternative_participatory_processes_from_default_scope
+    elsif requesting_alternative_processes?
+      return redirect(DEFAULT_NAMESPACE) if normal_current_participatory_process?
 
-      # include only the ones specified
-      Decidim::ParticipatoryProcess.scope_from_slug_prefixes(@scoped_slug_prefixes[request_namespace], :include)
+      exclude_normal_participatory_processes_from_default_scope
     end
 
     @app.call(env)
@@ -55,16 +50,21 @@ class ParticipatoryProcessesScoper
 
   private
 
+  def reset_participatory_process_model_default_scope
+    Decidim::ParticipatoryProcess.scope_from_slug_prefixes(nil, nil)
+  end
+
   def scoped_slug_prefixes
-    ParticipatoryProcessesScoper
+    @scoped_slug_prefixes ||=
+      ParticipatoryProcessesScoper
       .scoped_participatory_process_slug_prefixes
       .map { |item| [item[:key], item[:slug_prefixes]] }
       .to_h
   end
 
   # From "/alternative_assemblies/slug3" to ["", "alternative_assemblies", "slug3"]
-  def request_path_parts(request)
-    request.path.split("/")
+  def request_path_parts
+    @request.path.split("/")
   end
 
   def request_namespace
@@ -76,7 +76,7 @@ class ParticipatoryProcessesScoper
   end
 
   def find_participatory_process
-    return unless request_slug
+    return unless @organization && request_slug
 
     Decidim::ParticipatoryProcess
       .unscoped
@@ -86,24 +86,48 @@ class ParticipatoryProcessesScoper
   end
 
   def out_of_scope?
-    @scoped_slug_prefixes.blank? || request_slug && @current_participatory_process.blank?
+    scoped_slug_prefixes.blank? || request_slug && @current_participatory_process.blank?
   end
 
   def find_alternative_namespace
-    return unless (slug = @current_participatory_process&.slug)
+    return unless request_slug
 
-    @scoped_slug_prefixes.find do |_key, values|
-      values.any? { |prefix| slug.starts_with?(prefix) }
-    end&.first
+    scoped_slug_prefixes.find do |_key, values|
+      values.any? { |prefix| request_slug.starts_with?(prefix) }
+    end.to_a.first
   end
 
-  def redirect(prefix)
-    [301, { "Location" => location(prefix), "Content-Type" => "text/html", "Content-Length" => "0" }, []]
+  def requesting_default_processes?
+    request_namespace == DEFAULT_NAMESPACE
   end
 
-  def location(prefix)
-    parts = @request_path_parts
-    parts[1] = prefix
+  def requesting_alternative_processes?
+    request_namespace && scoped_slug_prefixes[request_namespace]
+  end
+
+  def alternative_current_participatory_process?
+    @current_participatory_process && @alternative_namespace
+  end
+
+  def normal_current_participatory_process?
+    @current_participatory_process && @alternative_namespace.nil?
+  end
+
+  def exclude_alternative_participatory_processes_from_default_scope
+    Decidim::ParticipatoryProcess.scope_from_slug_prefixes(scoped_slug_prefixes.values.flatten, :exclude)
+  end
+
+  def exclude_normal_participatory_processes_from_default_scope
+    Decidim::ParticipatoryProcess.scope_from_slug_prefixes(scoped_slug_prefixes[request_namespace], :include)
+  end
+
+  def redirect(namespace)
+    [301, { "Location" => location(namespace), "Content-Type" => "text/html", "Content-Length" => "0" }, []]
+  end
+
+  def location(namespace)
+    parts = request_path_parts
+    parts[1] = namespace
     parts.join("/")
   end
 end
