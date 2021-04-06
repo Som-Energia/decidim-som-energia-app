@@ -6,7 +6,7 @@
         <div>
           <h1 class="text-highlight heading2">
             <%= link_to translated_attribute(question.consultation.title),
-                        "#{decidim_consultations.consultation_path(question.consultation)}/summary" %>
+                        "#{Rails.application.routes.url_helpers.consultation_summary_path(question.consultation, locale: params[:locale])}" %>
           </h1>
         </div>
       </div>
