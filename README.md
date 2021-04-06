@@ -87,7 +87,7 @@ Then, another menu item will appear next to "ASSEMBLIES" called "PARTICIPATIVE A
 
 Finally, incorrect routes will be automatically redirected to the correct ones.
 
-##### Configuration
+##### Configuration for duplicating assemblies
 
 It is configured via the `secrets.yml` file in a new section `alternative_assembly_types`:
 
@@ -123,7 +123,7 @@ Now, "Process 1" and "Process 2" will be listed under the normal "ASSEMBLIES" me
 
 Finally, incorrect routes will be automatically redirected to the correct ones.
 
-##### Configuration
+##### Configuration for duplicating processes
 
 It is configured via the `secrets.yml` file in a new section `scoped_participatory_process_slug_prefixes`:
 
