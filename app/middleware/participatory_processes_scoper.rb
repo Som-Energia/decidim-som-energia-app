@@ -2,7 +2,7 @@
 
 # Provides a way for the application to scope participatory_processes depending on their type
 # A url scope will be generated for every alternative process type that needs its own
-# section, (e.g `/processes` and `/local_groups`)
+# section, (e.g `/processes` and `/general_assemblies`)
 #
 # It also manages redirects for individual participatory_processes to the proper url path if the
 # requested participatory_process belongs into another scope:

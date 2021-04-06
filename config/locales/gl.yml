@@ -11,7 +11,7 @@ gl:
         local_groups: Grupos Locais
     participatory_processes:
       scoped_participatory_process_slug_prefixes:
-        general_assemblies: general_assemblies gl
+        general_assemblies: Asembleas Xerais
     meetings:
       registration_mailer:
         confirmation:

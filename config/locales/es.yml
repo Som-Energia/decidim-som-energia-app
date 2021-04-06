@@ -12,7 +12,7 @@ es:
         local_groups: Grupos Locales
     participatory_processes:
       scoped_participatory_process_slug_prefixes:
-        general_assemblies: general_assemblies es
+        general_assemblies: Asambleas generales
     initiatives:
       initiatives_mailer:
         bottom:

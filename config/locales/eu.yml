@@ -11,7 +11,7 @@ eu:
         local_groups: Tokiko Taldeen
     participatory_processes:
       scoped_participatory_process_slug_prefixes:
-        general_assemblies: general_assemblies eu
+        general_assemblies: Batzar Orokorrak
     meetings:
       registration_mailer:
         confirmation:
