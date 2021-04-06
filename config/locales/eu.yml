@@ -9,6 +9,9 @@ eu:
     assemblies:
       alternative_assembly_types:
         local_groups: Tokiko Taldeen
+    participatory_processes:
+      scoped_participatory_process_slug_prefixes:
+        general_assemblies: Batzar Orokorrak
     meetings:
       registration_mailer:
         confirmation:

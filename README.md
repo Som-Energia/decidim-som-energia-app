@@ -87,7 +87,7 @@ Then, another menu item will appear next to "ASSEMBLIES" called "PARTICIPATIVE A
 
 Finally, incorrect routes will be automatically redirected to the correct ones.
 
-##### configuration
+##### Configuration for duplicating assemblies
 
 It is configured via the `secrets.yml` file in a new section `alternative_assembly_types`:
 
@@ -104,3 +104,39 @@ default: &default
 - **key**: the identifier for the menu and URL path. For instance, if it is `local_groups` we will have a new menu entry for the url `<host>/local_groups` and the name specified in the I18n key `decidim.assemblies.alternative_assembly_types.local_groups`.
 - **position_in_menu**: Where to place the item in the main menu, the usual "ASSEMBLIES" item have the value `2.5`, lower this number will put it before and vice-versa.
 - **types**: and array of IDs for the model `Decidim::AssembliesType`. All assemblies assigned to this ID will be listed here and not in the normal "ASSEMBLIES" menu.
+
+#### Alternative Processes Hack
+
+Introduces an experimental feature that allows to add an alternative Processes menu.
+It uses the ParticipatoryProcess slug to divide the processes into the original and the different alternative menus.
+
+For instance, imagine you have these processes:
+
+- Process 1 (slug: "normal-slug-1")
+- Process 2 (slug: "normal-slug-2")
+- Special Process 1 (slug: "special-slug-1")
+- Special Process 2 (slug: "special-slug-2")
+
+And let's imagine we have configured that processes with a slug starting with "special" should be in a different main menu than the normal "PROCESSES", called for instance "SPECIAL PROCESSES".
+
+Now, "Process 1" and "Process 2" will be listed under the normal "ASSEMBLIES" menu, and "Special Process 1" and "Special Process 2" will appear in the new menu item called "SPECIAL PROCESSES".
+
+Finally, incorrect routes will be automatically redirected to the correct ones.
+
+##### Configuration for duplicating processes
+
+It is configured via the `secrets.yml` file in a new section `scoped_participatory_process_slug_prefixes`:
+
+```yaml
+default: &default
+  scoped_participatory_process_slug_prefixes:
+    -
+      key: general_assemblies # used to search a I18n key and a route path
+      position_in_menu: 2.6
+      slug_prefixes: ["SomAG"]
+```
+
+- **scoped_participatory_process_slug_prefixes**: must be an array in YAML format, each entry will correspond to a new entry in the main Decidim menu next to the "PROCESSES" item.
+- **key**: the identifier for the menu and URL path. For instance, if it is `general_assemblies` we will have a new menu entry for the url `<host>/general_assemblies` and the name specified in the I18n key `decidim.participatory_processes.scoped_participatory_process_slug_prefixes.general_assemblies`.
+- **position_in_menu**: Where to place the item in the main menu, the usual "PROCESSES" item have the value `2.0`, lower this number will put it before and vice-versa.
+- **slug_prefixes**: and array of prefixes for the slug of the participatory process. All participatory processes that have an slug starting with this word will be listed here and not in the normal "PROCESSES" menu.

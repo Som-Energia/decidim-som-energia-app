@@ -10,6 +10,9 @@ es:
     assemblies:
       alternative_assembly_types:
         local_groups: Grupos Locales
+    participatory_processes:
+      scoped_participatory_process_slug_prefixes:
+        general_assemblies: Asambleas generales
     initiatives:
       initiatives_mailer:
         bottom:

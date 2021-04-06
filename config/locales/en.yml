@@ -10,6 +10,9 @@ en:
     assemblies:
       alternative_assembly_types:
         local_groups: Local Groups
+    participatory_processes:
+      scoped_participatory_process_slug_prefixes:
+        general_assemblies: General Assemblies
     questions:
       next_button: "Next question"
       previous_button: "Previous question"
