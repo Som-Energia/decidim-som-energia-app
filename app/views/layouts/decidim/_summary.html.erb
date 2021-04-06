@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="<%= I18n.locale %>" class="no-js">
+  <head>
+    <%= stylesheet_link_tag    "application", media: "all" %>
+    <%= javascript_include_tag "application" %>
+  </head>
+
+  <body>
+    <div class="off-canvas-wrapper">
+      <div class="off-canvas-wrapper-inner" data-off-canvas-wrapper>
+        <div class="off-canvas-content" data-off-canvas-content>
+          <div class="footer-separator">
+            <main id="content">
+              <%= yield %>
+            </main>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

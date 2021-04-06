@@ -1,0 +1,8 @@
+<%= render "layouts/decidim/summary" do %>
+  <%# The commented div adds more padding %>
+  <%# <div class="wrapper"> %>
+    <%= render partial: "decidim/consultations/consultation_summaries/consultation_header" %>
+
+    <%= yield %>
+  <%# </div> %>
+<% end %>

@@ -1,0 +1,10 @@
+<%= render "layouts/decidim/summary" do %>
+  <%# The commented div adds more padding %>
+  <%# <div class="wrapper"> %>
+    <%= render partial: "decidim/consultations/question_summaries/question_header",      locals: { question: current_participatory_space } %>
+    <%= render partial: "decidim/consultations/question_summaries/question_components",  locals: { question: current_participatory_space } %>
+    <%= render partial: "decidim/consultations/questions/results",                       locals: { question: current_participatory_space } %>
+
+    <%= yield %>
+  <%# </div> %>
+<% end %>
