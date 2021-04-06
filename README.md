@@ -34,11 +34,36 @@ This Decidim application comes with a bunch of customizations, some of them done
 
 ### Customizations
 
-#### Different emails sent for users belonging to CAS or administrators
+#### Custom embed views for consultation results [PR #64](https://github.com/Som-Energia/decidim-som-energia-app/pull/64)
 
-#### Custom technical menu only of members of such assembly
+Add custom routes into consultations to allow embed them in external sites via iframes.
 
-#### The Awesome Alternative Assembies Hack
+A consultation can be embedded by adding the suffix `summary` in theyr main URL, this also works for individual questions.
+
+Examples:
+
+http://localhost:3000/consultations/ut-inventore/summary
+
+http://localhost:3000/questions/voluptatibus-voluptas/summary
+
+Use locales if needed:
+
+http://localhost:3000/questions/voluptatibus-voluptas/summary?locale=es
+
+Navigation between questions and consultation in embed mode is automatically taken into account.
+
+In development mode there's 2 additional routes to demonstrate this behaviour:
+
+http://localhost:3000/question_summaries/preview
+
+http://localhost:3000/consultation_summaries/preview
+
+
+#### Different emails sent for users belonging to CAS or administrators [PR #62](https://github.com/Som-Energia/decidim-som-energia-app/pull/62)
+
+#### Custom technical menu only of members of such assembly [PR #66](https://github.com/Som-Energia/decidim-som-energia-app/pull/66)
+
+#### The Awesome Alternative Assemblies Hack [PR #65](https://github.com/Som-Energia/decidim-som-energia-app/pull/65)
 
 Introduces an experimental feature that allows to add an alternative Assemblies menu.
 It uses the Assemblies types to divide the assemblies into the original and the different alternative menus.
@@ -63,7 +88,7 @@ Then, another menu item will appear next to "ASSEMBLIES" called "PARTICIPATIVE A
 
 Finally, incorrect routes will be automatically redirected to the correct ones.
 
-### configuration
+##### configuration
 
 It is configured via the `secrets.yml` file in a new section `alternative_assembly_types`:
 
