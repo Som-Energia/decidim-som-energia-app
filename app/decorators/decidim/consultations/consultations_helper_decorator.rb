@@ -1,17 +1,10 @@
 # frozen_string_literal: true
 
 Decidim::Consultations::ConsultationsHelper.class_eval do
-  # Returns a link to the given question with different text/appearence
-  # depending on whether the user has voted it or not.
-  def display_take_part_button_for(question)
-    if current_user && question.voted_by?(current_user)
-      i18n_text = t("already_voted", scope: "decidim.questions.vote_button")
-      css = "button expanded button--sc success"
-    else
-      i18n_text = t("take_part", scope: "decidim.consultations.question")
-      css = "button expanded button--sc"
-    end
+  def decidim_consultations_question_partial
+    decidim_gem_dir = Gem::Specification.find_by_name("decidim").gem_dir # rubocop:disable Rails/DynamicFindBy
+    view_path = "decidim-consultations/app/views/decidim/consultations/consultations/_question.html.erb"
 
-    link_to(i18n_text, decidim_consultations.question_path(question), class: css)
+    "#{decidim_gem_dir}/#{view_path}"
   end
 end
