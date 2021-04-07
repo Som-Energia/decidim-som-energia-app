@@ -6,16 +6,18 @@ module Decidim
   describe ParticipatoryProcess do
     let!(:organization) { create(:organization) }
     let(:scoped_slug_prefix) { "alternative" }
+    let(:namespace) { "alternative_processes" }
     let!(:alternative_process) { create(:participatory_process, slug: "#{scoped_slug_prefix}-slug", organization: organization) }
     let!(:normal_process) { create(:participatory_process, slug: "normal-slug", organization: organization) }
 
     context "when no scope types" do
       before do
-        ParticipatoryProcess.scope_from_slug_prefixes(nil, nil)
+        ParticipatoryProcess.scope_from_slug_prefixes(nil, nil, nil)
       end
 
       it "has no default scope" do
         expect(ParticipatoryProcess.default_scope).not_to be_present
+        expect(ParticipatoryProcess.scoped_slug_namespace).not_to be_present
         expect(ParticipatoryProcess.scoped_slug_prefixes).not_to be_present
         expect(ParticipatoryProcess.scoped_slug_prefixes_mode).not_to be_present
       end
@@ -29,11 +31,12 @@ module Decidim
 
     context "when scope types are in :include mode" do
       before do
-        ParticipatoryProcess.scope_from_slug_prefixes([scoped_slug_prefix], :include)
+        ParticipatoryProcess.scope_from_slug_prefixes([scoped_slug_prefix], :include, namespace)
       end
 
       it "has a default scope" do
         expect(ParticipatoryProcess.default_scope).to be_present
+        expect(ParticipatoryProcess.scoped_slug_namespace).to eq(namespace)
         expect(ParticipatoryProcess.scoped_slug_prefixes).to eq([scoped_slug_prefix])
         expect(ParticipatoryProcess.scoped_slug_prefixes_mode).to eq(:include)
       end
@@ -47,11 +50,12 @@ module Decidim
 
     context "when scope types are in :exclude mode" do
       before do
-        ParticipatoryProcess.scope_from_slug_prefixes([scoped_slug_prefix], :exclude)
+        ParticipatoryProcess.scope_from_slug_prefixes([scoped_slug_prefix], :exclude, namespace)
       end
 
       it "has a default scope" do
         expect(ParticipatoryProcess.default_scope).to be_present
+        expect(ParticipatoryProcess.scoped_slug_namespace).to eq(namespace)
         expect(ParticipatoryProcess.scoped_slug_prefixes).to eq([scoped_slug_prefix])
         expect(ParticipatoryProcess.scoped_slug_prefixes_mode).to eq(:exclude)
       end

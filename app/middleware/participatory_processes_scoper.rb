@@ -51,7 +51,7 @@ class ParticipatoryProcessesScoper
   private
 
   def reset_participatory_process_model_default_scope
-    Decidim::ParticipatoryProcess.scope_from_slug_prefixes(nil, nil)
+    Decidim::ParticipatoryProcess.scope_from_slug_prefixes(nil, nil, nil)
   end
 
   def scoped_slug_prefixes
@@ -114,11 +114,11 @@ class ParticipatoryProcessesScoper
   end
 
   def exclude_alternative_participatory_processes_from_default_scope
-    Decidim::ParticipatoryProcess.scope_from_slug_prefixes(scoped_slug_prefixes.values.flatten, :exclude)
+    Decidim::ParticipatoryProcess.scope_from_slug_prefixes(scoped_slug_prefixes.values.flatten, :exclude, request_namespace)
   end
 
   def exclude_normal_participatory_processes_from_default_scope
-    Decidim::ParticipatoryProcess.scope_from_slug_prefixes(scoped_slug_prefixes[request_namespace], :include)
+    Decidim::ParticipatoryProcess.scope_from_slug_prefixes(scoped_slug_prefixes[request_namespace], :include, request_namespace)
   end
 
   def redirect(namespace)

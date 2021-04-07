@@ -27,7 +27,7 @@ describe ParticipatoryProcessesScoper do
   end
 
   before do
-    Decidim::ParticipatoryProcess.scope_from_slug_prefixes(nil, nil)
+    Decidim::ParticipatoryProcess.scope_from_slug_prefixes(nil, nil, nil)
 
     allow(ParticipatoryProcessesScoper)
       .to receive(:scoped_participatory_process_slug_prefixes)
@@ -52,9 +52,10 @@ describe ParticipatoryProcessesScoper do
   shared_examples "untampered participatory_process model" do
     it "participatory_process model is not tampered" do
       # ensure model is always reset after calling the middleware
-      Decidim::ParticipatoryProcess.scope_from_slug_prefixes(["deu"], :include)
+      Decidim::ParticipatoryProcess.scope_from_slug_prefixes(["deu"], :include, "some_route")
       middleware.call(env)
 
+      expect(Decidim::ParticipatoryProcess.scoped_slug_namespace).not_to be_present
       expect(Decidim::ParticipatoryProcess.scoped_slug_prefixes).not_to be_present
       expect(Decidim::ParticipatoryProcess.scoped_slug_prefixes_mode).not_to be_present
     end
@@ -82,6 +83,7 @@ describe ParticipatoryProcessesScoper do
     it "participatory_process model is tampered with exclude slug_prefixes" do
       middleware.call(env)
 
+      expect(path).to match(/^#{Decidim::ParticipatoryProcess.scoped_slug_namespace}/)
       expect(Decidim::ParticipatoryProcess.scoped_slug_prefixes).to eq(slug_prefixes)
       expect(Decidim::ParticipatoryProcess.scoped_slug_prefixes_mode).to eq(:exclude)
     end
@@ -100,6 +102,7 @@ describe ParticipatoryProcessesScoper do
     it "participatory_process model is tampered with include slug_prefixes" do
       middleware.call(env)
 
+      expect(path).to match(/^#{Decidim::ParticipatoryProcess.scoped_slug_namespace}/)
       expect(Decidim::ParticipatoryProcess.scoped_slug_prefixes).to eq(slug_prefixes)
       expect(Decidim::ParticipatoryProcess.scoped_slug_prefixes_mode).to eq(:include)
     end
