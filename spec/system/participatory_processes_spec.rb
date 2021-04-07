@@ -5,8 +5,10 @@ require "rails_helper"
 describe "Participatory processes", type: :system do
   let!(:organization) { create(:organization) }
   let(:scoped_slug_prefix) { "SomAG" } # same as defined in secrets.yml!!
-  let!(:alternative_process) { create(:participatory_process, slug: "#{scoped_slug_prefix}-slug", organization: organization) }
-  let!(:normal_process) { create(:participatory_process, slug: "normal-slug", organization: organization) }
+  let!(:alternative_process) { create(:participatory_process, :active, slug: "#{scoped_slug_prefix}-slug", organization: organization) }
+  let!(:alternative_process_old) { create(:participatory_process, :past, slug: "#{scoped_slug_prefix}-slug2", organization: organization) }
+  let!(:normal_process) { create(:participatory_process, :active, slug: "normal-slug", organization: organization) }
+  let!(:normal_process_old) { create(:participatory_process, :past, slug: "normal-slug2", organization: organization) }
 
   before do
     switch_to_host(organization.host)
@@ -47,6 +49,23 @@ describe "Participatory processes", type: :system do
       it "has the default path" do
         expect(page).to have_current_path(decidim_participatory_processes.participatory_processes_path)
       end
+
+      it "filter links points to the normal path" do
+        page.all(".order-by__tab").each do |el|
+          expect(el[:href]).to match(/#{decidim_participatory_processes.participatory_processes_path}/)
+        end
+      end
+
+      it "show normal processes when filtering" do
+        within ".order-by__tabs" do
+          click_link "Past"
+        end
+
+        expect(page).to have_content(normal_process_old.title["en"])
+        expect(page).not_to have_content(normal_process.title["en"])
+        expect(page).not_to have_content(alternative_process.title["en"])
+        expect(page).not_to have_content(alternative_process_old.title["en"])
+      end
     end
 
     context "and navigating to alternative processes" do
@@ -65,6 +84,23 @@ describe "Participatory processes", type: :system do
 
       it "has the alternative path" do
         expect(page).to have_current_path(general_assemblies_path)
+      end
+
+      it "filter links points to the alternative path" do
+        page.all(".order-by__tab").each do |el|
+          expect(el[:href]).to match(/#{general_assemblies_path}/)
+        end
+      end
+
+      it "show alternative processes when filtering" do
+        within ".order-by__tabs" do
+          click_link "Past"
+        end
+
+        expect(page).to have_content(alternative_process_old.title["en"])
+        expect(page).not_to have_content(alternative_process.title["en"])
+        expect(page).not_to have_content(normal_process.title["en"])
+        expect(page).not_to have_content(normal_process_old.title["en"])
       end
     end
   end
