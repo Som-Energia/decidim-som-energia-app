@@ -5,10 +5,50 @@ require "rails_helper"
 describe "Participatory processes", type: :system do
   let!(:organization) { create(:organization) }
   let(:scoped_slug_prefix) { "SomAG" } # same as defined in secrets.yml!!
-  let!(:alternative_process) { create(:participatory_process, :active, slug: "#{scoped_slug_prefix}-slug", organization: organization) }
-  let!(:alternative_process_old) { create(:participatory_process, :past, slug: "#{scoped_slug_prefix}-slug2", organization: organization) }
-  let!(:normal_process) { create(:participatory_process, :active, slug: "normal-slug", organization: organization) }
-  let!(:normal_process_old) { create(:participatory_process, :past, slug: "normal-slug2", organization: organization) }
+  let!(:alternative_process) do
+    create(
+      :participatory_process,
+      :active,
+      slug: "#{scoped_slug_prefix}-slug",
+      scope: scope_1,
+      area: area_1,
+      organization: organization
+    )
+  end
+  let!(:alternative_process_old) do
+    create(
+      :participatory_process,
+      :past,
+      slug: "#{scoped_slug_prefix}-slug2",
+      scope: scope_2,
+      area: area_2,
+      organization: organization
+    )
+  end
+  let!(:normal_process) do
+    create(
+      :participatory_process,
+      :active,
+      slug: "normal-slug",
+      scope: scope_1,
+      area: area_1,
+      organization: organization
+    )
+  end
+  let!(:normal_process_old) do
+    create(
+      :participatory_process,
+      :past,
+      slug: "normal-slug2",
+      scope: scope_2,
+      area: area_2,
+      organization: organization
+    )
+  end
+  let!(:scope_1) { create(:scope, organization: organization) }
+  let!(:scope_2) { create(:scope, organization: organization) }
+  let!(:area_1) { create(:area, organization: organization) }
+  let!(:area_2) { create(:area, organization: organization) }
 
   before do
     switch_to_host(organization.host)
@@ -86,21 +126,66 @@ describe "Participatory processes", type: :system do
         expect(page).to have_current_path(general_assemblies_path)
       end
 
-      it "filter links points to the alternative path" do
-        page.all(".order-by__tab").each do |el|
-          expect(el[:href]).to match(/#{general_assemblies_path}/)
+      context "when filtering by time" do
+        before do
+          within ".order-by__tabs" do
+            click_link "Past"
+          end
+        end
+
+        it "show alternative processes when filtering" do
+          expect(page).to have_content(alternative_process_old.title["en"])
+          expect(page).not_to have_content(alternative_process.title["en"])
+          expect(page).not_to have_content(normal_process.title["en"])
+          expect(page).not_to have_content(normal_process_old.title["en"])
+        end
+
+        it "has the alternative path" do
+          expect(page).to have_current_path(Regexp.new(general_assemblies_path))
         end
       end
 
-      it "show alternative processes when filtering" do
-        within ".order-by__tabs" do
-          click_link "Past"
+      context "when filtering by scope" do
+        before do
+          within "#participatory-space-filters" do
+            click_link "Select a scope"
+          end
+          within "#data_picker-modal" do
+            click_link translated(scope_1.name)
+            click_link "Select"
+          end
         end
 
-        expect(page).to have_content(alternative_process_old.title["en"])
-        expect(page).not_to have_content(alternative_process.title["en"])
-        expect(page).not_to have_content(normal_process.title["en"])
-        expect(page).not_to have_content(normal_process_old.title["en"])
+        it "show alternative processes when filtering" do
+          expect(page).to have_content(alternative_process.title["en"])
+          expect(page).not_to have_content(alternative_process_old.title["en"])
+          expect(page).not_to have_content(normal_process.title["en"])
+          expect(page).not_to have_content(normal_process_old.title["en"])
+        end
+
+        it "has the alternative path" do
+          expect(page).to have_current_path(Regexp.new(general_assemblies_path))
+        end
+      end
+
+      context "when filtering by area" do
+        before do
+          within "#participatory-space-filters" do
+            select "Select an area"
+            select translated(area_1.name)
+          end
+        end
+
+        it "show alternative processes when filtering" do
+          expect(page).to have_content(alternative_process.title["en"])
+          expect(page).not_to have_content(alternative_process_old.title["en"])
+          expect(page).not_to have_content(normal_process.title["en"])
+          expect(page).not_to have_content(normal_process_old.title["en"])
+        end
+
+        it "has the alternative path" do
+          expect(page).to have_current_path(Regexp.new(general_assemblies_path))
+        end
       end
     end
   end
