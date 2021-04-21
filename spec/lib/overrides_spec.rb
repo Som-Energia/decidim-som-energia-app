@@ -33,7 +33,9 @@ checksums = [
     package: "decidim-meetings",
     files: {
       # cells
-      "/app/views/decidim/meetings/registration_mailer/confirmation.html.erb" => "8b1da026a6cada495fa7c1c921e62bee"
+      "/app/views/decidim/meetings/registration_mailer/confirmation.html.erb" => "8b1da026a6cada495fa7c1c921e62bee",
+      # Meetings natural order, to remove when available as a feature of decidim
+      "/app/controllers/decidim/meetings/meetings_controller.rb" => "e8fd8b7006d32781aa89b85559ab86c7"
     }
   },
   {
