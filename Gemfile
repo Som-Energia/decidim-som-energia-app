@@ -16,9 +16,9 @@ gem "decidim-initiatives"
 gem "decidim-term_customizer", git: "https://github.com/CodiTramuntana/decidim-module-term_customizer.git"
 
 # Usability and UX tweaks for Decidim.
+gem "decidim-action_delegator", git: "https://github.com/coopdevs/decidim-module-action_delegator"
 gem "decidim-decidim_awesome", "~> 0.6.6"
 gem "decidim-direct_verifications", github: "coopdevs/decidim-verifications-direct_verifications", branch: "async-csv-import"
-gem "decidim-action_delegator", git: "https://github.com/coopdevs/decidim-module-action_delegator"
 
 gem "bootsnap", "~> 1.4"
 
