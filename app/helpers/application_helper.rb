@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 module ApplicationHelper
+  include Decidim::CheckBoxesTreeHelper
+
   def participatory_space_filters_form_url
     if request.path.remove("/").in?(
       [
