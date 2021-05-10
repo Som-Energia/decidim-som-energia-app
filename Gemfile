@@ -33,6 +33,7 @@ gem "progressbar"
 gem "sentry-rails"
 gem "sentry-ruby"
 gem "whenever", require: false
+gem "delayed_job_web"
 
 group :development, :test do
   gem "byebug", "~> 11.0", platform: :mri
