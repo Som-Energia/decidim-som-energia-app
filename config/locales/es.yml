@@ -38,6 +38,11 @@ es:
         top:
           greeting: Hola %{name}!
     meetings:
+      meetings:
+        show:
+          going: Te has inscrito en este encuentro
+          leave: Cancela tu registro
+          leave_confirmation: ¿Estás seguro que quieres cancelar tu asistencia a este encuentro?
       registration_mailer:
         confirmation:
           confirmed_html: Su <a href="%{url}">%{title}</a> ha sido confirmada. Gracias

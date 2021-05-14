@@ -16,9 +16,14 @@ gem "decidim-initiatives"
 gem "decidim-term_customizer", git: "https://github.com/CodiTramuntana/decidim-module-term_customizer.git"
 
 # Usability and UX tweaks for Decidim.
+gem "decidim-action_delegator", git: "https://github.com/coopdevs/decidim-module-action_delegator"
 gem "decidim-decidim_awesome", "~> 0.6.6"
+gem "decidim-direct_verifications", github: "coopdevs/decidim-verifications-direct_verifications", branch: "async-csv-import"
 
 gem "bootsnap", "~> 1.4"
+
+# https://github.com/rails/execjs/issues/99
+gem "execjs", "~> 2.7.0"
 
 gem "puma", ">= 4.3.5"
 gem "uglifier", "~> 4.1"
@@ -27,6 +32,7 @@ gem "faker", "~> 1.9"
 
 gem "wicked_pdf", "~> 1.4"
 
+gem "delayed_job_web"
 gem "progressbar"
 gem "sentry-rails"
 gem "sentry-ruby"

@@ -37,6 +37,11 @@ ca:
         top:
           greeting: Hola %{name}!
     meetings:
+      meetings:
+        show:
+          going: T'has inscrit a aquesta trobada
+          leave: Cancel·la el teu registre
+          leave_confirmation: Segur que vols cancel·lar la teva assistència a aquesta trobada?
       registration_mailer:
         confirmation:
           confirmed_html: La teva <a href="%{url}">%{title}</a> ha estat confirmada.
