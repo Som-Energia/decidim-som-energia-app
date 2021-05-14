@@ -32,11 +32,11 @@ gem "faker", "~> 1.9"
 
 gem "wicked_pdf", "~> 1.4"
 
+gem "delayed_job_web"
 gem "progressbar"
 gem "sentry-rails"
 gem "sentry-ruby"
 gem "whenever", require: false
-gem "delayed_job_web"
 
 group :development, :test do
   gem "byebug", "~> 11.0", platform: :mri
