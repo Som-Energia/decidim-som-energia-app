@@ -8,7 +8,7 @@ GIT
 
 GIT
   remote: https://github.com/Platoniq/decidim.git
-  revision: 73628ad26af6ee1bec2819ee1f95b2ff1eee65d8
+  revision: dd9f0262ae141571071ec127167374d2ca5b0e37
   branch: backport/meetings-order
   specs:
     decidim (0.23.6)
