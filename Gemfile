@@ -22,6 +22,9 @@ gem "decidim-direct_verifications", github: "coopdevs/decidim-verifications-dire
 
 gem "bootsnap", "~> 1.4"
 
+# https://github.com/rails/execjs/issues/99
+gem "execjs", "~> 2.7.0"
+
 gem "puma", ">= 4.3.5"
 gem "uglifier", "~> 4.1"
 
