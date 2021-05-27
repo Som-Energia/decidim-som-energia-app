@@ -39,11 +39,12 @@ export SMTP_SETTINGS='{address: \"stmp.example.org\", port: 25, enable_starttls_
 "
   end
 
+  # rubocop:disable Metrics/LineLength
   desc "import users from a CSV"
   task :import_users, [:organization_id, :csv] => :environment do |_task, args|
     process_csv(args) do |organization, line|
       user = normalize_user(line)
-      raise AlreadyProcessedError, "user #{user[:email]} already existing. SKIPPING" if Decidim::User.find_by(email: user[:email], organization: organization)
+      raise AlreadyProcessedError, "user #{user[:email]} already existing. SKIPPING" if Decidim::User.find_by(email: user[:email], username: user[:username], organization: organization)
 
       user = Decidim::User.new(user)
       user.organization = organization
@@ -52,4 +53,5 @@ export SMTP_SETTINGS='{address: \"stmp.example.org\", port: 25, enable_starttls_
       puts "Created user #{user.email} #{user.extra_attributes}"
     end
   end
+  # rubocop:enable Metrics/LineLength
 end
