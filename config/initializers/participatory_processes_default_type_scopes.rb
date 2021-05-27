@@ -1,8 +1,5 @@
 # frozen_string_literal: true
 
-# this middleware will detect by the URL if all calls to ParticipatoryProcess need to skip (or include) certain types
-Rails.configuration.middleware.use ParticipatoryProcessesScoper
-
 # tampers the ParticipatoryProcess model to put a default scope in all queries
 # if configured previously
 Rails.application.config.to_prepare do
