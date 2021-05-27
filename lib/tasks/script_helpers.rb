@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require 'csv'
+require "csv"
 
 module ScriptHelpers
   HELP_TEXT = "
@@ -36,7 +36,7 @@ Rest of the lines must containt values for the corresponding headers
       rescue UnprocessableError => e
         show_error(e.message)
       rescue ActiveRecord::RecordInvalid => e
-        show_error(e.message)            
+        show_error(e.message)
       rescue AlreadyProcessedError => e
         show_warning(e.message)
       end
@@ -73,9 +73,9 @@ Rest of the lines must containt values for the corresponding headers
         values[:name] = value
       when /^dni$/i
         values[:username] = value
-        values[:extra_attributes][:username] = value 
+        values[:extra_attributes][:username] = value
       when /^soci|socia|socio$/i
-        values[:extra_attributes][:soci] = value 
+        values[:extra_attributes][:soci] = value
       end
     end
     raise_if_field_not_found(:email, values)
@@ -89,7 +89,7 @@ Rest of the lines must containt values for the corresponding headers
   end
 
   def raise_if_field_not_found(field, values)
-    raise UnprocessableError, "#{field.upcase} field not found for [#{values}]" unless values[field].present?
+    raise UnprocessableError, "#{field.upcase} field not found for [#{values}]" if values[field].blank?
   end
 
   def show_help
