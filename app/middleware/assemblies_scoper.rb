@@ -18,7 +18,7 @@ class AssembliesScoper
     @app = app
   end
 
-  def call(env)
+  def call(env) # rubocop:disable Metrics/CyclomaticComplexity, Metrics/PerceivedComplexity
     @request = Rack::Request.new(env)
     return @app.call(env) unless @request.get? # only run middleware for GET requests
 
