@@ -4,7 +4,7 @@ source "https://rubygems.org"
 
 ruby RUBY_VERSION
 
-DECIDIM_VERSION = { git: "https://github.com/Platoniq/decidim.git", branch: "backport/meetings-order" }.freeze
+DECIDIM_VERSION = { git: "https://github.com/decidim/decidim.git", tag: "v0.24.3" }.freeze
 
 gem "codit-devise-cas-authenticable", git: "https://github.com/Som-Energia/codit-devise-cas-authenticable.git"
 gem "decidim", DECIDIM_VERSION
@@ -16,16 +16,16 @@ gem "decidim-initiatives"
 gem "decidim-term_customizer", git: "https://github.com/CodiTramuntana/decidim-module-term_customizer.git"
 
 # Usability and UX tweaks for Decidim.
-gem "decidim-action_delegator", git: "https://github.com/coopdevs/decidim-module-action_delegator"
-gem "decidim-decidim_awesome", "~> 0.6.6"
+gem "decidim-action_delegator", github: "coopdevs/decidim-module-action_delegator", branch: "change_max_decidim_version"
+gem "decidim-decidim_awesome", "~> 0.7.0"
 gem "decidim-direct_verifications", github: "coopdevs/decidim-verifications-direct_verifications", branch: "async-csv-import"
 
 gem "bootsnap", "~> 1.4"
 
-gem "puma", ">= 4.3.5"
+gem "puma", ">= 5.3.1"
 gem "uglifier", "~> 4.1"
 
-gem "faker", "~> 1.9"
+gem "faker", "~> 2.14"
 
 gem "wicked_pdf", "~> 1.4"
 
@@ -44,6 +44,7 @@ end
 group :development do
   gem "letter_opener_web", "~> 1.3"
   gem "listen", "~> 3.1"
+  gem "rubocop-faker"
   gem "spring", "~> 2.0"
   gem "spring-watcher-listen", "~> 2.0"
   gem "web-console", "~> 3.5"
