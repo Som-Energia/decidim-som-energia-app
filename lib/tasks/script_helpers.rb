@@ -24,7 +24,7 @@ Rest of the lines must containt values for the corresponding headers
     raise ArgumentError, "#{args.organization_id} not found" unless organization
 
     puts "Importing users to organization [#{organization.host}], ok? [y/n]"
-    ok = STDIN.gets.chomp
+    ok = $stdin.gets.chomp
     return unless ok == "y"
 
     table = CSV.parse(File.read(args.csv), headers: true)

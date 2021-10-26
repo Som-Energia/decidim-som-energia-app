@@ -84,7 +84,7 @@ module Decidim
           on(:ok) do |proposal|
             flash[:notice] = I18n.t("proposals.create.success", scope: "decidim")
 
-            redirect_to Decidim::ResourceLocatorPresenter.new(proposal).path + "/compare"
+            redirect_to "#{Decidim::ResourceLocatorPresenter.new(proposal).path}/compare"
           end
 
           on(:invalid) do
@@ -102,7 +102,7 @@ module Decidim
 
         if @similar_proposals.blank?
           flash[:notice] = I18n.t("proposals.proposals.compare.no_similars_found", scope: "decidim")
-          redirect_to Decidim::ResourceLocatorPresenter.new(@proposal).path + "/complete"
+          redirect_to "#{Decidim::ResourceLocatorPresenter.new(@proposal).path}/complete"
         end
       end
 
@@ -147,7 +147,7 @@ module Decidim
         UpdateProposal.call(@form, current_user, @proposal) do
           on(:ok) do |proposal|
             flash[:notice] = I18n.t("proposals.update_draft.success", scope: "decidim")
-            redirect_to Decidim::ResourceLocatorPresenter.new(proposal).path + "/preview"
+            redirect_to "#{Decidim::ResourceLocatorPresenter.new(proposal).path}/preview"
           end
 
           on(:invalid) do

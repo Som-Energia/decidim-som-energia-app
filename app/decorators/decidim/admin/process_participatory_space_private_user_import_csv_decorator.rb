@@ -18,7 +18,7 @@ Decidim::Admin::ProcessParticipatorySpacePrivateUserImportCsv.class_eval do
 
   def process_csv
     CSV.foreach(@form.file.path) do |email, user_name|
-      user_name.gsub!(/[<>?%&\^*#@\(\)\[\]\=\+\:\;\"\{\}\\\|]/, "")
+      user_name.gsub!(/[<>?%&\^*#@()\[\]=+:;"{}\\|]/, "")
 
       unless valid_email?(email) && valid_user_name?(user_name)
         @errors << email

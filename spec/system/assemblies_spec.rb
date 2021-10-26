@@ -5,7 +5,7 @@ require "rails_helper"
 describe "Visit assemblies", type: :system do
   let(:organization) { create :organization }
   let!(:local_groups) { create :assemblies_type, id: 5 }
-  let!(:type2) { create :assemblies_type }
+  let!(:type2) { create :assemblies_type, id: 2 }
   let!(:alternative_assembly) do
     create(
       :assembly,
