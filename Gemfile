@@ -4,7 +4,7 @@ source "https://rubygems.org"
 
 ruby RUBY_VERSION
 
-DECIDIM_VERSION = { git: "https://github.com/decidim/decidim.git", tag: "v0.24.3" }.freeze
+DECIDIM_VERSION = { git: "https://github.com/decidim/decidim.git", branch: "release/0.24-stable" }.freeze
 
 gem "codit-devise-cas-authenticable", git: "https://github.com/Som-Energia/codit-devise-cas-authenticable.git"
 gem "decidim", DECIDIM_VERSION
@@ -13,12 +13,12 @@ gem "decidim-consultations", DECIDIM_VERSION
 gem "decidim-initiatives"
 
 # A Decidim module to customize the localized terms in the system.
-gem "decidim-term_customizer", git: "https://github.com/CodiTramuntana/decidim-module-term_customizer.git"
+gem "decidim-term_customizer", github: "Platoniq/decidim-module-term_customizer", branch: "temp/0.24"
 
 # Usability and UX tweaks for Decidim.
-gem "decidim-action_delegator", git: "https://github.com/coopdevs/decidim-module-action_delegator"
-gem "decidim-decidim_awesome", "~> 0.7.0"
-gem "decidim-direct_verifications", github: "coopdevs/decidim-verifications-direct_verifications", branch: "async-csv-import"
+gem "decidim-action_delegator"
+gem "decidim-decidim_awesome", "~> 0.7.2"
+gem "decidim-direct_verifications", "~> 1.0.2"
 
 gem "bootsnap", "~> 1.4"
 
