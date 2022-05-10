@@ -47,7 +47,11 @@ es:
         confirmation:
           confirmed_html: Su <a href="%{url}">%{title}</a> ha sido confirmada. Gracias
             por participar.
-      menu:
+    proposals:
+      proposals:
+        orders:
+          alphabetic: Alfabético
+    menu:
         assemblies: menu_assemblies es
     questions:
       next_button: Pregunta siguiente

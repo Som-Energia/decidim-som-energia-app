@@ -46,6 +46,10 @@ ca:
         confirmation:
           confirmed_html: La teva <a href="%{url}">%{title}</a> ha estat confirmada.
             Gràcies per participar.
+    proposals:
+      proposals:
+        orders:
+          alphabetic: Alfabètic
     menu:
       assemblies: menu_assemblies ca
     questions:

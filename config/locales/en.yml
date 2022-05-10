@@ -16,6 +16,10 @@ en:
     questions:
       next_button: "Next question"
       previous_button: "Previous question"
+    proposals:
+      proposals:
+        orders:
+          alphabetic: Alphabetic
   somenergia:
     menu:
       team_et: Technical team
