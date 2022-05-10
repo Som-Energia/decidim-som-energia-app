@@ -34,7 +34,7 @@ module Decidim
         end
 
         def alternative_process?
-          @alternative_process ||=begin
+          @alternative_process ||= begin
             return unless current_participatory_space.manifest.name == :participatory_processes
 
             scoped_slug_prefixes = ParticipatoryProcessesScoper.scoped_participatory_process_slug_prefixes.map { |item| item[:slug_prefixes] }.flatten
