@@ -24,6 +24,7 @@ module Decidim
         def available_orders
           @available_orders ||= begin
             available_orders = %w(random recent)
+            available_orders.prepend "alphabetic" if alternative_process?
             available_orders << "most_voted" if most_voted_order_available?
             available_orders << "most_endorsed" if current_settings.endorsements_enabled?
             available_orders << "most_commented" if component_settings.comments_enabled?
@@ -32,8 +33,19 @@ module Decidim
           end
         end
 
+        def alternative_process?
+          @alternative_process ||= begin
+            return unless current_participatory_space.manifest.name == :participatory_processes
+
+            scoped_slug_prefixes = ParticipatoryProcessesScoper.scoped_participatory_process_slug_prefixes.map { |item| item[:slug_prefixes] }.flatten
+            scoped_slug_prefixes.detect { |prefix| current_participatory_space.slug.starts_with?(prefix) }
+          end
+        end
+
         def default_order
-          if order_by_votes?
+          if alternative_process?
+            "alphabetic"
+          elsif order_by_votes?
             detect_order("most_voted")
           else
             "random"
@@ -50,6 +62,8 @@ module Decidim
 
         def reorder(proposals)
           case order
+          when "alphabetic"
+            proposals.order("decidim_proposals_proposals.title->>'#{locale}' ASC, decidim_proposals_proposals.title->>'es' ASC")
           when "most_commented"
             proposals.left_joins(:comments).group(:id).order(Arel.sql("COUNT(decidim_comments_comments.id) DESC"))
           when "most_endorsed"

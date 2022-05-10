@@ -16,6 +16,10 @@ gl:
       registration_mailer:
         confirmation:
           confirmed_html: A súa <a href="%{url}">%{title}</a> foi confirmada. Grazas por participar
+    proposals:
+      proposals:
+        orders:
+          alphabetic: Alfabético
     menu:
       assemblies: menu_assemblies gl
     questions:
