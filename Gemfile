@@ -10,7 +10,7 @@ gem "codit-devise-cas-authenticable", git: "https://github.com/Som-Energia/codit
 gem "decidim", DECIDIM_VERSION
 gem "decidim-cas_client", git: "https://github.com/Som-Energia/decidim-cas-client.git"
 gem "decidim-consultations", DECIDIM_VERSION
-gem "decidim-initiatives"
+gem "decidim-initiatives", DECIDIM_VERSION
 
 # A Decidim module to customize the localized terms in the system.
 gem "decidim-term_customizer", github: "Platoniq/decidim-module-term_customizer", branch: "temp/0.24"
@@ -34,6 +34,9 @@ gem "progressbar"
 gem "sentry-rails"
 gem "sentry-ruby"
 gem "whenever", require: false
+
+# bug in version 1.9
+gem "i18n", "~> 1.8.1"
 
 group :development, :test do
   gem "byebug", "~> 11.0", platform: :mri
