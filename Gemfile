@@ -37,6 +37,8 @@ gem "whenever", require: false
 
 # bug in version 1.9
 gem "i18n", "~> 1.8.1"
+# bug in combination with truncato/nokogiri
+gem "doc2text", "0.4.3"
 
 group :development, :test do
   gem "byebug", "~> 11.0", platform: :mri
