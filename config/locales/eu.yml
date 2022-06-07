@@ -1,4 +1,11 @@
 eu:
+  activemodel:
+    attributes:
+      question:
+        enforce_special_requirements: Aplikatu baldintza bereziak (galdera bakoitzeko boto bat)
+      response:
+        title: Izenburua
+        weight: Agindu
   decidim:
     admin:
       participatory_space_private_users:

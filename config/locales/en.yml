@@ -1,5 +1,11 @@
 ---
 en:
+  activemodel:
+    attributes:
+      question:
+        enforce_special_requirements: Apply special requirements (1 vote per question)
+      response:
+        weight: Order
   decidim:
     admin:
       participatory_space_private_users:

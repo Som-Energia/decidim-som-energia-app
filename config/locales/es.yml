@@ -1,5 +1,12 @@
 ---
 es:
+  activemodel:
+    attributes:
+      question:
+        enforce_special_requirements: Aplicar requisitos especiales (1 voto por pregunta)
+      response:
+        title: Título
+        weight: Orden
   decidim:
     admin:
       participatory_space_private_users:
