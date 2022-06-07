@@ -49,7 +49,7 @@ checksums = [
       "/app/views/decidim/consultations/admin/responses/_form.html.erb" => "6846d66395457acdd7d6ec839a49b0ec",
       "/app/commands/decidim/consultations/admin/create_response.rb" => "340f0e81855a53a6a03deeea6f07d653",
       "/app/commands/decidim/consultations/admin/update_response.rb" => "5e09376f773c0ac062c77767c872cd41",
-      "/app/views/decidim/consultations/question_multiple_votes/_form.html.erb" => "7314ed9bd65ffbf7ecbef067ee98b00b",
+      "/app/views/decidim/consultations/question_multiple_votes/_form.html.erb" => "af610283ce7ee20f5ef786228a263d4a",
       # modified
       "/app/views/decidim/consultations/admin/question_configuration/_form.html.erb" => "0655db0b199a7cb49389f055210a9cdb"
     }
