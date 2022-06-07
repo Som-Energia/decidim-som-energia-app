@@ -44,7 +44,12 @@ checksums = [
       "/app/helpers/decidim/consultations/consultations_helper.rb" => "bb921ed6da446b9544b81c9f9f9a7574",
       "/app/forms/decidim/consultations/admin/question_configuration_form.rb" => "fd988f15b1242e582cc7d0cc8d3d1d2e",
       "/app/commands/decidim/consultations/admin/update_question_configuration.rb" => "34beed38a9eb629498dca31b59598302",
-      "/app/views/decidim/consultations/question_multiple_votes/show.html.erb" => "0c8adbc96044a5cb11d4492fc000e063",
+      "/app/views/decidim/consultations/question_multiple_votes/show.html.erb" => "d647ab9bcefd55d9c7b864d1e9c6aead",
+      "/app/forms/decidim/consultations/admin/response_form.rb" => "e567a9a49bc702ba630ef7b1cf5f2488",
+      "/app/views/decidim/consultations/admin/responses/_form.html.erb" => "6846d66395457acdd7d6ec839a49b0ec",
+      "/app/commands/decidim/consultations/admin/create_response.rb" => "340f0e81855a53a6a03deeea6f07d653",
+      "/app/commands/decidim/consultations/admin/update_response.rb" => "5e09376f773c0ac062c77767c872cd41",
+      "/app/views/decidim/consultations/question_multiple_votes/_form.html.erb" => "7314ed9bd65ffbf7ecbef067ee98b00b",
       # modified
       "/app/views/decidim/consultations/admin/question_configuration/_form.html.erb" => "0655db0b199a7cb49389f055210a9cdb"
     }

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_06_07_064210) do
+ActiveRecord::Schema.define(version: 2022_06_07_095809) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "ltree"
@@ -542,6 +542,7 @@ ActiveRecord::Schema.define(version: 2022_06_07_064210) do
     t.datetime "updated_at", null: false
     t.integer "votes_count", default: 0, null: false
     t.bigint "decidim_consultations_response_group_id"
+    t.integer "weight", default: 0, null: false
     t.index ["decidim_consultations_questions_id"], name: "index_consultations_responses_on_consultation_questions"
     t.index ["decidim_consultations_response_group_id"], name: "index_consultations_response_groups_on_consultation_responses"
   end
