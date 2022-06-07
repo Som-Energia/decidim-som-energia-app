@@ -33,5 +33,8 @@ module DecidimSomenergiaApp
         require_dependency(c)
       end
     end
+
+    # load Overrides
+    config.autoload_paths << Rails.root.join("app/lib")
   end
 end

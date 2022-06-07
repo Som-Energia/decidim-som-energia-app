@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_10_25_161345) do
+ActiveRecord::Schema.define(version: 2022_06_07_064210) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "ltree"
@@ -517,6 +517,7 @@ ActiveRecord::Schema.define(version: 2021_10_25_161345) do
     t.integer "response_groups_count", default: 0, null: false
     t.integer "comments_count", default: 0, null: false
     t.integer "follows_count", default: 0, null: false
+    t.boolean "enforce_special_requirements"
     t.index ["decidim_consultation_id"], name: "index_consultations_questions_on_consultation_id"
     t.index ["decidim_organization_id", "slug"], name: "index_unique_question_slug_and_organization", unique: true
     t.index ["decidim_scope_id"], name: "index_decidim_consultations_questions_on_decidim_scope_id"
