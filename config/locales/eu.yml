@@ -16,6 +16,10 @@ eu:
     assemblies:
       alternative_assembly_types:
         local_groups: Tokiko Taldeen
+    consultations:
+      question_multiple_votes:
+        show:
+          all_groups_need_answer: Erantzun gabeko galderak daude.
     participatory_processes:
       scoped_participatory_process_slug_prefixes:
         general_assemblies: Batzar Orokorrak

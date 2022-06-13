@@ -16,6 +16,10 @@ en:
     assemblies:
       alternative_assembly_types:
         local_groups: Local Groups
+    consultations:
+      question_multiple_votes:
+        show:
+          all_groups_need_answer: There are unanswered questions.
     participatory_processes:
       scoped_participatory_process_slug_prefixes:
         general_assemblies: General Assemblies

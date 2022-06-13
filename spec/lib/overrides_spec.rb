@@ -78,7 +78,13 @@ checksums = [
       "/app/views/decidim/admin/participatory_space_private_users/_form.html.erb" => "be3e6ce2ae14caee518d0def6091c9e0",
       "/app/views/decidim/admin/participatory_space_private_users/index.html.erb" => "a2658de61e06a6536778e8193f3cc8b8"
     }
-  }
+  },
+  {
+    package: "decidim-action_delegator",
+    files: {
+      "/app/views/decidim/consultations/questions/_vote_modal.html.erb" => "d526922aee8bf27838e53ccc8aeeaa0c"
+    }
+  },
 ]
 
 describe "Overriden files", type: :view do
