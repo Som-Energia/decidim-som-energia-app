@@ -1,0 +1,35 @@
+$black: #000;
+
+#consultations {
+  .consultation-results {
+    border: 1px solid rgba($black, .1);
+    thead th {
+      border-bottom-color: rgba($black, .1);
+    }
+
+    .question-title {
+      color: #333;
+      font-weight: bold;
+    }
+
+    .question-subtitle th {
+      padding-left: 2rem;
+      padding-top: 1.5rem;
+
+      &:first-child {
+        text-align: left;
+      }
+    }
+
+    .response-title {
+      padding-left: 2rem;
+      &--grouped {
+        padding-left: 4rem;
+      }
+    }
+
+    tr:nth-of-type(even) {
+      background-color: rgba($black, .05);
+    }
+  }
+}

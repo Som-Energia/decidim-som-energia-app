@@ -6,7 +6,7 @@ module Decidim
       module Admin
         module CreateResponse
           def create_response
-            Response.create(
+            Decidim::Consultations::Response.create(
               question: form.context.current_question,
               title: form.title,
               response_group: form.response_group,
