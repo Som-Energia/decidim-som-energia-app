@@ -57,7 +57,7 @@ group :development do
   gem "capistrano", "~> 3.15"
   gem "capistrano-bundler", "~> 2.0", require: false
   gem "capistrano-figaro-yml", "~> 1.0.2", require: false
-  gem "capistrano-passenger", "~> 0.2.0", require: false
+  gem "capistrano-passenger", "~> 0.2.1", require: false
   gem "capistrano-rails", "~> 1.6", require: false
   gem "capistrano-rails-console", require: false
   gem "capistrano-rbenv", "~> 2.2", require: false
