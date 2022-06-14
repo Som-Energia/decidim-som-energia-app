@@ -32,7 +32,7 @@
                       <th><%= translated_attribute group.title %></th>
                       <th>Votos</th>
                     </tr>
-                    <% responses.sort_by(&:weight).each do |response| %>
+                    <% responses.sort_by{|r| -r[:votes_count]}.each do |response| %>
                       <tr>
                         <td class="response-title--grouped"><%= strip_tags translated_attribute response.title %></td>
                         <td><%= response.votes_count %></td>
@@ -40,7 +40,7 @@
                     <% end %>
                   <% end %>
                 <% else %>
-                  <% question.sorted_results.sort_by(&:weight).each do |response| %>
+                  <% question.sorted_results.sort_by{|r| -r[:votes_count]}.each do |response| %>
                   <tr>
                     <td class="response-title"><%= strip_tags translated_attribute response.title %></td>
                     <td><%= response.votes_count %></td>
