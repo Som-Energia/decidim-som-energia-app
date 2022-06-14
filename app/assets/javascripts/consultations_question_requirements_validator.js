@@ -1,9 +1,8 @@
 $(() => {
-
   if($(".js-card-grouped-response").length > 0) {
     let $form = $('*[data-enforce-special-requirements="true"]');
-    let $groupNeedAnswer = () => {
-      return $('.js-card-grouped-response.js-group-not-answered');
+    let groupNeedAnswer = () => {
+      return $(".js-card-grouped-response.js-group-not-answered");
     };
     let $sumbitButton = $form.find("#vote_button").first();
     let $groupNotAnsweredAlert = $(".js-all-groups-not-answered")
@@ -17,14 +16,6 @@ $(() => {
       $groupNotAnsweredAlert.addClass("hide");
     };
 
-    let $visibleErrors = () => {
-      return $form.find(".form-error").filter(":visible");
-    };
-
-    let $formHasErrors = () => {
-      return $visibleErrors().length > 0
-    };
-
     let validateGroups = () => {
       let $inputs = $form.find("input:radio");
       $inputs.each(function(){
@@ -33,17 +24,15 @@ $(() => {
         let $group = $(this).closest(".js-card-grouped-response").first();
 
         if (!$(radioGroup).val()) {
-          $group.addClass("a-form-error");
           $group.removeClass("a-form-success");
           $group.addClass("js-group-not-answered");
         } else {
-          $group.removeClass("a-form-error");
           $group.addClass("a-form-success");
           $group.removeClass("js-group-not-answered");
         }
       });
 
-      if($groupNeedAnswer().length == 0){
+      if(groupNeedAnswer().length == 0){
         enableSubmitBtn();
       } else {
         disableSubmitBtn();
@@ -57,8 +46,8 @@ $(() => {
     validateGroups();
 
     $sumbitButton.on("click", function(ev) {
-      validateGroups();
-      if($formHasErrors()) {
+      let groupNeedAnswer = $(".js-card-grouped-response.js-group-not-answered");
+      if(groupNeedAnswer.length > 0){
         ev.stopImmediatePropagation();
         ev.preventDefault();
       }
