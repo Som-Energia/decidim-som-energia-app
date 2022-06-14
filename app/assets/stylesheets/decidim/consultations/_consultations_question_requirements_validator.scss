@@ -9,3 +9,13 @@
   padding: .4rem .8rem;
   margin-bottom: .5rem;
 }
+
+.question-masonry-group .card__top .card__content > .card__title {
+  flex-shrink: 1;
+  line-height: 1.3em;
+  margin: .5rem 0;
+}
+
+.multiple_votes_form label {
+  width: 80%;
+}
