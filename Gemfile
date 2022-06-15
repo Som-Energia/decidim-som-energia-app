@@ -31,8 +31,8 @@ gem "wicked_pdf", "~> 1.4"
 
 gem "delayed_job_web"
 gem "progressbar"
-gem "sentry-rails"
-gem "sentry-ruby"
+gem "sentry-rails", "~> 5.3.1"
+gem "sentry-ruby", "~> 5.3.1"
 gem "whenever", require: false
 
 # bug in version 1.9
