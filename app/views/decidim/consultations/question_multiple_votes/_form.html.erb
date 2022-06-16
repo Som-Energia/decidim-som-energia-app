@@ -1,4 +1,4 @@
-<div class="card js-card-grouped-response js-group-not-answered" id="grouped-response-<%= group.id %>" data-group-answered="false">
+<div class="card js-card-grouped-response js-group-not-answered" id="grouped-response-<%= group&.id %>" data-group-answered="false">
   <% if group %>
     <div class="card__top">
       <div class="card__content">
@@ -17,7 +17,7 @@
     <% responses.sort_by(&:weight).each do |response| %>
       <div data-response-weight="<%= response.weight %>">
         <% if current_question.enforce_special_requirements? %>
-          <%= radio_button_tag "responses[#{group.id}][]", response.id, false, id: "vote_id_#{response.id}" %>
+          <%= radio_button_tag "responses[#{group&.id}][]", response.id, false, id: "vote_id_#{response.id}" %>
         <% else %>
           <%= check_box_tag "responses[]", response.id, false, id: "vote_id_#{response.id}" %>
         <% end %>
