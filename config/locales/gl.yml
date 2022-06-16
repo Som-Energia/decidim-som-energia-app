@@ -1,4 +1,11 @@
 gl:
+  activemodel:
+    attributes:
+      question:
+        enforce_special_requirements: Aplicar requisitos especiais (1 voto por pregunta)
+      response:
+        title: Título
+        weight: Orde
   decidim:
     admin:
       participatory_space_private_users:
@@ -9,6 +16,10 @@ gl:
     assemblies:
       alternative_assembly_types:
         local_groups: Grupos Locais
+    consultations:
+      question_multiple_votes:
+        show:
+          all_groups_need_answer: Hai preguntas sen resposta.
     participatory_processes:
       scoped_participatory_process_slug_prefixes:
         general_assemblies: Asembleas Xerais

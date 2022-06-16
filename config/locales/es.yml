@@ -1,5 +1,12 @@
 ---
 es:
+  activemodel:
+    attributes:
+      question:
+        enforce_special_requirements: Aplicar requisitos especiales (1 voto por pregunta)
+      response:
+        title: Título
+        weight: Orden
   decidim:
     admin:
       participatory_space_private_users:
@@ -10,6 +17,10 @@ es:
     assemblies:
       alternative_assembly_types:
         local_groups: Grupos Locales
+    consultations:
+      question_multiple_votes:
+        show:
+          all_groups_need_answer:  Hay preguntas sin respuesta.
     participatory_processes:
       scoped_participatory_process_slug_prefixes:
         general_assemblies: Asambleas generales

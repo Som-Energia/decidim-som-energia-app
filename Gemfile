@@ -31,8 +31,8 @@ gem "wicked_pdf", "~> 1.4"
 
 gem "delayed_job_web"
 gem "progressbar"
-gem "sentry-rails"
-gem "sentry-ruby"
+gem "sentry-rails", "~> 5.3.1"
+gem "sentry-ruby", "~> 5.3.1"
 gem "whenever", require: false
 
 # bug in version 1.9
@@ -57,7 +57,7 @@ group :development do
   gem "capistrano", "~> 3.15"
   gem "capistrano-bundler", "~> 2.0", require: false
   gem "capistrano-figaro-yml", "~> 1.0.2", require: false
-  gem "capistrano-passenger", "~> 0.2.0", require: false
+  gem "capistrano-passenger", "~> 0.2.1", require: false
   gem "capistrano-rails", "~> 1.6", require: false
   gem "capistrano-rails-console", require: false
   gem "capistrano-rbenv", "~> 2.2", require: false
