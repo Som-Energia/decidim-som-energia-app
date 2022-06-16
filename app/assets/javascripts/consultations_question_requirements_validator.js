@@ -1,6 +1,6 @@
 $(() => {
-  if($(".js-card-grouped-response").length > 0) {
-    let $form = $('*[data-enforce-special-requirements="true"]');
+  let $form = $('*[data-enforce-special-requirements="true"]');
+  if($(".js-card-grouped-response").length > 0 && $form.length > 0) {
     let groupNeedAnswer = () => {
       return $(".js-card-grouped-response.js-group-not-answered");
     };
