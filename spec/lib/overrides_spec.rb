@@ -10,6 +10,7 @@ checksums = [
     package: "decidim-core",
     files: {
       "/app/controllers/decidim/devise/invitations_controller.rb" => "faa5403c358f686a87eea2d9f4eaf1d4",
+      "/app/helpers/decidim/icon_helper.rb" => "952fac462893c32fbd367cea72be38cb",
       "/app/views/layouts/decidim/mailer.html.erb" => "5bbe335c1dfd02f8448af287328a49dc"
     }
   },
