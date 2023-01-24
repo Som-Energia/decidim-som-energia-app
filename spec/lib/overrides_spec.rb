@@ -17,6 +17,7 @@ checksums = [
   {
     package: "decidim-assemblies",
     files: {
+      "/app/views/decidim/assemblies/assemblies/show.html.erb" => "5191c7ef5383d6613f1ff22dfddbb83c",
       "/app/views/decidim/assemblies/_filter_by_type.html.erb" => "76988d76b84d96079e6d9e1b252a3fda"
     }
   },
