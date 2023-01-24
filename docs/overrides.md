@@ -19,3 +19,13 @@ Files:
 Files:
 - `app/controllers/concerns/decidim/proposals/orderable.rb`
 - `app/controllers/decidim/proposals/proposals_controller.rb`
+
+## Views
+
+**Assembly show**
+
+The list of the assemblies' children takes into account the weight and the creation date to order them.
+
+Files:
+
+- `app/views/decidim/assemblies/assemblies/show.html.erb`
