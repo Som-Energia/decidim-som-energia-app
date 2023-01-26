@@ -7,11 +7,18 @@ require "rails_helper"
 # file should be updated to match any change/bug fix introduced in the core
 checksums = [
   {
+    package: "decidim-comments",
+    files: {
+      "/app/models/decidim/comments/comment.rb" => "ae74fd2277529f95aa2e6a2dd713ee7f"
+    }
+  },
+  {
     package: "decidim-core",
     files: {
       "/app/controllers/decidim/devise/invitations_controller.rb" => "faa5403c358f686a87eea2d9f4eaf1d4",
       "/app/helpers/decidim/icon_helper.rb" => "952fac462893c32fbd367cea72be38cb",
-      "/app/views/layouts/decidim/mailer.html.erb" => "5bbe335c1dfd02f8448af287328a49dc"
+      "/app/views/layouts/decidim/mailer.html.erb" => "5bbe335c1dfd02f8448af287328a49dc",
+      "/lib/decidim/events/base_event.rb" => "ef561cd2795aac5338e06c79e15834a3"
     }
   },
   {
