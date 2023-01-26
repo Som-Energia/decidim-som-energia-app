@@ -9,7 +9,7 @@ checksums = [
   {
     package: "decidim-comments",
     files: {
-      "/app/models/decidim/comments/comment.rb" => "ae74fd2277529f95aa2e6a2dd713ee7f"
+      "/app/models/decidim/comments/comment.rb" => "1058d8f2117bb6bb0029a281d4cbcaa9"
     }
   },
   {

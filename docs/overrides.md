@@ -29,3 +29,12 @@ The list of the assemblies' children takes into account the weight and the creat
 Files:
 
 - `app/views/decidim/assemblies/assemblies/show.html.erb`
+
+**Fix error on notifications**
+
+When the component of a notification is a comment with depth > 0, an error is raised because there is no `resource_manifest` nor `title` for a comment. The solution proposed is to dive into the comment with depth = 0 when the resource in an event is a comment.
+
+Files:
+
+- `lib/decidim/events/base_event.rb`
+- `app/models/decidim/comments/comment.rb`
