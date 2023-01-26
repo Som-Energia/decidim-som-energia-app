@@ -9,7 +9,7 @@ checksums = [
   {
     package: "decidim-comments",
     files: {
-      "/app/models/decidim/comments/comment.rb" => "1058d8f2117bb6bb0029a281d4cbcaa9"
+      "/app/events/decidim/comments/comment_voted_event.rb" => "037f075ba87d1b518dc9011b33c9ee72"
     }
   },
   {
@@ -17,8 +17,7 @@ checksums = [
     files: {
       "/app/controllers/decidim/devise/invitations_controller.rb" => "faa5403c358f686a87eea2d9f4eaf1d4",
       "/app/helpers/decidim/icon_helper.rb" => "952fac462893c32fbd367cea72be38cb",
-      "/app/views/layouts/decidim/mailer.html.erb" => "5bbe335c1dfd02f8448af287328a49dc",
-      "/lib/decidim/events/base_event.rb" => "ef561cd2795aac5338e06c79e15834a3"
+      "/app/views/layouts/decidim/mailer.html.erb" => "5bbe335c1dfd02f8448af287328a49dc"
     }
   },
   {
