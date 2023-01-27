@@ -7,6 +7,12 @@ require "rails_helper"
 # file should be updated to match any change/bug fix introduced in the core
 checksums = [
   {
+    package: "decidim-comments",
+    files: {
+      "/app/events/decidim/comments/comment_voted_event.rb" => "173d51cd6a783ba5ded3eb228ca03e0a"
+    }
+  },
+  {
     package: "decidim-core",
     files: {
       "/app/controllers/decidim/devise/invitations_controller.rb" => "faa5403c358f686a87eea2d9f4eaf1d4",
