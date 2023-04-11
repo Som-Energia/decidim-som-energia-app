@@ -45,4 +45,4 @@
   <%= render partial: "decidim/consultations/question_multiple_votes/voting_rules", locals: { question: current_participatory_space } %>
 <% end %>
 
-<%= javascript_include_tag "consultations_question_requirements_validator" if current_question.enforce_special_requirements? %>
+<%= javascript_pack_tag "consultations_question_requirements_validator" if current_question.enforce_special_requirements? %>
