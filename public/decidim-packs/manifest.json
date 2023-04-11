@@ -1,0 +1,22 @@
+{
+  "css/decidim_som_energia_app.css.map": "/decidim-packs/css/decidim_som_energia_app.css.map",
+  "decidim_som_energia_app.css": "/decidim-packs/css/decidim_som_energia_app.css",
+  "decidim_som_energia_app.js": "/decidim-packs/js/decidim_som_energia_app.js",
+  "entrypoints": {
+    "decidim_som_energia_app": {
+      "assets": {
+        "js": [
+          "/decidim-packs/js/vendors-node_modules_webpack-dev-server_client_index_js_protocol_ws_3A_hostname_localhost_por-95065b.js",
+          "/decidim-packs/js/decidim_som_energia_app.js"
+        ],
+        "css": [
+          "/decidim-packs/css/decidim_som_energia_app.css"
+        ]
+      }
+    }
+  },
+  "js/decidim_som_energia_app.js.map": "/decidim-packs/js/decidim_som_energia_app.js.map",
+  "js/vendors-node_modules_webpack-dev-server_client_index_js_protocol_ws_3A_hostname_localhost_por-95065b.js": "/decidim-packs/js/vendors-node_modules_webpack-dev-server_client_index_js_protocol_ws_3A_hostname_localhost_por-95065b.js",
+  "js/vendors-node_modules_webpack-dev-server_client_index_js_protocol_ws_3A_hostname_localhost_por-95065b.js.map": "/decidim-packs/js/vendors-node_modules_webpack-dev-server_client_index_js_protocol_ws_3A_hostname_localhost_por-95065b.js.map",
+  "media/images/screenshot.png": "/decidim-packs/media/images/screenshot-c4f052a75c90660df5cf.png"
+}
