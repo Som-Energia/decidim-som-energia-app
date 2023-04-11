@@ -584,6 +584,8 @@ GEM
     nio4r (2.5.9)
     nokogiri (1.12.5-x86_64-darwin)
       racc (~> 1.4)
+    nokogiri (1.12.5-x86_64-linux)
+      racc (~> 1.4)
     nori (2.6.0)
     oauth (1.1.0)
       oauth-tty (~> 1.0, >= 1.0.1)
@@ -915,6 +917,7 @@ GEM
 
 PLATFORMS
   x86_64-darwin-22
+  x86_64-linux
 
 DEPENDENCIES
   bootsnap (~> 1.7)
