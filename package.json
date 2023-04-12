@@ -2,7 +2,10 @@
   "name": "app",
   "private": true,
   "dependencies": {
-    "@decidim/webpacker": "^0.27.2",
+    "@decidim/browserslist-config": "^0.26.5",
+    "@decidim/core": "^0.26.5",
+    "@decidim/elections": "^0.26.5",
+    "@decidim/webpacker": "^0.26.5",
     "@rails/actioncable": "latest",
     "@rails/activestorage": "latest",
     "@rails/webpacker": "^6.0.0-rc.6",
@@ -22,6 +25,9 @@
     "defaults"
   ],
   "devDependencies": {
+    "@decidim/dev": "^0.26.5",
+    "@decidim/eslint-config": "^0.26.5",
+    "@decidim/stylelint-config": "^0.26.5",
     "@webpack-cli/serve": "^1.6.1",
     "webpack-dev-server": "^4.13.2"
   }

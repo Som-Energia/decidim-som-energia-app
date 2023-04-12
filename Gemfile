@@ -18,10 +18,9 @@ gem "decidim-term_customizer", github: "mainio/decidim-module-term_customizer", 
 # Usability and UX tweaks for Decidim.
 gem "decidim-action_delegator"
 gem "decidim-decidim_awesome"
-# gem "decidim-direct_verifications", "~> 1.0.2"
 
 gem "bootsnap", "~> 1.7"
-
+gem "deface"
 gem "puma", ">= 5.3.1"
 gem "uglifier", "~> 4.1"
 

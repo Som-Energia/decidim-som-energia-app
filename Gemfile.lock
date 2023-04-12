@@ -8,11 +8,12 @@ GIT
 
 GIT
   remote: https://github.com/Som-Energia/decidim-cas-client.git
-  revision: c412d59766607f4c8ce75810ed5069751eaeca2f
+  revision: d3fdfe4845a871b52c8f2eb8d843afce27700f43
   specs:
-    decidim-cas_client (0.0.20)
-      decidim-core (>= 0.16.0)
-      decidim-verifications (>= 0.16.0)
+    decidim-cas_client (0.3.0)
+      codit-devise-cas-authenticable
+      decidim-core (>= 0.25.0, < 0.28)
+      decidim-verifications (>= 0.25.0, < 0.28)
 
 GIT
   remote: https://github.com/mainio/decidim-module-term_customizer.git
@@ -394,6 +395,12 @@ GEM
     declarative-builder (0.1.0)
       declarative-option (< 0.2.0)
     declarative-option (0.1.0)
+    deface (1.9.0)
+      actionview (>= 5.2)
+      nokogiri (>= 1.6)
+      polyglot
+      railties (>= 5.2)
+      rainbow (>= 2.1.0)
     delayed_job (4.1.11)
       activesupport (>= 3.0, < 8.0)
     delayed_job_active_record (4.1.7)
@@ -639,6 +646,7 @@ GEM
     pg_search (2.3.6)
       activerecord (>= 5.2)
       activesupport (>= 5.2)
+    polyglot (0.3.5)
     premailer (1.21.0)
       addressable
       css_parser (>= 1.12.0)
@@ -939,6 +947,7 @@ DEPENDENCIES
   decidim-dev (= 0.26.5)
   decidim-initiatives (= 0.26.5)
   decidim-term_customizer!
+  deface
   delayed_job_active_record (~> 4.1)
   delayed_job_web
   doc2text (= 0.4.4)
