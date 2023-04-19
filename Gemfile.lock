@@ -8,7 +8,7 @@ GIT
 
 GIT
   remote: https://github.com/Som-Energia/decidim-cas-client.git
-  revision: d3fdfe4845a871b52c8f2eb8d843afce27700f43
+  revision: a88d6e36ee1aa3962574c41db70164e50f1185b7
   specs:
     decidim-cas_client (0.3.0)
       codit-devise-cas-authenticable
