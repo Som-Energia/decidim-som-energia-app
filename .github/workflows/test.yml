@@ -10,6 +10,9 @@ on:
 env:
   RUBY_VERSION: 2.7.7
   NODE_VERSION: 16.9.0
+  RAILS_ENV: test
+  DATABASE_USERNAME: postgres
+  DATABASE_PASSWORD: postgres
 
 jobs:
   test:
@@ -22,8 +25,6 @@ jobs:
           - 5432:5432
         env:
           RAILS_ENV: test
-          DATABASE_USERNAME: postgres
-          DATABASE_PASSWORD: postgres
           POSTGRES_HOST_AUTH_METHOD: trust
         options: --health-cmd pg_isready --health-interval 10s --health-timeout 5s --health-retries 5
 
@@ -39,21 +40,12 @@ jobs:
 
       - name: Setup & create Database
         run: |
-          bundle exec rails test_app
-        env:
-          RAILS_ENV: test
-          DATABASE_USERNAME: postgres
-          DATABASE_PASSWORD: postgres
+          bundle exec rails db:create db:schema:load
 
       - name: Precompile assets
         run: bundle exec rake assets:precompile
-        env:
-          RAILS_ENV: test
 
       - name: Run RSpec
         run: SIMPLECOV=1 CODECOV=1 bundle exec rspec
         env:
-          RAILS_ENV: test
-          DATABASE_USERNAME: postgres
-          DATABASE_PASSWORD: postgres
           CAS_BASE_URL: ${{ secrets.CAS_BASE_URL }}
