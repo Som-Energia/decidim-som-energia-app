@@ -28,6 +28,12 @@ module Decidim::Admin
     end
 
     context "when mail is missing" do
+      let(:file) { File.new File.expand_path(File.join(__dir__, "../fixtures/import_participatory_space_users_invalid_email.csv")) }
+
+      it { is_expected.to be_valid }
+    end
+
+    context "when email is missing" do
       let(:file) { File.new File.expand_path(File.join(__dir__, "../fixtures/import_participatory_space_users_no_email.csv")) }
 
       it { is_expected.to be_invalid }
@@ -45,7 +51,7 @@ module Decidim::Admin
 
       it "has errors" do
         subject.valid?
-        expect(subject.errors[:user_name]).to eq ["La segona columna ha de contenir noms sense caràcters estranys (parèntesis per exemple)!"]
+        expect(subject.errors[:user_name]).to eq ["La segona columna ha de contenir noms!"]
       end
     end
 
@@ -58,12 +64,7 @@ module Decidim::Admin
     context "when user name contains invalid chars" do
       let(:file) { File.new Decidim::Dev.asset("import_participatory_space_private_users_nok.csv") }
 
-      it { is_expected.to be_invalid }
-
-      it "has errors" do
-        subject.valid?
-        expect(subject.errors[:user_name]).to eq ["La segona columna ha de contenir noms sense caràcters estranys (parèntesis per exemple)!"]
-      end
+      it { is_expected.to be_valid }
     end
   end
 end

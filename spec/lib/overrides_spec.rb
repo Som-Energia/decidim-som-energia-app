@@ -80,7 +80,7 @@ checksums = [
     files: {
 
       "/app/jobs/decidim/admin/import_participatory_space_private_user_csv_job.rb" => "753f081b31476451e6c19a020cd20864",
-      "/app/commands/decidim/admin/process_participatory_space_private_user_import_csv.rb" => "06cafc1c6bd098bf30c8fba9f3a12a4d",
+      "/app/commands/decidim/admin/process_participatory_space_private_user_import_csv.rb" => "07cc13617f576263f5a0171581ca9ca4",
       "/app/commands/decidim/admin/create_participatory_space_private_user.rb" => "0a177e0bc25c0110a19bb605a862d56d",
       "/app/controllers/decidim/admin/concerns/has_private_users_csv_import.rb" => "5e6f74f827fc3d0d485cfeec7ecb43e3",
       "/app/forms/decidim/admin/participatory_space_private_user_form.rb" => "3479f27dcc88f98267374490b446b24c",
