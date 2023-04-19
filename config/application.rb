@@ -11,10 +11,17 @@ require "rails/test_unit/railtie"
 # require "action_text/engine"
 require_relative "../app/middleware/assemblies_scoper"
 require_relative "../app/middleware/participatory_processes_scoper"
+require_relative "../lib/decidim/env"
 
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
+
+module Decidim
+  def self.module_installed?(mod)
+    Gem.loaded_specs.has_key?("decidim-#{mod}")
+  end
+end
 
 module DecidimSomenergiaApp
   class Application < Rails::Application

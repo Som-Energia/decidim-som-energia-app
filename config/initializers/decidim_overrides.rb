@@ -1,6 +1,10 @@
 # frozen_string_literal: true
 
 Rails.application.config.to_prepare do
+  # participatory spaces private users
+  Decidim::Admin::CreateParticipatorySpacePrivateUser.include(SomEnergia::Admin::CreateParticipatorySpacePrivateUserOverride)
+
+  # consultations
   Decidim::Consultations::Admin::QuestionConfigurationForm.prepend Decidim::Overrides::Consultations::Admin::QuestionConfigurationForm
   Decidim::Consultations::Admin::UpdateQuestionConfiguration.prepend Decidim::Overrides::Consultations::Admin::UpdateQuestionConfiguration
   Decidim::Consultations::Admin::ResponseForm.prepend Decidim::Overrides::Consultations::Admin::ResponseForm
