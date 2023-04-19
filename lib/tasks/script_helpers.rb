@@ -16,6 +16,7 @@ CSV format must follow this specification:
 Rest of the lines must containt values for the corresponding headers
 "
 
+  # rubocop:disable Rails/Output
   def process_csv(args)
     raise ArgumentError if args.organization_id.blank?
     raise ArgumentError if args.csv.blank?
@@ -105,4 +106,5 @@ Rest of the lines must containt values for the corresponding headers
 
   class AlreadyProcessedError < StandardError
   end
+  # rubocop:enable Rails/Output
 end

@@ -2,9 +2,11 @@
 
 require_relative "boot"
 
-require "decidim/rails"
 # Add the frameworks used by your app that are not loaded by Decidim.
-# require "action_cable/engine"
+# require "rails/all"
+require "decidim/rails"
+require "action_cable/engine"
+require "rails/test_unit/railtie"
 # require "action_mailbox/engine"
 # require "action_text/engine"
 require_relative "../app/middleware/assemblies_scoper"
@@ -33,7 +35,7 @@ module DecidimSomenergiaApp
 
     # Make decorators available
     config.to_prepare do
-      Dir.glob(Rails.root + "app/decorators/**/*_decorator*.rb").each do |c|
+      Dir.glob(Rails.root.join("app/decorators/**/*_decorator*.rb")).each do |c|
         require_dependency(c)
       end
     end

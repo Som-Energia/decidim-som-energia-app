@@ -20,7 +20,7 @@ Rails.application.config.to_prepare do
       when :exclude
         where("decidim_assemblies_type_id IS NULL OR decidim_assemblies_type_id NOT IN (?)", scope_types)
       when :include
-        where("decidim_assemblies_type_id IN (?)", scope_types)
+        where(decidim_assemblies_type_id: scope_types)
       end
     end
   end
