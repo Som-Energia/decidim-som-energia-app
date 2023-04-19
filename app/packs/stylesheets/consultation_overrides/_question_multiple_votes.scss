@@ -1,5 +1,3 @@
-@import "stylesheets/application.scss";
-
 .question-masonry-group {
 
   @include breakpoint(map-get($breakpoints, medium)){

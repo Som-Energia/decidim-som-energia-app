@@ -1,58 +1,70 @@
-$(() => {
-  let $form = $('*[data-enforce-special-requirements="true"]');
-  if($(".js-card-grouped-response").length > 0 && $form.length > 0) {
+document.addEventListener("DOMContentLoaded", () => {
+  let form = document.querySelector('*[data-enforce-special-requirements="true"]');
+  if (document.querySelectorAll(".js-card-grouped-response").length > 0 && form) {
+    // Select all groups that still need an answer
     let groupNeedAnswer = () => {
-      return $(".js-card-grouped-response.js-group-not-answered");
+      return document.querySelectorAll(".js-card-grouped-response.js-group-not-answered");
     };
-    let $sumbitButton = $form.find("#vote_button").first();
-    let $groupNotAnsweredAlert = $(".js-all-groups-not-answered")
+
+    // Cache the submit button and "all groups not answered" alert
+    let submitButton = form.querySelector("#vote_button");
+    let groupNotAnsweredAlert = document.querySelector(".js-all-groups-not-answered");
+
+    // Disable the submit button and show the alert
     let disableSubmitBtn = () => {
-      $sumbitButton.addClass("disabled");
-      $groupNotAnsweredAlert.removeClass("hide");
+      submitButton.classList.add("disabled");
+      groupNotAnsweredAlert.classList.remove("hide");
     };
 
+    // Enable the submit button and hide the alert
     let enableSubmitBtn = () => {
-      $sumbitButton.removeClass("disabled");
-      $groupNotAnsweredAlert.addClass("hide");
+      submitButton.classList.remove("disabled");
+      groupNotAnsweredAlert.classList.add("hide");
     };
 
+    // Validate each group of radio buttons and update the UI accordingly
     let validateGroups = () => {
-      let $inputs = $form.find("input:radio");
-      $inputs.each(function(){
-        let radioGroupName = $(this).attr("name");
-        let radioGroup = "input:radio[name='"+radioGroupName+"']:checked";
-        let $group = $(this).closest(".js-card-grouped-response").first();
+      let inputs = form.querySelectorAll("input[type='radio']");
 
-        if (!$(radioGroup).val()) {
-          $group.removeClass("a-form-success");
-          $group.addClass("js-group-not-answered");
+      inputs.forEach(function(input) {
+        let radioGroupName = input.getAttribute("name");
+        let radioGroup = "input[type='radio'][name='" + radioGroupName + "']:checked";
+        let group = input.closest(".js-card-grouped-response");
+
+        if (!document.querySelector(radioGroup)) {
+          group.classList.remove("a-form-success");
+          group.classList.add("js-group-not-answered");
         } else {
-          $group.addClass("a-form-success");
-          $group.removeClass("js-group-not-answered");
+          group.classList.add("a-form-success");
+          group.classList.remove("js-group-not-answered");
         }
       });
 
-      if(groupNeedAnswer().length == 0){
+      // If there are no groups that still need an answer, enable the submit button
+      if (groupNeedAnswer().length == 0) {
         enableSubmitBtn();
       } else {
         disableSubmitBtn();
       }
     };
 
-    $form.find("input:radio").on("click", function(ev) {
-      validateGroups();
+    // Validate groups when a radio button is clicked
+    form.querySelectorAll("input[type='radio']").forEach(function(input) {
+      input.addEventListener("click", function(ev) {
+        validateGroups();
+      });
     });
 
+    // Initial validation
     validateGroups();
 
-    $sumbitButton.on("click", function(ev) {
-      let groupNeedAnswer = $(".js-card-grouped-response.js-group-not-answered");
-      if(groupNeedAnswer.length > 0){
+    // Check if any groups still need an answer when the submit button is clicked
+    submitButton.addEventListener("click", function(ev) {
+      let groupNeedAnswer = document.querySelectorAll(".js-card-grouped-response.js-group-not-answered");
+      if (groupNeedAnswer.length > 0) {
         ev.stopImmediatePropagation();
         ev.preventDefault();
       }
     });
   }
 });
-
-
