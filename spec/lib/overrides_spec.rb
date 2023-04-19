@@ -84,7 +84,7 @@ checksums = [
       "/app/commands/decidim/admin/create_participatory_space_private_user.rb" => "0a177e0bc25c0110a19bb605a862d56d",
       "/app/controllers/decidim/admin/concerns/has_private_users_csv_import.rb" => "5e6f74f827fc3d0d485cfeec7ecb43e3",
       "/app/forms/decidim/admin/participatory_space_private_user_form.rb" => "3479f27dcc88f98267374490b446b24c",
-      "/app/forms/decidim/admin/participatory_space_private_user_csv_import_form.rb" => "f93e15ec32dbb59a0989b27641356075",
+      "/app/forms/decidim/admin/participatory_space_private_user_csv_import_form.rb" => "084389739c1500bac0606ea779247d11",
       # views
       "/app/views/decidim/admin/participatory_space_private_users/_form.html.erb" => "be3e6ce2ae14caee518d0def6091c9e0",
       "/app/views/decidim/admin/participatory_space_private_users/index.html.erb" => "a2658de61e06a6536778e8193f3cc8b8"
