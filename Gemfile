@@ -47,6 +47,10 @@ group :development do
   gem "web-console", "~> 4.2"
 end
 
+group :test do
+  gem "rails-controller-testing"
+end
+
 group :production do
   gem "aws-sdk-s3", require: false
   gem "sidekiq", "~> 6.0"

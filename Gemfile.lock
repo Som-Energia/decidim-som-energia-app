@@ -934,6 +934,7 @@ DEPENDENCIES
   listen (~> 3.1)
   progressbar
   puma (>= 5.3.1)
+  rails-controller-testing
   rubocop-faker
   sentry-rails (~> 5.3.1)
   sentry-ruby (~> 5.3.1)
