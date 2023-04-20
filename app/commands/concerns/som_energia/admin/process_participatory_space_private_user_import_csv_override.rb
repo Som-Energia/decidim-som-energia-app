@@ -37,7 +37,7 @@ module SomEnergia
         def valid_email?(email)
           return false if email.blank?
 
-          email.match?(Devise.email_regexp)
+          email.match?(/\A[^@\s]+@([^@\s]+\.)+[^@\W]+\z/)
         end
 
         def valid_user_name?(user_name)

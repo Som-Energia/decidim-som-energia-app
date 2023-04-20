@@ -2,7 +2,7 @@
 
 require "rails_helper"
 
-module Decidim::Meetings
+module SomEnergia::Meetings
   describe MeetingSort do
     let(:component) { create(:component, manifest_name: "meetings") }
     let(:upcoming_meeting_1) { create(:meeting, :upcoming, component: component, start_time: 1.year.from_now) }

@@ -8,7 +8,7 @@ GIT
 
 GIT
   remote: https://github.com/Som-Energia/decidim-cas-client.git
-  revision: a88d6e36ee1aa3962574c41db70164e50f1185b7
+  revision: a3079e65a6d83bc76b6a954b8c1358872b5abeee
   specs:
     decidim-cas_client (0.3.0)
       codit-devise-cas-authenticable
@@ -107,7 +107,7 @@ GEM
       nokogiri
     ast (2.4.2)
     aws-eventstream (1.2.0)
-    aws-partitions (1.749.0)
+    aws-partitions (1.750.0)
     aws-sdk-core (3.171.0)
       aws-eventstream (~> 1, >= 1.0.2)
       aws-partitions (~> 1, >= 1.651.0)
@@ -116,7 +116,7 @@ GEM
     aws-sdk-kms (1.63.0)
       aws-sdk-core (~> 3, >= 3.165.0)
       aws-sigv4 (~> 1.1)
-    aws-sdk-s3 (1.120.1)
+    aws-sdk-s3 (1.121.0)
       aws-sdk-core (~> 3, >= 3.165.0)
       aws-sdk-kms (~> 1)
       aws-sigv4 (~> 1.4)
@@ -730,7 +730,7 @@ GEM
       rspec-rails (>= 3.0.0, < 6.1.0)
     rspec-core (3.12.2)
       rspec-support (~> 3.12.0)
-    rspec-expectations (3.12.2)
+    rspec-expectations (3.12.3)
       diff-lcs (>= 1.2.0, < 2.0)
       rspec-support (~> 3.12.0)
     rspec-html-matchers (0.9.4)
@@ -848,7 +848,7 @@ GEM
     tilt (2.1.0)
     timeout (0.3.2)
     tomlrb (2.0.3)
-    twilio-ruby (5.76.0)
+    twilio-ruby (5.77.0)
       faraday (>= 0.9, < 3.0)
       jwt (>= 1.5, < 3.0)
       nokogiri (>= 1.6, < 2.0)
@@ -930,7 +930,7 @@ DEPENDENCIES
   decidim-term_customizer!
   deface
   faker (~> 2.14)
-  letter_opener_web (~> 2.0)
+  letter_opener_web
   listen (~> 3.1)
   progressbar
   puma (>= 5.3.1)

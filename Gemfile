@@ -39,7 +39,7 @@ group :development, :test do
 end
 
 group :development do
-  gem "letter_opener_web", "~> 2.0"
+  gem "letter_opener_web"
   gem "listen", "~> 3.1"
   gem "rubocop-faker"
   gem "spring", ">= 4.0.0"
