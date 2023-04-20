@@ -38,12 +38,18 @@ jobs:
           ruby-version: ${{ env.RUBY_VERSION }}
           bundler-cache: true
 
+      - uses: actions/setup-node@master
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+
       - name: Setup & create Database
         run: |
           bundle exec rails db:create db:schema:load
 
       - name: Precompile assets
-        run: bundle exec rake assets:precompile
+        run: |
+          npm ci
+          bundle exec rake assets:precompile
 
       - name: Run RSpec
         run: SIMPLECOV=1 CODECOV=1 bundle exec rspec
