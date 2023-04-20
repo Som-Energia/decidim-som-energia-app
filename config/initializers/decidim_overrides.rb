@@ -12,6 +12,7 @@ Rails.application.config.to_prepare do
   Decidim::Consultations::ConsultationsHelper.include(SomEnergia::Consultations::ConsultationsHelperOverride)
   Decidim::Devise::InvitationsController.include(SomEnergia::Devise::InvitationsControllerOverride)
   Decidim::Initiatives::InitiativesController.include(SomEnergia::Initiatives::InitiativesControllerOverride)
+  Decidim::Meetings::MeetingsController.include(SomEnergia::Meetings::MeetingsControllerOverride)
 
   # consultations
   Decidim::Consultations::Admin::QuestionConfigurationForm.prepend Decidim::Overrides::Consultations::Admin::QuestionConfigurationForm

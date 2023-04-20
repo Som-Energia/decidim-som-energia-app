@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-module Decidim
+module SomEnergia
   module Meetings
     class MeetingSort
       def initialize(collection)
@@ -16,7 +16,7 @@ module Decidim
       private
 
       def meetings
-        Meeting.where(id: collection)
+        Decidim::Meetings::Meeting.where(id: collection)
       end
 
       def new_order

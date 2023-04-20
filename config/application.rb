@@ -40,13 +40,6 @@ module DecidimSomenergiaApp
     #   Rails.backtrace_cleaner.add_silencer { |line| line =~ %r{app/middleware} }
     # end
 
-    # Make decorators available
-    config.to_prepare do
-      Dir.glob(Rails.root.join("app/decorators/**/*_decorator*.rb")).each do |c|
-        require_dependency(c)
-      end
-    end
-
     # load Overrides
     config.autoload_paths << Rails.root.join("app/lib")
   end
