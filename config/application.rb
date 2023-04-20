@@ -39,8 +39,5 @@ module DecidimSomenergiaApp
     #   # this avoid to trap the error trace when debugging errors
     #   Rails.backtrace_cleaner.add_silencer { |line| line =~ %r{app/middleware} }
     # end
-
-    # load Overrides
-    config.autoload_paths << Rails.root.join("app/lib")
   end
 end

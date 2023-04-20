@@ -15,9 +15,9 @@ Rails.application.config.to_prepare do
   Decidim::Meetings::MeetingsController.include(SomEnergia::Meetings::MeetingsControllerOverride)
 
   # consultations
-  Decidim::Consultations::Admin::QuestionConfigurationForm.prepend Decidim::Overrides::Consultations::Admin::QuestionConfigurationForm
-  Decidim::Consultations::Admin::UpdateQuestionConfiguration.prepend Decidim::Overrides::Consultations::Admin::UpdateQuestionConfiguration
-  Decidim::Consultations::Admin::ResponseForm.prepend Decidim::Overrides::Consultations::Admin::ResponseForm
-  Decidim::Consultations::Admin::CreateResponse.prepend Decidim::Overrides::Consultations::Admin::CreateResponse
-  Decidim::Consultations::Admin::UpdateResponse.prepend Decidim::Overrides::Consultations::Admin::UpdateResponse
+  Decidim::Consultations::Admin::CreateResponse.include(SomEnergia::Consultations::Admin::CreateResponseOverride)
+  Decidim::Consultations::Admin::UpdateQuestionConfiguration.include(SomEnergia::Consultations::Admin::UpdateQuestionConfigurationOverride)
+  Decidim::Consultations::Admin::UpdateResponse.include(SomEnergia::Consultations::Admin::UpdateResponseOverride)
+  Decidim::Consultations::Admin::QuestionConfigurationForm.include(SomEnergia::Consultations::Admin::QuestionConfigurationFormOverride)
+  Decidim::Consultations::Admin::ResponseForm.include(SomEnergia::Consultations::Admin::ResponseFormOverride)
 end

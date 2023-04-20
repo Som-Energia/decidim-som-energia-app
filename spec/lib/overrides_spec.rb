@@ -39,7 +39,7 @@ checksums = [
     files: {
       "/app/views/decidim/meetings/registration_mailer/confirmation.html.erb" => "949b197162b9f57810a4d80715f3626d",
       # Meetings natural order, to remove when available as a feature of decidim
-      "/app/controllers/decidim/meetings/meetings_controller.rb" => "9b5f2673ac38699c86c89fbd0d6e326f"
+      "/app/controllers/decidim/meetings/meetings_controller.rb" => "d0bdba675f1e3df524ac7e834e3a5f37"
     }
   },
   {
