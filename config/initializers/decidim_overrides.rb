@@ -9,6 +9,7 @@ Rails.application.config.to_prepare do
   Decidim::Admin::ImportParticipatorySpacePrivateUserCsvJob.include(SomEnergia::Admin::ImportParticipatorySpacePrivateUserCsvJobOverride)
   Decidim::Consultations::ConsultationSearch.include(SomEnergia::Consultations::ConsultationSearchOverride)
   Decidim::Consultations::ConsultationsController.include(SomEnergia::Consultations::ConsultationsControllerOverride)
+  Decidim::Consultations::ConsultationsHelper.include(SomEnergia::Consultations::ConsultationsHelperOverride)
 
   # consultations
   Decidim::Consultations::Admin::QuestionConfigurationForm.prepend Decidim::Overrides::Consultations::Admin::QuestionConfigurationForm
