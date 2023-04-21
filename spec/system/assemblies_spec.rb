@@ -72,6 +72,7 @@ describe "Visit assemblies", type: :system do
       end
 
       it "shows assemblies without excluded types" do
+        expect(page).not_to have_css("#assemblies-filter")
         within "#parent-assemblies" do
           expect(page).not_to have_content(alternative_assembly.title["en"])
           expect(page).to have_content(assembly2.title["en"])

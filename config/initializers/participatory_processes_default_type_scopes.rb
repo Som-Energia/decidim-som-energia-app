@@ -67,18 +67,19 @@ Rails.application.config.after_initialize do
   # Creates a new menu next to Processes for every type configured
   ParticipatoryProcessesScoper.scoped_participatory_process_slug_prefixes.each do |item|
     Decidim.menu :menu do |menu|
-      menu.item I18n.t(item[:key], scope: "decidim.participatory_processes.scoped_participatory_process_slug_prefixes"),
-                Rails.application.routes.url_helpers.send("#{item[:key]}_path"),
-                position: item[:position_in_menu],
-                if: (
-                  Decidim::ParticipatoryProcess
-                  .unscoped
-                  .where(organization: current_organization)
-                  .where("slug LIKE ANY (ARRAY[?])", item[:slug_prefixes].map { |slug_prefix| "#{slug_prefix}%" })
-                  .published
-                  .any?
-                ),
-                active: :inclusive
+      menu.add_item item[:key],
+                    I18n.t(item[:key], scope: "decidim.participatory_processes.scoped_participatory_process_slug_prefixes"),
+                    Rails.application.routes.url_helpers.send("#{item[:key]}_path"),
+                    position: item[:position_in_menu],
+                    if: (
+                      Decidim::ParticipatoryProcess
+                      .unscoped
+                      .where(organization: current_organization)
+                      .where("slug LIKE ANY (ARRAY[?])", item[:slug_prefixes].map { |slug_prefix| "#{slug_prefix}%" })
+                      .published
+                      .any?
+                    ),
+                    active: :inclusive
     end
   end
 end
