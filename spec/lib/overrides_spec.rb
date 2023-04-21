@@ -39,7 +39,7 @@ checksums = [
       # not directly manipulated but worth taking a look if anythign changes
       "/app/controllers/decidim/consultations/consultations_controller.rb" => "3d75aa7d00721dc3d91aca131d348362",
       "/app/controllers/decidim/consultations/questions_controller.rb" => "1b7ec4c7265caccd47f9dc9be08498a9",
-      "/app/views/decidim/consultations/consultations/_question.html.erb" => "364d7f8370cdbe7ae70c545fff2e21fa",
+      "/app/views/decidim/consultations/consultations/_question.html.erb" => "21b19519b1f249c27a536fbd1b49d619",
       "/app/helpers/decidim/consultations/consultations_helper.rb" => "bb921ed6da446b9544b81c9f9f9a7574",
       "/app/forms/decidim/consultations/admin/question_configuration_form.rb" => "fd988f15b1242e582cc7d0cc8d3d1d2e",
       "/app/commands/decidim/consultations/admin/update_question_configuration.rb" => "34beed38a9eb629498dca31b59598302",

@@ -1,5 +1,7 @@
+<!-- surround_contents '.card.consultations-card' -->
+
 <% if controller_name.eql?("consultation_summaries") %>
   <%= render partial: "decidim/consultations/consultation_summaries/question", locals: { question: question } %>
 <% else %>
-  <%= render file: decidim_consultations_question_partial, locals: { question: question } %>
+	<%= render_original %>
 <% end %>
