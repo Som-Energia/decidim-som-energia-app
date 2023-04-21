@@ -57,7 +57,7 @@ describe "Consultation", type: :system do
     it "shows the question title" do
       expect(page).to have_content(question.title["en"])
       click_link "Vote"
-      within ".response-title", match: :first do
+      within all(".response-title").first do
         expect(page).to have_content(response2.title["en"])
       end
       within all(".response-title").last do
@@ -69,6 +69,50 @@ describe "Consultation", type: :system do
       expect(page).not_to have_content("Read more")
       expect(page).not_to have_css(".hide.show-more-panel")
       expect(page).to have_css(".show-more-panel")
+    end
+  end
+
+  context "when visitin a multiple question" do
+    let(:enforce_special_requirements) { true }
+    let!(:question) { create(:question, :published, :multiple, enforce_special_requirements: enforce_special_requirements, consultation: consultation) }
+    let!(:response1) { create(:response, weight: 2, question: question) }
+    let!(:response2) { create(:response, weight: 1, question: question) }
+
+    before do
+      switch_to_host(organization.host)
+      sign_in user, scope: :user
+      visit decidim_consultations.question_path(question)
+    end
+
+    it "shows the responses & special requirements" do
+      expect(page).to have_content(question.title["en"])
+      click_link "Vote"
+      expect(page).to have_css('[data-response-weight="1"')
+      expect(page).to have_css('[data-response-weight="2"')
+      within all(".multiple_votes_form div").first do
+        expect(page).to have_content(response2.title["en"])
+      end
+      within all(".multiple_votes_form div").last do
+        expect(page).to have_content(response1.title["en"])
+      end
+      expect(page).to have_css(".js-group-special-requirements")
+      expect(page).to have_css('[data-enforce-special-requirements="true"]')
+      expect(page).to have_css(".js-all-groups-not-answered")
+      expect(page).to have_css(".js-card-grouped-response")
+      expect(page).not_to have_css(".extra__suport-number")
+      expect(page).not_to have_content("You can vote up to 3 options.")
+    end
+
+    context "when special requirements are not enforced" do
+      let(:enforce_special_requirements) { false }
+
+      it "does not show the special requirements" do
+        click_link "Vote"
+        expect(page).to have_css('[data-enforce-special-requirements="false"]')
+        expect(page).not_to have_css(".js-all-groups-not-answered")
+        expect(page).to have_css(".extra__suport-number")
+        expect(page).to have_content("You can vote up to 3 options.")
+      end
     end
   end
 

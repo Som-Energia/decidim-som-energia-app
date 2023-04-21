@@ -1,0 +1,11 @@
+<!-- replace_contents 'erb[silent]:contains("current_participatory_space.grouped_responses.each do |group, responses|")'
+     closing_selector 'erb[silent]:contains("end")' -->
+
+<%
+  classes = "column large-4 medium-6"
+  classes += " large-offset-4 medium-offset-3" unless current_participatory_space.grouped?
+  classes += " js-group-special-requirements" if current_question.enforce_special_requirements?
+%>
+<div class="<%= classes %>">
+  <%= render partial: "form", locals: { form: f, group: group, responses: responses } %>
+</div>

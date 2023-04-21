@@ -1,0 +1,7 @@
+<!-- replace 'erb[loud]:contains("url: decidim_consultations.question_question_multiple_votes_path(current_participatory_space)")' -->
+
+<%= decidim_form_for(@form,
+    url: decidim_consultations.question_question_multiple_votes_path(current_participatory_space),
+    method: :post,
+    data: {"enforce-special-requirements": current_question.enforce_special_requirements?},
+    html: { class: "form" }) do |f| %>
