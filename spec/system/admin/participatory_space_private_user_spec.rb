@@ -27,6 +27,23 @@ describe "Admin checks participatory space private users", type: :system do
 
     it "shows CAS User column" do
       expect(page).to have_selector("th", text: "CAS User")
+      within page.find(:xpath, "(//tbody/tr/td)[2]") do
+        expect(page).to have_content("No")
+      end
+    end
+
+    context "when user is CAS user" do
+      let(:setup) do
+        assembly_private_user
+        assembly_private_user.update(cas_user: true)
+      end
+
+      it "shows CAS User column" do
+        expect(page).to have_selector("th", text: "CAS User")
+        within page.find(:xpath, "(//tbody/tr/td)[2]") do
+          expect(page).to have_content("Yes")
+        end
+      end
     end
   end
 

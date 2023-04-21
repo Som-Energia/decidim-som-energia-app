@@ -7,17 +7,10 @@ require "rails_helper"
 # file should be updated to match any change/bug fix introduced in the core
 checksums = [
   {
-    package: "decidim-comments",
-    files: {
-      "/app/events/decidim/comments/comment_voted_event.rb" => "173d51cd6a783ba5ded3eb228ca03e0a"
-    }
-  },
-  {
     package: "decidim-core",
     files: {
       "/app/controllers/decidim/devise/invitations_controller.rb" => "679873eb1166db142625b9ce8283302c",
-      "/app/helpers/decidim/icon_helper.rb" => "952fac462893c32fbd367cea72be38cb",
-      "/app/views/layouts/decidim/mailer.html.erb" => "5bbe335c1dfd02f8448af287328a49dc"
+      "/app/views/layouts/decidim/mailer.html.erb" => "0c7804de08649c8d3c55c117005e51c9"
     }
   },
   {
@@ -30,14 +23,13 @@ checksums = [
   {
     package: "decidim-proposals",
     files: {
-      "/app/controllers/concerns/decidim/proposals/orderable.rb" => "066b6b777567297eefd80020468d4610",
-      "/app/controllers/decidim/proposals/proposals_controller.rb" => "c867dc602f0b73a2299d5e90677a54f4"
+      "/app/controllers/concerns/decidim/proposals/orderable.rb" => "a84b174d775817679beff36349d9d622",
+      "/app/controllers/decidim/proposals/proposals_controller.rb" => "81075a969be2732d21f244eff3c4c56e"
     }
   },
   {
     package: "decidim-meetings",
     files: {
-      "/app/views/decidim/meetings/registration_mailer/confirmation.html.erb" => "949b197162b9f57810a4d80715f3626d",
       # Meetings natural order, to remove when available as a feature of decidim
       "/app/controllers/decidim/meetings/meetings_controller.rb" => "d0bdba675f1e3df524ac7e834e3a5f37"
     }
@@ -69,7 +61,7 @@ checksums = [
   {
     package: "decidim-initiatives",
     files: {
-      "/app/controllers/decidim/initiatives/initiatives_controller.rb" => "a2c79d47e459d5bdd2c011491f2c2b1b",
+      "/app/controllers/decidim/initiatives/initiatives_controller.rb" => "3831df208c134612e97b09aa2bf57026",
       "/app/mailers/decidim/initiatives/initiatives_mailer.rb" => "435a4110f6bc5c8f37eebc36fae4d444",
       "/app/views/decidim/initiatives/initiatives_mailer/notify_creation.html.erb" => "5ce00a2d62b52b098bb8464e5bf5e16a",
       "/app/views/decidim/initiatives/initiatives_mailer/notify_state_change.html.erb" => "6472242f33e29183e08c2caefd5d6067"
@@ -87,7 +79,7 @@ checksums = [
       "/app/forms/decidim/admin/participatory_space_private_user_csv_import_form.rb" => "084389739c1500bac0606ea779247d11",
       # views
       "/app/views/decidim/admin/participatory_space_private_users/_form.html.erb" => "be3e6ce2ae14caee518d0def6091c9e0",
-      "/app/views/decidim/admin/participatory_space_private_users/index.html.erb" => "a2658de61e06a6536778e8193f3cc8b8"
+      "/app/views/decidim/admin/participatory_space_private_users/index.html.erb" => "b008555384e7a237895eb1d368080a0e"
     }
   },
   {
