@@ -51,6 +51,7 @@ Rails.application.config.to_prepare do
   Decidim::Assembly.include(SomEnergia::AssemblyOverride)
   # Participatory Processes alternative menu
   Decidim::ParticipatoryProcess.include(SomEnergia::ParticipatoryProcessOverride)
+  Decidim::ParticipatoryProcesses::ProcessFiltersCell.include(SomEnergia::ProcessFiltersCellOverride)
 
   # Creates a new menu next to Assemblies for every type configured
   AssembliesScoper.alternative_assembly_types.each do |item|

@@ -20,6 +20,12 @@ checksums = [
     }
   },
   {
+    package: "decidim-participatory_processes",
+    files: {
+      "/app/cells/decidim/participatory_processes/process_filter_cell.rb" => "76988d76b84d96079e6d9e1b252a3fda"
+    }
+  },
+  {
     package: "decidim-proposals",
     files: {
       "/app/controllers/concerns/decidim/proposals/orderable.rb" => "a84b174d775817679beff36349d9d622",
