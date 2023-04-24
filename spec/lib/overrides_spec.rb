@@ -22,7 +22,7 @@ checksums = [
   {
     package: "decidim-participatory_processes",
     files: {
-      "/app/cells/decidim/participatory_processes/process_filter_cell.rb" => "76988d76b84d96079e6d9e1b252a3fda"
+      "/app/cells/decidim/participatory_processes/process_filters_cell.rb" => "97e7a9256b2e7cd3f1eadfd79dfa770a"
     }
   },
   {
