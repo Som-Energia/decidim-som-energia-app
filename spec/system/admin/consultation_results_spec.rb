@@ -24,7 +24,7 @@ describe "Admin checks consultation results", type: :system do
       expect(page).to have_selector("th", text: "Total: 2 votes / 2 participants")
     end
   end
-  
+
   it "shows the table" do
     expect(page).to have_selector("table")
   end
@@ -39,7 +39,7 @@ describe "Admin checks consultation results", type: :system do
     let(:consultation) { create(:consultation, :published_results, :finished, organization: organization) }
 
     it_behaves_like "shows table headers"
-    
+
     it "shows simple results" do
       expect(page).to have_selector("td", text: response.title["en"])
       expect(page).to have_selector("td", text: another_response.title["en"])

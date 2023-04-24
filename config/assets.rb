@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 
 # If you want to do the same but include the SCSS file for the admin panel's
 # main SCSS file, you can use the following method.
