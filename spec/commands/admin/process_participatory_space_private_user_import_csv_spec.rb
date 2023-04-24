@@ -60,7 +60,7 @@ module Decidim::Admin
     end
 
     context "when importing has no emails" do
-      let(:file) { File.new File.expand_path(File.join(__dir__, "../fixtures/import_participatory_space_users_no_email.csv")) }
+      let(:file) { File.new File.expand_path(File.join(__dir__, "../../fixtures/import_participatory_space_users_no_email.csv")) }
 
       it "broadcasts invalid" do
         expect(subject.call).to broadcast(:invalid, ["La primera columna ha de contenir emails vàlids!"])
@@ -74,7 +74,7 @@ module Decidim::Admin
     end
 
     context "when importing has no users" do
-      let(:file) { File.new File.expand_path(File.join(__dir__, "../fixtures/import_participatory_space_users_no_email.csv")) }
+      let(:file) { File.new File.expand_path(File.join(__dir__, "../../fixtures/import_participatory_space_users_no_email.csv")) }
 
       it "broadcasts invalid" do
         expect(subject.call).to broadcast(:invalid, ["La primera columna ha de contenir emails vàlids!"])
@@ -88,7 +88,7 @@ module Decidim::Admin
     end
 
     context "when importing invalid emails" do
-      let(:file) { File.new File.expand_path(File.join(__dir__, "../fixtures/import_participatory_space_users_invalid_email.csv")) }
+      let(:file) { File.new File.expand_path(File.join(__dir__, "../../fixtures/import_participatory_space_users_invalid_email.csv")) }
 
       it "broadcasts ok" do
         expect(subject.call).to broadcast(:ok)

@@ -1,3 +1,0 @@
-<!--  replace 'erb[silent]:contains("question.responses.each do |response|")' -->
-
-<% question.responses.sort_by(&:weight).each do |response| %>
