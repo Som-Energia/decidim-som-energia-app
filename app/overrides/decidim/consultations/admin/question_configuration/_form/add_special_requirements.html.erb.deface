@@ -1,0 +1,7 @@
+<!-- insert_bottom '.card' -->
+
+<div class="card-section">
+  <div class="row column">
+    <%= form.check_box :enforce_special_requirements %>
+  </div>
+</div>

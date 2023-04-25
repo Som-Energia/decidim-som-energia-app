@@ -30,12 +30,3 @@ Files:
 
 - `app/views/decidim/assemblies/assemblies/show.html.erb`
 
-**Fix error on notifications**
-
-When the component of a notification is a comment with depth > 0, an error is raised because there is no `resource_manifest` nor `title` for a comment. The solution proposed is to dive into the comment with depth = 0 when the resource in an event is a comment.
-
-This override can be deleted once we update to decidim 0.25.
-
-Files:
-
-- `app/events/decidim/comments/comment_voted_event.rb`

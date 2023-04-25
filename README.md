@@ -75,8 +75,8 @@ For instance, imagine you have these assembly types:
 
 And these assemblies with these types assigned:
 
-- Assembly 1 (Assembly Type ID: 12)
-- Assembly 2 (Assembly Type ID: 17)
+- Assembly 1 (Governance, Assembly Type ID: 12)
+- Assembly 2 (Participation, Assembly Type ID: 17)
 - Assembly 3 (no Assembly Type assigned)
 
 And, finally, let's imagine we have configured that types "Participation (17)" and "Others (9)" should be in a different main menu than the normal "ASSEMBLIES", called for instance "PARTICIPATIVE ASSEMBLIES".

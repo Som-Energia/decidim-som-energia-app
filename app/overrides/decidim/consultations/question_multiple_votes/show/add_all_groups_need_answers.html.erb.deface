@@ -1,0 +1,5 @@
+<!-- insert_top '.large-offset-4.large-4.medium-offset-3.medium-6' -->
+
+<div class="alert hide js-all-groups-not-answered">
+  <%= t(".all_groups_need_answer") %>
+</div>

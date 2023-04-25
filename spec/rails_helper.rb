@@ -2,6 +2,8 @@
 
 # This file is copied to spec/ when you run 'rails generate rspec:install'
 require "spec_helper"
+require "simplecov"
+SimpleCov.start "rails"
 ENV["RAILS_ENV"] ||= "test"
 
 require File.expand_path("../config/environment", __dir__)
@@ -73,8 +75,8 @@ RSpec.configure do |config|
 
   # Make :en locale available in tests.
   config.before do
-    available_locales = Decidim.available_locales + [:en]
-    default_locale = :en
+    available_locales = %w(en ca es gl)
+    default_locale = "en"
 
     I18n.available_locales = available_locales
     I18n.default_locale = default_locale

@@ -7,6 +7,10 @@ es:
       response:
         title: Título
         weight: Orden
+  layouts:
+    decidim:
+      question_components:
+        unfold: Desplegar
   decidim:
     admin:
       participatory_space_private_users:

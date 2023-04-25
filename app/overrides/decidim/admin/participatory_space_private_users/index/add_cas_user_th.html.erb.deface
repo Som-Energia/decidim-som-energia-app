@@ -1,0 +1,3 @@
+<!-- insert_after '.stack thead th[1]' -->
+
+<th><%= t("participatory_space_private_users.form.cas_user", scope: "decidim.admin") %></th>
