@@ -720,6 +720,8 @@ GEM
       wisper (>= 1.6.1)
     redcarpet (3.6.0)
     redis (4.8.1)
+    redis-client (0.14.1)
+      connection_pool
     regexp_parser (2.8.0)
     request_store (1.5.1)
       rack (>= 1.4)
@@ -805,13 +807,15 @@ GEM
       rubyzip (>= 1.2.2)
     semantic_range (3.0.0)
     seven_zip_ruby (1.3.0)
-    sidekiq (6.5.8)
-      connection_pool (>= 2.2.5, < 3)
-      rack (~> 2.0)
-      redis (>= 4.5.0, < 5)
-    sidekiq-cron (1.6.0)
-      fugit (~> 1)
-      sidekiq (>= 4.2.1)
+    sidekiq (7.0.9)
+      concurrent-ruby (< 2)
+      connection_pool (>= 2.3.0)
+      rack (>= 2.2.4)
+      redis-client (>= 0.11.0)
+    sidekiq-cron (1.10.0)
+      fugit (~> 1.8)
+      globalid (>= 1.0.1)
+      sidekiq (>= 6)
     simplecov (0.19.1)
       docile (~> 1.1)
       simplecov-html (~> 0.11)
@@ -935,8 +939,8 @@ DEPENDENCIES
   puma (>= 5.3.1)
   rails-controller-testing
   rubocop-faker
-  sidekiq (~> 6.0)
-  sidekiq-cron (~> 1.6.0)
+  sidekiq
+  sidekiq-cron
   spring (>= 4.0.0)
   spring-watcher-listen (~> 2.1)
   web-console (~> 4.2)
