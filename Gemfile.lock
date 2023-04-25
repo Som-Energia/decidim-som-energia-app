@@ -927,6 +927,7 @@ DEPENDENCIES
   decidim-dev (= 0.26.5)
   decidim-initiatives (= 0.26.5)
   decidim-reporting_proposals
+  decidim-templates (= 0.26.5)
   decidim-term_customizer!
   deface
   faker (~> 2.14)

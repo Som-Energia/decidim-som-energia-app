@@ -8,6 +8,7 @@ DECIDIM_VERSION = "0.26.5"
 
 gem "codit-devise-cas-authenticable", git: "https://github.com/Som-Energia/codit-devise-cas-authenticable.git"
 gem "decidim", DECIDIM_VERSION
+gem "decidim-templates", DECIDIM_VERSION
 gem "decidim-cas_client", git: "https://github.com/Som-Energia/decidim-cas-client.git"
 gem "decidim-consultations", DECIDIM_VERSION
 gem "decidim-initiatives", DECIDIM_VERSION
