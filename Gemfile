@@ -6,10 +6,10 @@ ruby RUBY_VERSION
 
 DECIDIM_VERSION = "0.26.5"
 
-gem "codit-devise-cas-authenticable", git: "https://github.com/Som-Energia/codit-devise-cas-authenticable.git"
+gem "codit-devise-cas-authenticable", github: "Som-Energia/codit-devise-cas-authenticable"
 gem "decidim", DECIDIM_VERSION
 gem "decidim-templates", DECIDIM_VERSION
-gem "decidim-cas_client", git: "https://github.com/Som-Energia/decidim-cas-client.git"
+gem "decidim-cas_client", github: "Som-Energia/decidim-cas-client"
 gem "decidim-consultations", DECIDIM_VERSION
 gem "decidim-initiatives", DECIDIM_VERSION
 
@@ -18,7 +18,7 @@ gem "decidim-term_customizer", github: "mainio/decidim-module-term_customizer", 
 
 # Usability and UX tweaks for Decidim.
 gem "decidim-action_delegator", github: "coopdevs/decidim-module-action_delegator", branch: "develop"
-gem "decidim-decidim_awesome"
+gem "decidim-decidim_awesome", github: "decidim-ice/decidim-module-decidim_awesome"
 gem "decidim-reporting_proposals", github: "openpoke/decidim-module-reporting-proposals"
 
 gem "bootsnap", "~> 1.7"
