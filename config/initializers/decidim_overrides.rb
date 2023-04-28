@@ -17,6 +17,16 @@ Decidim.menu :menu do |menu|
   end
 end
 
+if ENV.fetch("ADMIN_IFRAME_URL", nil).present?
+  Decidim.menu :admin_menu do |menu|
+    menu.add_item :custom_iframe,
+                  "Estadísques web",
+                  Rails.application.routes.url_helpers.admin_iframe_index_path,
+                  icon_name: "pie-chart",
+                  position: 10
+  end
+end
+
 # this middleware will detect by the URL if all calls to Assembly need to skip (or include) certain types
 Rails.configuration.middleware.use AssembliesScoper
 Rails.configuration.middleware.use ParticipatoryProcessesScoper
