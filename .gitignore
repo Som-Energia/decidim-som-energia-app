@@ -41,7 +41,6 @@ decidim_dummy_app
 /public/packs
 /public/packs-test
 /public/decidim-packs
-/public/sw.js*
 /node_modules
 /yarn-error.log
 yarn-debug.log*

@@ -1,10 +1,9 @@
 .question-masonry-group {
-
-  @include breakpoint(map-get($breakpoints, medium)){
+  @include breakpoint(map-get($breakpoints, medium)) {
     column-count: 2;
   }
 
-  @include breakpoint(map-get($breakpoints, large)){
+  @include breakpoint(map-get($breakpoints, large)) {
     column-count: 2;
   }
 }

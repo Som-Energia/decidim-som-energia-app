@@ -1,6 +1,19 @@
 {
   "name": "app",
   "private": true,
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "eslint -c .eslintrc.json --ext .js app/packs/",
+    "lint-fix": "eslint -c .eslintrc.json --ext .js app/packs/ --fix",
+    "stylelint": "stylelint **/*.scss",
+    "stylelint-fix": "stylelint **/*.scss --fix"
+  },
+  "stylelint": {
+    "extends": "@decidim/stylelint-config",
+    "rules": {
+      "block-opening-brace-space-before": "always"
+    }
+  },
   "dependencies": {
     "@decidim/browserslist-config": "^0.26.5",
     "@decidim/core": "^0.26.5",

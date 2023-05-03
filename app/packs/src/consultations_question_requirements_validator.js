@@ -28,20 +28,20 @@ document.addEventListener("DOMContentLoaded", () => {
 
       inputs.forEach(function(input) {
         let radioGroupName = input.getAttribute("name");
-        let radioGroup = "input[type='radio'][name='" + radioGroupName + "']:checked";
+        let radioGroup = `input[type='radio'][name='${radioGroupName}']:checked`;
         let group = input.closest(".js-card-grouped-response");
 
-        if (!document.querySelector(radioGroup)) {
-          group.classList.remove("a-form-success");
-          group.classList.add("js-group-not-answered");
-        } else {
+        if (document.querySelector(radioGroup)) {
           group.classList.add("a-form-success");
           group.classList.remove("js-group-not-answered");
+        } else {
+          group.classList.remove("a-form-success");
+          group.classList.add("js-group-not-answered");
         }
       });
 
       // If there are no groups that still need an answer, enable the submit button
-      if (groupNeedAnswer().length == 0) {
+      if (groupNeedAnswer().length === 0) {
         enableSubmitBtn();
       } else {
         disableSubmitBtn();
@@ -50,18 +50,16 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Validate groups when a radio button is clicked
     form.querySelectorAll("input[type='radio']").forEach(function(input) {
-      input.addEventListener("click", function(ev) {
-        validateGroups();
-      });
+      input.addEventListener("click", validateGroups);
     });
 
     // Initial validation
     validateGroups();
 
     // Check if any groups still need an answer when the submit button is clicked
-    submitButton.addEventListener("click", function(ev) {
-      let groupNeedAnswer = document.querySelectorAll(".js-card-grouped-response.js-group-not-answered");
-      if (groupNeedAnswer.length > 0) {
+    submitButton.addEventListener("click", (ev) => {
+      let groupNotAnswered = document.querySelectorAll(".js-card-grouped-response.js-group-not-answered");
+      if (groupNotAnswered.length > 0) {
         ev.stopImmediatePropagation();
         ev.preventDefault();
       }

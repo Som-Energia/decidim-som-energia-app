@@ -1,18 +1,16 @@
-document.addEventListener('DOMContentLoaded', function() {
-  bindCasClientRoutes();
-});
+const bindCasClientRoutes = () => {
+  let locale = document.documentElement.getAttribute("lang") || "es";
 
-function bindCasClientRoutes(){
-  var locale = document.documentElement.getAttribute('lang') || 'es';
-
-  document.addEventListener('click', function(e) {
-    if (e.target.matches('a[href*="/users/sign_in"], a[href*="/users/sign_up"]')) {
-      e.preventDefault();
-      window.location.href = '/users/cas/sign_in?locale=' + locale;
+  document.addEventListener("click", (evt) => {
+    if (evt.target.matches('a[href*="/users/sign_in"], a[href*="/users/sign_up"]')) {
+      evt.preventDefault();
+      window.location.href = `/users/cas/sign_in?locale=${locale}`;
     }
   });
-  var sign_out = document.querySelector('a[href*="/users/sign_out"]')
-  if (sign_out) {
-    sign_out.setAttribute('href', '/users/cas/sign_out?locale=' + locale);
+  let signOut = document.querySelector('a[href*="/users/sign_out"]')
+  if (signOut) {
+    signOut.setAttribute("href", `/users/cas/sign_out?locale=${locale}`);
   }
 }
+
+document.addEventListener("DOMContentLoaded", bindCasClientRoutes);
