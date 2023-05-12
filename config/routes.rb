@@ -9,6 +9,11 @@ Rails.application.routes.draw do
   end
   mount LetterOpenerWeb::Engine, at: "/letter_opener" if Rails.env.development?
 
+  # manual logout via GET petition
+  devise_scope :user do
+    get "/logout", to: "decidim/devise/sessions#destroy", as: :logout
+  end
+
   namespace :admin do
     resources :iframe, only: [:index]
   end

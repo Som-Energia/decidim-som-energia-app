@@ -4,14 +4,14 @@ source "https://rubygems.org"
 
 ruby RUBY_VERSION
 
-DECIDIM_VERSION = { github: "decidim/decidim", branch: "release/0.26-stable" }
+DECIDIM_VERSION = { github: "decidim/decidim", branch: "release/0.26-stable" }.freeze
 
 gem "codit-devise-cas-authenticable", github: "Som-Energia/codit-devise-cas-authenticable"
 gem "decidim", DECIDIM_VERSION
-gem "decidim-templates", DECIDIM_VERSION
 gem "decidim-cas_client", github: "Som-Energia/decidim-cas-client"
 gem "decidim-consultations", DECIDIM_VERSION
 gem "decidim-initiatives", DECIDIM_VERSION
+gem "decidim-templates", DECIDIM_VERSION
 
 # A Decidim module to customize the localized terms in the system.
 gem "decidim-term_customizer", github: "mainio/decidim-module-term_customizer", branch: "release/0.26-stable"
