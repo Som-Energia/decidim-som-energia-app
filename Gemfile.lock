@@ -16,19 +16,6 @@ GIT
       decidim-verifications (>= 0.25.0, < 0.28)
 
 GIT
-  remote: https://github.com/coopdevs/decidim-module-action_delegator.git
-  revision: 8878eb35e56261045f2b635613cd5cdb88858d55
-  branch: develop
-  specs:
-    decidim-action_delegator (0.7.0)
-      decidim-admin (>= 0.26.0, < 0.27)
-      decidim-consultations (>= 0.26.0, < 0.27)
-      decidim-core (>= 0.26.0, < 0.27)
-      deface (>= 1.9)
-      savon
-      twilio-ruby
-
-GIT
   remote: https://github.com/decidim-ice/decidim-module-decidim_awesome.git
   revision: 016ab767f6b60eef1632c1a9839e2b1e25924115
   specs:
@@ -236,7 +223,7 @@ GIT
 
 GIT
   remote: https://github.com/openpoke/decidim-module-reporting-proposals.git
-  revision: eae8d19661cea2f67545a15ab3269ce40f0a0150
+  revision: fba63bc847d702f996e1683a092696d34bd16639
   specs:
     decidim-reporting_proposals (0.4.1)
       decidim-admin (>= 0.25.0, < 0.27)
@@ -316,7 +303,7 @@ GEM
       nokogiri
     ast (2.4.2)
     aws-eventstream (1.2.0)
-    aws-partitions (1.764.0)
+    aws-partitions (1.765.0)
     aws-sdk-core (3.172.0)
       aws-eventstream (~> 1, >= 1.0.2)
       aws-partitions (~> 1, >= 1.651.0)
@@ -415,6 +402,13 @@ GEM
     db-query-matchers (0.10.0)
       activesupport (>= 4.0, < 7)
       rspec (~> 3.0)
+    decidim-action_delegator (0.7.0)
+      decidim-admin (>= 0.26.0, < 0.27)
+      decidim-consultations (>= 0.26.0, < 0.27)
+      decidim-core (>= 0.26.0, < 0.27)
+      deface (>= 1.9)
+      savon
+      twilio-ruby
     declarative-builder (0.1.0)
       declarative-option (< 0.2.0)
     declarative-option (0.1.0)
@@ -933,7 +927,7 @@ DEPENDENCIES
   byebug (~> 11.0)
   codit-devise-cas-authenticable!
   decidim!
-  decidim-action_delegator!
+  decidim-action_delegator (~> 0.7.0)
   decidim-cas_client!
   decidim-consultations!
   decidim-decidim_awesome!
