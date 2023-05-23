@@ -8,7 +8,7 @@ GIT
 
 GIT
   remote: https://github.com/Som-Energia/decidim-cas-client.git
-  revision: 2eda2ababc508453091b70d10bf2e4df5cf4abf4
+  revision: 71e2828cb20a52b1ecf68457fe6ba5c9e4cf8651
   specs:
     decidim-cas_client (0.3.0)
       codit-devise-cas-authenticable
@@ -17,7 +17,7 @@ GIT
 
 GIT
   remote: https://github.com/decidim-ice/decidim-module-decidim_awesome.git
-  revision: 016ab767f6b60eef1632c1a9839e2b1e25924115
+  revision: 78cc71a447ca04f71a577f3a2e62c33be045f6bd
   specs:
     decidim-decidim_awesome (0.9.1)
       decidim-admin (>= 0.26.0, < 0.28)
@@ -303,8 +303,8 @@ GEM
       nokogiri
     ast (2.4.2)
     aws-eventstream (1.2.0)
-    aws-partitions (1.765.0)
-    aws-sdk-core (3.172.0)
+    aws-partitions (1.767.0)
+    aws-sdk-core (3.173.0)
       aws-eventstream (~> 1, >= 1.0.2)
       aws-partitions (~> 1, >= 1.651.0)
       aws-sigv4 (~> 1.5)
@@ -389,7 +389,7 @@ GEM
     coffee-script-source (1.12.2)
     colorize (0.8.1)
     concurrent-ruby (1.2.2)
-    connection_pool (2.4.0)
+    connection_pool (2.4.1)
     crack (0.4.5)
       rexml
     crass (1.0.6)
@@ -402,7 +402,7 @@ GEM
     db-query-matchers (0.10.0)
       activesupport (>= 4.0, < 7)
       rspec (~> 3.0)
-    decidim-action_delegator (0.7.1)
+    decidim-action_delegator (0.7.2)
       decidim-admin (>= 0.26.0, < 0.27)
       decidim-consultations (>= 0.26.0, < 0.27)
       decidim-core (>= 0.26.0, < 0.27)
@@ -582,7 +582,7 @@ GEM
       tomlrb
     mixlib-shellout (3.2.7)
       chef-utils
-    msgpack (1.7.0)
+    msgpack (1.7.1)
     multi_xml (0.6.0)
     mustache (1.1.1)
     net-imap (0.3.4)
@@ -855,7 +855,7 @@ GEM
     tilt (2.1.0)
     timeout (0.3.2)
     tomlrb (2.0.3)
-    twilio-ruby (6.0.0)
+    twilio-ruby (6.0.1)
       faraday (>= 0.9, < 3.0)
       jwt (>= 1.5, < 3.0)
       nokogiri (>= 1.6, < 2.0)

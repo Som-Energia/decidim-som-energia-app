@@ -22,7 +22,7 @@ checksums = [
   {
     package: "decidim-participatory_processes",
     files: {
-      "/app/cells/decidim/participatory_processes/process_filters_cell.rb" => "97e7a9256b2e7cd3f1eadfd79dfa770a"
+      "/app/cells/decidim/participatory_processes/process_filters_cell.rb" => "832200340aea29f8ef6bdd578367a8b2"
     }
   },
   {
@@ -45,7 +45,7 @@ checksums = [
       # not directly manipulated but worth taking a look if anythign changes
       "/app/controllers/decidim/consultations/consultations_controller.rb" => "3d75aa7d00721dc3d91aca131d348362",
       "/app/controllers/decidim/consultations/questions_controller.rb" => "1b7ec4c7265caccd47f9dc9be08498a9",
-      "/app/views/decidim/consultations/consultations/_question.html.erb" => "21b19519b1f249c27a536fbd1b49d619",
+      "/app/views/decidim/consultations/consultations/_question.html.erb" => "2d02835e2a1538cd7f6db698e302a29b",
       "/app/helpers/decidim/consultations/consultations_helper.rb" => "bb921ed6da446b9544b81c9f9f9a7574",
       "/app/forms/decidim/consultations/admin/question_configuration_form.rb" => "fd988f15b1242e582cc7d0cc8d3d1d2e",
       "/app/commands/decidim/consultations/admin/update_question_configuration.rb" => "34beed38a9eb629498dca31b59598302",
@@ -56,18 +56,18 @@ checksums = [
       "/app/commands/decidim/consultations/admin/update_response.rb" => "5e09376f773c0ac062c77767c872cd41",
       "/app/views/decidim/consultations/question_multiple_votes/_form.html.erb" => "af610283ce7ee20f5ef786228a263d4a",
       # modified
-      "/app/views/decidim/consultations/admin/question_configuration/_form.html.erb" => "bca0b383e5eac51414cc5c3347fc8227",
+      "/app/views/decidim/consultations/admin/question_configuration/_form.html.erb" => "e1ab4e8e5cc988f60f2bfe5e4be0a9f4",
       "/app/views/decidim/consultations/admin/consultations/results.html.erb" => "1a2f7afd79b20b1fcf66bdece660e8ae",
       "/app/views/decidim/consultations/question_multiple_votes/_voting_rules.html.erb" => "207a85b27ee044bd6f5fa79e4ba9dce9",
-      "/app/views/decidim/consultations/questions/show.html.erb" => "db9cbbd5933b17bce7ff93b1ff9ddfb7",
-      "/app/views/decidim/consultations/questions/_vote_modal.html.erb" => "ae7c38afcc6588a00f8298ea69769da7",
+      "/app/views/decidim/consultations/questions/show.html.erb" => "064ca475f26eeca7c6931773675780d1",
+      "/app/views/decidim/consultations/questions/_vote_modal.html.erb" => "bb4b10e9278cffd8d0d4eb57f5197a89",
       "/app/views/decidim/consultations/questions/_results.html.erb" => "2d8196efbf23e2ad7b8c32713c28b240"
     }
   },
   {
     package: "decidim-initiatives",
     files: {
-      "/app/controllers/decidim/initiatives/initiatives_controller.rb" => "3831df208c134612e97b09aa2bf57026",
+      "/app/controllers/decidim/initiatives/initiatives_controller.rb" => "088ae0aa3bbf5b92a0a242bc7ba1643e",
       "/app/mailers/decidim/initiatives/initiatives_mailer.rb" => "435a4110f6bc5c8f37eebc36fae4d444",
       "/app/views/decidim/initiatives/initiatives_mailer/notify_creation.html.erb" => "bd034b59170bb4df53856510d2a4bb56",
       "/app/views/decidim/initiatives/initiatives_mailer/notify_state_change.html.erb" => "6472242f33e29183e08c2caefd5d6067"

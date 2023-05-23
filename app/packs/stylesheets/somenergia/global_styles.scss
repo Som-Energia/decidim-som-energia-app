@@ -8,11 +8,10 @@ $color_2: #ef0808;
 $color_3: #5b5b5f;
 $color_4: white;
 $color_5: #39a935;
-$color_6: #fff;
-$color_7: #6c7519;
-$color_8: #2c2930;
-$color_9: #1a181d;
-$color_10: #585858;
+$color_6: #6c7519;
+$color_7: #2c2930;
+$color_8: #1a181d;
+$color_9: #585858;
 $background-color_1: #b2bf26;
 $background-color_2: #bbc82a;
 $background-color_3: #707a1a;
@@ -75,7 +74,7 @@ h3,
           border-top-color: $border-top-color_2 !important;
         }
 
-        color: $color_10;
+        color: $color_9;
       }
     }
   }
@@ -84,7 +83,6 @@ h3,
     li {
       a {
         color: $color_1 !important;
-        color: $color_7;
       }
     }
   }
@@ -153,7 +151,7 @@ main#content {
 
 .process-nav__link {
   font-weight: 600 !important;
-  color: $color_7;
+  color: $color_6;
   font-size: .8em;
 }
 
@@ -196,7 +194,7 @@ h2#process_title {
 
 .label.success {
   background: #39a935;
-  color: $color_6;
+  color: $color_4;
 }
 
 .progress__bar {
@@ -211,12 +209,16 @@ h2#process_title {
 
 a {
   color: $color_1 !important;
-  color: $color_7;
 
   &:hover,
   &:focus {
-    color: $color_8;
+    color: $color_7;
   }
+}
+
+a.consultations-header__link,
+.text-highlight a {
+  color: $color_4 !important;
 }
 
 .topbar__edit__link {
@@ -225,7 +227,7 @@ a {
 
     &:hover,
     &:focus {
-      color: $color_8;
+      color: $color_7;
     }
   }
 }
@@ -235,7 +237,7 @@ a {
 
   &:hover,
   &:focus {
-    color: $color_8;
+    color: $color_7;
   }
 }
 
@@ -312,12 +314,12 @@ a {
 
 .title-bar {
   background-color: $background-color_8;
-  color: $color_9;
+  color: $color_8;
 }
 
 .topbar__user__login {
   a {
-    color: $color_10;
+    color: $color_9;
   }
 }
 
