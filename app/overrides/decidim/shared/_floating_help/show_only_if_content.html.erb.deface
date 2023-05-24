@@ -1,5 +1,5 @@
 <!-- surround '.floating-helper-container' -->
 
-<% if content.present? %>
+<% if sanitize(content, tags: [:img]).present? %>
   <%= render_original %>
 <% end %>
