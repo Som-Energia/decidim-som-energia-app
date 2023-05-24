@@ -1,0 +1,5 @@
+<!-- surround '.floating-helper-container' -->
+
+<% if content.present? %>
+  <%= render_original %>
+<% end %>
