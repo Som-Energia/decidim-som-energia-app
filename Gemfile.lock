@@ -8,7 +8,7 @@ GIT
 
 GIT
   remote: https://github.com/Som-Energia/decidim-cas-client.git
-  revision: 71e2828cb20a52b1ecf68457fe6ba5c9e4cf8651
+  revision: fc0c031d8c1a1a8b61c9d8dd7ec7ea9e37e3ff68
   specs:
     decidim-cas_client (0.3.0)
       codit-devise-cas-authenticable
@@ -303,7 +303,7 @@ GEM
       nokogiri
     ast (2.4.2)
     aws-eventstream (1.2.0)
-    aws-partitions (1.767.0)
+    aws-partitions (1.768.0)
     aws-sdk-core (3.173.0)
       aws-eventstream (~> 1, >= 1.0.2)
       aws-partitions (~> 1, >= 1.651.0)
@@ -464,7 +464,7 @@ GEM
       railties (>= 3.0.0)
     faker (2.23.0)
       i18n (>= 1.8.11, < 2)
-    faraday (2.7.4)
+    faraday (2.7.5)
       faraday-net_http (>= 2.0, < 3.1)
       ruby2_keywords (>= 0.0.4)
     faraday-net_http (3.0.2)
