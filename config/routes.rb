@@ -16,6 +16,7 @@ Rails.application.routes.draw do
 
   namespace :admin do
     resources :iframe, only: [:index]
+    resources :cas_users, only: [:new, :create]
   end
 
   mount Decidim::Core::Engine => "/"

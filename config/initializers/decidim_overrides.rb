@@ -27,6 +27,14 @@ if ENV.fetch("ADMIN_IFRAME_URL", nil).present?
   end
 end
 
+Decidim.menu :admin_user_menu do |menu|
+  menu.add_item :cas_users,
+                "Registra una usuaria socia", Rails.application.routes.url_helpers.new_admin_cas_user_path,
+                active: is_active_link?(Rails.application.routes.url_helpers.new_admin_cas_user_path),
+                if: allowed_to?(:read, :admin_user),
+                position: 9
+end
+
 # this middleware will detect by the URL if all calls to Assembly need to skip (or include) certain types
 Rails.configuration.middleware.use AssembliesScoper
 Rails.configuration.middleware.use ParticipatoryProcessesScoper
