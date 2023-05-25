@@ -32,10 +32,10 @@ module Admin
         return redirect_to new_admin_cas_user_path
       end
 
-      if Decidim::User.exists?(organization: current_organization, email: data[:email])
-        flash[:alert] = "L'email ja existeix!"
-        return redirect_to new_admin_cas_user_path
-      end
+      # if Decidim::User.exists?(organization: current_organization, email: data[:email])
+      #   flash[:alert] = "L'email ja existeix!"
+      #   return redirect_to new_admin_cas_user_path
+      # end
 
       if Decidim::User.exists?(organization: current_organization, username: data[:username])
         flash[:alert] = "El DNI ja està registrat!"
