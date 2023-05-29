@@ -17,14 +17,13 @@ Decidim.menu :menu do |menu|
   end
 end
 
-if ENV.fetch("ADMIN_IFRAME_URL", nil).present?
-  Decidim.menu :admin_menu do |menu|
-    menu.add_item :custom_iframe,
-                  "Estadísques web",
-                  Rails.application.routes.url_helpers.admin_iframe_index_path,
-                  icon_name: "pie-chart",
-                  position: 10
-  end
+Decidim.menu :admin_menu do |menu|
+  menu.add_item :custom_iframe,
+                "Estadísques web",
+                Rails.application.routes.url_helpers.admin_iframe_index_path,
+                icon_name: "pie-chart",
+                position: 10,
+                if: ENV.fetch("#{current_organization.host.split(".").first.upcase}_ANALYTICS_URL", nil).present?
 end
 
 Decidim.menu :admin_user_menu do |menu|
