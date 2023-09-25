@@ -1,4 +1,4 @@
-FROM ruby:2.7 AS builder
+FROM ruby:3.0 AS builder
 
 RUN apt-get update && apt-get upgrade -y && apt-get install gnupg2 && \
     curl -sL https://deb.nodesource.com/setup_16.x | bash - && \
@@ -76,7 +76,7 @@ RUN mv config/credentials.bak config/credentials 2>/dev/null || true
 RUN rm -rf node_modules tmp/cache vendor/bundle test spec app/packs .git
 
 # This image is for production env only
-FROM ruby:2.7-slim AS final
+FROM ruby:3.0-slim AS final
 
 RUN apt-get update && \
     apt-get install -y postgresql-client \
@@ -107,7 +107,7 @@ RUN addgroup --system --gid 1000 app && \
 
 WORKDIR /app
 COPY ./entrypoint.sh /app/entrypoint.sh
-COPY ./supervisord.conf /etc/supervisord.conf 
+COPY ./supervisord.conf /etc/supervisord.conf
 COPY --from=builder --chown=app:app /usr/local/bundle/ /usr/local/bundle/
 COPY --from=builder --chown=app:app /app /app
 

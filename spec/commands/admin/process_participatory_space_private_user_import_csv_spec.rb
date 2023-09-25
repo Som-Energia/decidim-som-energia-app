@@ -9,8 +9,7 @@ module Decidim::Admin
     let(:current_user) { create(:user, :admin, organization: organization) }
     let(:organization) { create(:organization) }
     let(:private_users_to) { create :participatory_process, organization: organization }
-    let(:file) { File.new Decidim::Dev.asset("import_participatory_space_private_users.csv") }
-
+    let(:file) { Rack::Test::UploadedFile.new(Decidim::Dev.asset("import_participatory_space_private_users.csv"), "text/csv") }
     let(:form) { ParticipatorySpacePrivateUserCsvImportForm.from_params(attributes) }
     let(:attributes) do
       {
@@ -35,7 +34,7 @@ module Decidim::Admin
     end
 
     context "when the CSV file has BOM" do
-      let(:file) { File.new Decidim::Dev.asset("import_participatory_space_private_users_with_bom.csv") }
+      let(:file) { Rack::Test::UploadedFile.new(Decidim::Dev.asset("import_participatory_space_private_users_with_bom.csv"), "text/csv") }
       let(:email) { "my_user@example.org" }
 
       it "broadcasts ok" do
@@ -60,7 +59,7 @@ module Decidim::Admin
     end
 
     context "when importing has no emails" do
-      let(:file) { File.new File.expand_path(File.join(__dir__, "../../fixtures/import_participatory_space_users_no_email.csv")) }
+      let(:file) { Rack::Test::UploadedFile.new(Rails.root.join("spec/fixtures/import_participatory_space_users_no_email.csv"), "text/csv") }
 
       it "broadcasts invalid" do
         expect(subject.call).to broadcast(:invalid, ["La primera columna ha de contenir emails vàlids!"])
@@ -74,7 +73,7 @@ module Decidim::Admin
     end
 
     context "when importing has no users" do
-      let(:file) { File.new File.expand_path(File.join(__dir__, "../../fixtures/import_participatory_space_users_no_email.csv")) }
+      let(:file) { Rack::Test::UploadedFile.new(Rails.root.join("spec/fixtures/import_participatory_space_users_no_email.csv"), "text/csv") }
 
       it "broadcasts invalid" do
         expect(subject.call).to broadcast(:invalid, ["La primera columna ha de contenir emails vàlids!"])
@@ -88,7 +87,7 @@ module Decidim::Admin
     end
 
     context "when importing invalid emails" do
-      let(:file) { File.new File.expand_path(File.join(__dir__, "../../fixtures/import_participatory_space_users_invalid_email.csv")) }
+      let(:file) { Rack::Test::UploadedFile.new(Rails.root.join("spec/fixtures/import_participatory_space_users_invalid_email.csv"), "text/csv") }
 
       it "broadcasts ok" do
         expect(subject.call).to broadcast(:ok)
@@ -102,7 +101,7 @@ module Decidim::Admin
     end
 
     context "when importing invalid users" do
-      let(:file) { File.new Decidim::Dev.asset("import_participatory_space_private_users_nok.csv") }
+      let(:file) { Rack::Test::UploadedFile.new(Decidim::Dev.asset("import_participatory_space_private_users_nok.csv"), "text/csv") }
 
       it "broadcasts ok" do
         expect(subject.call).to broadcast(:ok)
