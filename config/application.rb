@@ -11,22 +11,15 @@ require "rails/test_unit/railtie"
 # require "action_text/engine"
 require_relative "../app/middleware/assemblies_scoper"
 require_relative "../app/middleware/participatory_processes_scoper"
-require_relative "../lib/decidim/env"
 
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
 
-module Decidim
-  def self.module_installed?(mod)
-    Gem.loaded_specs.has_key?("decidim-#{mod}")
-  end
-end
-
 module DecidimSomenergiaApp
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
-    config.load_defaults 5.2
+    config.load_defaults 6.1
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
