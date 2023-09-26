@@ -32,15 +32,15 @@ module Decidim::Consultations
 
     context "when there are multiple consultations" do
       let(:scope) { create(:scope, organization: organization) }
-      let!(:consultation_1) { create(:consultation, organization: organization, published_at: 2.days.ago) }
-      let!(:consultation_2) { create(:consultation, organization: organization, highlighted_scope: scope, published_at: 1.day.ago) }
+      let!(:consultation_one) { create(:consultation, organization: organization, published_at: 2.days.ago) }
+      let!(:consultation_two) { create(:consultation, organization: organization, highlighted_scope: scope, published_at: 1.day.ago) }
 
       it "can access the index, ordered by recent" do
         get :index
 
         expect(subject).to render_template(:index)
 
-        expect(controller.helpers.consultations).to eq([consultation_2, consultation_1])
+        expect(controller.helpers.consultations).to eq([consultation_two, consultation_one])
         expect(controller.send(:default_order)).to eq("recent")
         expect(controller.send(:available_orders)).to eq(%w(recent random))
       end
@@ -51,7 +51,7 @@ module Decidim::Consultations
 
           expect(subject).to render_template(:index)
 
-          expect(controller.helpers.consultations).to match_array([consultation_2])
+          expect(controller.helpers.consultations).to match_array([consultation_two])
         end
       end
     end

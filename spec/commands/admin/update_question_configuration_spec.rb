@@ -36,7 +36,7 @@ module Decidim::Consultations::Admin
         question.reload
 
         expect(question.min_votes).to eq(3)
-        expect(question.enforce_special_requirements).to eq(true)
+        expect(question.enforce_special_requirements).to be(true)
       end
     end
 
@@ -48,7 +48,7 @@ module Decidim::Consultations::Admin
         question.reload
 
         expect(question.min_votes).to eq(3)
-        expect(question.enforce_special_requirements).to eq(false)
+        expect(question.enforce_special_requirements).to be(false)
       end
     end
 

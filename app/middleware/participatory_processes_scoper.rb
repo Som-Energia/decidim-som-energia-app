@@ -86,7 +86,7 @@ class ParticipatoryProcessesScoper
   end
 
   def out_of_scope?
-    scoped_slug_prefixes.blank? || request_slug && @current_participatory_process.blank?
+    scoped_slug_prefixes.blank? || (request_slug && @current_participatory_process.blank?)
   end
 
   def find_alternative_namespace
