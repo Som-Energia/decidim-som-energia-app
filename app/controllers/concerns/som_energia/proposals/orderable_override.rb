@@ -29,12 +29,10 @@ module SomEnergia
         end
 
         def alternative_process?
-          @alternative_process ||= begin
-            return unless current_participatory_space.manifest.name == :participatory_processes
-
-            scoped_slug_prefixes = ParticipatoryProcessesScoper.scoped_participatory_process_slug_prefixes.map { |item| item[:slug_prefixes] }.flatten
-            scoped_slug_prefixes.detect { |prefix| current_participatory_space.slug.starts_with?(prefix) }
-          end
+          @alternative_process ||= if current_participatory_space.manifest.name == :participatory_processes
+                                     scoped_slug_prefixes = ParticipatoryProcessesScoper.scoped_participatory_process_slug_prefixes.map { |item| item[:slug_prefixes] }.flatten
+                                     scoped_slug_prefixes.detect { |prefix| current_participatory_space.slug.starts_with?(prefix) }
+                                   end
         end
 
         def default_order

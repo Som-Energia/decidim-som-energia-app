@@ -13,7 +13,7 @@ module Decidim
     it "assemblies have types assigned" do
       expect(assembly1.decidim_assemblies_type_id).to eq(type1.id)
       expect(assembly2.decidim_assemblies_type_id).to eq(type2.id)
-      expect(assembly3.decidim_assemblies_type_id).to eq(nil)
+      expect(assembly3.decidim_assemblies_type_id).to be_nil
     end
 
     context "when no scope types" do

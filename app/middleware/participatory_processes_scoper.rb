@@ -58,8 +58,7 @@ class ParticipatoryProcessesScoper
     @scoped_slug_prefixes ||=
       ParticipatoryProcessesScoper
       .scoped_participatory_process_slug_prefixes
-      .map { |item| [item[:key], item[:slug_prefixes]] }
-      .to_h
+      .to_h { |item| [item[:key], item[:slug_prefixes]] }
   end
 
   # From "/alternative_assemblies/slug3" to ["", "alternative_assemblies", "slug3"]

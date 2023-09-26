@@ -4,7 +4,7 @@ require "rails_helper"
 
 module Decidim::Consultations::Admin
   describe UpdateQuestionConfiguration do
-    subject { described_class.new(form) }
+    subject { described_class.new(form, question) }
 
     let(:question) { create :question }
     let(:min_votes) { "3" }
@@ -54,7 +54,7 @@ module Decidim::Consultations::Admin
 
     describe "when the form is not valid" do
       before do
-        expect(form).to receive(:invalid?).and_return(true)
+        allow(form).to receive(:invalid?).and_return(true)
       end
 
       it "broadcasts invalid" do
