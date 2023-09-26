@@ -50,7 +50,7 @@ module SomEnergia
         def reorder(proposals)
           case order
           when "alphabetic"
-            proposals.order("decidim_proposals_proposals.title->>'#{locale}' ASC, decidim_proposals_proposals.title->>'es' ASC")
+            proposals.order(Arel.sql("decidim_proposals_proposals.title ->> '#{locale}' ASC, decidim_proposals_proposals.title ->> 'es' ASC"))
           when "most_commented"
             proposals.left_joins(:comments).group(:id).order(Arel.sql("COUNT(decidim_comments_comments.id) DESC"))
           when "most_endorsed"
