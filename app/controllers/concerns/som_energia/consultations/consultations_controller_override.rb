@@ -6,6 +6,7 @@ module SomEnergia
       extend ActiveSupport::Concern
 
       included do
+
         private
 
         # Available orders based on enabled settings
@@ -19,7 +20,7 @@ module SomEnergia
 
         def default_filter_params
           {
-            search_text: "",
+            search_text_cont: "",
             state: "all",
             highlighted_scope_ids: ""
           }
