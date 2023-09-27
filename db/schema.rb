@@ -685,56 +685,6 @@ ActiveRecord::Schema.define(version: 2023_09_23_120843) do
     t.index ["endorsements_count"], name: "idx_decidim_debates_debates_on_endorsemnts_count"
   end
 
-  create_table "decidim_dummy_resources_coauthorable_dummy_resources", force: :cascade do |t|
-    t.jsonb "translatable_text"
-    t.string "title"
-    t.string "body"
-    t.text "address"
-    t.float "latitude"
-    t.float "longitude"
-    t.datetime "published_at"
-    t.integer "coauthorships_count", default: 0, null: false
-    t.integer "endorsements_count", default: 0, null: false
-    t.integer "comments_count", default: 0, null: false
-    t.bigint "decidim_component_id"
-    t.bigint "decidim_category_id"
-    t.bigint "decidim_scope_id"
-    t.string "reference"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
-  create_table "decidim_dummy_resources_dummy_resources", force: :cascade do |t|
-    t.jsonb "translatable_text"
-    t.jsonb "title"
-    t.string "body"
-    t.text "address"
-    t.float "latitude"
-    t.float "longitude"
-    t.datetime "published_at"
-    t.integer "coauthorships_count", default: 0, null: false
-    t.integer "endorsements_count", default: 0, null: false
-    t.integer "comments_count", default: 0, null: false
-    t.integer "follows_count", default: 0, null: false
-    t.bigint "decidim_component_id"
-    t.integer "decidim_author_id"
-    t.string "decidim_author_type"
-    t.integer "decidim_user_group_id"
-    t.bigint "decidim_category_id"
-    t.bigint "decidim_scope_id"
-    t.string "reference"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
-  create_table "decidim_dummy_resources_nested_dummy_resources", force: :cascade do |t|
-    t.jsonb "translatable_text"
-    t.string "title"
-    t.bigint "dummy_resource_id"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
   create_table "decidim_editor_images", force: :cascade do |t|
     t.bigint "decidim_author_id", null: false
     t.bigint "decidim_organization_id", null: false
@@ -788,7 +738,7 @@ ActiveRecord::Schema.define(version: 2023_09_23_120843) do
   end
 
   create_table "decidim_forms_answers", id: :serial, force: :cascade do |t|
-    t.text "body"
+    t.jsonb "body", default: []
     t.integer "decidim_user_id"
     t.integer "decidim_questionnaire_id"
     t.integer "decidim_question_id"
@@ -1903,8 +1853,6 @@ ActiveRecord::Schema.define(version: 2023_09_23_120843) do
     t.text "about"
     t.datetime "officialized_at"
     t.jsonb "officialized_as"
-    t.string "username"
-    t.jsonb "extra_attributes"
     t.datetime "accepted_tos_version"
     t.string "newsletter_token", default: ""
     t.datetime "newsletter_notifications_at"
@@ -1929,6 +1877,8 @@ ActiveRecord::Schema.define(version: 2023_09_23_120843) do
     t.datetime "digest_sent_at"
     t.datetime "password_updated_at"
     t.string "previous_passwords", default: [], array: true
+    t.string "username"
+    t.jsonb "extra_attributes"
     t.index ["confirmation_token"], name: "index_decidim_users_on_confirmation_token", unique: true
     t.index ["decidim_organization_id"], name: "index_decidim_users_on_decidim_organization_id"
     t.index ["email", "nickname", "decidim_organization_id"], name: "index_decidim_users_on_email_nickname_decidim_organization_id", unique: true, where: "((deleted_at IS NULL) AND (managed = false) AND ((type)::text = 'Decidim::User'::text))"
