@@ -3,7 +3,7 @@
 require "rails_helper"
 
 describe "Admin edits consultation", type: :system do
-  let(:organization) { create(:organization, default_locale: "ca", available_locales: %w(ca es)) }
+  let(:organization) { create(:organization, default_locale: "en", available_locales: %w(en ca es)) }
   let(:user) { create(:user, :admin, :confirmed, organization: organization) }
   let(:consultation) { create(:consultation, organization: organization) }
   let!(:question) { create(:question, consultation: consultation) }
