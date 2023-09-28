@@ -738,7 +738,7 @@ ActiveRecord::Schema.define(version: 2023_09_23_120843) do
   end
 
   create_table "decidim_forms_answers", id: :serial, force: :cascade do |t|
-    t.jsonb "body", default: []
+    t.text "body"
     t.integer "decidim_user_id"
     t.integer "decidim_questionnaire_id"
     t.integer "decidim_question_id"
@@ -1853,6 +1853,8 @@ ActiveRecord::Schema.define(version: 2023_09_23_120843) do
     t.text "about"
     t.datetime "officialized_at"
     t.jsonb "officialized_as"
+    t.string "username"
+    t.jsonb "extra_attributes"
     t.datetime "accepted_tos_version"
     t.string "newsletter_token", default: ""
     t.datetime "newsletter_notifications_at"
@@ -1877,8 +1879,6 @@ ActiveRecord::Schema.define(version: 2023_09_23_120843) do
     t.datetime "digest_sent_at"
     t.datetime "password_updated_at"
     t.string "previous_passwords", default: [], array: true
-    t.string "username"
-    t.jsonb "extra_attributes"
     t.index ["confirmation_token"], name: "index_decidim_users_on_confirmation_token", unique: true
     t.index ["decidim_organization_id"], name: "index_decidim_users_on_decidim_organization_id"
     t.index ["email", "nickname", "decidim_organization_id"], name: "index_decidim_users_on_email_nickname_decidim_organization_id", unique: true, where: "((deleted_at IS NULL) AND (managed = false) AND ((type)::text = 'Decidim::User'::text))"
