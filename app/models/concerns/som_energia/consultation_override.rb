@@ -5,13 +5,16 @@ module SomEnergia
     extend ActiveSupport::Concern
 
     included do
-      scope :highlighted_scope_ids, lambda { |highlighted_scope_ids|
-        size = highlighted_scope_ids.size
-        condition = "? = ANY(decidim_scopes.part_of)"
-        conditions = Array.new(size, condition).join(" OR ")
-        includes(:highlighted_scope)
-          .references(:decidim_scopes)
-          .where(conditions, *Array.new(size, highlighted_scope_ids).flatten)
+      scope :highlighted_scope_ids, lambda { |*args|
+        highlighted_scope_ids = args.flatten.compact.reject(&:empty?)
+        if highlighted_scope_ids.any?
+          size = highlighted_scope_ids.size
+          condition = "? = ANY(decidim_scopes.part_of)"
+          conditions = Array.new(size, condition).join(" OR ")
+          includes(:highlighted_scope)
+            .references(:decidim_scopes)
+            .where(conditions, *highlighted_scope_ids)
+        end
       }
 
       def self.ransackable_scopes(_auth_object = nil)
