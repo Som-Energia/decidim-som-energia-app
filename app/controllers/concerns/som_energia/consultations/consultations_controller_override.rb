@@ -6,7 +6,6 @@ module SomEnergia
       extend ActiveSupport::Concern
 
       included do
-
         private
 
         # Available orders based on enabled settings
