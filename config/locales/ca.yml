@@ -80,6 +80,10 @@ ca:
   devise:
     invitations:
       invitation_token_invalid: El token de invitació proporcionat no és vàlid!
+  layouts:
+    decidim:
+      question_components:
+        unfold: Desplegar
   somenergia:
     menu:
       team_et: Equip tècnic

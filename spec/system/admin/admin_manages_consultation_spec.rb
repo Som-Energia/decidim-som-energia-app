@@ -16,15 +16,15 @@ describe "Admin edits consultation", type: :system do
   end
 
   it "edits the question with special requirements" do
-    click_link "Configuració"
+    click_link "Configuration"
     expect(page).to have_selector('input[type="checkbox"]')
-    expect(page).to have_content("Aplicar requisits especials (1 vot per pregunta)")
+    expect(page).to have_content("Apply special requirements (1 vote per question)")
   end
 
   it "edits a response with weights" do
     visit decidim_admin_consultations.responses_path(question)
-    click_link response.title["ca"]
+    click_link response.title["en"]
     expect(page).to have_css("#response_weight")
-    expect(page).to have_content("Ordre")
+    expect(page).to have_content("Order")
   end
 end

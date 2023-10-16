@@ -21,6 +21,7 @@ module SomEnergia
           {
             search_text_cont: "",
             state: "all",
+            with_any_date: "all",
             highlighted_scope_ids: ""
           }
         end
