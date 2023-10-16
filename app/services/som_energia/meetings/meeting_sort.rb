@@ -20,7 +20,7 @@ module SomEnergia
       end
 
       def new_order
-        Arel.sql("POSITION(id::text IN '#{sorted_ids.join(",")}')")
+        Arel.sql("array_position(ARRAY[#{sorted_ids.join(",")}], id::int)")
       end
 
       def sorted_ids
