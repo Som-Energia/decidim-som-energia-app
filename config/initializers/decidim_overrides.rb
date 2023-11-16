@@ -52,8 +52,6 @@ Rails.application.config.to_prepare do
   Decidim::Devise::RegistrationsController.include(SomEnergia::Devise::RegistrationsControllerOverride)
   Decidim::Initiatives::InitiativesController.include(SomEnergia::Initiatives::InitiativesControllerOverride)
   Decidim::Meetings::MeetingsController.include(SomEnergia::Meetings::MeetingsControllerOverride)
-  Decidim::Proposals::ProposalsController.include(SomEnergia::Proposals::ProposalsControllerOverride)
-  Decidim::Proposals::ProposalsController.include(SomEnergia::Proposals::OrderableOverride)
   Decidim::Assemblies::Admin::ParticipatorySpacePrivateUsersCsvImportsController.include(SomEnergia::Admin::HasPrivateUsersCsvImportOverride)
   Decidim::ParticipatoryProcesses::Admin::ParticipatorySpacePrivateUsersCsvImportsController.include(SomEnergia::Admin::HasPrivateUsersCsvImportOverride)
 
@@ -68,7 +66,7 @@ Rails.application.config.to_prepare do
   Decidim::Assembly.include(SomEnergia::AssemblyOverride)
   # Participatory Processes alternative menu
   Decidim::ParticipatoryProcess.include(SomEnergia::ParticipatoryProcessOverride)
-  Decidim::ParticipatoryProcesses::ProcessFiltersCell.include(SomEnergia::ProcessFiltersCellOverride)
+  Decidim::ParticipatoryProcesses::ProcessFiltersCell.prepend(SomEnergia::ProcessFiltersCellOverride)
 
   # Creates a new menu next to Assemblies for every type configured
   AssembliesScoper.alternative_assembly_types.each do |item|
@@ -100,4 +98,9 @@ Rails.application.config.to_prepare do
                     active: :inclusive
     end
   end
+end
+
+Rails.application.config.after_initialize do
+  Decidim::Proposals::ProposalsController.include(SomEnergia::Proposals::ProposalsControllerOverride)
+  Decidim::Proposals::ProposalsController.include(SomEnergia::Proposals::OrderableOverride)
 end

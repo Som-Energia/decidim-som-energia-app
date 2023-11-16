@@ -10,12 +10,13 @@ module Decidim::Proposals
     let(:user) { create(:user, :confirmed, organization: organization) }
     let(:participatory_process) { create(:participatory_process, :with_steps, slug: slug, organization: organization) }
     let(:slug) { "participatory-process" }
-
     let(:component) do
       create(:component, manifest_name: "proposals", participatory_space: participatory_process)
     end
+    let(:enabled_orders) { %w(az za supported_first supported_last) }
 
     before do
+      allow(Decidim::DecidimAwesome).to receive(:possible_additional_proposal_sortings).and_return(enabled_orders)
       request.env["decidim.current_organization"] = organization
       request.env["decidim.current_participatory_space"] = participatory_process
       request.env["decidim.current_component"] = component
@@ -31,7 +32,7 @@ module Decidim::Proposals
 
       it "forces no cache headers" do
         get :index, params: params
-        expect(response.headers["Cache-Control"]).to eq("no-cache, no-store")
+        expect(response.headers["Cache-Control"]).to eq("no-store")
       end
 
       it "stores order in session" do
@@ -41,15 +42,38 @@ module Decidim::Proposals
 
       it "has default order" do
         get :index, params: params
-        expect(controller.helpers.available_orders).not_to include("alphabetic")
+        expect(controller.helpers.order).to eq("random")
+        expect(controller.helpers.available_orders).to include("az")
+        # expect(controller.helpers.available_orders).not_to include("az")
       end
 
       context "when alternative process" do
         let(:slug) { "SomAG-alternative-process" }
 
-        it "has alphabetic order" do
+        it "has az order" do
           get :index, params: params
-          expect(controller.helpers.available_orders).to include("alphabetic")
+          expect(controller.helpers.available_orders).to include("az")
+          expect(controller.helpers.order).to eq("az")
+        end
+      end
+
+      context "when no az order is available" do
+        let(:enabled_orders) { %w(za supported_first supported_last) }
+
+        it "has default order" do
+          get :index, params: params
+          expect(controller.helpers.order).to eq("random")
+          expect(controller.helpers.available_orders).not_to include("az")
+        end
+
+        context "when alternative process" do
+          let(:slug) { "SomAG-alternative-process" }
+
+          it "has no az order" do
+            get :index, params: params
+            expect(controller.helpers.available_orders).not_to include("az")
+            expect(controller.helpers.order).to eq("random")
+          end
         end
       end
     end

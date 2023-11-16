@@ -62,10 +62,6 @@ es:
         confirmation:
           confirmed_html: Su <a href="%{url}">%{title}</a> ha sido confirmada. Gracias
             por participar.
-    proposals:
-      proposals:
-        orders:
-          alphabetic: Alfabético
     menu:
         assemblies: menu_assemblies es
     questions:

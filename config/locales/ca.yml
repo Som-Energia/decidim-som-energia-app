@@ -70,10 +70,6 @@ ca:
     participatory_processes:
       scoped_participatory_process_slug_prefixes:
         general_assemblies: Assemblees Generals
-    proposals:
-      proposals:
-        orders:
-          alphabetic: Alfabètic
     questions:
       next_button: Pregunta següent
       previous_button: Pregunta anterior

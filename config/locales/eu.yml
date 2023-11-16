@@ -30,10 +30,6 @@ eu:
     questions:
       next_button: "Hurrengo galdera"
       previous_button: "Aurreko galdera"
-    proposals:
-      proposals:
-        orders:
-          alphabetic: Alfabético
     menu:
       assemblies: menu_assemblies eu
   devise:

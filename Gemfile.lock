@@ -29,9 +29,9 @@ GIT
 
 GIT
   remote: https://github.com/decidim-ice/decidim-module-decidim_awesome.git
-  revision: 4f1b2eb8a9db544e3f781a248cc5b3659e808a36
+  revision: af40e0ce83f8db0a2a373b19ace3146dfd489465
   specs:
-    decidim-decidim_awesome (0.10.0)
+    decidim-decidim_awesome (0.10.1)
       decidim-admin (>= 0.26.0, < 0.28)
       decidim-core (>= 0.26.0, < 0.28)
       deface (>= 1.5)
@@ -39,7 +39,7 @@ GIT
 
 GIT
   remote: https://github.com/decidim/decidim.git
-  revision: 17300e07674f3b940127dbab1b29532e807fd089
+  revision: bf42a655f8f8a64e5030ca3c9a0c8a8909b70c93
   branch: release/0.27-stable
   specs:
     decidim (0.27.4)
@@ -319,7 +319,7 @@ GEM
       nokogiri
     ast (2.4.2)
     aws-eventstream (1.2.0)
-    aws-partitions (1.849.0)
+    aws-partitions (1.851.0)
     aws-sdk-core (3.186.0)
       aws-eventstream (~> 1, >= 1.0.2)
       aws-partitions (~> 1, >= 1.651.0)

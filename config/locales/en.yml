@@ -33,10 +33,6 @@ en:
     participatory_processes:
       scoped_participatory_process_slug_prefixes:
         general_assemblies: General Assemblies
-    proposals:
-      proposals:
-        orders:
-          alphabetic: Alphabetic
     questions:
       next_button: Next question
       previous_button: Previous question

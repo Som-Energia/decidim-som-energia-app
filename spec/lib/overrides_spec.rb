@@ -22,13 +22,13 @@ checksums = [
   {
     package: "decidim-participatory_processes",
     files: {
-      "/app/cells/decidim/participatory_processes/process_filters_cell.rb" => "b85676955555828cef0446d918f9722a"
+      "/app/cells/decidim/participatory_processes/process_filters_cell.rb" => "cd83acfcd8865c5fe1dbcf8deb5bf319"
     }
   },
   {
     package: "decidim-proposals",
     files: {
-      "/app/controllers/concerns/decidim/proposals/orderable.rb" => "1c19ad9c6f05625a4443f6b0e751c09e",
+      "/app/controllers/concerns/decidim/proposals/orderable.rb" => "536faf3109f8764ff8b2409fd4bf10d0",
       "/app/controllers/decidim/proposals/proposals_controller.rb" => "b263741e3335110fa0e37c488c777190"
     }
   },
