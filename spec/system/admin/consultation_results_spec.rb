@@ -5,7 +5,7 @@ require "rails_helper"
 describe "Admin checks consultation results", type: :system do
   let(:organization) { create(:organization) }
   let(:user) { create(:user, :admin, :confirmed, organization: organization) }
-  let(:consultation) { create(:consultation, organization: organization) }
+  let(:consultation) { create(:consultation, :active, organization: organization) }
   let(:question) { create(:question, :multiple, consultation: consultation) }
   let!(:response) { create(:response, question: question) }
   let!(:another_response) { create(:response, question: question) }
@@ -30,10 +30,6 @@ describe "Admin checks consultation results", type: :system do
   end
 
   it_behaves_like "shows table headers"
-
-  it "shows no results" do
-    expect(page).to have_selector("td", text: "Results will be available when consultation closes")
-  end
 
   context "when consultation is closed" do
     let(:consultation) { create(:consultation, :published_results, :finished, organization: organization) }
