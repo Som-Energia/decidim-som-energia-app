@@ -16,7 +16,7 @@ module Decidim
       end
 
       it "has no default scope" do
-        expect(ParticipatoryProcess.default_scope).not_to be_present
+        expect(ParticipatoryProcess.all.to_sql).not_to include("WHERE")
         expect(ParticipatoryProcess.scoped_slug_namespace).not_to be_present
         expect(ParticipatoryProcess.scoped_slug_prefixes).not_to be_present
         expect(ParticipatoryProcess.scoped_slug_prefixes_mode).not_to be_present
@@ -35,7 +35,7 @@ module Decidim
       end
 
       it "has a default scope" do
-        expect(ParticipatoryProcess.default_scope).to be_present
+        expect(ParticipatoryProcess.all.to_sql).to include("WHERE")
         expect(ParticipatoryProcess.scoped_slug_namespace).to eq(namespace)
         expect(ParticipatoryProcess.scoped_slug_prefixes).to eq([scoped_slug_prefix])
         expect(ParticipatoryProcess.scoped_slug_prefixes_mode).to eq(:include)
@@ -54,7 +54,7 @@ module Decidim
       end
 
       it "has a default scope" do
-        expect(ParticipatoryProcess.default_scope).to be_present
+        expect(ParticipatoryProcess.all.to_sql).to include("WHERE")
         expect(ParticipatoryProcess.scoped_slug_namespace).to eq(namespace)
         expect(ParticipatoryProcess.scoped_slug_prefixes).to eq([scoped_slug_prefix])
         expect(ParticipatoryProcess.scoped_slug_prefixes_mode).to eq(:exclude)
