@@ -14,7 +14,7 @@ gem "decidim-initiatives", DECIDIM_VERSION
 gem "decidim-templates", DECIDIM_VERSION
 
 # A Decidim module to customize the localized terms in the system.
-gem "decidim-term_customizer", github: "mainio/decidim-module-term_customizer", branch: "master"
+gem "decidim-term_customizer", github: "mainio/decidim-module-term_customizer", branch: "release/0.27-stable"
 
 # Usability and UX tweaks for Decidim.
 gem "decidim-action_delegator", github: "coopdevs/decidim-module-action_delegator"
@@ -23,15 +23,15 @@ gem "decidim-reporting_proposals", github: "openpoke/decidim-module-reporting-pr
 
 gem "bootsnap", "~> 1.7"
 gem "deface"
-gem "puma", ">= 5.3.1"
-
-gem "wicked_pdf", "~> 2.1"
+gem "puma"
 
 gem "progressbar"
+gem "wicked_pdf"
 
 group :development, :test do
-  gem "byebug", "~> 11.0", platform: :mri
+  gem "byebug", platform: :mri
   gem "faker"
+  gem "rubocop-faker"
 
   gem "brakeman"
   gem "decidim-dev", DECIDIM_VERSION
@@ -39,11 +39,10 @@ end
 
 group :development do
   gem "letter_opener_web"
-  gem "listen", "~> 3.1"
-  gem "rubocop-faker"
-  gem "spring", ">= 4.0.0"
-  gem "spring-watcher-listen", "~> 2.1"
-  gem "web-console", "~> 4.2"
+  gem "listen"
+  gem "spring"
+  gem "spring-watcher-listen"
+  gem "web-console"
 end
 
 group :test do

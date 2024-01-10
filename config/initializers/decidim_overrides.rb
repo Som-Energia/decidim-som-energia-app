@@ -39,6 +39,11 @@ Rails.configuration.middleware.use AssembliesScoper
 Rails.configuration.middleware.use ParticipatoryProcessesScoper
 
 Rails.application.config.to_prepare do
+  # Assemblies alternative types
+  Decidim::Assembly.include(SomEnergia::AssemblyOverride)
+  # Participatory Processes alternative menu
+  Decidim::ParticipatoryProcess.include(SomEnergia::ParticipatoryProcessOverride)
+
   # participatory spaces private users
   Decidim::Admin::ParticipatorySpacePrivateUserForm.include(SomEnergia::Admin::ParticipatorySpacePrivateUserFormOverride)
   Decidim::Admin::ParticipatorySpacePrivateUserCsvImportForm.include(SomEnergia::Admin::ParticipatorySpacePrivateUserCsvImportFormOverride)
@@ -62,10 +67,6 @@ Rails.application.config.to_prepare do
   Decidim::Consultations::Admin::QuestionConfigurationForm.include(SomEnergia::Consultations::Admin::QuestionConfigurationFormOverride)
   Decidim::Consultations::Admin::ResponseForm.include(SomEnergia::Consultations::Admin::ResponseFormOverride)
 
-  # Assemblies alternative types
-  Decidim::Assembly.include(SomEnergia::AssemblyOverride)
-  # Participatory Processes alternative menu
-  Decidim::ParticipatoryProcess.include(SomEnergia::ParticipatoryProcessOverride)
   Decidim::ParticipatoryProcesses::ProcessFiltersCell.prepend(SomEnergia::ProcessFiltersCellOverride)
 
   # Creates a new menu next to Assemblies for every type configured

@@ -11,7 +11,6 @@ module SomEnergia
 
       # use the alternate url for generating filters if we are scoped
       def filter_link(date_filter, type_filter = nil)
-        byebug
         if Decidim::ParticipatoryProcess.scoped_slug_namespace != ParticipatoryProcessesScoper::DEFAULT_NAMESPACE
           return alternative_filter_link(Decidim::ParticipatoryProcess.scoped_slug_namespace, **filter_params(date_filter, type_filter))
         end

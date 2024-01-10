@@ -23,27 +23,24 @@ class AssembliesScoper
     return @app.call(env) unless @request.get? # only run middleware for GET requests
 
     Decidim::Assembly.scope_to_types(nil, nil)
-    @types = types
     @organization = env["decidim.current_organization"]
     @parts = @request.path.split("/")
-    @current_assembly = assembly
-
     return @app.call(env) if out_of_scope?
 
-    type_id = @current_assembly&.decidim_assemblies_type_id
+    type_id = assembly&.decidim_assemblies_type_id
     type = type_for(type_id)
     if @parts[1] == "assemblies"
       # redirect to the alternative assemblies if matches the type
-      return redirect(type[0]) if @types.values.flatten.include?(type_id)
+      return redirect(type[0]) if types.values.flatten.include?(type_id)
 
       # just exclude all types specified as alternative
-      Decidim::Assembly.scope_to_types(@types.values.flatten, :exclude)
-    elsif @parts[1] && @types[@parts[1]]
+      Decidim::Assembly.scope_to_types(types.values.flatten, :exclude)
+    elsif @parts[1] && types[@parts[1]]
       # redirect to assemblies if not matches the type
-      return redirect("assemblies") if @current_assembly && @types.values.flatten.exclude?(type_id)
+      return redirect("assemblies") if assembly && types.values.flatten.exclude?(type_id)
 
       # include only the ones specified
-      Decidim::Assembly.scope_to_types(@types[@parts[1]], :include)
+      Decidim::Assembly.scope_to_types(types[@parts[1]], :include)
     end
     @app.call(env)
   end
@@ -51,20 +48,20 @@ class AssembliesScoper
   private
 
   def out_of_scope?
-    return true if @types.blank?
-    return true if @parts[2] && @current_assembly.blank?
+    return true if types.blank?
+    return true if @parts[2] && assembly.blank?
   end
 
   def types
-    AssembliesScoper.alternative_assembly_types.to_h { |item| [item[:key], item[:assembly_type_ids]] }
+    @types ||= AssembliesScoper.alternative_assembly_types.to_h { |item| [item[:key], item[:assembly_type_ids]] }
   end
 
   def type_for(type_id)
-    @types.find { |_key, values| values.include?(type_id) }
+    types.find { |_key, values| values.include?(type_id) }
   end
 
   def assembly
-    Decidim::Assembly.unscoped.select(:id, :decidim_assemblies_type_id).find_by(slug: @parts[2], organization: @organization)
+    @assembly ||= Decidim::Assembly.unscoped.select(:id, :decidim_assemblies_type_id).find_by(slug: @parts[2], organization: @organization)
   end
 
   def redirect(prefix)

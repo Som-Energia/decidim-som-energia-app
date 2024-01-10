@@ -6,6 +6,21 @@ module SomEnergia
   module ParticipatoryProcessOverride
     extend ActiveSupport::Concern
 
+    included do
+      default_scope do
+        if scoped_slug_prefixes
+          slug_prefixes = scoped_slug_prefixes.map { |slug_prefix| "#{slug_prefix}%" }
+
+          case scoped_slug_prefixes_mode
+          when :exclude
+            where("slug NOT LIKE ANY (ARRAY[?])", slug_prefixes)
+          when :include
+            where("slug LIKE ANY (ARRAY[?])", slug_prefixes)
+          end
+        end
+      end
+    end
+
     class_methods do
       attr_accessor :scoped_slug_prefixes, :scoped_slug_prefixes_mode, :scoped_slug_namespace
 
@@ -13,19 +28,6 @@ module SomEnergia
         self.scoped_slug_prefixes = slugs
         self.scoped_slug_prefixes_mode = mode
         self.scoped_slug_namespace = namespace
-      end
-
-      def default_scope
-        return unless scoped_slug_prefixes
-
-        slug_prefixes = scoped_slug_prefixes.map { |slug_prefix| "#{slug_prefix}%" }
-
-        case scoped_slug_prefixes_mode
-        when :exclude
-          where("slug NOT LIKE ANY (ARRAY[?])", slug_prefixes)
-        when :include
-          where("slug LIKE ANY (ARRAY[?])", slug_prefixes)
-        end
       end
     end
   end
