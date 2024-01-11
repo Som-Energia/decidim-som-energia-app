@@ -67,7 +67,7 @@ Rails.application.config.to_prepare do
   Decidim::Consultations::Admin::QuestionConfigurationForm.include(SomEnergia::Consultations::Admin::QuestionConfigurationFormOverride)
   Decidim::Consultations::Admin::ResponseForm.include(SomEnergia::Consultations::Admin::ResponseFormOverride)
 
-  Decidim::ParticipatoryProcesses::ProcessFiltersCell.prepend(SomEnergia::ProcessFiltersCellOverride)
+  Decidim::ParticipatoryProcesses::ProcessFiltersCell.include(SomEnergia::ProcessFiltersCellOverride)
 
   # Creates a new menu next to Assemblies for every type configured
   AssembliesScoper.alternative_assembly_types.each do |item|
