@@ -56,7 +56,7 @@ class AssembliesScoper
   end
 
   def types
-    AssembliesScoper.alternative_assembly_types.map { |item| [item[:key], item[:assembly_type_ids]] }.to_h
+    AssembliesScoper.alternative_assembly_types.to_h { |item| [item[:key], item[:assembly_type_ids]] }
   end
 
   def type_for(type_id)

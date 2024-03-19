@@ -13,22 +13,22 @@ module Admin
       enforce_permission_to :read, :admin_dashboard
 
       if data[:name].blank?
-        flash[:alert] = "El nom és obligatori!"
+        flash[:alert] = I18n.t("admin.cas_users_controller.name_required")
         return redirect_to new_admin_cas_user_path
       end
 
       if data[:email].blank?
-        flash[:alert] = "L'email obligatori!"
+        flash[:alert] = I18n.t("admin.cas_users_controller.email_required")
         return redirect_to new_admin_cas_user_path
       end
 
       if data[:extra_attributes][:soci].blank?
-        flash[:alert] = "El Numero de soci és obligatori!"
+        flash[:alert] = I18n.t("admin.cas_users_controller.membership_number_required")
         return redirect_to new_admin_cas_user_path
       end
 
       if data[:username].blank?
-        flash[:alert] = "El DNI és obligatori!"
+        flash[:alert] = I18n.t("admin.cas_users_controller.dni_required")
         return redirect_to new_admin_cas_user_path
       end
 
@@ -38,13 +38,13 @@ module Admin
       # end
 
       if Decidim::User.exists?(organization: current_organization, username: data[:username])
-        flash[:alert] = "El DNI ja està registrat!"
+        flash[:alert] = I18n.t("admin.cas_users_controller.dni_already_registered")
         return redirect_to new_admin_cas_user_path
       end
 
       if Decidim::User.where(organization: current_organization)
                       .where(%(extra_attributes @> '{"soci": "#{data[:extra_attributes][:soci].to_i}"}')).any?
-        flash[:alert] = "El Numero de soci ja està registrat!"
+        flash[:alert] = I18n.t("admin.cas_users_controller.membership_number_already_registered")
         return redirect_to new_admin_cas_user_path
       end
 
@@ -54,9 +54,9 @@ module Admin
       @user.accepted_tos_version = Time.current
       @user.confirmed_at = Time.current
       if @user.save(validate: false)
-        flash[:notice] = "Usuari creat correctament!"
+        flash[:notice] = I18n.t("admin.cas_users_controller.user_created_successfully")
       else
-        flash[:alert] = "Error al crear l'usuari!"
+        flash[:alert] = I18n.t("admin.cas_users_controller.user_creation_failed")
       end
 
       redirect_to new_admin_cas_user_path

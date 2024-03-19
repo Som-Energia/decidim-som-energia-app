@@ -9,7 +9,7 @@ module Decidim::Assemblies::Admin
     let(:organization) { create(:organization) }
     let(:user) { create(:user, :admin, :confirmed, organization: organization) }
     let(:assembly) { create(:assembly, organization: organization) }
-    let(:file) { Rack::Test::UploadedFile.new(File.expand_path(File.join(__dir__, "../../fixtures/import_participatory_space_users_invalid_email.csv"))) }
+    let(:file) { Rack::Test::UploadedFile.new(Rails.root.join("spec/fixtures/import_participatory_space_users_invalid_email.csv"), "text/csv") }
 
     let(:params) do
       {
@@ -33,7 +33,7 @@ module Decidim::Assemblies::Admin
       end
 
       context "when invalid file" do
-        let(:file) { Rack::Test::UploadedFile.new(File.expand_path(File.join(__dir__, "../../fixtures/import_participatory_space_users_no_email.csv"))) }
+        let(:file) { Rack::Test::UploadedFile.new(Rails.root.join("spec/fixtures/import_participatory_space_users_no_email.csv"), "text/csv") }
 
         it "renders the form" do
           post :create, params: params

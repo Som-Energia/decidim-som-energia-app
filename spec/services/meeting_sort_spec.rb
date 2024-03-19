@@ -5,18 +5,18 @@ require "rails_helper"
 module SomEnergia::Meetings
   describe MeetingSort do
     let(:component) { create(:component, manifest_name: "meetings") }
-    let(:upcoming_meeting_1) { create(:meeting, :upcoming, id: past_meeting_1.id * 10, component: component, start_time: 1.year.from_now) }
-    let(:upcoming_meeting_2) { create(:meeting, :upcoming, component: component, start_time: 2.years.from_now) }
-    let(:upcoming_meeting_3) { create(:meeting, :upcoming, id: past_meeting_2.id * 10, component: component, start_time: 1.day.ago, end_time: 1.day.from_now) }
-    let(:past_meeting_1) { create(:meeting, :past, component: component, start_time: 1.year.ago) }
-    let(:past_meeting_2) { create(:meeting, :past, component: component, start_time: 2.years.ago) }
+    let(:upcoming_meeting_one) { create(:meeting, :upcoming, id: past_meeting_one.id * 10, component: component, start_time: 1.year.from_now) }
+    let(:upcoming_meeting_two) { create(:meeting, :upcoming, component: component, start_time: 2.years.from_now) }
+    let(:upcoming_meeting_three) { create(:meeting, :upcoming, id: past_meeting_two.id * 10, component: component, start_time: 1.day.ago, end_time: 1.day.from_now) }
+    let(:past_meeting_one) { create(:meeting, :past, component: component, start_time: 1.year.ago) }
+    let(:past_meeting_two) { create(:meeting, :past, component: component, start_time: 2.years.ago) }
     let(:meetings) do
       [
-        past_meeting_2,
-        upcoming_meeting_2,
-        past_meeting_1,
-        upcoming_meeting_3,
-        upcoming_meeting_1
+        past_meeting_two,
+        upcoming_meeting_two,
+        past_meeting_one,
+        upcoming_meeting_three,
+        upcoming_meeting_one
       ]
     end
 
@@ -27,11 +27,11 @@ module SomEnergia::Meetings
       let(:expected_ids) { expected_meetings.map(&:id) }
       let(:expected_meetings) do
         [
-          upcoming_meeting_3,
-          upcoming_meeting_1,
-          upcoming_meeting_2,
-          past_meeting_1,
-          past_meeting_2
+          upcoming_meeting_three,
+          upcoming_meeting_one,
+          upcoming_meeting_two,
+          past_meeting_one,
+          past_meeting_two
         ]
       end
 

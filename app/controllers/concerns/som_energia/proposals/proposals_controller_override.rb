@@ -12,10 +12,6 @@ module SomEnergia
           response.headers["Expires"] = "Fri, 01 Jan 1990 00:00:00 GMT"
         end
 
-        before_action only: [:index] do
-          session[:order] = params[:order] if params[:order].present?
-        end
-
         def show
           raise ActionController::RoutingError, "Not Found" if @proposal.blank? || !can_show_proposal?
 

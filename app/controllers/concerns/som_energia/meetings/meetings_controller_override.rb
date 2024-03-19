@@ -13,7 +13,7 @@ module SomEnergia
         end
 
         def ordered_results
-          SomEnergia::Meetings::MeetingSort.new(search.results.not_hidden).sort
+          SomEnergia::Meetings::MeetingSort.new(search.result.not_hidden).sort
         end
       end
     end

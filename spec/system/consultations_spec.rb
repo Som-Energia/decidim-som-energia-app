@@ -4,27 +4,27 @@ require "rails_helper"
 
 describe "Consultations", type: :system do
   let!(:organization) { create(:organization) }
-  let!(:consultation_1) do
+  let!(:consultation_one) do
     create(
       :consultation,
       :published,
-      highlighted_scope: grand_child_scope_1,
+      highlighted_scope: grand_child_scope_one,
       organization: organization
     )
   end
-  let!(:consultation_2) do
+  let!(:consultation_two) do
     create(
       :consultation,
       :published,
-      highlighted_scope: child_scope_2,
+      highlighted_scope: child_scope_two,
       organization: organization
     )
   end
-  let!(:parent_scope_1) { create(:scope, organization: organization) }
-  let!(:parent_scope_2) { create(:scope, organization: organization) }
-  let!(:child_scope_1) { create(:scope, parent: parent_scope_1) }
-  let!(:child_scope_2) { create(:scope, parent: parent_scope_1) }
-  let!(:grand_child_scope_1) { create(:scope, parent: child_scope_1) }
+  let!(:parent_scope_one) { create(:scope, organization: organization) }
+  let!(:parent_scope_two) { create(:scope, organization: organization) }
+  let!(:child_scope_one) { create(:scope, parent: parent_scope_one) }
+  let!(:child_scope_two) { create(:scope, parent: parent_scope_one) }
+  let!(:grand_child_scope_one) { create(:scope, parent: child_scope_one) }
 
   before do
     switch_to_host(organization.host)
@@ -37,14 +37,14 @@ describe "Consultations", type: :system do
         before do
           within(".highlighted_scope_ids_check_boxes_tree_filter") do
             uncheck("All")
-            check(translated(parent_scope_1.name))
+            check(translated(parent_scope_one.name))
           end
         end
 
         it "shows expected consultations" do
           within("#consultations") do
-            expect(page).to have_i18n_content(consultation_1.title)
-            expect(page).to have_i18n_content(consultation_2.title)
+            expect(page).to have_i18n_content(consultation_one.title)
+            expect(page).to have_i18n_content(consultation_two.title)
           end
         end
       end
@@ -52,15 +52,15 @@ describe "Consultations", type: :system do
       context "when filtering by child scope" do
         before do
           within(".highlighted_scope_ids_check_boxes_tree_filter") do
-            find("label", text: translated(parent_scope_1.name)).sibling("button").click
-            check(translated(child_scope_2.name))
+            find("label", text: translated(parent_scope_one.name)).sibling("button").click
+            check(translated(child_scope_two.name))
           end
         end
 
         it "shows expected consultations" do
           within("#consultations") do
-            expect(page).to have_i18n_content(consultation_2.title)
-            expect(page).not_to have_i18n_content(consultation_1.title)
+            expect(page).to have_i18n_content(consultation_two.title)
+            expect(page).not_to have_i18n_content(consultation_one.title)
           end
         end
       end

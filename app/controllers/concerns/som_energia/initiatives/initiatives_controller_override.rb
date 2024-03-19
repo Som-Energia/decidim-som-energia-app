@@ -15,7 +15,7 @@ module SomEnergia
         # Assigns the value "closed" to the :state key after the given date is reached.
         def default_filter_params
           original_default_filter_params.tap do |default_params|
-            default_params[:state] = ["closed"] if Time.current > SIGNATURE_START_DATE
+            default_params[:with_any_state] = ["closed"] if Time.current > SIGNATURE_START_DATE
           end
         end
       end

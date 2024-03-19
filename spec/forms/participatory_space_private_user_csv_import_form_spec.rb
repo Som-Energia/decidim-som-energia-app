@@ -21,20 +21,20 @@ module Decidim::Admin
         "file" => file
       }
     end
-    let(:file) { File.new Decidim::Dev.asset("import_participatory_space_private_users.csv") }
+    let(:file) { Rack::Test::UploadedFile.new(Decidim::Dev.asset("import_participatory_space_private_users.csv"), "text/csv") }
 
     context "when everything is ok" do
       it { is_expected.to be_valid }
     end
 
     context "when mail is missing" do
-      let(:file) { File.new File.expand_path(File.join(__dir__, "../fixtures/import_participatory_space_users_invalid_email.csv")) }
+      let(:file) { Rack::Test::UploadedFile.new(Rails.root.join("spec/fixtures/import_participatory_space_users_invalid_email.csv"), "text/csv") }
 
       it { is_expected.to be_valid }
     end
 
     context "when email is missing" do
-      let(:file) { File.new File.expand_path(File.join(__dir__, "../fixtures/import_participatory_space_users_no_email.csv")) }
+      let(:file) { Rack::Test::UploadedFile.new(Rails.root.join("spec/fixtures/import_participatory_space_users_no_email.csv"), "text/csv") }
 
       it { is_expected.to be_invalid }
 
@@ -45,7 +45,7 @@ module Decidim::Admin
     end
 
     context "when user is missing" do
-      let(:file) { File.new File.expand_path(File.join(__dir__, "../fixtures/import_participatory_space_users_no_user.csv")) }
+      let(:file) { Rack::Test::UploadedFile.new(Rails.root.join("spec/fixtures/import_participatory_space_users_no_user.csv"), "text/csv") }
 
       it { is_expected.to be_invalid }
 
@@ -62,7 +62,7 @@ module Decidim::Admin
     end
 
     context "when user name contains invalid chars" do
-      let(:file) { File.new Decidim::Dev.asset("import_participatory_space_private_users_nok.csv") }
+      let(:file) { Rack::Test::UploadedFile.new(Decidim::Dev.asset("import_participatory_space_private_users_nok.csv"), "text/csv") }
 
       it { is_expected.to be_valid }
     end

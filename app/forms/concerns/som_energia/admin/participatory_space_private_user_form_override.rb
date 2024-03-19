@@ -6,7 +6,9 @@ module SomEnergia
       extend ActiveSupport::Concern
 
       included do
-        attribute :cas_user, Virtus::Attribute::Boolean
+        include Decidim::AttributeObject
+
+        attribute :cas_user, :boolean
       end
     end
   end

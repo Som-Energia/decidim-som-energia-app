@@ -7,13 +7,23 @@ ca:
       response:
         title: Títol
         weight: Ordre
+  admin:
+    cas_users_controller:
+      dni_already_registered: El DNI ja està registrat!
+      dni_required: El DNI és obligatori!
+      email_required: L'email obligatori!
+      membership_number_already_registered: El Numero de soci ja està registrat!
+      membership_number_required: El Numero de soci és obligatori!
+      name_required: El nom és obligatori!
+      user_created_successfully: Usuari creat correctament!
+      user_creation_failed: Error al crear l'usuari!
   decidim:
     admin:
       participatory_space_private_users:
         form:
-          name: "Nom"
-          email: "Email"
-          cas_user: "Es usuari del CAS"
+          cas_user: Es usuari del CAS
+          email: Email
+          name: Nom
     assemblies:
       alternative_assembly_types:
         local_groups: Grups Locals
@@ -21,9 +31,6 @@ ca:
       question_multiple_votes:
         show:
           all_groups_need_answer: Hi ha preguntes sense resposta.
-    participatory_processes:
-      scoped_participatory_process_slug_prefixes:
-        general_assemblies: Assemblees Generals
     initiatives:
       initiatives_mailer:
         bottom:
@@ -52,23 +59,27 @@ ca:
         show:
           going: T'has inscrit a aquesta trobada
           leave: Cancel·la el teu registre
-          leave_confirmation: Segur que vols cancel·lar la teva assistència a aquesta trobada?
+          leave_confirmation: Segur que vols cancel·lar la teva assistència a aquesta
+            trobada?
       registration_mailer:
         confirmation:
           confirmed_html: La teva <a href="%{url}">%{title}</a> ha estat confirmada.
             Gràcies per participar.
-    proposals:
-      proposals:
-        orders:
-          alphabetic: Alfabètic
     menu:
       assemblies: menu_assemblies ca
+    participatory_processes:
+      scoped_participatory_process_slug_prefixes:
+        general_assemblies: Assemblees Generals
     questions:
       next_button: Pregunta següent
       previous_button: Pregunta anterior
   devise:
     invitations:
       invitation_token_invalid: El token de invitació proporcionat no és vàlid!
+  layouts:
+    decidim:
+      question_components:
+        unfold: Desplegar
   somenergia:
     menu:
       team_et: Equip tècnic

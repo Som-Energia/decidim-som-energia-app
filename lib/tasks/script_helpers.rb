@@ -34,9 +34,7 @@ Rest of the lines must containt values for the corresponding headers
       print "##{index} (#{100 * (index + 1) / table.count}%): "
       begin
         yield(organization, line)
-      rescue UnprocessableError => e
-        show_error(e.message)
-      rescue ActiveRecord::RecordInvalid => e
+      rescue UnprocessableError, ActiveRecord::RecordInvalid => e
         show_error(e.message)
       rescue AlreadyProcessedError => e
         show_warning(e.message)

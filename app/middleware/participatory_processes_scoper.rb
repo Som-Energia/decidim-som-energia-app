@@ -58,8 +58,7 @@ class ParticipatoryProcessesScoper
     @scoped_slug_prefixes ||=
       ParticipatoryProcessesScoper
       .scoped_participatory_process_slug_prefixes
-      .map { |item| [item[:key], item[:slug_prefixes]] }
-      .to_h
+      .to_h { |item| [item[:key], item[:slug_prefixes]] }
   end
 
   # From "/alternative_assemblies/slug3" to ["", "alternative_assemblies", "slug3"]
@@ -86,7 +85,7 @@ class ParticipatoryProcessesScoper
   end
 
   def out_of_scope?
-    scoped_slug_prefixes.blank? || request_slug && @current_participatory_process.blank?
+    scoped_slug_prefixes.blank? || (request_slug && @current_participatory_process.blank?)
   end
 
   def find_alternative_namespace

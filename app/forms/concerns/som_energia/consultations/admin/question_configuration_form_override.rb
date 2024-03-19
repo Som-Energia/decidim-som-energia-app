@@ -8,7 +8,9 @@ module SomEnergia
         extend ActiveSupport::Concern
 
         included do
-          attribute :enforce_special_requirements, Virtus::Attribute::Boolean, default: false
+          include Decidim::AttributeObject
+
+          attribute :enforce_special_requirements, :boolean, default: false
         end
       end
     end

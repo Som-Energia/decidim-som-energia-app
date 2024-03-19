@@ -22,7 +22,7 @@ module Decidim::Consultations::Admin
       expect(subject.max_votes).to eq(2)
       expect(subject.min_votes).to eq(1)
       expect(subject.instructions).to eq("Instructions")
-      expect(subject.enforce_special_requirements).to eq(false)
+      expect(subject.enforce_special_requirements).to be(false)
     end
 
     context "when enfore_special_requirements is true" do
@@ -34,7 +34,7 @@ module Decidim::Consultations::Admin
         expect(subject.max_votes).to eq(2)
         expect(subject.min_votes).to eq(1)
         expect(subject.instructions).to eq("Instructions")
-        expect(subject.enforce_special_requirements).to eq(true)
+        expect(subject.enforce_special_requirements).to be(true)
       end
     end
   end
