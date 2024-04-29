@@ -41,9 +41,12 @@ a {
   &.secondary {
     color: var(--secondary) !important;
   }
+
+  &.consultations-header__link {
+    color: #fff !important;
+  }
 }
 
-a.consultations-header__link,
 .text-highlight a {
   color: #fff !important;
 }
@@ -74,6 +77,14 @@ a.consultations-header__link,
     &:focus {
       background-color: rgba(var(--secondary-rgb), .2) !important;
     }
+  }
+}
+
+.consultations-card {
+  .button.success {
+    border-color: var(--secondary) !important;
+    color: var(--secondary) !important;
+    background: transparent;
   }
 }
 
