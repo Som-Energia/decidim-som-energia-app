@@ -33,9 +33,11 @@ a {
   &:focus {
     color: var(--secondary) !important;
   }
+
   &.primary {
     color: var(--primary) !important;
   }
+
   &.secondary {
     color: var(--secondary) !important;
   }
@@ -45,7 +47,6 @@ a.consultations-header__link,
 .text-highlight a {
   color: #fff !important;
 }
-
 
 .link {
   color: var(--primary) !important;
@@ -71,7 +72,7 @@ a.consultations-header__link,
 
     &:hover,
     &:focus {
-      background-color: rgba(var(--secondary-rgb), 0.2) !important;
+      background-color: rgba(var(--secondary-rgb), .2) !important;
     }
   }
 }
@@ -166,6 +167,7 @@ h3,
     box-shadow: 0 3px var(--primary);
   }
 }
+
 .usermenu-off-canvas-holder .usermenu-off-canvas a {
   color: $gray !important;
 }
@@ -176,6 +178,7 @@ main#content {
 
 .process-nav__link {
   color: var(--secondary) !important;
+
   &.active {
     color: #000 !important;
   }
@@ -276,14 +279,17 @@ main#content {
 .title-bar {
   background-color: #fff;
 }
+
 @media print, screen and (max-width: 39.9988em) {
   .title-bar {
     border-top-color: $gray;
   }
+
   .topbar__edit__link {
     margin: -.5rem 0 0 .5rem;
   }
 }
+
 .topbar__menu {
   color: var(--secondary);
 }
@@ -296,6 +302,7 @@ main#content {
   .decidim-logo {
     display: none;
   }
+
   a {
     color: $gray !important;
     text-decoration: underline;
