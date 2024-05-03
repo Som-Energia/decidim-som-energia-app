@@ -209,4 +209,25 @@ describe "Participatory processes", type: :system do
       expect(page).to have_current_path(general_assembly_path(alternative_process.slug))
     end
   end
+
+  context "when accessing alternative process steps" do
+    before do
+      visit "/general_assemblies/#{alternative_process.slug}/steps"
+    end
+
+    it "shows the alternative process steps" do
+      expect(page).to have_content("PROCESS PHASES")
+    end
+  end
+
+  context "when accessing alternative process widget" do
+    before do
+      visit "/general_assemblies/#{alternative_process.slug}/embed"
+    end
+
+    it "shows the alternative process widget" do
+      expect(page).to have_content(alternative_process.title["en"])
+      expect(page).to have_content("MORE INFO")
+    end
+  end
 end

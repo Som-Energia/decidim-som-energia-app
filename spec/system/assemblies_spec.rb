@@ -40,6 +40,7 @@ describe "Visit assemblies", type: :system do
   let!(:second_scope) { create(:scope, organization: organization) }
   let!(:first_area) { create(:area, organization: organization) }
   let!(:second_area) { create(:area, organization: organization) }
+  let!(:member) { create :assembly_member, assembly: alternative_assembly }
 
   before do
     switch_to_host(organization.host)
@@ -178,6 +179,28 @@ describe "Visit assemblies", type: :system do
 
     it "redirects to the original path" do
       expect(page).to have_current_path decidim_assemblies.assembly_path(assembly.slug)
+    end
+  end
+
+  context "when accessing alternative assembly members page" do
+    before do
+      visit "/local_groups/#{alternative_assembly.slug}/members"
+    end
+
+    it "shows the members page" do
+      expect(page).to have_content("MEMBERS")
+      expect(page).to have_content(member.full_name)
+    end
+  end
+
+  context "when accessing alternative assembly widget" do
+    before do
+      visit "/local_groups/#{alternative_assembly.slug}/embed"
+    end
+
+    it "shows the widget" do
+      expect(page).to have_content(alternative_assembly.title["en"])
+      expect(page).to have_content("MORE INFO")
     end
   end
 end
