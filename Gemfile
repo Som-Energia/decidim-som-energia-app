@@ -19,7 +19,7 @@ gem "decidim-term_customizer", github: "mainio/decidim-module-term_customizer", 
 # Usability and UX tweaks for Decidim.
 gem "decidim-action_delegator", github: "coopdevs/decidim-module-action_delegator"
 gem "decidim-decidim_awesome", github: "decidim-ice/decidim-module-decidim_awesome"
-gem "decidim-reporting_proposals", github: "openpoke/decidim-module-reporting-proposals"
+gem "decidim-reporting_proposals", "~> 0.5.2"
 
 gem "bootsnap", "~> 1.7"
 gem "deface"
