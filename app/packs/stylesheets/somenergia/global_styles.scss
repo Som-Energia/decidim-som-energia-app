@@ -27,32 +27,46 @@ $gray-opacity: rgba(26, 24, 29, .2);
 $gray: #dedede;
 
 a {
-  color: #000 !important;
+  color: var(--secondary) !important;
+  text-decoration: underline;
 
   &:hover,
   &:focus {
     color: var(--secondary) !important;
+    text-decoration: none;
   }
 
   &.primary {
     color: var(--primary) !important;
+    text-decoration: none;
   }
 
   &.secondary {
     color: var(--secondary) !important;
+    text-decoration: none;
   }
 
   &.consultations-header__link {
     color: #fff !important;
+    text-decoration: none;
   }
+  h1,h2,h3,h4,h5,h6,
+  &.card {
+    text-decoration: none;
+  }
+}
+.section-heading a {
+  text-decoration: none;
 }
 
 .text-highlight a {
   color: #fff !important;
+  text-decoration: none;
 }
 
 .link {
   color: var(--primary) !important;
+  text-decoration: none;
 
   &:hover,
   &:focus {
@@ -68,6 +82,7 @@ a {
 
 .button {
   color: #fff !important;
+  text-decoration: none;
 
   &.hollow {
     border-color: var(--secondary) !important;
@@ -84,16 +99,22 @@ a {
   .button.success {
     border-color: var(--secondary) !important;
     color: var(--secondary) !important;
+    text-decoration: none;
     background: transparent;
   }
 }
 
-span.card__title.card__link {
-  color: var(--primary) !important;
+.card__link {
+  text-decoration: none;
+
+  &.card__title {
+    color: var(--primary) !important;
+  }
 }
 
 h2#process_title {
   color: var(--primary) !important;
+  text-decoration: none;
 }
 
 .floating-helper__content-close {
@@ -152,6 +173,7 @@ h3,
 
   a,
   .button {
+    text-decoration: none;
     &:focus {
       outline-color: $gray;
     }
@@ -161,6 +183,7 @@ h3,
 .main-nav__link {
   a {
     position: relative;
+    text-decoration: none;
     display: block;
     padding: 1em 2em .1em;
 
@@ -173,6 +196,7 @@ h3,
 
 .main-nav__link--active {
   a {
+    text-decoration: none;
     font-weight: 600;
     background: #fff !important;
     box-shadow: 0 3px var(--primary);
@@ -189,6 +213,7 @@ main#content {
 
 .process-nav__link {
   color: var(--secondary) !important;
+  text-decoration: none;
 
   &.active {
     color: #000 !important;
@@ -203,20 +228,24 @@ main#content {
 
 .comment__reply.muted-link {
   color: var(--primary);
+  text-decoration: none;
 }
 
 .comment__reply[data-toggle].muted-link {
   color: var(--primary);
+  text-decoration: none;
 }
 
 .link-alt {
   cursor: pointer;
   color: var(--primary);
+  text-decoration: none;
 }
 
 .label.success {
   background: #39a935;
   color: #fff;
+  text-decoration: none;
 }
 
 .progress__bar {
@@ -265,12 +294,14 @@ main#content {
   .author__name {
     color: var(--secondary);
     margin-bottom: 0;
+    text-decoration: none;
   }
 }
 
 .card__text {
   .card__text--status.success {
     color: var(--primary);
+    text-decoration: none;
   }
 }
 
@@ -279,6 +310,7 @@ main#content {
 
   a {
     color: #5b5b5f !important;
+    text-decoration: none;
   }
 }
 
@@ -303,6 +335,7 @@ main#content {
 
 .topbar__menu {
   color: var(--secondary);
+  text-decoration: none;
 }
 
 .main-footer__badge {
