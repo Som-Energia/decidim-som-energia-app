@@ -66,6 +66,7 @@ Rails.application.config.to_prepare do
   Decidim::Consultations::Admin::UpdateResponse.include(SomEnergia::Consultations::Admin::UpdateResponseOverride)
   Decidim::Consultations::Admin::QuestionConfigurationForm.include(SomEnergia::Consultations::Admin::QuestionConfigurationFormOverride)
   Decidim::Consultations::Admin::ResponseForm.include(SomEnergia::Consultations::Admin::ResponseFormOverride)
+  Decidim::Consultations::QuestionMultipleVotesController.include(SomEnergia::Consultations::QuestionMultipleVotesControllerOverride)
 
   Decidim::ParticipatoryProcesses::ProcessFiltersCell.include(SomEnergia::ProcessFiltersCellOverride)
 
