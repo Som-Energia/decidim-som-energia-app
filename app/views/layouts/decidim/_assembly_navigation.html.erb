@@ -1,0 +1,38 @@
+<%
+  components = participatory_space.components.published.or(Decidim::Component.where(id: self.try(:current_component)))
+  items = components.map do |component|
+    {
+      name: translated_attribute(component.name),
+      url: main_component_path(component),
+      active: is_active_link?(main_component_path(component), :inclusive)
+    }
+  end
+
+    model, slug = ENV.fetch("EXTRA_ASSEMBLY_MENU_#{current_participatory_space.slug.upcase}", "").split("/")
+    klass = model&.safe_constantize
+    if klass
+      space = klass.find_by(slug: slug)
+      if space
+        link = resource_locator(space).path
+        items << {
+            name: translated_attribute(space.title),
+            url: link,
+            active: is_active_link?(link, :inclusive)
+          }
+      end
+    end
+%>
+<%=
+  extended_navigation_bar(([
+    {
+      name: t(".assembly_menu_item"),
+      url: decidim_assemblies.assembly_path(current_participatory_space),
+      active: is_active_link?(decidim_assemblies.assembly_path(current_participatory_space), :exclusive)
+    },
+    participatory_space.members.not_ceased.any? ? {
+      name: t(".assembly_member_menu_item"),
+      url: decidim_assemblies.assembly_assembly_members_path(current_participatory_space),
+      active: is_active_link?(decidim_assemblies.assembly_assembly_members_path(current_participatory_space), :inclusive)
+    } : nil
+  ] + items).compact)
+%>
