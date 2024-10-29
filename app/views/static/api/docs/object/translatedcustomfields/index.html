@@ -1,17 +1,64 @@
 <div class="content"><h1>
-<a id="servicesinterface" class="anchor" href="#servicesinterface" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>ServicesInterface</h1>
-<p>An interface that can be used with services.</p>
-<h2>
-<a id="implemented-by" class="anchor" href="#implemented-by" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Implemented by</h2>
-<ul>
-   <li><code><a href="/api/docs/object/meeting">Meeting</a></code></li>
-</ul>
+<a id="translatedcustomfields" class="anchor" href="#translatedcustomfields" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>TranslatedCustomFields</h1>
+<p>A translated field</p>
 <h2>
 <a id="fields" class="anchor" href="#fields" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Fields</h2>
 <div class="field-entry ">
-  <span id="services" class="field-name anchored">services (<code><a href="/api/docs/object/meetingservice">[MeetingService]!</a></code>)</span>
+  <span id="locales" class="field-name anchored">locales (<code><a href="/api/docs/scalar/string">[String]</a></code>)</span>
   <div class="description-wrapper">
-   <p>The object's services</p>
+   <p>Lists all the locales in which this translation is available</p>
+  </div>
+</div>
+<div class="field-entry ">
+  <span id="translations" class="field-name anchored">translations (<code><a href="/api/docs/object/localizedcustomfields">[LocalizedCustomFields]!</a></code>)</span>
+  <div class="description-wrapper">
+   <p>All the localized custom fields for this translation.</p>
+     <table class="arguments">
+  <thead>
+  <tr>
+    <th>Argument</th>
+    <th>Type</th>
+    <th>Description</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+  <td><code class="anchored">locales</code></td>
+  <td>
+    <code><a href="/api/docs/scalar/string">[String!]</a></code>
+  </td>
+  <td>
+    <p>A list of locales to scope the translations to.</p>
+   </td>
+  </tr>
+  </tbody>
+</table>
+  </div>
+</div>
+<div class="field-entry ">
+  <span id="translation" class="field-name anchored">translation (<code><a href="/api/docs/scalar/json">JSON</a></code>)</span>
+  <div class="description-wrapper">
+   <p>Returns a single translation given a locale.</p>
+     <table class="arguments">
+  <thead>
+  <tr>
+    <th>Argument</th>
+    <th>Type</th>
+    <th>Description</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+  <td><code class="anchored">locale</code></td>
+  <td>
+    <code><a href="/api/docs/scalar/string">String!</a></code>
+  </td>
+  <td>
+    <p>A locale to search for</p>
+   </td>
+  </tr>
+  </tbody>
+</table>
   </div>
 </div></div>
 <div id="sidebar"><ul class="categories">

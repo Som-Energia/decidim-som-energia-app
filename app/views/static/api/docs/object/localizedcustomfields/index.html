@@ -1,17 +1,24 @@
 <div class="content"><h1>
-<a id="servicesinterface" class="anchor" href="#servicesinterface" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>ServicesInterface</h1>
-<p>An interface that can be used with services.</p>
-<h2>
-<a id="implemented-by" class="anchor" href="#implemented-by" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Implemented by</h2>
-<ul>
-   <li><code><a href="/api/docs/object/meeting">Meeting</a></code></li>
-</ul>
+<a id="localizedcustomfields" class="anchor" href="#localizedcustomfields" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>LocalizedCustomFields</h1>
+<p>Represents a particular translation of a LocalizedCustomFieldsType</p>
 <h2>
 <a id="fields" class="anchor" href="#fields" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Fields</h2>
 <div class="field-entry ">
-  <span id="services" class="field-name anchored">services (<code><a href="/api/docs/object/meetingservice">[MeetingService]!</a></code>)</span>
+  <span id="locale" class="field-name anchored">locale (<code><a href="/api/docs/scalar/string">String!</a></code>)</span>
   <div class="description-wrapper">
-   <p>The object's services</p>
+   <p>The standard locale of this translation.</p>
+  </div>
+</div>
+<div class="field-entry ">
+  <span id="fields" class="field-name anchored">fields (<code><a href="/api/docs/scalar/json">JSON</a></code>)</span>
+  <div class="description-wrapper">
+   <p>The fields of this translation.</p>
+  </div>
+</div>
+<div class="field-entry ">
+  <span id="machinetranslated" class="field-name anchored">machineTranslated (<code><a href="/api/docs/scalar/boolean">Boolean!</a></code>)</span>
+  <div class="description-wrapper">
+   <p>Whether this string is machine translated or not.</p>
   </div>
 </div></div>
 <div id="sidebar"><ul class="categories">
