@@ -74,4 +74,9 @@ describe "Visit the home page", type: :system do
       it_behaves_like "shows menu"
     end
   end
+
+  it_behaves_like "a participatory space with extra menu", "EXTRA_ASSEMBLY_MENU_" do
+    let(:participatory_space) { assembly }
+    let(:visit_path) { decidim_assemblies.assembly_path(assembly.slug) }
+  end
 end

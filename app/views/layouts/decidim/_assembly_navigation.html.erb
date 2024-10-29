@@ -9,7 +9,7 @@
   end
 
     model, slug = ENV.fetch("EXTRA_ASSEMBLY_MENU_#{current_participatory_space.slug.upcase}", "").split("/")
-    klass = model.safe_constantize
+    klass = model&.safe_constantize
     if klass
       space = klass.find_by(slug: slug)
       if space
@@ -21,9 +21,7 @@
           }
       end
     end
-    console
 %>
-
 <%=
   extended_navigation_bar(([
     {

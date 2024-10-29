@@ -230,4 +230,9 @@ describe "Participatory processes", type: :system do
       expect(page).to have_content("MORE INFO")
     end
   end
+
+  it_behaves_like "a participatory space with extra menu", "EXTRA_PROCESS_MENU_" do
+    let(:participatory_space) { normal_process }
+    let(:visit_path) { decidim_participatory_processes.participatory_process_path(normal_process.slug) }
+  end
 end

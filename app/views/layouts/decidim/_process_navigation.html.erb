@@ -10,7 +10,7 @@
   end
 
   model, slug = ENV.fetch("EXTRA_PROCESS_MENU_#{current_participatory_space.slug.upcase}", "").split("/")
-  klass = model.safe_constantize
+  klass = model&.safe_constantize
   if klass
     space = klass.find_by(slug: slug)
     if space
@@ -29,5 +29,4 @@
       active: is_active_link?(decidim_participatory_processes.participatory_process_path(participatory_space), :exclusive) ||
               is_active_link?(decidim_participatory_processes.all_metrics_participatory_process_path(participatory_space), :exclusive)
     }] + items)
-
 %>
