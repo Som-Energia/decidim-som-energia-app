@@ -21,7 +21,9 @@ gem "decidim-action_delegator", github: "coopdevs/decidim-module-action_delegato
 gem "decidim-decidim_awesome", github: "decidim-ice/decidim-module-decidim_awesome", branch: "release/0.27-stable"
 gem "decidim-reporting_proposals", "~> 0.5.2"
 
+# https://stackoverflow.com/questions/79360526/uninitialized-constant-activesupportloggerthreadsafelevellogger-nameerror
 gem "bootsnap", "~> 1.7"
+gem "concurrent-ruby", "1.3.4"
 gem "deface"
 gem "puma"
 

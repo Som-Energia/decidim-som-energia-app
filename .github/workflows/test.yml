@@ -47,6 +47,9 @@ jobs:
         with:
           chrome-version: 119.0.6045.105
 
+      - name: Install dependencies
+        run: sudo apt install imagemagick
+
       - uses: ruby/setup-ruby@v1
         with:
           ruby-version: ${{ env.RUBY_VERSION }}
