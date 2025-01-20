@@ -1007,6 +1007,7 @@ DEPENDENCIES
   listen
   progressbar
   puma
+  rails-controller-testing
   rubocop-faker
   sidekiq
   sidekiq-cron
@@ -1019,4 +1020,4 @@ RUBY VERSION
    ruby 3.0.6p216
 
 BUNDLED WITH
-   2.4.22
+   2.3.20
