@@ -8,8 +8,8 @@ on:
   pull_request:
 
 env:
-  RUBY_VERSION: 3.0.6
-  NODE_VERSION: 16.9.1
+  RUBY_VERSION: 3.1.6
+  NODE_VERSION: 18.17.1
 
 jobs:
   lint:
@@ -17,9 +17,12 @@ jobs:
     runs-on: ubuntu-20.04
     if: "!startsWith(github.head_ref, 'chore/l10n')"
     steps:
-      - uses: actions/checkout@v2.0.0
+      - uses: actions/checkout@v4
         with:
           fetch-depth: 1
+
+      - run: |
+          sudo apt-get update; sudo apt-get -f install wkhtmltopdf imagemagick
 
       - uses: actions/setup-node@master
         with:

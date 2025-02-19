@@ -4,22 +4,21 @@ source "https://rubygems.org"
 
 ruby RUBY_VERSION
 
-DECIDIM_VERSION = { github: "decidim/decidim", branch: "release/0.27-stable" }.freeze
+DECIDIM_VERSION = { github: "decidim/decidim", branch: "release/0.28-stable" }.freeze
 
-gem "codit-devise-cas-authenticable", github: "Som-Energia/codit-devise-cas-authenticable"
+# gem "codit-devise-cas-authenticable", github: "Som-Energia/codit-devise-cas-authenticable"
 gem "decidim", DECIDIM_VERSION
-gem "decidim-cas_client", github: "Som-Energia/decidim-cas-client"
-gem "decidim-consultations", DECIDIM_VERSION
+# gem "decidim-cas_client", github: "Som-Energia/decidim-cas-client"
 gem "decidim-initiatives", DECIDIM_VERSION
 gem "decidim-templates", DECIDIM_VERSION
 
 # A Decidim module to customize the localized terms in the system.
-gem "decidim-term_customizer", github: "mainio/decidim-module-term_customizer", branch: "release/0.27-stable"
+gem "decidim-term_customizer", github: "mainio/decidim-module-term_customizer", branch: "main"
 
 # Usability and UX tweaks for Decidim.
-gem "decidim-action_delegator", github: "coopdevs/decidim-module-action_delegator"
-gem "decidim-decidim_awesome", github: "decidim-ice/decidim-module-decidim_awesome", branch: "release/0.27-stable"
-gem "decidim-reporting_proposals", "~> 0.5.2"
+# gem "decidim-action_delegator", github: "coopdevs/decidim-module-action_delegator"
+gem "decidim-decidim_awesome", github: "decidim-ice/decidim-module-decidim_awesome"
+gem "decidim-reporting_proposals", "~> 0.6.0"
 
 # https://stackoverflow.com/questions/79360526/uninitialized-constant-activesupportloggerthreadsafelevellogger-nameerror
 gem "bootsnap", "~> 1.7"
@@ -28,10 +27,11 @@ gem "puma"
 
 gem "progressbar"
 gem "wicked_pdf"
+gem "wkhtmltopdf-binary"
 
 group :development, :test do
   gem "byebug", platform: :mri
-  gem "faker"
+  gem "faker", "~> 3.2"
   gem "rubocop-faker"
 
   gem "brakeman"
