@@ -6,7 +6,7 @@ module Decidim::Consultations::Admin
   describe CreateResponse do
     subject { described_class.new(form) }
 
-    let(:question) { create :question }
+    let(:question) { create(:question) }
     let(:errors) { double.as_null_object }
     let(:validity) { true }
     let(:params) do
@@ -28,8 +28,8 @@ module Decidim::Consultations::Admin
         title: { en: "title" },
         response_group: nil,
         weight: 3,
-        errors: errors,
-        context: context
+        errors:,
+        context:
       )
     end
 

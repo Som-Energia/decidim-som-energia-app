@@ -2,10 +2,10 @@
 
 require "rails_helper"
 
-describe "Consultation summary", type: :system do
+describe "Consultation_summary" do
   let!(:organization) { create(:organization) }
-  let!(:consultation) { create(:consultation, :published, organization: organization) }
-  let!(:question) { create(:question, consultation: consultation) }
+  let!(:consultation) { create(:consultation, :published, organization:) }
+  let!(:question) { create(:question, consultation:) }
 
   before do
     switch_to_host(organization.host)
@@ -51,7 +51,7 @@ describe "Consultation summary", type: :system do
 
     context "when visiting a question summary" do
       before do
-        click_link(translated(question.title))
+        click_on(translated(question.title))
       end
 
       let(:expected_path) { question_summary_path(question) }
@@ -78,7 +78,7 @@ describe "Consultation summary", type: :system do
         expect(page).to have_i18n_content(question.participatory_scope)
         expect(page).to have_i18n_content(question.question_context)
 
-        click_button("Read more")
+        click_on("Read more")
 
         expect(page).to have_i18n_content(question.what_is_decided)
       end

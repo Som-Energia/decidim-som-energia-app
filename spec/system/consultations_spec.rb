@@ -2,14 +2,14 @@
 
 require "rails_helper"
 
-describe "Consultations", type: :system do
+describe "Consultations" do
   let!(:organization) { create(:organization) }
   let!(:consultation_one) do
     create(
       :consultation,
       :published,
       highlighted_scope: grand_child_scope_one,
-      organization: organization
+      organization:
     )
   end
   let!(:consultation_two) do
@@ -17,11 +17,11 @@ describe "Consultations", type: :system do
       :consultation,
       :published,
       highlighted_scope: child_scope_two,
-      organization: organization
+      organization:
     )
   end
-  let!(:parent_scope_one) { create(:scope, organization: organization) }
-  let!(:parent_scope_two) { create(:scope, organization: organization) }
+  let!(:parent_scope_one) { create(:scope, organization:) }
+  let!(:parent_scope_two) { create(:scope, organization:) }
   let!(:child_scope_one) { create(:scope, parent: parent_scope_one) }
   let!(:child_scope_two) { create(:scope, parent: parent_scope_one) }
   let!(:grand_child_scope_one) { create(:scope, parent: child_scope_one) }

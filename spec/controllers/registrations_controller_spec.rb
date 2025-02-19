@@ -3,7 +3,7 @@
 require "rails_helper"
 
 module Decidim::Devise
-  describe RegistrationsController, type: :controller do
+  describe RegistrationsController do
     routes { Decidim::Core::Engine.routes }
 
     let(:organization) { create(:organization) }
@@ -28,7 +28,7 @@ module Decidim::Devise
             sign_up_as: "user",
             name: "User",
             nickname: "nickname",
-            email: email,
+            email:,
             password: "rPYWYKQJrXm97b4ytswc",
             password_confirmation: "rPYWYKQJrXm97b4ytswc",
             tos_agreement: "1",
@@ -38,7 +38,7 @@ module Decidim::Devise
       end
 
       it "redirects to login" do
-        post :create, params: params
+        post(:create, params:)
         expect(response).to redirect_to(new_user_session_path)
       end
     end

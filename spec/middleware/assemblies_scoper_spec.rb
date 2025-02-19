@@ -8,15 +8,15 @@ describe AssembliesScoper do
   let(:host) { "city.domain.org" }
   let(:middleware) { described_class.new(app) }
   let(:path) { "some_path" }
-  let!(:organization) { create(:organization, host: host) }
+  let!(:organization) { create(:organization, host:) }
   let!(:organization2) { create(:organization, host: "another.host.org") }
-  let(:alternative_type) { create :assemblies_type, organization: organization }
-  let(:normal_type) { create :assemblies_type, organization: organization }
+  let(:alternative_type) { create(:assemblies_type, organization:) }
+  let(:normal_type) { create(:assemblies_type, organization:) }
   let!(:external_assembly) { create(:assembly, :with_type, slug: "external-slug1", organization: organization2) }
   let!(:external_assembly2) { create(:assembly, :with_type, slug: "slug2", organization: organization2) }
-  let!(:alternative_assembly) { create(:assembly, slug: "slug1", assembly_type: alternative_type, organization: organization) }
-  let!(:assembly1) { create(:assembly, slug: "slug2", assembly_type: normal_type, organization: organization) }
-  let!(:assembly2) { create(:assembly, slug: "slug3", assembly_type: nil, organization: organization) }
+  let!(:alternative_assembly) { create(:assembly, slug: "slug1", assembly_type: alternative_type, organization:) }
+  let!(:first_assembly) { create(:assembly, slug: "slug2", assembly_type: normal_type, organization:) }
+  let!(:second_assembly) { create(:assembly, slug: "slug3", assembly_type: nil, organization:) }
 
   let(:route) { "alternative_assemblies" }
   let(:types) { [alternative_type.id] }
@@ -90,8 +90,8 @@ describe AssembliesScoper do
       middleware.call(env)
 
       expect(Decidim::Assembly.find_by(id: alternative_assembly.id)).not_to be_present
-      expect(Decidim::Assembly.find_by(id: assembly1.id)).to eq(assembly1)
-      expect(Decidim::Assembly.find_by(id: assembly2.id)).to eq(assembly2)
+      expect(Decidim::Assembly.find_by(id: first_assembly.id)).to eq(first_assembly)
+      expect(Decidim::Assembly.find_by(id: second_assembly.id)).to eq(second_assembly)
     end
   end
 
@@ -109,8 +109,8 @@ describe AssembliesScoper do
       middleware.call(env)
 
       expect(Decidim::Assembly.find_by(id: alternative_assembly.id)).to eq(alternative_assembly)
-      expect(Decidim::Assembly.find_by(id: assembly1.id)).not_to be_present
-      expect(Decidim::Assembly.find_by(id: assembly2.id)).not_to be_present
+      expect(Decidim::Assembly.find_by(id: first_assembly.id)).not_to be_present
+      expect(Decidim::Assembly.find_by(id: second_assembly.id)).not_to be_present
     end
   end
 
@@ -136,7 +136,7 @@ describe AssembliesScoper do
     end
 
     context "and correct assembly" do
-      let(:path) { "assemblies/#{assembly1.slug}" }
+      let(:path) { "assemblies/#{first_assembly.slug}" }
 
       it_behaves_like "exclude types"
 
@@ -175,14 +175,14 @@ describe AssembliesScoper do
     end
 
     context "and incorrect alternative assembly" do
-      let(:path) { "#{route}/#{assembly2.slug}" }
+      let(:path) { "#{route}/#{second_assembly.slug}" }
 
       it_behaves_like "untampered assembly model"
 
       it "redirects" do
         code, new_env = middleware.call(env)
 
-        expect(new_env["Location"]).to eq("/assemblies/#{assembly2.slug}")
+        expect(new_env["Location"]).to eq("/assemblies/#{second_assembly.slug}")
         expect(code).to eq(301)
       end
     end

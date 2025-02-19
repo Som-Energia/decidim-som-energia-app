@@ -2,10 +2,10 @@
 
 require "rails_helper"
 
-describe "Visit the home page", type: :system do
+describe "Homepage" do
   let(:organization) { create(:organization) }
-  let!(:user) { create(:user, :confirmed, organization: organization) }
-  let!(:assembly) { create(:assembly, organization: organization) }
+  let!(:user) { create(:user, :confirmed, organization:) }
+  let!(:assembly) { create(:assembly, organization:) }
   let(:membership) { assembly.slug }
   let(:menu) do
     {
@@ -30,7 +30,7 @@ describe "Visit the home page", type: :system do
       visit decidim.root_path
 
       within ".main-nav" do
-        expect(page).not_to have_link(href: "/assemblies/#{assembly.slug}")
+        expect(page).to have_no_link(href: "/assemblies/#{assembly.slug}")
       end
     end
   end
@@ -69,7 +69,7 @@ describe "Visit the home page", type: :system do
     end
 
     context "and user belongs to the assembly" do
-      let!(:assembly_private_user) { create(:assembly_private_user, user: user, privatable_to: assembly) }
+      let!(:assembly_private_user) { create(:assembly_private_user, user:, privatable_to: assembly) }
 
       it_behaves_like "shows menu"
     end

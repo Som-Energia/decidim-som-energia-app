@@ -3,7 +3,7 @@
 require "rails_helper"
 
 module Decidim::Consultations
-  describe ConsultationsHelper, type: :helper do
+  describe ConsultationsHelper do
     let(:organization) { create(:organization) }
 
     before do
@@ -20,9 +20,9 @@ module Decidim::Consultations
     end
 
     describe "filter_scopes_values" do
-      let(:scope) { create(:scope, organization: organization) }
-      let(:child_scope) { create(:scope, organization: organization, parent: scope) }
-      let!(:grandchild_scope) { create(:scope, organization: organization, parent: child_scope) }
+      let(:scope) { create(:scope, organization:) }
+      let(:child_scope) { create(:scope, organization:, parent: scope) }
+      let!(:grandchild_scope) { create(:scope, organization:, parent: child_scope) }
 
       it "returns a tree of scopes" do
         expect(helper.filter_scopes_values).to be_a(Decidim::CheckBoxesTreeHelper::TreeNode)
@@ -47,9 +47,9 @@ module Decidim::Consultations
 
     describe "scope_children_to_tree" do
       let(:organization) { create(:organization) }
-      let(:scope) { create(:scope, organization: organization) }
-      let(:child_scope) { create(:scope, organization: organization, parent: scope) }
-      let!(:grandchild_scope) { create(:scope, organization: organization, parent: child_scope) }
+      let(:scope) { create(:scope, organization:) }
+      let(:child_scope) { create(:scope, organization:, parent: scope) }
+      let!(:grandchild_scope) { create(:scope, organization:, parent: child_scope) }
 
       it "returns a tree of scopes" do
         expect(helper.scope_children_to_tree(scope)).to be_a(Array)

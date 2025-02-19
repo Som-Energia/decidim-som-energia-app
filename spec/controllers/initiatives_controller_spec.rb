@@ -3,13 +3,13 @@
 require "rails_helper"
 
 module Decidim::Initiatives
-  describe InitiativesController, type: :controller do
+  describe InitiativesController do
     routes { Decidim::Initiatives::Engine.routes }
 
     let(:organization) { create(:organization) }
-    let!(:initiative) { create(:initiative, organization: organization) }
-    let!(:created_initiative) { create(:initiative, :created, organization: organization) }
-    let!(:closed_initiative) { create(:initiative, state: :rejected, organization: organization) }
+    let!(:initiative) { create(:initiative, organization:) }
+    let!(:created_initiative) { create(:initiative, :created, organization:) }
+    let!(:closed_initiative) { create(:initiative, state: :rejected, organization:) }
 
     before do
       request.env["decidim.current_organization"] = organization

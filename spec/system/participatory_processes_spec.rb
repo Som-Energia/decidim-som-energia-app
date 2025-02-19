@@ -2,7 +2,7 @@
 
 require "rails_helper"
 
-describe "Participatory processes", type: :system do
+describe "Participatory_processes" do
   let!(:organization) { create(:organization) }
   let(:scoped_slug_prefix) { "SomAG" } # same as defined in secrets.yml!!
   let!(:alternative_process) do
@@ -12,7 +12,7 @@ describe "Participatory processes", type: :system do
       slug: "#{scoped_slug_prefix}-slug",
       scope: first_scope,
       area: first_area,
-      organization: organization
+      organization:
     )
   end
   let!(:alternative_process_old) do
@@ -22,7 +22,7 @@ describe "Participatory processes", type: :system do
       slug: "#{scoped_slug_prefix}-slug2",
       scope: second_scope,
       area: second_area,
-      organization: organization
+      organization:
     )
   end
   let!(:normal_process) do
@@ -32,7 +32,7 @@ describe "Participatory processes", type: :system do
       slug: "normal-slug",
       scope: first_scope,
       area: first_area,
-      organization: organization
+      organization:
     )
   end
   let!(:normal_process_old) do
@@ -42,13 +42,13 @@ describe "Participatory processes", type: :system do
       slug: "normal-slug2",
       scope: second_scope,
       area: second_area,
-      organization: organization
+      organization:
     )
   end
-  let!(:first_scope) { create(:scope, organization: organization) }
-  let!(:second_scope) { create(:scope, organization: organization) }
-  let!(:first_area) { create(:area, organization: organization) }
-  let!(:second_area) { create(:area, organization: organization) }
+  let!(:first_scope) { create(:scope, organization:) }
+  let!(:second_scope) { create(:scope, organization:) }
+  let!(:first_area) { create(:area, organization:) }
+  let!(:second_area) { create(:area, organization:) }
 
   before do
     switch_to_host(organization.host)
@@ -75,14 +75,14 @@ describe "Participatory processes", type: :system do
     context "and navigating to original processes" do
       before do
         within ".main-nav" do
-          click_link "Processes"
+          click_on "Processes"
         end
       end
 
       it "shows normal processes" do
         within "#processes-grid" do
           expect(page).to have_content(normal_process.title["en"])
-          expect(page).not_to have_content(alternative_process.title["en"])
+          expect(page).to have_no_content(alternative_process.title["en"])
         end
       end
 
@@ -98,27 +98,27 @@ describe "Participatory processes", type: :system do
 
       it "show normal processes when filtering" do
         within ".order-by__tabs" do
-          click_link "Past"
+          click_on "Past"
         end
 
         expect(page).to have_content(normal_process_old.title["en"])
-        expect(page).not_to have_content(normal_process.title["en"])
-        expect(page).not_to have_content(alternative_process.title["en"])
-        expect(page).not_to have_content(alternative_process_old.title["en"])
+        expect(page).to have_no_content(normal_process.title["en"])
+        expect(page).to have_no_content(alternative_process.title["en"])
+        expect(page).to have_no_content(alternative_process_old.title["en"])
       end
     end
 
     context "and navigating to alternative processes" do
       before do
         within ".main-nav" do
-          click_link "General Assemblies"
+          click_on "General Assemblies"
         end
       end
 
       it "shows alternative processes" do
         within "#processes-grid" do
           expect(page).to have_content(alternative_process.title["en"])
-          expect(page).not_to have_content(normal_process.title["en"])
+          expect(page).to have_no_content(normal_process.title["en"])
         end
       end
 
@@ -129,15 +129,15 @@ describe "Participatory processes", type: :system do
       context "when filtering by time" do
         before do
           within ".order-by__tabs" do
-            click_link "Past"
+            click_on "Past"
           end
         end
 
         it "show alternative processes when filtering" do
           expect(page).to have_content(alternative_process_old.title["en"])
-          expect(page).not_to have_content(alternative_process.title["en"])
-          expect(page).not_to have_content(normal_process.title["en"])
-          expect(page).not_to have_content(normal_process_old.title["en"])
+          expect(page).to have_no_content(alternative_process.title["en"])
+          expect(page).to have_no_content(normal_process.title["en"])
+          expect(page).to have_no_content(normal_process_old.title["en"])
         end
 
         it "has the alternative path" do
@@ -148,19 +148,19 @@ describe "Participatory processes", type: :system do
       context "when filtering by scope" do
         before do
           within "#participatory-space-filters" do
-            click_link "Select a scope"
+            click_on "Select a scope"
           end
           within "#data_picker-modal" do
-            click_link translated(first_scope.name)
-            click_link "Select"
+            click_on translated(first_scope.name)
+            click_on "Select"
           end
         end
 
         it "show alternative processes when filtering" do
           expect(page).to have_content(alternative_process.title["en"])
-          expect(page).not_to have_content(alternative_process_old.title["en"])
-          expect(page).not_to have_content(normal_process.title["en"])
-          expect(page).not_to have_content(normal_process_old.title["en"])
+          expect(page).to have_no_content(alternative_process_old.title["en"])
+          expect(page).to have_no_content(normal_process.title["en"])
+          expect(page).to have_no_content(normal_process_old.title["en"])
         end
 
         it "has the alternative path" do
@@ -178,9 +178,9 @@ describe "Participatory processes", type: :system do
 
         it "show alternative processes when filtering" do
           expect(page).to have_content(alternative_process.title["en"])
-          expect(page).not_to have_content(alternative_process_old.title["en"])
-          expect(page).not_to have_content(normal_process.title["en"])
-          expect(page).not_to have_content(normal_process_old.title["en"])
+          expect(page).to have_no_content(alternative_process_old.title["en"])
+          expect(page).to have_no_content(normal_process.title["en"])
+          expect(page).to have_no_content(normal_process_old.title["en"])
         end
 
         it "has the alternative path" do

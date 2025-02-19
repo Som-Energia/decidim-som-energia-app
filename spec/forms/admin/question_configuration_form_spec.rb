@@ -11,7 +11,7 @@ module Decidim::Consultations::Admin
         max_votes: 2,
         min_votes: 1,
         instructions: "Instructions",
-        enforce_special_requirements: enforce_special_requirements
+        enforce_special_requirements:
       }
     end
     let(:enforce_special_requirements) { false }

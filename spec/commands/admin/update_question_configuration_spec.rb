@@ -6,19 +6,19 @@ module Decidim::Consultations::Admin
   describe UpdateQuestionConfiguration do
     subject { described_class.new(form, question) }
 
-    let(:question) { create :question }
+    let(:question) { create(:question) }
     let(:min_votes) { "3" }
     let(:max_votes) { "5" }
     let(:params) do
       {
         question: {
           id: question.id,
-          min_votes: min_votes,
-          max_votes: max_votes,
+          min_votes:,
+          max_votes:,
           instructions_en: "Foo instructions",
           instructions_ca: "Foo instructions",
           instructions_es: "Foo instructions",
-          enforce_special_requirements: enforce_special_requirements
+          enforce_special_requirements:
         }
       }
     end

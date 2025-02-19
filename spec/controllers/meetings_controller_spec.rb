@@ -3,12 +3,12 @@
 require "rails_helper"
 
 module Decidim::Meetings
-  describe MeetingsController, type: :controller do
+  describe MeetingsController do
     routes { Decidim::Meetings::Engine.routes }
 
     let(:organization) { create(:organization) }
-    let(:user) { create(:user, :confirmed, organization: organization) }
-    let(:participatory_process) { create(:participatory_process, :with_steps, organization: organization) }
+    let(:user) { create(:user, :confirmed, organization:) }
+    let(:participatory_process) { create(:participatory_process, :with_steps, organization:) }
 
     let(:component) do
       create(:component, manifest_name: "meetings", participatory_space: participatory_process)
@@ -23,9 +23,9 @@ module Decidim::Meetings
     it "orders meetings by start_time" do
       # past_meeting = create(:meeting, :published, component: component, start_time: 10.days.ago)
       # recent_meeting = create(:meeting, :published, component: component, start_time: 2.days.ago)
-      today_meeting = create(:meeting, :published, component: component)
-      next_meeting = create(:meeting, :published, component: component, start_time: 2.days.from_now)
-      future_meeting = create(:meeting, :published, component: component, start_time: 10.days.from_now)
+      today_meeting = create(:meeting, :published, component:)
+      next_meeting = create(:meeting, :published, component:, start_time: 2.days.from_now)
+      future_meeting = create(:meeting, :published, component:, start_time: 10.days.from_now)
 
       get :index
 

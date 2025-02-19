@@ -8,12 +8,12 @@ describe ParticipatoryProcessesScoper do
   let(:host) { "city.domain.org" }
   let(:middleware) { described_class.new(app) }
   let(:path) { "some_path" }
-  let!(:organization) { create(:organization, host: host) }
+  let!(:organization) { create(:organization, host:) }
   let!(:other_organization) { create(:organization, host: "another.host.org") }
   let(:scoped_slug_prefix) { "scoped" }
   let!(:external_process) { create(:participatory_process, slug: "external-slug", organization: other_organization) }
-  let!(:alternative_process) { create(:participatory_process, slug: "#{scoped_slug_prefix}-slug", organization: organization) }
-  let!(:normal_process) { create(:participatory_process, slug: "normal-slug", organization: organization) }
+  let!(:alternative_process) { create(:participatory_process, slug: "#{scoped_slug_prefix}-slug", organization:) }
+  let!(:normal_process) { create(:participatory_process, slug: "normal-slug", organization:) }
 
   let(:route) { "alternative_processes" }
   let(:slug_prefixes) { [scoped_slug_prefix] }
@@ -21,7 +21,7 @@ describe ParticipatoryProcessesScoper do
     [
       {
         key: route,
-        slug_prefixes: slug_prefixes
+        slug_prefixes:
       }
     ]
   end

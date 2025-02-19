@@ -6,14 +6,14 @@ module Decidim::Admin
   describe ProcessParticipatorySpacePrivateUserImportCsv do
     subject { described_class.new(form, current_user, private_users_to) }
 
-    let(:current_user) { create(:user, :admin, organization: organization) }
+    let(:current_user) { create(:user, :admin, organization:) }
     let(:organization) { create(:organization) }
-    let(:private_users_to) { create :participatory_process, organization: organization }
+    let(:private_users_to) { create(:participatory_process, organization:) }
     let(:file) { Rack::Test::UploadedFile.new(Decidim::Dev.asset("import_participatory_space_private_users.csv"), "text/csv") }
     let(:form) { ParticipatorySpacePrivateUserCsvImportForm.from_params(attributes) }
     let(:attributes) do
       {
-        file: file
+        file:
       }
     end
 
@@ -58,31 +58,19 @@ module Decidim::Admin
       subject.call
     end
 
-    context "when importing has no emails" do
+    context "when importing" do
       let(:file) { Rack::Test::UploadedFile.new(Rails.root.join("spec/fixtures/import_participatory_space_users_no_email.csv"), "text/csv") }
 
-      it "broadcasts invalid" do
-        expect(subject.call).to broadcast(:invalid, ["La primera columna ha de contenir emails vàlids!"])
-      end
+      context "when has no users and eamils" do
+        it "broadcasts invalid" do
+          expect(subject.call).to broadcast(:invalid, ["La primera columna ha de contenir emails vàlids!"])
+        end
 
-      it "does not enqueue any job" do
-        expect(ImportParticipatorySpacePrivateUserCsvJob).not_to receive(:perform_later)
+        it "does not enqueue any job" do
+          expect(ImportParticipatorySpacePrivateUserCsvJob).not_to receive(:perform_later)
 
-        subject.call
-      end
-    end
-
-    context "when importing has no users" do
-      let(:file) { Rack::Test::UploadedFile.new(Rails.root.join("spec/fixtures/import_participatory_space_users_no_email.csv"), "text/csv") }
-
-      it "broadcasts invalid" do
-        expect(subject.call).to broadcast(:invalid, ["La primera columna ha de contenir emails vàlids!"])
-      end
-
-      it "does not enqueue any job" do
-        expect(ImportParticipatorySpacePrivateUserCsvJob).not_to receive(:perform_later)
-
-        subject.call
+          subject.call
+        end
       end
     end
 

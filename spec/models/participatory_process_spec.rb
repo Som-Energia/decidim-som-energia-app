@@ -7,8 +7,8 @@ module Decidim
     let!(:organization) { create(:organization) }
     let(:scoped_slug_prefix) { "alternative" }
     let(:namespace) { "alternative_processes" }
-    let!(:alternative_process) { create(:participatory_process, slug: "#{scoped_slug_prefix}-slug", organization: organization) }
-    let!(:normal_process) { create(:participatory_process, slug: "normal-slug", organization: organization) }
+    let!(:alternative_process) { create(:participatory_process, slug: "#{scoped_slug_prefix}-slug", organization:) }
+    let!(:normal_process) { create(:participatory_process, slug: "normal-slug", organization:) }
 
     context "when no scope types" do
       before do

@@ -2,14 +2,14 @@
 
 require "rails_helper"
 
-describe "Consultation", type: :system do
+describe "Consultation" do
   let!(:organization) { create(:organization) }
-  let!(:consultation) { create(:consultation, :published, organization: organization) }
-  let!(:user) { create(:user, :confirmed, organization: organization) }
+  let!(:consultation) { create(:consultation, :published, organization:) }
+  let!(:user) { create(:user, :confirmed, organization:) }
 
   # This test ensures we are rendering the default partial when viewing a consultation (not the summary).
   context "when showing the button that links to the question" do
-    let!(:question) { create(:question, :published, consultation: consultation, scope: consultation.highlighted_scope) }
+    let!(:question) { create(:question, :published, consultation:, scope: consultation.highlighted_scope) }
 
     context "when the user is not logged in" do
       before do
@@ -44,9 +44,9 @@ describe "Consultation", type: :system do
   end
 
   context "when visiting the question" do
-    let!(:question) { create(:question, :published, consultation: consultation) }
-    let!(:response1) { create(:response, weight: 2, question: question) }
-    let!(:response2) { create(:response, weight: 1, question: question) }
+    let!(:question) { create(:question, :published, consultation:) }
+    let!(:first_response) { create(:response, weight: 2, question:) }
+    let!(:second_response) { create(:response, weight: 1, question:) }
 
     before do
       switch_to_host(organization.host)
@@ -56,27 +56,27 @@ describe "Consultation", type: :system do
 
     it "shows the question title" do
       expect(page).to have_content(question.title["en"])
-      click_link "Vote"
+      click_on "Vote"
       within all(".response-title").first do
-        expect(page).to have_content(response2.title["en"])
+        expect(page).to have_content(second_response.title["en"])
       end
       within all(".response-title").last do
-        expect(page).to have_content(response1.title["en"])
+        expect(page).to have_content(first_response.title["en"])
       end
     end
 
     it "does not show read more" do
-      expect(page).not_to have_content("Read more")
-      expect(page).not_to have_css(".hide.show-more-panel")
+      expect(page).to have_no_content("Read more")
+      expect(page).to have_no_css(".hide.show-more-panel")
       expect(page).to have_css(".show-more-panel")
     end
   end
 
   context "when visitin a multiple question" do
     let(:enforce_special_requirements) { true }
-    let!(:question) { create(:question, :published, :multiple, enforce_special_requirements: enforce_special_requirements, consultation: consultation) }
-    let!(:response1) { create(:response, weight: 2, question: question) }
-    let!(:response2) { create(:response, weight: 1, question: question) }
+    let!(:question) { create(:question, :published, :multiple, enforce_special_requirements:, consultation:) }
+    let!(:first_response) { create(:response, weight: 2, question:) }
+    let!(:second_response) { create(:response, weight: 1, question:) }
 
     before do
       switch_to_host(organization.host)
@@ -86,30 +86,30 @@ describe "Consultation", type: :system do
 
     it "shows the responses & special requirements" do
       expect(page).to have_content(question.title["en"])
-      click_link "Vote"
+      click_on "Vote"
       expect(page).to have_css('[data-response-weight="1"')
       expect(page).to have_css('[data-response-weight="2"')
       within all(".multiple_votes_form div").first do
-        expect(page).to have_content(response2.title["en"])
+        expect(page).to have_content(second_response.title["en"])
       end
       within all(".multiple_votes_form div").last do
-        expect(page).to have_content(response1.title["en"])
+        expect(page).to have_content(first_response.title["en"])
       end
       expect(page).to have_css(".js-group-special-requirements")
       expect(page).to have_css('[data-enforce-special-requirements="true"]')
       expect(page).to have_css(".js-all-groups-not-answered")
       expect(page).to have_css(".js-card-grouped-response")
-      expect(page).not_to have_css(".extra__suport-number")
-      expect(page).not_to have_content("You can vote up to 3 options.")
+      expect(page).to have_no_css(".extra__suport-number")
+      expect(page).to have_no_content("You can vote up to 3 options.")
     end
 
     context "when special requirements are not enforced" do
       let(:enforce_special_requirements) { false }
 
       it "does not show the special requirements" do
-        click_link "Vote"
+        click_on "Vote"
         expect(page).to have_css('[data-enforce-special-requirements="false"]')
-        expect(page).not_to have_css(".js-all-groups-not-answered")
+        expect(page).to have_no_css(".js-all-groups-not-answered")
         expect(page).to have_css(".extra__suport-number")
         expect(page).to have_content("You can vote up to 3 options.")
       end
@@ -117,11 +117,11 @@ describe "Consultation", type: :system do
   end
 
   context "when visiting question results" do
-    let(:consultation) { create(:consultation, :published_results, organization: organization) }
-    let!(:question) { create(:question, :published, :multiple, consultation: consultation) }
-    let!(:group) { create(:response_group, question: question) }
-    let!(:response1) { create(:response, question: question, response_group: group) }
-    let!(:response2) { create(:response, question: question) }
+    let(:consultation) { create(:consultation, :published_results, organization:) }
+    let!(:question) { create(:question, :published, :multiple, consultation:) }
+    let!(:group) { create(:response_group, question:) }
+    let!(:first_response) { create(:response, question:, response_group: group) }
+    let!(:second_response) { create(:response, question:) }
 
     before do
       switch_to_host(organization.host)
@@ -130,8 +130,8 @@ describe "Consultation", type: :system do
 
     it "shows the question and response titles" do
       expect(page).to have_content(question.title["en"])
-      expect(page).to have_content(response1.title["en"])
-      expect(page).to have_content(response2.title["en"])
+      expect(page).to have_content(first_response.title["en"])
+      expect(page).to have_content(second_response.title["en"])
       expect(page).to have_content(group.title["en"])
     end
   end

@@ -3,11 +3,11 @@
 require "rails_helper"
 
 module Decidim::Consultations
-  describe ConsultationsController, type: :controller do
+  describe ConsultationsController do
     routes { Decidim::Consultations::Engine.routes }
 
     let(:organization) { create(:organization) }
-    let(:consultation) { create(:consultation, organization: organization) }
+    let(:consultation) { create(:consultation, organization:) }
 
     before do
       request.env["decidim.current_organization"] = organization
@@ -31,9 +31,9 @@ module Decidim::Consultations
     end
 
     context "when there are multiple consultations" do
-      let(:scope) { create(:scope, organization: organization) }
-      let!(:consultation_one) { create(:consultation, organization: organization, published_at: 2.days.ago) }
-      let!(:consultation_two) { create(:consultation, organization: organization, highlighted_scope: scope, published_at: 1.day.ago) }
+      let(:scope) { create(:scope, organization:) }
+      let!(:consultation_one) { create(:consultation, organization:, published_at: 2.days.ago) }
+      let!(:consultation_two) { create(:consultation, organization:, highlighted_scope: scope, published_at: 1.day.ago) }
 
       it "can access the index, ordered by recent" do
         get :index
@@ -51,7 +51,7 @@ module Decidim::Consultations
 
           expect(subject).to render_template(:index)
 
-          expect(controller.helpers.consultations).to match_array([consultation_two])
+          expect(controller.helpers.consultations).to contain_exactly(consultation_two)
         end
       end
     end

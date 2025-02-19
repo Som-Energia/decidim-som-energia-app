@@ -7,7 +7,7 @@ module Decidim::Consultations::Admin
     subject { described_class.new(form) }
 
     let(:errors) { double.as_null_object }
-    let(:response) { create :response }
+    let(:response) { create(:response) }
     let(:validity) { true }
     let(:context) do
       double(
@@ -22,8 +22,8 @@ module Decidim::Consultations::Admin
         title: { en: "New Title" },
         response_group: nil,
         weight: 3,
-        errors: errors,
-        context: context
+        errors:,
+        context:
       )
     end
     let(:command) { described_class.new(response, form) }

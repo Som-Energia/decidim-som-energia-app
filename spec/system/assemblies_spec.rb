@@ -2,10 +2,10 @@
 
 require "rails_helper"
 
-describe "Visit assemblies", type: :system do
-  let(:organization) { create :organization }
-  let!(:local_groups) { create :assemblies_type, id: 5 }
-  let!(:type2) { create :assemblies_type, id: 2 }
+describe "Assemblies" do
+  let(:organization) { create(:organization) }
+  let!(:local_groups) { create(:assemblies_type, id: 5) }
+  let!(:type2) { create(:assemblies_type, id: 2) }
   let!(:alternative_assembly) do
     create(
       :assembly,
@@ -13,7 +13,7 @@ describe "Visit assemblies", type: :system do
       scope: first_scope,
       area: first_area,
       assembly_type: local_groups,
-      organization: organization
+      organization:
     )
   end
   let!(:assembly) do
@@ -23,7 +23,7 @@ describe "Visit assemblies", type: :system do
       scope: second_scope,
       area: second_area,
       assembly_type: nil,
-      organization: organization
+      organization:
     )
   end
   let!(:assembly2) do
@@ -33,14 +33,14 @@ describe "Visit assemblies", type: :system do
       scope: second_scope,
       area: second_area,
       assembly_type: type2,
-      organization: organization
+      organization:
     )
   end
-  let!(:first_scope) { create(:scope, organization: organization) }
-  let!(:second_scope) { create(:scope, organization: organization) }
-  let!(:first_area) { create(:area, organization: organization) }
-  let!(:second_area) { create(:area, organization: organization) }
-  let!(:member) { create :assembly_member, assembly: alternative_assembly }
+  let!(:first_scope) { create(:scope, organization:) }
+  let!(:second_scope) { create(:scope, organization:) }
+  let!(:first_area) { create(:area, organization:) }
+  let!(:second_area) { create(:area, organization:) }
+  let!(:member) { create(:assembly_member, assembly: alternative_assembly) }
 
   before do
     switch_to_host(organization.host)
@@ -68,14 +68,14 @@ describe "Visit assemblies", type: :system do
     context "and navigating to original assemblies" do
       before do
         within ".main-nav" do
-          click_link "Assemblies"
+          click_on "Assemblies"
         end
       end
 
       it "shows assemblies without excluded types" do
-        expect(page).not_to have_css("#assemblies-filter")
+        expect(page).to have_no_css("#assemblies-filter")
         within "#parent-assemblies" do
-          expect(page).not_to have_content(alternative_assembly.title["en"])
+          expect(page).to have_no_content(alternative_assembly.title["en"])
           expect(page).to have_content(assembly2.title["en"])
           expect(page).to have_content(assembly.title["en"])
         end
@@ -89,15 +89,15 @@ describe "Visit assemblies", type: :system do
     context "and navigating to alternative assemblies" do
       before do
         within ".main-nav" do
-          click_link "Local Groups"
+          click_on "Local Groups"
         end
       end
 
       it "shows assemblies without excluded types" do
         within "#parent-assemblies" do
           expect(page).to have_content(alternative_assembly.title["en"])
-          expect(page).not_to have_content(assembly2.title["en"])
-          expect(page).not_to have_content(assembly.title["en"])
+          expect(page).to have_no_content(assembly2.title["en"])
+          expect(page).to have_no_content(assembly.title["en"])
         end
       end
 
@@ -108,19 +108,19 @@ describe "Visit assemblies", type: :system do
       context "when filtering by scope" do
         before do
           within "#participatory-space-filters" do
-            click_link "Select a scope"
+            click_on "Select a scope"
           end
           within "#data_picker-modal" do
-            click_link translated(first_scope.name)
-            click_link "Select"
+            click_on translated(first_scope.name)
+            click_on "Select"
           end
         end
 
         it "show alternative processes when filtering" do
           within "#parent-assemblies" do
             expect(page).to have_content(alternative_assembly.title["en"])
-            expect(page).not_to have_content(assembly2.title["en"])
-            expect(page).not_to have_content(assembly.title["en"])
+            expect(page).to have_no_content(assembly2.title["en"])
+            expect(page).to have_no_content(assembly.title["en"])
           end
         end
 
@@ -140,8 +140,8 @@ describe "Visit assemblies", type: :system do
         it "show alternative processes when filtering" do
           within "#parent-assemblies" do
             expect(page).to have_content(alternative_assembly.title["en"])
-            expect(page).not_to have_content(assembly2.title["en"])
-            expect(page).not_to have_content(assembly.title["en"])
+            expect(page).to have_no_content(assembly2.title["en"])
+            expect(page).to have_no_content(assembly.title["en"])
           end
         end
 

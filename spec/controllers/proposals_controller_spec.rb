@@ -3,12 +3,12 @@
 require "rails_helper"
 
 module Decidim::Proposals
-  describe ProposalsController, type: :controller do
+  describe ProposalsController do
     routes { Decidim::Proposals::Engine.routes }
 
     let(:organization) { create(:organization) }
-    let(:user) { create(:user, :confirmed, organization: organization) }
-    let(:participatory_process) { create(:participatory_process, :with_steps, slug: slug, organization: organization) }
+    let(:user) { create(:user, :confirmed, organization:) }
+    let(:participatory_process) { create(:participatory_process, :with_steps, slug:, organization:) }
     let(:slug) { "participatory-process" }
     let(:component) do
       create(:component, manifest_name: "proposals", participatory_space: participatory_process)
@@ -26,12 +26,12 @@ module Decidim::Proposals
       let(:params) { {} }
 
       it "renders the index template" do
-        get :index, params: params
+        get(:index, params:)
         expect(response).to render_template(:index)
       end
 
       it "forces no cache headers" do
-        get :index, params: params
+        get(:index, params:)
         expect(response.headers["Cache-Control"]).to eq("no-store")
       end
 
@@ -41,7 +41,7 @@ module Decidim::Proposals
       end
 
       it "has default order" do
-        get :index, params: params
+        get(:index, params:)
         expect(controller.helpers.order).to eq("random")
         expect(controller.helpers.available_orders).to include("az")
         # expect(controller.helpers.available_orders).not_to include("az")
@@ -51,7 +51,7 @@ module Decidim::Proposals
         let(:slug) { "SomAG-alternative-process" }
 
         it "has az order" do
-          get :index, params: params
+          get(:index, params:)
           expect(controller.helpers.available_orders).to include("az")
           expect(controller.helpers.order).to eq("az")
         end
@@ -61,7 +61,7 @@ module Decidim::Proposals
         let(:enabled_orders) { %w(za supported_first supported_last) }
 
         it "has default order" do
-          get :index, params: params
+          get(:index, params:)
           expect(controller.helpers.order).to eq("random")
           expect(controller.helpers.available_orders).not_to include("az")
         end
@@ -70,7 +70,7 @@ module Decidim::Proposals
           let(:slug) { "SomAG-alternative-process" }
 
           it "has no az order" do
-            get :index, params: params
+            get(:index, params:)
             expect(controller.helpers.available_orders).not_to include("az")
             expect(controller.helpers.order).to eq("random")
           end
@@ -79,21 +79,21 @@ module Decidim::Proposals
     end
 
     describe "GET show" do
-      let(:proposal) { create(:proposal, component: component) }
+      let(:proposal) { create(:proposal, component:) }
       let(:params) { { id: proposal.id } }
 
       it "renders the show template" do
-        get :show, params: params
+        get(:show, params:)
         expect(response).to render_template(:show)
       end
 
       it "doesn't force no cache headers" do
-        get :show, params: params
+        get(:show, params:)
         expect(response.headers["Cache-Control"]).to be_blank
       end
 
       it "sets the @report_form variable" do
-        get :show, params: params
+        get(:show, params:)
         expect(assigns(:report_form)).to be_a(Decidim::ReportForm)
       end
     end

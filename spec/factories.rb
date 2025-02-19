@@ -7,7 +7,7 @@ require "decidim/consultations/test/factories"
 require "decidim/initiatives/test/factories"
 
 shared_examples "a participatory space with extra menu" do |prefix|
-  let!(:linked_space) { create(:participatory_process, organization: organization) }
+  let!(:linked_space) { create(:participatory_process, organization:) }
 
   before do
     allow(ENV).to receive(:fetch).and_call_original
@@ -22,12 +22,12 @@ shared_examples "a participatory space with extra menu" do |prefix|
   end
 
   context "when visiting another space" do
-    let!(:another_space) { create(:participatory_process, organization: organization) }
+    let!(:another_space) { create(:participatory_process, organization:) }
     let(:visit_path) { decidim_participatory_processes.participatory_process_path(another_space.slug) }
 
     it "does not show the extra menu" do
       within "#process-nav-content" do
-        expect(page).not_to have_link(href: "/processes/#{linked_space.slug}")
+        expect(page).to have_no_link(href: "/processes/#{linked_space.slug}")
       end
     end
   end
