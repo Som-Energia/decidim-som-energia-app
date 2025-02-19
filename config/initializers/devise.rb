@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 Devise.setup do |config|
-  # config.cas_base_url = ENV.fetch("CAS_BASE_URL", nil)
+  config.cas_base_url = ENV.fetch("CAS_BASE_URL", nil) if config.respond_to?(:cas_base_url)
 
   # you can override these if you need to, but cas_base_url is usually enough
   # config.cas_login_url = "https://cas.myorganization.com/login"
