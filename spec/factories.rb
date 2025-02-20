@@ -3,7 +3,6 @@
 require "decidim/core/test/factories"
 require "decidim/proposals/test/factories"
 require "decidim/decidim_awesome/test/factories"
-require "decidim/consultations/test/factories"
 require "decidim/initiatives/test/factories"
 
 shared_examples "a participatory space with extra menu" do |prefix|
