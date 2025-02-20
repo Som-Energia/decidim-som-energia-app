@@ -42,31 +42,6 @@ checksums = [
     }
   },
   {
-    package: "decidim-consultations",
-    files: {
-      # not directly manipulated but worth taking a look if anythign changes
-      "/app/controllers/decidim/consultations/consultations_controller.rb" => "7b64afa021fcf6e9a924f5217f62179f",
-      "/app/controllers/decidim/consultations/questions_controller.rb" => "1b7ec4c7265caccd47f9dc9be08498a9",
-      "/app/views/decidim/consultations/consultations/_question.html.erb" => "2d02835e2a1538cd7f6db698e302a29b",
-      "/app/helpers/decidim/consultations/consultations_helper.rb" => "c07dd8250d60bcb31231dda864df5d4a",
-      "/app/forms/decidim/consultations/admin/question_configuration_form.rb" => "fd988f15b1242e582cc7d0cc8d3d1d2e",
-      "/app/commands/decidim/consultations/admin/update_question_configuration.rb" => "e7e60a9437aeaa962b9e089df4f63f1a",
-      "/app/views/decidim/consultations/question_multiple_votes/show.html.erb" => "d647ab9bcefd55d9c7b864d1e9c6aead",
-      "/app/forms/decidim/consultations/admin/response_form.rb" => "e567a9a49bc702ba630ef7b1cf5f2488",
-      "/app/views/decidim/consultations/admin/responses/_form.html.erb" => "6846d66395457acdd7d6ec839a49b0ec",
-      "/app/commands/decidim/consultations/admin/create_response.rb" => "557b0dcaa90d5a06196e94a14b800ee3",
-      "/app/commands/decidim/consultations/admin/update_response.rb" => "6471a7696cc3bd443a03f69ec578f468",
-      "/app/views/decidim/consultations/question_multiple_votes/_form.html.erb" => "af610283ce7ee20f5ef786228a263d4a",
-      # modified
-      "/app/views/decidim/consultations/admin/question_configuration/_form.html.erb" => "e1ab4e8e5cc988f60f2bfe5e4be0a9f4",
-      "/app/views/decidim/consultations/admin/consultations/results.html.erb" => "1a2f7afd79b20b1fcf66bdece660e8ae",
-      "/app/views/decidim/consultations/question_multiple_votes/_voting_rules.html.erb" => "9bc6f3b47e2e850ecaf33df56988d437",
-      "/app/views/decidim/consultations/questions/show.html.erb" => "a01add938f39d496ca7ae9beee9f6945",
-      "/app/views/decidim/consultations/questions/_vote_modal.html.erb" => "bb4b10e9278cffd8d0d4eb57f5197a89",
-      "/app/views/decidim/consultations/questions/_results.html.erb" => "2d8196efbf23e2ad7b8c32713c28b240"
-    }
-  },
-  {
     package: "decidim-initiatives",
     files: {
       "/app/controllers/decidim/initiatives/initiatives_controller.rb" => "67166f39d6c05478009d76bc1a38cbdd",
