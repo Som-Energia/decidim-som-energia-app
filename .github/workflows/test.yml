@@ -33,7 +33,7 @@ jobs:
 
       - run: |
           sudo apt-get update; sudo apt-get -f install wkhtmltopdf imagemagick
- 
+
       - uses: ruby/setup-ruby@v1
         with:
           ruby-version: ${{ env.RUBY_VERSION }}
@@ -65,7 +65,6 @@ jobs:
           RAILS_ENV: test
           DATABASE_USERNAME: postgres
           DATABASE_PASSWORD: postgres
-          CAS_BASE_URL: ${{ secrets.CAS_BASE_URL }}
 
       - name: Run RSpec on Group Registrations
         run: SIMPLECOV=1 CODECOV=1 bundle exec rspec decidim-group_registrations
