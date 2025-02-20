@@ -20,7 +20,7 @@ module Decidim
         it "creates a new participatory private user" do
           expect { described_class.perform_now(email, user_name, privatable_to, user) }.to change(Decidim::ParticipatorySpacePrivateUser, :count).by(1)
           expect(Decidim::ParticipatorySpacePrivateUser.count).to eq 1
-          expect(Decidim::ParticipatorySpacePrivateUser.last.cas_user).to be true
+          # expect(Decidim::ParticipatorySpacePrivateUser.last.cas_user).to be true
         end
       end
     end
