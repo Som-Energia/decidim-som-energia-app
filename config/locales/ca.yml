@@ -74,6 +74,9 @@ ca:
       next_button: Pregunta següent
       previous_button: Pregunta anterior
   devise:
+    login:
+      admin_login: Accés administració
+      sign_in_cas: Accedeix amb Som Energia
     invitations:
       invitation_token_invalid: El token de invitació proporcionat no és vàlid!
   layouts:

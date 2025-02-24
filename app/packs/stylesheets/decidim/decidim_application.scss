@@ -9,3 +9,20 @@
 @import "stylesheets/somenergia/global_styles";
 @import "stylesheets/consultation_overrides/question_multiple_votes";
 @import "stylesheets/consultation_overrides/consultations_question_requirements_validator";
+
+/* Decidim has a bug when using external_icon method that automatically adds a display:none inline css */
+
+.button--cas {
+  .button--social__icon {
+    padding: 0.3em .7rem;
+    img.icon.external-icon {
+      height: 36px;
+      width: auto;
+      padding: 2px;
+      display: inline-block !important;
+    }
+  }
+  .button--social__text {
+    text-align: center;
+  }
+}

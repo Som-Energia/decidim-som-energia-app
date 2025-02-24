@@ -16,6 +16,10 @@ en:
       name_required: Name is required!
       user_created_successfully: User created successfully!
       user_creation_failed: Error creating the user!
+  devise:
+    login:
+      admin_login: Log in as admin
+      sign_in_cas: Log in with Som Energia
   decidim:
     admin:
       participatory_space_private_users:

@@ -11,7 +11,8 @@ checksums = [
     files: {
       "/app/commands/decidim/create_omniauth_registration.rb" => "11111",
       "/app/controllers/decidim/devise/invitations_controller.rb" => "32ef1da80ec9dd20b884e5829c3307e6",
-      "/app/views/layouts/decidim/mailer.html.erb" => "0c7804de08649c8d3c55c117005e51c9"
+      "/app/views/layouts/decidim/mailer.html.erb" => "0c7804de08649c8d3c55c117005e51c9",
+      "/app/views/decidim/account/show.html.erb" => "db0e241a908e8d72cbd5815a09286e66"
     }
   },
   {

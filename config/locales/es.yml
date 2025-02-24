@@ -68,6 +68,9 @@ es:
       next_button: Pregunta siguiente
       previous_button: Pregunta anterior
   devise:
+    login:
+      admin_login: Acceso administración
+      sign_in_cas: Acceder con Som Energia
     invitations:
       invitation_token_invalid: "¡El token de invitación proporcionado no es válido!"
   somenergia:

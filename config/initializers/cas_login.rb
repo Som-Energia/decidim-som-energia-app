@@ -9,19 +9,28 @@ if ENV["CAS_HOST"].present?
                           },
                    nickname_key: "nickname",
                    fetch_raw_info: proc { |_strategy, opts, _ticket, user_info, rawxml|
-                                     return {} if user_info.empty? || rawxml.nil? # Auth failed
+                                      return {} if user_info.empty? || rawxml.nil? # Auth failed
 
-                                     name = %(#{user_info["first_name"]} #{user_info["last_name"]})
-                                     user_info.merge!({
-                                                         "name" => name,
-                                                         "nickname" => Decidim::UserBaseEntity.nicknamize(name, organization: opts["organization"]),
-                                                         "extended_data" => { "soci" => user_info["soci"], "username" => user_info["username"], "locale" => user_info["locale"] }
-                                                       })
-                                     user_info
+                                      name = %(#{user_info["first_name"]} #{user_info["last_name"]})
+                                      user_info.merge!(
+                                        {
+                                          "name" => name,
+                                          "nickname" => Decidim::UserBaseEntity.nicknamize(name,
+                                                                                            organization: opts["organization"]),
+                                          "extended_data" => { "soci" => user_info["soci"],
+                                                               "username" => user_info["username"],
+                                                               "locale" => user_info["locale"] }
+                                        }
+                                      )
+                                      user_info
                                    }
   end
   # Force Decidim to look at this provider if not defined in secrets.yml
-  Rails.application.secrets[:omniauth][:cas] = { enabled: true, host: ENV.fetch("CAS_HOST", nil) }
+  Rails.application.secrets[:omniauth][:cas] = {
+    enabled: true,
+    icon_path: "media/images/somenergia-icon.png",
+    host: ENV.fetch("CAS_HOST", nil)
+  }
 end
 
 # Override Decidim::OmniauthRegistration to use send and event when login and not only on registration

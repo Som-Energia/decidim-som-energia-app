@@ -33,6 +33,9 @@ gl:
       next_button: "Pregunta seguinte"
       previous_button: "Pregunta anterior"
   devise:
+    login:
+      admin_login: Acceder á administración
+      sign_in_cas: Acceder con Som Energia
     invitations:
       invitation_token_invalid: O token de invitación proporcionado non é válido.
   somenergia:

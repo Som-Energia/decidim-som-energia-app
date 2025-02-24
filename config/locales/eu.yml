@@ -33,6 +33,9 @@ eu:
     menu:
       assemblies: menu_assemblies eu
   devise:
+    login:
+      admin_login: Administraziora sartu
+      sign_in_cas: Som Energia-rekin sartu
     invitations:
       invitation_token_invalid: Gonbidapen token hori ez da baliozkoa!
   somenergia:
