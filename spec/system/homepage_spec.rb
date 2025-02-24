@@ -2,7 +2,7 @@
 
 require "rails_helper"
 
-describe "Visit the home page", perform_enqueued: true, type: :system do
+describe "Homepage", perform_enqueued: true do
   let(:organization) { create(:organization) }
   let!(:content_block) { create(:content_block, organization:, manifest_name: :hero) }
 
