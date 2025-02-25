@@ -49,7 +49,7 @@ checksums = [
   {
     package: "decidim-consultations",
     files: {
-      # not directly manipulated but worth taking a look if anythign changes
+      # not directly manipulated but worth taking a look if anything changes
       "/app/controllers/decidim/consultations/consultations_controller.rb" => "7b64afa021fcf6e9a924f5217f62179f",
       "/app/controllers/decidim/consultations/questions_controller.rb" => "1b7ec4c7265caccd47f9dc9be08498a9",
       "/app/views/decidim/consultations/consultations/_question.html.erb" => "2d02835e2a1538cd7f6db698e302a29b",
