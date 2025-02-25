@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 if ENV["RORVSWILD_API_KEY"].present?
   RorVsWild.start(
     api_key: ENV.fetch("RORVSWILD_API_KEY", nil),
