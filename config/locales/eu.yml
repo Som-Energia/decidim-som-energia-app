@@ -7,6 +7,10 @@ eu:
         title: Izenburua
         weight: Agindu
   decidim:
+    authorization_handlers:
+      cas_member:
+        name: Som Energia bazkidea
+        explanation: Autorizazioa eman da Som Energia bazkidea izateagatik (Som Energia CAS bidez saioa hasi behar da)
     admin:
       participatory_space_private_users:
         form:

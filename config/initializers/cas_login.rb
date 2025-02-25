@@ -31,6 +31,10 @@ if ENV["CAS_HOST"].present?
     icon_path: "media/images/somenergia-icon.png",
     host: ENV.fetch("CAS_HOST", nil)
   }
+  # Generic verification method for users logged with CAS
+  Decidim::Verifications.register_workflow(:cas_member) do |workflow|
+    workflow.form = "SomEnergia::CasMember"
+  end
 end
 
 # Override Decidim::OmniauthRegistration to use send and event when login and not only on registration
@@ -42,5 +46,21 @@ end
 ActiveSupport::Notifications.subscribe "decidim.user.omniauth_registration" do |_name, data|
   user = Decidim::User.find_by(id: data[:user_id])
   extended_data = data.dig(:raw_data, :extra, "extended_data")
-  user.update(extended_data: extended_data) if user.present?
+  if user.present?
+    user.update(extended_data: extended_data)
+    # Verify if the user is a Som Energia member
+    handler = Decidim::AuthorizationHandler.handler_for("cas_member", user: user, extended_data: extended_data)
+
+    if handler
+      Decidim::Verifications::AuthorizeUser.call(handler, user.organization) do
+        on(:ok) do
+          Rails.logger.info "User #{user.id} verified as Som Energia member as #{handler.unique_id}"
+        end
+
+        on(:invalid) do
+          Rails.logger.error "User #{user.id} not verified as Som Energia member"
+        end
+      end
+    end
+  end
 end

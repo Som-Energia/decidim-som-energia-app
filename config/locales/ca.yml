@@ -18,6 +18,10 @@ ca:
       user_created_successfully: Usuari creat correctament!
       user_creation_failed: Error al crear l'usuari!
   decidim:
+    authorization_handlers:
+      cas_member:
+        name: Soci de Som Energia
+        explanation: Autorizació concecidida per ser soci de Som Energia (cal fer login a través del CAS de Som Energia)
     admin:
       participatory_space_private_users:
         form:
@@ -84,6 +88,8 @@ ca:
       question_components:
         unfold: Desplegar
   somenergia:
+    verifications:
+      not_cas_user: No ets usuari del CAS
     menu:
       team_et: Equip tècnic
       team_it: Equip IT

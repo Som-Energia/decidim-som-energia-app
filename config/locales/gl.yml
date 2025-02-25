@@ -7,6 +7,10 @@ gl:
         title: Título
         weight: Orde
   decidim:
+    authorization_handlers:
+      cas_member:
+        name: Socio de Som Energia
+        explanation: Autorización concedida por ser socio de Som Energia (es necesario hacer login a través del CAS de Som Energia)
     admin:
       participatory_space_private_users:
         form:

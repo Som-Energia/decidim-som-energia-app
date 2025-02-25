@@ -21,6 +21,10 @@ en:
       admin_login: Log in as admin
       sign_in_cas: Log in with Som Energia
   decidim:
+    authorization_handlers:
+      cas_member:
+        name: Som Energia member
+        explanation: Authorization granted for being a Som Energia member (login through Som Energia CAS) 
     admin:
       participatory_space_private_users:
         form:

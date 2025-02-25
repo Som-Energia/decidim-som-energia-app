@@ -12,7 +12,7 @@ GIT
 
 GIT
   remote: https://github.com/decidim-ice/decidim-module-decidim_awesome.git
-  revision: b74e2d8e8d493139addf8b7a58d3bd43fc0f4c5e
+  revision: 8cb6a4073ea27aaf9b4e346e7c41858d32baa4b7
   branch: release/0.27-stable
   specs:
     decidim-decidim_awesome (0.10.4)
@@ -291,17 +291,18 @@ GEM
       gyoku (>= 0.4.0)
       nokogiri
     ast (2.4.2)
-    aws-eventstream (1.3.0)
-    aws-partitions (1.1046.0)
-    aws-sdk-core (3.217.1)
+    aws-eventstream (1.3.1)
+    aws-partitions (1.1054.0)
+    aws-sdk-core (3.219.0)
       aws-eventstream (~> 1, >= 1.3.0)
       aws-partitions (~> 1, >= 1.992.0)
       aws-sigv4 (~> 1.9)
+      base64
       jmespath (~> 1, >= 1.6.1)
-    aws-sdk-kms (1.97.0)
+    aws-sdk-kms (1.99.0)
       aws-sdk-core (~> 3, >= 3.216.0)
       aws-sigv4 (~> 1.5)
-    aws-sdk-s3 (1.179.0)
+    aws-sdk-s3 (1.182.0)
       aws-sdk-core (~> 3, >= 3.216.0)
       aws-sdk-kms (~> 1)
       aws-sigv4 (~> 1.5)
@@ -431,7 +432,7 @@ GEM
     devise_invitable (2.0.9)
       actionmailer (>= 5.0)
       devise (>= 4.6)
-    diff-lcs (1.5.1)
+    diff-lcs (1.6.0)
     diffy (3.4.3)
     doc2text (0.4.7)
       nokogiri (>= 1.13.2, < 1.17.0)
@@ -455,7 +456,7 @@ GEM
     escape_utils (1.3.0)
     et-orbi (1.2.11)
       tzinfo
-    excon (1.2.3)
+    excon (1.2.4)
     execjs (2.10.0)
     extended-markdown-filter (0.7.0)
       html-pipeline (~> 2.9)
@@ -542,14 +543,14 @@ GEM
       ostruct
     ice_cube (0.17.0)
     ice_nine (0.11.2)
-    image_processing (1.13.0)
-      mini_magick (>= 4.9.5, < 5)
+    image_processing (1.14.0)
+      mini_magick (>= 4.9.5, < 6)
       ruby-vips (>= 2.0.17, < 3)
     invisible_captcha (0.13.0)
       rails (>= 3.2.0)
     io-console (0.8.0)
     jmespath (1.6.2)
-    json (2.9.1)
+    json (2.10.1)
     jwt (2.10.1)
       base64
     kaminari (1.2.2)
@@ -580,7 +581,7 @@ GEM
     listen (3.9.0)
       rb-fsevent (~> 0.10, >= 0.10.3)
       rb-inotify (~> 0.9, >= 0.9.10)
-    logger (1.6.5)
+    logger (1.6.6)
     loofah (2.19.1)
       crass (~> 1.0.2)
       nokogiri (>= 1.5.9)
@@ -601,7 +602,7 @@ GEM
     mime-types (3.6.0)
       logger
       mime-types-data (~> 3.2015)
-    mime-types-data (3.2025.0204)
+    mime-types-data (3.2025.0220)
     mini_magick (4.13.2)
     mini_mime (1.1.5)
     minitest (5.25.4)
@@ -615,7 +616,7 @@ GEM
     mutex_m (0.3.0)
     net-http (0.6.0)
       uri
-    net-imap (0.4.18)
+    net-imap (0.4.19)
       date
       net-protocol
     net-pop (0.1.2)
@@ -703,7 +704,7 @@ GEM
       nio4r (~> 2.0)
     raabro (1.4.0)
     racc (1.8.1)
-    rack (2.2.10)
+    rack (2.2.11)
     rack-attack (6.7.0)
       rack (>= 1.0, < 4)
     rack-cors (1.1.1)
@@ -824,7 +825,7 @@ GEM
     rubocop-rspec (2.11.1)
       rubocop (~> 1.19)
     ruby-progressbar (1.13.0)
-    ruby-vips (2.2.2)
+    ruby-vips (2.2.3)
       ffi (~> 1.12)
       logger
     rubyXL (3.4.33)
@@ -853,7 +854,7 @@ GEM
       rubyzip (>= 1.2.2)
     semantic_range (3.1.0)
     seven_zip_ruby (1.3.0)
-    sidekiq (7.3.8)
+    sidekiq (7.3.9)
       base64
       connection_pool (>= 2.3.0)
       logger
@@ -901,7 +902,7 @@ GEM
     timeout (0.4.3)
     tomlrb (2.0.3)
     trailblazer-option (0.1.2)
-    twilio-ruby (7.4.3)
+    twilio-ruby (7.4.5)
       benchmark
       faraday (>= 0.9, < 3.0)
       jwt (>= 1.5, < 3.0)
@@ -916,7 +917,7 @@ GEM
     valid_email2 (2.3.1)
       activemodel (>= 3.2)
       mail (~> 2.5)
-    version_gem (1.1.4)
+    version_gem (1.1.6)
     virtus (2.0.0)
       axiom-types (~> 0.1)
       coercible (~> 1.0)
