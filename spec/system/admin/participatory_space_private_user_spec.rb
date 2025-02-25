@@ -6,14 +6,13 @@ describe "Admin checks participatory space private users", type: :system do
   let(:organization) { create(:organization) }
   let(:user) { create(:user, :admin, :confirmed, organization: organization) }
   let(:assembly) { create(:assembly, organization: organization) }
-  let(:setup) { nil }
+  let!(:setup) { nil }
   let(:assembly_private_user) do
     user = create :user, organization: organization
     create(:assembly_private_user, user: user, privatable_to: assembly)
   end
 
   before do
-    setup
     switch_to_host(organization.host)
     login_as user, scope: :user
     visit decidim_admin_assemblies.edit_assembly_path(assembly)

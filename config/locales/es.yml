@@ -17,6 +17,16 @@ es:
         name: Socio de Som Energia
         explanation: Autorización concedida por ser socio de Som Energia (es necesario hacer login a través del CAS de Som Energia)
     admin:
+      cas_users_controller:
+        email_already_registered: ¡El email ya está registrado!
+        dni_already_registered: ¡El DNI ya está registrado!
+        dni_required: ¡El DNI es obligatorio!
+        email_required: ¡El email es incorrecto!
+        membership_number_already_registered: ¡El Número de socio ya está registrado!
+        membership_number_required: ¡El Número de socio es obligatorio!
+        name_required: ¡El nombre es obligatorio!
+        user_created_successfully: ¡Usuario creado correctamente!
+        user_creation_failed: ¡Error al crear el usuario! (%{error})
       participatory_space_private_users:
         form:
           name: "Nombre"

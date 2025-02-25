@@ -9,14 +9,15 @@ ca:
         weight: Ordre
   admin:
     cas_users_controller:
+      email_already_registered: L'email ja està registrat!
       dni_already_registered: El DNI ja està registrat!
       dni_required: El DNI és obligatori!
-      email_required: L'email obligatori!
+      email_required: L'email és incorrecte!
       membership_number_already_registered: El Numero de soci ja està registrat!
       membership_number_required: El Numero de soci és obligatori!
       name_required: El nom és obligatori!
       user_created_successfully: Usuari creat correctament!
-      user_creation_failed: Error al crear l'usuari!
+      user_creation_failed: Error al crear l'usuari! (%{error})
   decidim:
     authorization_handlers:
       cas_member:

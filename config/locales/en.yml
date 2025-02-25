@@ -15,7 +15,7 @@ en:
       membership_number_required: Membership number is required!
       name_required: Name is required!
       user_created_successfully: User created successfully!
-      user_creation_failed: Error creating the user!
+      user_creation_failed: Error creating the user! (%{error})
   devise:
     login:
       admin_login: Log in as admin

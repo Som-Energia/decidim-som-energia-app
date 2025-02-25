@@ -65,15 +65,46 @@ describe "Login page", type: :system do
   end
 
   it "CAS member can login and gets authorized" do
-    click_link "Log in with Som Energia"
+    expect { click_link "Log in with Som Energia" }.to change(Decidim::User, :count).by(1)
 
     expect(page).to have_content "Successfully authenticated from Cas account."
 
     expect(last_user.extended_data).to eq(extra)
+    expect(last_user).to be_confirmed
+    expect(last_user).not_to be_tos_accepted
+
     expect(last_authorization).not_to be_nil
     expect(last_authorization.name).to eq("cas_member")
     expect(last_authorization.unique_id).to eq("1234")
     expect(last_authorization.user).to eq(last_user)
     expect(last_authorization.metadata).to eq(extra)
+
+    click_button "I agree with these terms"
+    expect(page).to have_content "You have accepted the terms and conditions"
+    expect(last_user.reload).to be_tos_accepted
+  end
+
+  context "when the user exists and is not confirmed" do
+    let!(:user) { create(:user, email: "cas@example.org", accepted_tos_version: nil, organization: organization) }
+
+    it "CAS member can login and gets authorized" do
+      expect { click_link "Log in with Som Energia" }.not_to change(Decidim::User, :count)
+
+      expect(page).to have_content "Successfully authenticated from Cas account."
+
+      expect(user.reload.extended_data).to eq(extra)
+      expect(user).to be_confirmed
+      expect(user).not_to be_tos_accepted
+
+      expect(last_authorization).not_to be_nil
+      expect(last_authorization.name).to eq("cas_member")
+      expect(last_authorization.unique_id).to eq("1234")
+      expect(last_authorization.user).to eq(user)
+      expect(last_authorization.metadata).to eq(extra)
+
+      click_button "I agree with these terms"
+      expect(page).to have_content "You have accepted the terms and conditions"
+      expect(user.reload).to be_tos_accepted
+    end
   end
 end
