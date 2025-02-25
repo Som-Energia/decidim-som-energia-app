@@ -50,7 +50,7 @@ else
     cert_dir = ENV.fetch("DEV_SSL_DIR") { "#{dev_gem.full_gem_path}/lib/decidim/dev/assets" }
     ssl_bind(
       "0.0.0.0",
-      ENV.fetch("DEV_SSL_PORT") { 3443 },
+      ENV.fetch("DEV_SSL_PORT", 3443),
       cert_pem: File.read("#{cert_dir}/ssl-cert.pem"),
       key_pem: File.read("#{cert_dir}/ssl-key.pem")
     )

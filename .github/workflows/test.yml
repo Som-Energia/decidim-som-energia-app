@@ -71,4 +71,4 @@ jobs:
       - name: Run RSpec
         run: SIMPLECOV=1 CODECOV=1 bundle exec rspec
         env:
-          CAS_BASE_URL: ${{ secrets.CAS_BASE_URL }}
+          CAS_HOST: cas.example.org

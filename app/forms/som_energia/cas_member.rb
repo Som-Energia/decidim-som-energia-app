@@ -20,7 +20,7 @@ module SomEnergia
     end
 
     def unique_id
-      return unless uid.present?
+      return if uid.blank?
 
       extended_data["soci"]
     end
@@ -28,7 +28,7 @@ module SomEnergia
     protected
 
     def uid
-      return unless extended_data && extended_data.respond_to?(:key?) && extended_data.key?("soci")
+      return unless extended_data && extended_data.respond_to?(:key?) && extended_data.has_key?("soci")
 
       extended_data["soci"].to_i
     end
