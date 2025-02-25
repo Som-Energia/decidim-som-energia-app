@@ -50,6 +50,15 @@ ActiveSupport::Notifications.subscribe "decidim.user.omniauth_registration" do |
   extended_data = data.dig(:raw_data, :extra, "extended_data")
   if user.present?
     user.update(extended_data: extended_data)
+    # Accept TOS if date before 2021-01-01
+    auto_accept_tos = ENV["AUTO_ACCEPT_TOS_BEFORE"].presence
+    if auto_accept_tos.present?
+      begin
+        user.update(accepted_tos_version: user.organization.tos_version) if user.created_at < Date.parse(auto_accept_tos)
+      rescue Date::Error => e
+        Rails.logger.error "Error parsing AUTO_ACCEPT_TOS_BEFORE: #{e.message}"
+      end
+    end
     # Verify if the user is a Som Energia member
     handler = Decidim::AuthorizationHandler.handler_for("cas_member", user: user, extended_data: extended_data)
 

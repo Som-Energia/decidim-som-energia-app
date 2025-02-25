@@ -26,6 +26,7 @@ describe "Login page", type: :system do
       "locale" => "ca"
     }
   end
+  let(:tos_before) { nil }
   let(:last_authorization) { Decidim::Authorization.last }
   let(:last_user) { Decidim::User.last }
 
@@ -36,7 +37,7 @@ describe "Login page", type: :system do
     OmniAuth.config.request_validation_phase = ->(env) {} if OmniAuth.config.respond_to?(:request_validation_phase)
 
     allow(ENV).to receive(:[]).and_call_original
-    allow(ENV).to receive(:[]).with("CAS_HOST").and_return("cas.example.org")
+    allow(ENV).to receive(:[]).with("AUTO_ACCEPT_TOS_BEFORE").and_return(tos_before)
     switch_to_host(organization.host)
     visit decidim.new_user_session_path
   end
@@ -105,6 +106,26 @@ describe "Login page", type: :system do
       click_button "I agree with these terms"
       expect(page).to have_content "You have accepted the terms and conditions"
       expect(user.reload).to be_tos_accepted
+    end
+  end
+
+  context "when env AUTO_ACCEPT_TOS_BEFORE is set" do
+    let(:tos_before) { 1.day.from_now.to_date.to_s }
+
+    it "CAS member can login and gets authorized and TOS accepted" do
+      expect { click_link "Log in with Som Energia" }.to change(Decidim::User, :count).by(1)
+
+      expect(page).to have_content "Successfully authenticated from Cas account."
+
+      expect(last_user.extended_data).to eq(extra)
+      expect(last_user).to be_confirmed
+      expect(last_user).to be_tos_accepted
+
+      expect(last_authorization).not_to be_nil
+      expect(last_authorization.name).to eq("cas_member")
+      expect(last_authorization.unique_id).to eq("1234")
+      expect(last_authorization.user).to eq(last_user)
+      expect(last_authorization.metadata).to eq(extra)
     end
   end
 end
