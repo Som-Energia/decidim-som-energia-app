@@ -107,7 +107,7 @@ describe "Admin checks participatory space private users", type: :system do
         # followed by anything (escaped host and port)
         # and ending with "%2Fusers%2Fcas%2Fservice&locale=en"
         let(:expected_path_with_cas_server_running) { %r{\A/login\?service=.*%2Fusers%2Fcas%2Fservice&locale=en\z} }
-        let(:expected_path_without_cas_server_running) { "users/cas/sign_in" }
+        let(:expected_path_without_cas_server_running) { "users/sign_in" }
         let(:expected_path) do
           Regexp.union(
             expected_path_with_cas_server_running,
