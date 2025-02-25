@@ -6,9 +6,7 @@ ruby RUBY_VERSION
 
 DECIDIM_VERSION = { github: "decidim/decidim", branch: "release/0.27-stable" }.freeze
 
-# gem "codit-devise-cas-authenticable", github: "Som-Energia/codit-devise-cas-authenticable"
 gem "decidim", DECIDIM_VERSION
-# gem "decidim-cas_client", github: "Som-Energia/decidim-cas-client"
 gem "decidim-consultations", DECIDIM_VERSION
 gem "decidim-initiatives", DECIDIM_VERSION
 gem "decidim-templates", DECIDIM_VERSION
@@ -24,10 +22,11 @@ gem "decidim-reporting_proposals", "~> 0.5.2"
 # https://stackoverflow.com/questions/79360526/uninitialized-constant-activesupportloggerthreadsafelevellogger-nameerror
 gem "bootsnap", "~> 1.7"
 gem "deface"
+gem "health_check"
 gem "omniauth-cas"
-gem "puma"
-
 gem "progressbar"
+gem "puma"
+gem "rorvswild"
 gem "wicked_pdf"
 
 group :development, :test do
