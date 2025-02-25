@@ -63,6 +63,10 @@ describe "Login page", type: :system do
     click_button "Log in"
     expect(page).to have_content "Signed in successfully"
     expect(last_authorization).to be_nil
+
+    visit decidim.account_path
+    expect(page).to have_field("user_email", readonly: false)
+    expect(page).to have_content("Change password")
   end
 
   it "CAS member can login and gets authorized" do
@@ -83,9 +87,13 @@ describe "Login page", type: :system do
     click_button "I agree with these terms"
     expect(page).to have_content "You have accepted the terms and conditions"
     expect(last_user.reload).to be_tos_accepted
+
+    visit decidim.account_path
+    expect(page).to have_field("user_email", readonly: true)
+    expect(page).not_to have_content("Change password")
   end
 
-  context "when the user exists and is not confirmed" do
+  context "when the user exists and has not tos accepted" do
     let!(:user) { create(:user, email: "cas@example.org", accepted_tos_version: nil, organization: organization) }
 
     it "CAS member can login and gets authorized" do
@@ -106,6 +114,10 @@ describe "Login page", type: :system do
       click_button "I agree with these terms"
       expect(page).to have_content "You have accepted the terms and conditions"
       expect(user.reload).to be_tos_accepted
+
+      visit decidim.account_path
+      expect(page).to have_field("user_email", readonly: true)
+      expect(page).not_to have_content("Change password")
     end
   end
 
