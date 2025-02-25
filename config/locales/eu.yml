@@ -43,6 +43,10 @@ eu:
     invitations:
       invitation_token_invalid: Gonbidapen token hori ez da baliozkoa!
   somenergia:
+    verifications:
+      not_cas_user: Ez zara CAS erabiltzailea
+      cas_members_only: Egiaztapen hau Som Energia bazkideei ematen zaie. Automatikoki ematen da "Som Energia-rekin hasi saioa" botoiarekin saioa hasten denean
+      login_with_cas: Arrazoi batengatik ez baduzu aktibatuta, egiaztatu zaitezke beheko botoia sakatuz. Metodo honek funtzionatzen ez badu, besterik gabe, saioa itxi eta berriro hasi "Som Energia-rekin hasi saioa" botoia erabiliz
     menu:
-      team_et: Equipo técnico
-      team_it: Equipo IT
+      team_et: Talde teknikoa
+      team_it: IT taldea

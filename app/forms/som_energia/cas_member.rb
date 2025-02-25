@@ -25,6 +25,10 @@ module SomEnergia
       extended_data["soci"]
     end
 
+    def to_partial_path
+      "som_energia/cas_member/form"
+    end
+
     protected
 
     def uid

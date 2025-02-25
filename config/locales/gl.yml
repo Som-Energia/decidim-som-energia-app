@@ -43,6 +43,10 @@ gl:
     invitations:
       invitation_token_invalid: O token de invitación proporcionado non é válido.
   somenergia:
+    verifications:
+      not_cas_user: Non es usuario do CAS
+      cas_members_only: Esta verificación concédese aos socios de Som Energia. Concédese automaticamente ao iniciar sesión co botón de "Inicia sesión con Som Energia"
+      login_with_cas: Se por algún motivo, non a tes activada podes probar a verificarte premendo o botón a continuación. Se este método non funciona, simplemente sae da sesión e volve a iniciarla empregando o botón "Inicia sesión con Som Energia"
     menu:
       team_et: Equipo técnico
       team_it: Equipo IT

@@ -49,6 +49,10 @@ en:
       question_components:
         unfold: Deploy
   somenergia:
+    verifications:
+      not_cas_user: You are not a CAS user
+      cas_members_only: This verification is given to Som Energia members. It is automatically granted when logging in with the "Log in with Som Energia" button
+      login_with_cas: If for some reason, you do not have it activated, you can try to verify yourself by pressing the button below. If this method does not work, simply log out and log back in using the "Log in with Som Energia" button
     menu:
       team_et: Technical team
       team_it: IT team

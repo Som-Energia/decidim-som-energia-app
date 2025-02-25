@@ -88,6 +88,10 @@ es:
     invitations:
       invitation_token_invalid: "¡El token de invitación proporcionado no es válido!"
   somenergia:
+    verifications:
+      not_cas_user: No eres usuario del CAS
+      cas_members_only: Esta verificación se otorga a los socios de Som Energia. Se otorga automáticamente al iniciar sesión con el botón de "Inicia sesión con Som Energia"
+      login_with_cas: Si por algún motivo, no la tienes activada, puedes intentar verificarte presionando el botón a continuación. Si este método no funciona, simplemente cierra la sesión y vuelve a iniciarla usando el botón "Inicia sesión con Som Energia"
     menu:
       team_et: Equipo técnico
       team_it: Equipo IT
