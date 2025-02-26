@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-if ENV["RORVSWILD_API_KEY"].present?
+if ENV["RORVSWILD_API_KEY"].present? && !Rails.env.test?
   RorVsWild.start(
     api_key: ENV.fetch("RORVSWILD_API_KEY", nil),
     ignore_exceptions: [

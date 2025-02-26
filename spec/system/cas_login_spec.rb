@@ -140,4 +140,33 @@ describe "Login page", type: :system do
       expect(last_authorization.metadata).to eq(extra)
     end
   end
+
+  context "when the user has a different email than the one in the CAS response" do
+    let!(:user) { create(:user, :confirmed, email: "noncas@example.org", organization: organization) }
+    let!(:identity) { create(:identity, user: user, provider: "cas", uid: "1234X") }
+
+    it "updates the user email" do
+      expect { click_link "Log in with Som Energia" }.not_to change(Decidim::User, :count)
+
+      expect(page).to have_content "Successfully authenticated from Cas account."
+
+      expect(user.reload.email).to eq("cas@example.org")
+      expect(user).to be_confirmed
+      expect(user).to be_tos_accepted
+    end
+
+    context "when the new email is already taken" do
+      let!(:other_user) { create(:user, :confirmed, email: "cas@example.org", organization: organization) }
+
+      it "does not update the user email" do
+        expect { click_link "Log in with Som Energia" }.not_to change(Decidim::User, :count)
+
+        expect(page).to have_content "Successfully authenticated from Cas account."
+
+        expect(user.reload.email).to eq("noncas@example.org")
+        expect(user).to be_confirmed
+        expect(user).to be_tos_accepted
+      end
+    end
+  end
 end

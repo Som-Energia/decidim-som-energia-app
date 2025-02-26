@@ -59,6 +59,21 @@ ActiveSupport::Notifications.subscribe "decidim.user.omniauth_registration" do |
         Rails.logger.error "Error parsing AUTO_ACCEPT_TOS_BEFORE: #{e.message}"
       end
     end
+    # Change the email if it is different
+    if user.email != data[:email]
+      previous_email = user.email
+      user.email = data[:email]
+      user.skip_reconfirmation!
+      if user.save
+        Rails.logger.info "Email updated from #{previous_email} to #{data[:email]} for user #{user.id}"
+      else
+        Rails.logger.error "Error updating email from #{previous_email} to #{data[:email]} for user #{user.id}: #{user.errors.full_messages}"
+      end
+    end
+    # if user.email != data[:raw_data][:info][:email]
+    #   user
+    #   user.update(email: data[:raw_data][:info][:email])
+    # end
     # Verify if the user is a Som Energia member
     handler = Decidim::AuthorizationHandler.handler_for("cas_member", user: user, extended_data: extended_data)
 
