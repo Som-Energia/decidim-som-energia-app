@@ -17,8 +17,17 @@ if Rails.env.production?
     request.env.dig("rack.session", "warden.user.user.key").present?
   end
 
-  Rack::Attack.safelist("bypass with secret param") do |request|
-    # Requests are allowed if the return value is truthy
-    request.params["skip_rack_attack"] == Rails.application.secrets.rack_attack_skip
+  skip_rack_attack = ENV["RACK_ATTACK_SKIP_PARAM"]
+  if skip_rack_attack.present?
+    Rack::Attack.safelist("bypass with secret param") do |request|
+      # Requests are allowed if the return value is truthy
+      request.params["skip_rack_attack"] == skip_rack_attack
+    end
+  end
+  allowed_ips = ENV["RACK_ATTACK_ALLOWED_IPS"]
+  if allowed_ips.present?
+    allowed_ips.split(",").each do |ip|
+      Rack::Attack.safelist_ip(ip)
+    end
   end
 end
