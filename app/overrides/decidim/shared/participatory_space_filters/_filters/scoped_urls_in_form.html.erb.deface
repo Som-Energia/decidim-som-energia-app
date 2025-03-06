@@ -1,3 +1,0 @@
-<!-- replace 'erb[loud]:contains("filter_form_for filter do |form|")' -->
-
-<%= filter_form_for(filter, participatory_space_filters_form_url) do |form| %>

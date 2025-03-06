@@ -1,3 +1,9 @@
+<div class="item_show__header">
+  <h1 class="item_show__header-title">
+    Preinscripcions d'usuaries sòcies al Decidim
+  </h1>
+</div>
+
 <div class="callout warning">
   <b>ATENCIÓ, no feu aquesta operació a menys que ho necessiteu per algun motiu de pes.</b> 
   <p>Si us plau, assegura't de que l'usuari que estàs creant és un soci de l'associació amb el correu electrònic correcte.</p>
@@ -5,26 +11,33 @@
   <p>El fet d'introduir un usuari en aquest formulari només crearà l'usuari a la plataforma, no enviarà cap invitació.</p>
   <p>En el moment en que l'usuari accedeixi a la plataforma, haurà d'acceptar les condicions d'ús i la política de privacitat.</p>
 </div>
-<%= form_for(@user, url: admin_cas_users_path, html: { class: "form new_user" }) do |f| %>
-  <div class="card">
-    <div class="card-divider">
-      <h2 class="card-title">Crea una usuari al Decidim</h2>
-    </div>
-    <div class="card-section">
-      <div><%= f.text_field :name, label: "Nom" %></div>
-      <div><%= f.text_field :email %></div>
-      <div>
-        <%= f.label "Numero de soci" %>
-        <%= text_field_tag "soci", f.object.extended_data["soci"], type: "number" %>
+<div class="item__edit item__edit-1col">
+  <%= form_for(@user, url: admin_cas_users_path, html: { class: "form-defaults form new_user_" }) do |f| %>
+    <div class="form__wrapper">
+      <div class="card pt-4">
+        <div class="card-section">
+          <div class="row column">
+            <%= f.text_field :name, label: "Nom" %>
+          </div>
+          <div class="row column">
+            <%= f.text_field :email %>
+          </div>
+          <div class="row column">
+            <%= f.label "Numero de soci" %>
+            <%= text_field_tag "soci", f.object.extended_data["soci"], type: "number" %>
+          </div>
+          <div class="row column">
+            <%= f.label "DNI" %>
+            <%= text_field_tag "dni", f.object.extended_data["username"] %>
+          </div>
+        </div>
       </div>
-      <div>
-        <%= f.label "DNI" %>
-        <%= text_field_tag "dni", f.object.extended_data["username"] %>
-      </div>
     </div>
-  </div>
 
-  <div class="button--double form-general-submit">
-    <%= f.submit "Crea la usuaria" %>
-  </div>
-<% end %>
+    <div class="item__edit-sticky">
+      <div class="item__edit-sticky-container">
+        <%= f.submit "Crea la usuaria", class: "button button__sm button__secondary" %>
+      </div>
+    </div>
+  <% end %>
+</div>
