@@ -49,7 +49,7 @@ export SMTP_SETTINGS='{address: \"stmp.example.org\", port: 25, enable_starttls_
       user.organization = organization
       user.nickname = Decidim::UserBaseEntity.nicknamize(user.name, organization:)
       user.save!(validate: false)
-      puts "Created user #{user.email} #{user.extra_attributes}"
+      puts "Created user #{user.email} #{user.extended_data}"
     end
   end
 end

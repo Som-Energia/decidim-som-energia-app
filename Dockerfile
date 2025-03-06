@@ -110,8 +110,7 @@ COPY --from=builder --chown=app:app /app /app
 
 USER app
 HEALTHCHECK --interval=1m --timeout=5s --start-period=30s \
-    CMD (curl -sSH "Content-Type: application/json" -d '{"query": "{ decidim { version } }"}' http://localhost:3000/api) || exit 1
-
+    CMD (curl -sS http://localhost:3000/health_check | grep success) || exit 1
 
 ENTRYPOINT ["/app/entrypoint.sh"]
 CMD ["/usr/bin/supervisord"]

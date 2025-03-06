@@ -779,7 +779,7 @@ ActiveRecord::Schema.define(version: 2025_02_19_145970) do
   end
 
   create_table "decidim_forms_answers", id: :serial, force: :cascade do |t|
-    t.text "body"
+    t.jsonb "body", default: []
     t.integer "decidim_user_id"
     t.integer "decidim_questionnaire_id"
     t.integer "decidim_question_id"
@@ -1892,8 +1892,6 @@ ActiveRecord::Schema.define(version: 2025_02_19_145970) do
     t.text "about"
     t.datetime "officialized_at"
     t.jsonb "officialized_as"
-    t.string "username"
-    t.jsonb "extra_attributes"
     t.datetime "accepted_tos_version"
     t.string "newsletter_token", default: ""
     t.datetime "newsletter_notifications_at"
@@ -1931,7 +1929,6 @@ ActiveRecord::Schema.define(version: 2025_02_19_145970) do
     t.index ["officialized_at"], name: "index_decidim_users_on_officialized_at"
     t.index ["reset_password_token"], name: "index_decidim_users_on_reset_password_token", unique: true
     t.index ["unlock_token"], name: "index_decidim_users_on_unlock_token", unique: true
-    t.index ["username"], name: "index_decidim_users_on_username"
   end
 
   create_table "decidim_verifications_conflicts", force: :cascade do |t|

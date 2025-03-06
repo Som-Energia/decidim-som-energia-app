@@ -54,15 +54,25 @@ module Decidim::Devise
     #       password_confirmation: password
     #     }
     #   end
+    describe "accepting invitation with CAS user" do
+      let(:password) { "decidim123456789" }
+      let(:registration_params) do
+        {
+          invitation_token: user.raw_invitation_token,
+          nickname: "invited_user",
+          password: password,
+          password_confirmation: password
+        }
+      end
 
-    #   before do
-    #     create(:participatory_space_private_user, user:, cas_user: true)
-    #   end
+      before do
+        create(:participatory_space_private_user, user: user, cas_user: true)
+      end
 
-    #   it "redirects to the CAS login path" do
-    #     get :edit, params: { invitation_token: user.raw_invitation_token }
-    #     expect(response).to redirect_to(new_user_cas_session_path)
-    #   end
-    # end
+      it "redirects to the CAS login path" do
+        get :edit, params: { invitation_token: user.raw_invitation_token }
+        expect(response).to redirect_to(new_user_session_path)
+      end
+    end
   end
 end
