@@ -21,9 +21,9 @@ module Decidim::Admin
     context "when everything is OK" do
       it { is_expected.to be_valid }
 
-      # it "has cas_user attribute" do
-      #   expect(subject.cas_user).to be_truthy
-      # end
+      it "has cas_user attribute" do
+        expect(subject.cas_user).to be_truthy
+      end
     end
 
     context "when email is missing" do

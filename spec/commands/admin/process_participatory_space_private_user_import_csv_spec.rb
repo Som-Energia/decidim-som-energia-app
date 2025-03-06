@@ -33,73 +33,73 @@ module Decidim::Admin
       end
     end
 
-    # context "when the CSV file has BOM" do
-    #   let(:file) { Rack::Test::UploadedFile.new(Decidim::Dev.asset("import_participatory_space_private_users_with_bom.csv"), "text/csv") }
-    #   let(:email) { "my_user@example.org" }
+    context "when the CSV file has BOM" do
+      let(:file) { Rack::Test::UploadedFile.new(Decidim::Dev.asset("import_participatory_space_private_users_with_bom.csv"), "text/csv") }
+      let(:email) { "my_user@example.org" }
 
-    #   it "broadcasts ok" do
-    #     expect(subject.call).to broadcast(:ok)
-    #   end
+      it "broadcasts ok" do
+        expect(subject.call).to broadcast(:ok)
+      end
 
-    #   it "enqueues a job for each present value without BOM" do
-    #     expect(ImportParticipatorySpacePrivateUserCsvJob).to receive(:perform_later).with(email, kind_of(String), private_users_to, current_user)
+      it "enqueues a job for each present value without BOM" do
+        expect(ImportParticipatorySpacePrivateUserCsvJob).to receive(:perform_later).with(email, kind_of(String), private_users_to, current_user)
 
-    #     subject.call
-    #   end
-    # end
+        subject.call
+      end
+    end
 
-    # it "broadcasts ok" do
-    #   expect(subject.call).to broadcast(:ok)
-    # end
+    it "broadcasts ok" do
+      expect(subject.call).to broadcast(:ok)
+    end
 
-    # it "enqueues a job for each present value" do
-    #   expect(ImportParticipatorySpacePrivateUserCsvJob).to receive(:perform_later).twice.with(kind_of(String), kind_of(String), private_users_to, current_user)
+    it "enqueues a job for each present value" do
+      expect(ImportParticipatorySpacePrivateUserCsvJob).to receive(:perform_later).twice.with(kind_of(String), kind_of(String), private_users_to, current_user)
 
-    #   subject.call
-    # end
+      subject.call
+    end
 
-    # context "when importing" do
-    #   let(:file) { Rack::Test::UploadedFile.new(Rails.root.join("spec/fixtures/import_participatory_space_users_no_email.csv"), "text/csv") }
+    context "when importing" do
+      let(:file) { Rack::Test::UploadedFile.new(Rails.root.join("spec/fixtures/import_participatory_space_users_no_email.csv"), "text/csv") }
 
-    #   context "when has no users and eamils" do
-    #     it "broadcasts invalid" do
-    #       expect(subject.call).to broadcast(:invalid, ["La primera columna ha de contenir emails vàlids!"])
-    #     end
+      context "when has no users and eamils" do
+        it "broadcasts invalid" do
+          expect(subject.call).to broadcast(:invalid, ["La primera columna ha de contenir emails vàlids!"])
+        end
 
-    #     it "does not enqueue any job" do
-    #       expect(ImportParticipatorySpacePrivateUserCsvJob).not_to receive(:perform_later)
+        it "does not enqueue any job" do
+          expect(ImportParticipatorySpacePrivateUserCsvJob).not_to receive(:perform_later)
 
-    #       subject.call
-    #     end
-    #   end
-    # end
+          subject.call
+        end
+      end
+    end
 
-    # context "when importing invalid emails" do
-    #   let(:file) { Rack::Test::UploadedFile.new(Rails.root.join("spec/fixtures/import_participatory_space_users_invalid_email.csv"), "text/csv") }
+    context "when importing invalid emails" do
+      let(:file) { Rack::Test::UploadedFile.new(Rails.root.join("spec/fixtures/import_participatory_space_users_invalid_email.csv"), "text/csv") }
 
-    #   it "broadcasts ok" do
-    #     expect(subject.call).to broadcast(:ok)
-    #   end
+      it "broadcasts ok" do
+        expect(subject.call).to broadcast(:ok)
+      end
 
-    #   it "enqueues only one job" do
-    #     expect(ImportParticipatorySpacePrivateUserCsvJob).to receive(:perform_later).once.with(kind_of(String), kind_of(String), private_users_to, current_user)
+      it "enqueues only one job" do
+        expect(ImportParticipatorySpacePrivateUserCsvJob).to receive(:perform_later).once.with(kind_of(String), kind_of(String), private_users_to, current_user)
 
-    #     subject.call
-    #   end
-    # end
+        subject.call
+      end
+    end
 
-    # context "when importing invalid users" do
-    #   let(:file) { Rack::Test::UploadedFile.new(Decidim::Dev.asset("import_participatory_space_private_users_nok.csv"), "text/csv") }
+    context "when importing invalid users" do
+      let(:file) { Rack::Test::UploadedFile.new(Decidim::Dev.asset("import_participatory_space_private_users_nok.csv"), "text/csv") }
 
-    #   it "broadcasts ok" do
-    #     expect(subject.call).to broadcast(:ok)
-    #   end
+      it "broadcasts ok" do
+        expect(subject.call).to broadcast(:ok)
+      end
 
-    #   it "enqueues all jobs" do
-    #     expect(ImportParticipatorySpacePrivateUserCsvJob).to receive(:perform_later).twice.with(kind_of(String), kind_of(String), private_users_to, current_user)
+      it "enqueues all jobs" do
+        expect(ImportParticipatorySpacePrivateUserCsvJob).to receive(:perform_later).twice.with(kind_of(String), kind_of(String), private_users_to, current_user)
 
-    #     subject.call
-    #   end
-    # end
+        subject.call
+      end
+    end
   end
 end

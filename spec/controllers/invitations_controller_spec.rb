@@ -44,16 +44,6 @@ module Decidim::Devise
       end
     end
 
-    # describe "accepting invitation with CAS user" do
-    #   let(:password) { "decidim123456789" }
-    #   let(:registration_params) do
-    #     {
-    #       invitation_token: user.raw_invitation_token,
-    #       nickname: "invited_user",
-    #       password:,
-    #       password_confirmation: password
-    #     }
-    #   end
     describe "accepting invitation with CAS user" do
       let(:password) { "decidim123456789" }
       let(:registration_params) do
