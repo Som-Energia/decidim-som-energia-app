@@ -8,8 +8,8 @@ module Decidim::Admin
 
     let(:current_user) { create(:user, :admin, organization:) }
     let(:organization) { create(:organization) }
-    let(:private_users_to) { create(:participatory_process, organization:) }
-    let(:file) { Rack::Test::UploadedFile.new(Decidim::Dev.asset("import_participatory_space_private_users.csv"), "text/csv") }
+    let(:private_users_to) { create(:participatory_process, private_space: true, organization:) }
+    let(:file) { Rack::Test::UploadedFile.new(Rails.root.join("spec/fixtures/import_participatory_space_private_users.csv"), "text/csv") }
     let(:form) { ParticipatorySpacePrivateUserCsvImportForm.from_params(attributes) }
     let(:attributes) do
       {
@@ -17,14 +17,24 @@ module Decidim::Admin
       }
     end
 
+    it "broadcasts ok" do
+      expect(subject.call).to broadcast(:ok)
+    end
+
+    it "enqueues a job for each present value" do
+      expect(ImportParticipatorySpacePrivateUserCsvJob).to receive(:perform_later).twice.with(kind_of(String), kind_of(String), private_users_to, current_user)
+
+      subject.call
+    end
+
     context "when the form is not valid" do
       before do
         allow(form).to receive(:valid?).and_return(false)
       end
 
-      # it "broadcasts invalid" do
-      #   expect(subject.call).to broadcast(:invalid, [])
-      # end
+      it "broadcasts invalid" do
+        expect(subject.call).to broadcast(:invalid, [])
+      end
 
       it "does not enqueue any job" do
         expect(ImportParticipatorySpacePrivateUserCsvJob).not_to receive(:perform_later)
@@ -34,7 +44,7 @@ module Decidim::Admin
     end
 
     context "when the CSV file has BOM" do
-      let(:file) { Rack::Test::UploadedFile.new(Decidim::Dev.asset("import_participatory_space_private_users_with_bom.csv"), "text/csv") }
+      let(:file) { Rack::Test::UploadedFile.new(Rails.root.join("spec/fixtures/import_participatory_space_private_users_with_bom.csv"), "text/csv") }
       let(:email) { "my_user@example.org" }
 
       it "broadcasts ok" do
@@ -46,16 +56,6 @@ module Decidim::Admin
 
         subject.call
       end
-    end
-
-    it "broadcasts ok" do
-      expect(subject.call).to broadcast(:ok)
-    end
-
-    it "enqueues a job for each present value" do
-      expect(ImportParticipatorySpacePrivateUserCsvJob).to receive(:perform_later).twice.with(kind_of(String), kind_of(String), private_users_to, current_user)
-
-      subject.call
     end
 
     context "when importing" do
@@ -89,7 +89,7 @@ module Decidim::Admin
     end
 
     context "when importing invalid users" do
-      let(:file) { Rack::Test::UploadedFile.new(Decidim::Dev.asset("import_participatory_space_private_users_nok.csv"), "text/csv") }
+      let(:file) { Rack::Test::UploadedFile.new(Rails.root.join("spec/fixtures/import_participatory_space_private_users_nok.csv"), "text/csv") }
 
       it "broadcasts ok" do
         expect(subject.call).to broadcast(:ok)

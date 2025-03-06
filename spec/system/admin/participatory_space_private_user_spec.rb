@@ -5,7 +5,7 @@ require "rails_helper"
 describe "Admin_checks_participatory_space_private_users" do
   let(:organization) { create(:organization) }
   let(:user) { create(:user, :admin, :confirmed, organization:) }
-  let(:assembly) { create(:assembly, organization:) }
+  let(:assembly) { create(:assembly, private_space: true, organization:) }
   let!(:setup) { nil }
   let(:assembly_private_user) do
     user = create(:user, organization:)
@@ -61,6 +61,7 @@ describe "Admin_checks_participatory_space_private_users" do
     shared_examples "invitation link" do
       before do
         logout :user
+        sleep 0.5
         visit accept_invitation_path
       end
 
@@ -85,7 +86,7 @@ describe "Admin_checks_participatory_space_private_users" do
       fill_in :participatory_space_private_user_name, with: "Whatever"
       fill_in :participatory_space_private_user_email, with: "what@ever.com"
       fill_cas_user_checkbox
-      perform_enqueued_jobs { find("*[type=submit]").click }
+      perform_enqueued_jobs { click_on "Create" }
     end
 
     let(:invitation_token) do

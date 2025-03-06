@@ -7,8 +7,8 @@ module Decidim::Assemblies::Admin
     routes { Decidim::Assemblies::AdminEngine.routes }
 
     let(:organization) { create(:organization) }
-    let(:user) { create(:user, :admin, :confirmed, organization:) }
-    let(:assembly) { create(:assembly, organization:) }
+    let(:user) { create(:user, :admin, :confirmed, :admin_terms_accepted, organization:) }
+    let(:assembly) { create(:assembly, private_space: true, organization:) }
     let(:file) { Rack::Test::UploadedFile.new(Rails.root.join("spec/fixtures/import_participatory_space_users_invalid_email.csv"), "text/csv") }
 
     let(:params) do
@@ -38,7 +38,7 @@ module Decidim::Assemblies::Admin
         it "renders the form" do
           post(:create, params:)
 
-          expect(flash[:alert]).to eq("There was a problem reading the CSV file.: [\"La primera columna ha de contenir emails vàlids!\"]")
+          expect(flash[:alert]).to eq("There was a problem reading the CSV file. Please make sure you have followed the instructions.: [\"La primera columna ha de contenir emails vàlids!\"]")
           expect(response).to have_http_status(:ok)
         end
       end

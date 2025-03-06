@@ -60,8 +60,10 @@ describe "Login_page" do
     expect(page).to have_content "Password"
     fill_in "Email", with: "admin@example.org"
     fill_in "Password", with: "decidim123456789"
-    click_on "Log in"
-    expect(page).to have_content "Signed in successfully"
+    within "#session_new_user" do
+      click_on "Log in"
+    end
+    expect(page).to have_content "Logged in successfully"
     expect(last_authorization).to be_nil
 
     visit decidim.account_path
@@ -85,7 +87,7 @@ describe "Login_page" do
     expect(last_authorization.metadata).to eq(extra)
 
     click_on "I agree with these terms"
-    expect(page).to have_content "You have accepted the terms and conditions"
+    expect(page).to have_content "You have accepted the terms of service"
     expect(last_user.reload).to be_tos_accepted
 
     visit decidim.account_path
@@ -112,7 +114,7 @@ describe "Login_page" do
       expect(last_authorization.metadata).to eq(extra)
 
       click_on "I agree with these terms"
-      expect(page).to have_content "You have accepted the terms and conditions"
+      expect(page).to have_content "You have accepted the terms of service"
       expect(user.reload).to be_tos_accepted
 
       visit decidim.account_path
