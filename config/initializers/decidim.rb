@@ -21,6 +21,12 @@ Decidim.configure do |config|
   # this value for that specific organization.
   config.default_locale = Rails.application.secrets.decidim[:default_locale].presence || :en
 
+  config.base_uploads_path = "#{ENV.fetch("BASE_UPLOADS_PATH")}/" if ENV["BASE_UPLOADS_PATH"].present?
+
+  config.social_share_services = Rails.application.secrets.decidim[:social_share_services]
+
+  config.password_similarity_length = Rails.application.secrets.decidim[:password_similarity_length] if Rails.application.secrets.decidim[:password_similarity_length].present?
+
   # Restrict access to the system part with an authorized ip list.
   # You can use a single ip like ("1.2.3.4"), or an ip subnet like ("1.2.3.4/24")
   # You may specify multiple ip in an array ["1.2.3.4", "1.2.3.4/24"]
@@ -471,6 +477,17 @@ end
 
 Rails.application.config.i18n.available_locales = Decidim.available_locales
 Rails.application.config.i18n.default_locale = Decidim.default_locale
+# Decidim initializes meetings before proposals but meetings is checking for proposals in order to set this var
+# An then linked_reoursces_interface fails with this unchecked
+Decidim::Meetings.enable_proposal_linking = true
+
+Rails.application.config.to_prepare do
+  # Api tunnings
+  Decidim::Api::Schema.max_complexity = 5000
+  Decidim::Api::Schema.max_depth = 50
+end
+
+Cell::ViewModel.view_paths << Rails.root.join("app/views").expand_path
 
 # Inform Decidim about the assets folder
 Decidim.register_assets_path File.expand_path("app/packs", Rails.application.root)

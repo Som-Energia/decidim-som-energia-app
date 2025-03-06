@@ -10,29 +10,51 @@ on:
 env:
   RUBY_VERSION: 3.1.6
   NODE_VERSION: 18.17.1
+  CHROME_VERSION: "119.0.6045.105"
   RAILS_ENV: test
   DATABASE_USERNAME: postgres
   DATABASE_PASSWORD: postgres
-    
+  DATABASE_HOST: localhost
+
 jobs:
   test:
     runs-on: ubuntu-latest
     services:
       postgres:
-        image: postgres:11
-        ports:
-          - 5432:5432
+        image: postgres:14
+        ports: ["5432:5432"]
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
         env:
           POSTGRES_HOST_AUTH_METHOD: trust
-        options: --health-cmd pg_isready --health-interval 10s --health-timeout 5s --health-retries 5
 
     steps:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 1
 
-      - run: |
-          sudo apt-get update; sudo apt-get -f install wkhtmltopdf imagemagick
+      - name: Install additional tools
+        run: sudo apt-get update && sudo apt-get install -y libu2f-udev imagemagick 7zip wkhtmltopdf
+
+      - uses: nanasess/setup-chromedriver@v2
+        with:
+          chromedriver-version: ${{ env.CHROME_VERSION }}
+
+      - name: Remove Chrome
+        run: sudo apt remove google-chrome-stable
+
+      - uses: browser-actions/setup-chrome@v1
+        with:
+          chrome-version: ${{ env.CHROME_VERSION }}
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'npm'
+          cache-dependency-path: ./package-lock.json
 
       - uses: ruby/setup-ruby@v1
         with:
@@ -47,10 +69,6 @@ jobs:
         run: |
           npm ci
           bundle exec rake assets:precompile
-        env:
-          RAILS_ENV: production
-          DB_ADAPTER: nulldb
-          SECRET_KEY_BASE: 1234567890
 
       - name: Run RSpec
         run: SIMPLECOV=1 CODECOV=1 bundle exec rspec
