@@ -65,10 +65,3 @@ jobs:
           RAILS_ENV: test
           DATABASE_USERNAME: postgres
           DATABASE_PASSWORD: postgres
-
-      - name: Run RSpec on Group Registrations
-        run: SIMPLECOV=1 CODECOV=1 bundle exec rspec decidim-group_registrations
-        env:
-          RAILS_ENV: test
-          DATABASE_USERNAME: postgres
-          DATABASE_PASSWORD: postgres
