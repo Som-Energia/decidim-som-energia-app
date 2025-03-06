@@ -2,9 +2,9 @@
 
 require "rails_helper"
 
-describe "Login page", type: :system do
-  let(:organization) { create(:organization, available_authorizations: available_authorizations) }
-  let!(:admin) { create(:user, :admin, :confirmed, email: "admin@example.org", organization: organization) }
+describe "Login_page" do
+  let(:organization) { create(:organization, available_authorizations:) }
+  let!(:admin) { create(:user, :admin, :confirmed, email: "admin@example.org", organization:) }
   let(:available_authorizations) { %w(cas_member) }
   let(:omniauth_hash) do
     OmniAuth::AuthHash.new(
@@ -51,16 +51,16 @@ describe "Login page", type: :system do
   it "Admin can login and gets no authorization" do
     expect(page).to have_content "Log in with Som Energia"
     expect(page).to have_content "Log in as admin"
-    expect(page).not_to have_content "Email"
-    expect(page).not_to have_content "Password"
+    expect(page).to have_no_content "Email"
+    expect(page).to have_no_content "Password"
 
-    click_button "Log in as admin"
+    click_on "Log in as admin"
 
     expect(page).to have_content "Email"
     expect(page).to have_content "Password"
     fill_in "Email", with: "admin@example.org"
     fill_in "Password", with: "decidim123456789"
-    click_button "Log in"
+    click_on "Log in"
     expect(page).to have_content "Signed in successfully"
     expect(last_authorization).to be_nil
 
@@ -70,7 +70,7 @@ describe "Login page", type: :system do
   end
 
   it "CAS member can login and gets authorized" do
-    expect { click_link "Log in with Som Energia" }.to change(Decidim::User, :count).by(1)
+    expect { click_on "Log in with Som Energia" }.to change(Decidim::User, :count).by(1)
 
     expect(page).to have_content "Successfully authenticated from Cas account."
 
@@ -84,20 +84,20 @@ describe "Login page", type: :system do
     expect(last_authorization.user).to eq(last_user)
     expect(last_authorization.metadata).to eq(extra)
 
-    click_button "I agree with these terms"
+    click_on "I agree with these terms"
     expect(page).to have_content "You have accepted the terms and conditions"
     expect(last_user.reload).to be_tos_accepted
 
     visit decidim.account_path
     expect(page).to have_field("user_email", readonly: true)
-    expect(page).not_to have_content("Change password")
+    expect(page).to have_no_content("Change password")
   end
 
   context "when the user exists and has not tos accepted" do
-    let!(:user) { create(:user, email: "cas@example.org", accepted_tos_version: nil, organization: organization) }
+    let!(:user) { create(:user, email: "cas@example.org", accepted_tos_version: nil, organization:) }
 
     it "CAS member can login and gets authorized" do
-      expect { click_link "Log in with Som Energia" }.not_to change(Decidim::User, :count)
+      expect { click_on "Log in with Som Energia" }.not_to change(Decidim::User, :count)
 
       expect(page).to have_content "Successfully authenticated from Cas account."
 
@@ -111,13 +111,13 @@ describe "Login page", type: :system do
       expect(last_authorization.user).to eq(user)
       expect(last_authorization.metadata).to eq(extra)
 
-      click_button "I agree with these terms"
+      click_on "I agree with these terms"
       expect(page).to have_content "You have accepted the terms and conditions"
       expect(user.reload).to be_tos_accepted
 
       visit decidim.account_path
       expect(page).to have_field("user_email", readonly: true)
-      expect(page).not_to have_content("Change password")
+      expect(page).to have_no_content("Change password")
     end
   end
 
@@ -125,7 +125,7 @@ describe "Login page", type: :system do
     let(:tos_before) { 1.day.from_now.to_date.to_s }
 
     it "CAS member can login and gets authorized and TOS accepted" do
-      expect { click_link "Log in with Som Energia" }.to change(Decidim::User, :count).by(1)
+      expect { click_on "Log in with Som Energia" }.to change(Decidim::User, :count).by(1)
 
       expect(page).to have_content "Successfully authenticated from Cas account."
 
@@ -142,11 +142,11 @@ describe "Login page", type: :system do
   end
 
   context "when the user has a different email than the one in the CAS response" do
-    let!(:user) { create(:user, :confirmed, email: "noncas@example.org", organization: organization) }
-    let!(:identity) { create(:identity, user: user, provider: "cas", uid: "1234X") }
+    let!(:user) { create(:user, :confirmed, email: "noncas@example.org", organization:) }
+    let!(:identity) { create(:identity, user:, provider: "cas", uid: "1234X") }
 
     it "updates the user email" do
-      expect { click_link "Log in with Som Energia" }.not_to change(Decidim::User, :count)
+      expect { click_on "Log in with Som Energia" }.not_to change(Decidim::User, :count)
 
       expect(page).to have_content "Successfully authenticated from Cas account."
 
@@ -156,10 +156,10 @@ describe "Login page", type: :system do
     end
 
     context "when the new email is already taken" do
-      let!(:other_user) { create(:user, :confirmed, email: "cas@example.org", organization: organization) }
+      let!(:other_user) { create(:user, :confirmed, email: "cas@example.org", organization:) }
 
       it "does not update the user email" do
-        expect { click_link "Log in with Som Energia" }.not_to change(Decidim::User, :count)
+        expect { click_on "Log in with Som Energia" }.not_to change(Decidim::User, :count)
 
         expect(page).to have_content "Successfully authenticated from Cas account."
 

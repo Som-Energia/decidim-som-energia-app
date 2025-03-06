@@ -49,7 +49,7 @@ ActiveSupport::Notifications.subscribe "decidim.user.omniauth_registration" do |
   user = Decidim::User.find_by(id: data[:user_id])
   extended_data = data.dig(:raw_data, :extra, "extended_data")
   if user.present?
-    user.update(extended_data: extended_data)
+    user.update(extended_data:)
     # Accept TOS if date before 2021-01-01
     auto_accept_tos = ENV["AUTO_ACCEPT_TOS_BEFORE"].presence
     if auto_accept_tos.present?
@@ -75,7 +75,7 @@ ActiveSupport::Notifications.subscribe "decidim.user.omniauth_registration" do |
     #   user.update(email: data[:raw_data][:info][:email])
     # end
     # Verify if the user is a Som Energia member
-    handler = Decidim::AuthorizationHandler.handler_for("cas_member", user: user, extended_data: extended_data)
+    handler = Decidim::AuthorizationHandler.handler_for("cas_member", user:, extended_data:)
 
     if handler
       Decidim::Verifications::AuthorizeUser.call(handler, user.organization) do
