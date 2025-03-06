@@ -1,51 +1,51 @@
 # frozen_string_literal: true
 
-# module SomEnergia
-#   module Admin
-#     module ProcessParticipatorySpacePrivateUserImportCsvOverride
-#       extend ActiveSupport::Concern
+module SomEnergia
+  module Admin
+    module ProcessParticipatorySpacePrivateUserImportCsvOverride
+      extend ActiveSupport::Concern
 
-#       included do
-#         def call
-#           return broadcast(:invalid, @form.errors.values.flatten) unless @form.valid?
+      included do
+        def call
+          return broadcast(:invalid, @form.errors.values.flatten) unless @form.valid?
 
-#           @errors = []
+          @errors = []
 
-#           begin
-#             process_csv
-#             broadcast(:ok, @errors)
-#           rescue StandardError => e
-#             broadcast(:invalid, e.message)
-#           end
-#         end
+          begin
+            process_csv
+            broadcast(:ok, @errors)
+          rescue StandardError => e
+            broadcast(:invalid, e.message)
+          end
+        end
 
-#         private
+        private
 
-#         def process_csv
-#           CSV.foreach(@form.file.path, encoding: "BOM|UTF-8") do |email, user_name|
-#             user_name.gsub!(/[<>?%&\^*#@()\[\]=+:;"{}\\|]/, "")
+        def process_csv
+          CSV.foreach(@form.file.path, encoding: "BOM|UTF-8") do |email, user_name|
+            user_name.gsub!(/[<>?%&\^*#@()\[\]=+:;"{}\\|]/, "")
 
-#             unless valid_email?(email) && valid_user_name?(user_name)
-#               @errors << email
-#               next
-#             end
+            unless valid_email?(email) && valid_user_name?(user_name)
+              @errors << email
+              next
+            end
 
-#             Decidim::Admin::ImportParticipatorySpacePrivateUserCsvJob.perform_later(email, user_name, @private_users_to, @current_user)
-#           end
-#         end
+            Decidim::Admin::ImportParticipatorySpacePrivateUserCsvJob.perform_later(email, user_name, @private_users_to, @current_user)
+          end
+        end
 
-#         def valid_email?(email)
-#           return false if email.blank?
+        def valid_email?(email)
+          return false if email.blank?
 
-#           email.match?(/\A[^@\s]+@([^@\s]+\.)+[^@\W]+\z/)
-#         end
+          email.match?(/\A[^@\s]+@([^@\s]+\.)+[^@\W]+\z/)
+        end
 
-#         def valid_user_name?(user_name)
-#           return false if user_name.blank?
+        def valid_user_name?(user_name)
+          return false if user_name.blank?
 
-#           user_name =~ Decidim::UserBaseEntity::REGEXP_NAME
-#         end
-#       end
-#     end
-#   end
-# end
+          user_name =~ Decidim::UserBaseEntity::REGEXP_NAME
+        end
+      end
+    end
+  end
+end

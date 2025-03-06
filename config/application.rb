@@ -8,8 +8,6 @@ require "decidim/rails"
 require "action_cable/engine"
 # require "action_mailbox/engine"
 # require "action_text/engine"
-require_relative "../app/middleware/assemblies_scoper"
-require_relative "../app/middleware/participatory_processes_scoper"
 
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.

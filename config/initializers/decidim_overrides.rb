@@ -26,13 +26,6 @@ Rails.application.config.to_prepare do
   Decidim::Admin::ImportParticipatorySpacePrivateUserCsvJob.include(SomEnergia::Admin::ImportParticipatorySpacePrivateUserCsvJobOverride)
   Decidim::Devise::InvitationsController.include(SomEnergia::Devise::InvitationsControllerOverride)
   Decidim::Devise::RegistrationsController.include(SomEnergia::Devise::RegistrationsControllerOverride)
-  Decidim::Initiatives::InitiativesController.include(SomEnergia::Initiatives::InitiativesControllerOverride)
-  Decidim::Meetings::MeetingsController.include(SomEnergia::Meetings::MeetingsControllerOverride)
   Decidim::Assemblies::Admin::ParticipatorySpacePrivateUsersCsvImportsController.include(SomEnergia::Admin::HasPrivateUsersCsvImportOverride)
   Decidim::ParticipatoryProcesses::Admin::ParticipatorySpacePrivateUsersCsvImportsController.include(SomEnergia::Admin::HasPrivateUsersCsvImportOverride)
-end
-
-Rails.application.config.after_initialize do
-  Decidim::Proposals::ProposalsController.include(SomEnergia::Proposals::ProposalsControllerOverride)
-  Decidim::Proposals::ProposalsController.include(SomEnergia::Proposals::OrderableOverride)
 end
