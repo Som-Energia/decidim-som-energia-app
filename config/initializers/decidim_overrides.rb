@@ -18,6 +18,7 @@ Decidim.menu :admin_user_menu do |menu|
 end
 
 Rails.application.config.to_prepare do
+  Decidim.icons.register(name: "pie-chart", icon: "pie-chart", category: "system", description: "", engine: :core)
   # participatory spaces private users
   Decidim::Admin::ParticipatorySpacePrivateUserForm.include(SomEnergia::Admin::ParticipatorySpacePrivateUserFormOverride)
   Decidim::Admin::ParticipatorySpacePrivateUserCsvImportForm.include(SomEnergia::Admin::ParticipatorySpacePrivateUserCsvImportFormOverride)
