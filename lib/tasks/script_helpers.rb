@@ -63,7 +63,7 @@ Rest of the lines must containt values for the corresponding headers
   end
 
   def normalize_user(line)
-    values = { extra_attributes: {} }
+    values = { extended_data: {} }
     line.each do |key, value|
       case key
       when /^email$/i
@@ -71,15 +71,14 @@ Rest of the lines must containt values for the corresponding headers
       when /^nom|name|nombre$/i
         values[:name] = value
       when /^dni$/i
-        values[:username] = value
-        values[:extra_attributes][:username] = value
+        values[:extended_data][:username] = value
       when /^soci|socia|socio$/i
-        values[:extra_attributes][:soci] = value
+        values[:extended_data][:soci] = value
       end
     end
     raise_if_field_not_found(:email, values)
-    raise_if_field_not_found(:username, values)
-    raise_if_field_not_found(:soci, values[:extra_attributes])
+    raise_if_field_not_found(:username, values[:extended_data])
+    raise_if_field_not_found(:soci, values[:extended_data])
     values
   end
 

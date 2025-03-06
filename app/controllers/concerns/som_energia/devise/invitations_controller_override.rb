@@ -12,7 +12,7 @@ module SomEnergia
           resource.invitation_token = params[:invitation_token]
 
           if cas_user?
-            redirect_to new_user_cas_session_path
+            redirect_to new_user_session_path
           else
             render :edit
           end

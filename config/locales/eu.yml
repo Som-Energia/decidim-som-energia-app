@@ -7,6 +7,10 @@ eu:
         title: Izenburua
         weight: Agindu
   decidim:
+    authorization_handlers:
+      cas_member:
+        name: Som Energia bazkidea
+        explanation: Autorizazioa eman da Som Energia bazkidea izateagatik (Som Energia CAS bidez saioa hasi behar da)
     admin:
       participatory_space_private_users:
         form:
@@ -33,9 +37,16 @@ eu:
     menu:
       assemblies: menu_assemblies eu
   devise:
+    login:
+      admin_login: Administraziora sartu
+      sign_in_cas: Som Energia-rekin sartu
     invitations:
       invitation_token_invalid: Gonbidapen token hori ez da baliozkoa!
   somenergia:
+    verifications:
+      not_cas_user: Ez zara CAS erabiltzailea
+      cas_members_only: Egiaztapen hau Som Energia bazkideei ematen zaie. Automatikoki ematen da "Som Energia-rekin hasi saioa" botoiarekin saioa hasten denean
+      login_with_cas: Arrazoi batengatik ez baduzu aktibatuta, egiaztatu zaitezke beheko botoia sakatuz. Metodo honek funtzionatzen ez badu, besterik gabe, saioa itxi eta berriro hasi "Som Energia-rekin hasi saioa" botoia erabiliz
     menu:
-      team_et: Equipo técnico
-      team_it: Equipo IT
+      team_et: Talde teknikoa
+      team_it: IT taldea

@@ -2,7 +2,6 @@
 // as part of that pack
 
 import "src/consultations_question_requirements_validator";
-import "src/cas_href_replacement";
 
 // Load images
 require.context("../../images", true);

@@ -9,8 +9,13 @@ checksums = [
   {
     package: "decidim-core",
     files: {
+      "/app/commands/decidim/create_omniauth_registration.rb" => "ba4a490a4addf1a369874fa7e104748d",
       "/app/controllers/decidim/devise/invitations_controller.rb" => "32ef1da80ec9dd20b884e5829c3307e6",
-      "/app/views/layouts/decidim/mailer.html.erb" => "0c7804de08649c8d3c55c117005e51c9"
+      "/app/views/layouts/decidim/mailer.html.erb" => "0c7804de08649c8d3c55c117005e51c9",
+      "/app/views/decidim/account/show.html.erb" => "567f47fd001a0222943579d9ebfe5f3a",
+      "/app/views/decidim/devise/sessions/new.html.erb" => "9d090fc9e565ded80a9330d4e36e495c",
+      "/app/views/decidim/devise/shared/_omniauth_buttons.html.erb" => "a456549c8f521b012ec7436d9e7111f4",
+      "/app/views/decidim/devise/shared/_omniauth_buttons_mini.html.erb" => "d3a413ce7c64959eee3b912406075f84"
     }
   },
   {
@@ -44,7 +49,7 @@ checksums = [
   {
     package: "decidim-consultations",
     files: {
-      # not directly manipulated but worth taking a look if anythign changes
+      # not directly manipulated but worth taking a look if anything changes
       "/app/controllers/decidim/consultations/consultations_controller.rb" => "7b64afa021fcf6e9a924f5217f62179f",
       "/app/controllers/decidim/consultations/questions_controller.rb" => "1b7ec4c7265caccd47f9dc9be08498a9",
       "/app/views/decidim/consultations/consultations/_question.html.erb" => "2d02835e2a1538cd7f6db698e302a29b",

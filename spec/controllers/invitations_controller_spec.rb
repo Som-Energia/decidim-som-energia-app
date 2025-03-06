@@ -61,7 +61,7 @@ module Decidim::Devise
 
       it "redirects to the CAS login path" do
         get :edit, params: { invitation_token: user.raw_invitation_token }
-        expect(response).to redirect_to(new_user_cas_session_path)
+        expect(response).to redirect_to(new_user_session_path)
       end
     end
   end

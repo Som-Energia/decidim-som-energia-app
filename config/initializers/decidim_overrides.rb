@@ -23,7 +23,7 @@ Decidim.menu :admin_menu do |menu|
                 Rails.application.routes.url_helpers.admin_iframe_index_path,
                 icon_name: "pie-chart",
                 position: 10,
-                if: ENV.fetch("#{current_organization.host.split(".").first.upcase}_ANALYTICS_URL", nil).present?
+                if: ENV.fetch("ADMIN_IFRAME_URL", nil).present?
 end
 
 Decidim.menu :admin_user_menu do |menu|

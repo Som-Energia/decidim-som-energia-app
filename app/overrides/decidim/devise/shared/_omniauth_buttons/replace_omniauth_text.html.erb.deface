@@ -1,0 +1,7 @@
+<!-- replace 'erb[loud]:contains("devise.shared.links.sign_in_with_provider")' -->
+
+<% if provider == :cas %>
+  <%= t("devise.login.sign_in_cas") %>
+<% else %>
+  <%= t("devise.shared.links.sign_in_with_provider", provider: normalize_provider_name(provider).titleize) %>
+<% end %>
