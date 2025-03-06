@@ -45,7 +45,7 @@ module Decidim::Admin
 
     context "when the CSV file has BOM" do
       let(:file) { Rack::Test::UploadedFile.new(Rails.root.join("spec/fixtures/import_participatory_space_private_users_with_bom.csv"), "text/csv") }
-      let(:email) { "my_user@example.org" }
+      let(:email) { "john.doe@example.org" }
 
       it "broadcasts ok" do
         expect(subject.call).to broadcast(:ok)
