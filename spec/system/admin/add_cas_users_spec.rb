@@ -2,9 +2,9 @@
 
 require "rails_helper"
 
-describe "Admin adds a CAS user", type: :system do
+describe "Admin_adds_CAS_user" do
   let(:organization) { create(:organization) }
-  let(:user) { create(:user, :admin, :confirmed, organization: organization) }
+  let(:user) { create(:user, :admin, :confirmed, organization:) }
   let(:last_user) { Decidim::User.last }
 
   before do
@@ -18,7 +18,7 @@ describe "Admin adds a CAS user", type: :system do
     fill_in "user_email", with: "test@example.org"
     fill_in "soci", with: "123456"
     fill_in "dni", with: "12345678A"
-    click_button "Crea la usuaria"
+    click_on "Crea la usuaria"
 
     expect(page).to have_content("User created successfully")
     expect(last_user.name).to eq("John Doe")

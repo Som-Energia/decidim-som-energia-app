@@ -1,5 +1,0 @@
-<!-- surround 'ul' -->
-
-<% unless current_question.enforce_special_requirements? %>
-  <%= render_original %>
-<% end %>

@@ -8,18 +8,21 @@ on:
   pull_request:
 
 env:
-  RUBY_VERSION: 3.0.6
-  NODE_VERSION: 16.9.1
+  RUBY_VERSION: 3.1.6
+  NODE_VERSION: 18.17.1
 
 jobs:
   lint:
     name: Lint code
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
     if: "!startsWith(github.head_ref, 'chore/l10n')"
     steps:
-      - uses: actions/checkout@v2.0.0
+      - uses: actions/checkout@v4
         with:
           fetch-depth: 1
+
+      - run: |
+          sudo apt-get update; sudo apt-get -f install wkhtmltopdf imagemagick
 
       - uses: actions/setup-node@master
         with:
@@ -31,9 +34,6 @@ jobs:
       - run: npm run lint
         name: Lint JS files
 
-      - run: npm run stylelint
-        name: Lint SCSS files
-
       - uses: ruby/setup-ruby@v1
         with:
           ruby-version: ${{ env.RUBY_VERSION }}
@@ -41,9 +41,6 @@ jobs:
 
       - run: bundle exec rubocop -P
         name: Lint Ruby files
-
-      - run: bundle exec mdl *.md
-        name: Lint Markdown files
 
       - run: bundle exec erblint app/views/**/*.erb
         name: Lint ERB files

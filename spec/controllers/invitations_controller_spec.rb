@@ -3,14 +3,14 @@
 require "rails_helper"
 
 module Decidim::Devise
-  describe InvitationsController, type: :controller do
+  describe InvitationsController do
     routes { Decidim::Core::Engine.routes }
 
     let(:organization) { create(:organization) }
-    let(:inviter) { create(:user, :admin, organization: organization) }
+    let(:inviter) { create(:user, :admin, organization:) }
     let(:invitation_params) do
       {
-        organization: organization,
+        organization:,
         name: "Invited User",
         email: "inviteduser@example.org"
       }
@@ -28,14 +28,14 @@ module Decidim::Devise
         {
           invitation_token: user.raw_invitation_token,
           nickname: "invited_user",
-          password: password,
+          password:,
           password_confirmation: password
         }
       end
 
       it "responds to the edit path" do
         get :edit, params: { invitation_token: user.raw_invitation_token }
-        expect(response.status).to eq(200)
+        expect(response).to have_http_status(:ok)
       end
 
       it "redirects to the provided path" do
@@ -50,13 +50,13 @@ module Decidim::Devise
         {
           invitation_token: user.raw_invitation_token,
           nickname: "invited_user",
-          password: password,
+          password:,
           password_confirmation: password
         }
       end
 
       before do
-        create(:participatory_space_private_user, user: user, cas_user: true)
+        create(:participatory_space_private_user, user:, cas_user: true)
       end
 
       it "redirects to the CAS login path" do

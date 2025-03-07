@@ -2,14 +2,14 @@
 
 require "rails_helper"
 
-describe "Admin checks participatory space private users", type: :system do
+describe "Admin_checks_participatory_space_private_users" do
   let(:organization) { create(:organization) }
-  let(:user) { create(:user, :admin, :confirmed, organization: organization) }
-  let(:assembly) { create(:assembly, organization: organization) }
+  let(:user) { create(:user, :admin, :confirmed, organization:) }
+  let(:assembly) { create(:assembly, private_space: true, organization:) }
   let!(:setup) { nil }
   let(:assembly_private_user) do
-    user = create :user, organization: organization
-    create(:assembly_private_user, user: user, privatable_to: assembly)
+    user = create(:user, organization:)
+    create(:assembly_private_user, user:, privatable_to: assembly)
   end
 
   before do
@@ -25,7 +25,7 @@ describe "Admin checks participatory space private users", type: :system do
     end
 
     it "shows CAS User column" do
-      expect(page).to have_selector("th", text: "CAS User")
+      expect(page).to have_css("th", text: "CAS User")
       within page.find(:xpath, "(//tbody/tr/td)[2]") do
         expect(page).to have_content("No")
       end
@@ -38,7 +38,7 @@ describe "Admin checks participatory space private users", type: :system do
       end
 
       it "shows CAS User column" do
-        expect(page).to have_selector("th", text: "CAS User")
+        expect(page).to have_css("th", text: "CAS User")
         within page.find(:xpath, "(//tbody/tr/td)[2]") do
           expect(page).to have_content("Yes")
         end
@@ -50,7 +50,7 @@ describe "Admin checks participatory space private users", type: :system do
     shared_examples "invitation email" do
       let(:last_email_body) { ActionMailer::Base.deliveries.last.encoded }
       let(:expected_invitation_link) do
-        decidim.accept_user_invitation_url(invitation_token: invitation_token, host: organization.host)
+        decidim.accept_user_invitation_url(invitation_token:, host: organization.host)
       end
 
       it "has correct invitation link" do
@@ -61,6 +61,7 @@ describe "Admin checks participatory space private users", type: :system do
     shared_examples "invitation link" do
       before do
         logout :user
+        sleep 0.5
         visit accept_invitation_path
       end
 
@@ -85,14 +86,14 @@ describe "Admin checks participatory space private users", type: :system do
       fill_in :participatory_space_private_user_name, with: "Whatever"
       fill_in :participatory_space_private_user_email, with: "what@ever.com"
       fill_cas_user_checkbox
-      perform_enqueued_jobs { find("*[type=submit]").click }
+      perform_enqueued_jobs { click_on "Create" }
     end
 
     let(:invitation_token) do
       user.send(:generate_invitation_token)
       user.instance_variable_get(:@raw_invitation_token)
     end
-    let(:accept_invitation_path) { decidim.accept_user_invitation_path(invitation_token: invitation_token) }
+    let(:accept_invitation_path) { decidim.accept_user_invitation_path(invitation_token:) }
 
     context "when inviting CAS user" do
       let(:fill_cas_user_checkbox) do

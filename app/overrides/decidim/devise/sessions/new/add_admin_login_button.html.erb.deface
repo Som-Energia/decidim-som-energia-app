@@ -1,5 +1,0 @@
-<!-- insert_before ".columns.large-6.medium-centered" -->
-
-<div class="columns large-4 medium-centered">
-  <%= button_tag t("devise.login.admin_login"), class: "button expanded hollow", onclick: "$('.login_box').toggleClass('hide');$(this).toggleClass('hollow');" %>
-</div>

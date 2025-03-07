@@ -20,7 +20,7 @@ module SomEnergia
             }
           ) do
             Decidim::ParticipatorySpacePrivateUser.find_or_create_by!(
-              user: user,
+              user:,
               privatable_to: @private_user_to,
               cas_user: form.cas_user
             )

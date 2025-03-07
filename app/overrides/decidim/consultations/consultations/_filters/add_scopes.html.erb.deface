@@ -1,5 +1,0 @@
-<!-- insert_after 'erb[loud]:contains("form.collection_radio_buttons")' -->
-
-<%= form.check_boxes_tree :highlighted_scope_ids,
-                          filter_scopes_values,
-                          legend_title: t("activemodel.attributes.result.decidim_scope_id") %>

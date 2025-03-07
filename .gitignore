@@ -17,6 +17,7 @@
 
 # Ignore public uploads
 public/uploads
+tailwind.config.js
 # Ignore application configuration
 /RailsApplication1/nbproject/private/
 

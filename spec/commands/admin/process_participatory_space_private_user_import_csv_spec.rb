@@ -6,15 +6,25 @@ module Decidim::Admin
   describe ProcessParticipatorySpacePrivateUserImportCsv do
     subject { described_class.new(form, current_user, private_users_to) }
 
-    let(:current_user) { create(:user, :admin, organization: organization) }
+    let(:current_user) { create(:user, :admin, organization:) }
     let(:organization) { create(:organization) }
-    let(:private_users_to) { create :participatory_process, organization: organization }
-    let(:file) { Rack::Test::UploadedFile.new(Decidim::Dev.asset("import_participatory_space_private_users.csv"), "text/csv") }
+    let(:private_users_to) { create(:participatory_process, private_space: true, organization:) }
+    let(:file) { Rack::Test::UploadedFile.new(Rails.root.join("spec/fixtures/import_participatory_space_private_users.csv"), "text/csv") }
     let(:form) { ParticipatorySpacePrivateUserCsvImportForm.from_params(attributes) }
     let(:attributes) do
       {
-        file: file
+        file:
       }
+    end
+
+    it "broadcasts ok" do
+      expect(subject.call).to broadcast(:ok)
+    end
+
+    it "enqueues a job for each present value" do
+      expect(ImportParticipatorySpacePrivateUserCsvJob).to receive(:perform_later).twice.with(kind_of(String), kind_of(String), private_users_to, current_user)
+
+      subject.call
     end
 
     context "when the form is not valid" do
@@ -34,8 +44,8 @@ module Decidim::Admin
     end
 
     context "when the CSV file has BOM" do
-      let(:file) { Rack::Test::UploadedFile.new(Decidim::Dev.asset("import_participatory_space_private_users_with_bom.csv"), "text/csv") }
-      let(:email) { "my_user@example.org" }
+      let(:file) { Rack::Test::UploadedFile.new(Rails.root.join("spec/fixtures/import_participatory_space_private_users_with_bom.csv"), "text/csv") }
+      let(:email) { "john.doe@example.org" }
 
       it "broadcasts ok" do
         expect(subject.call).to broadcast(:ok)
@@ -48,41 +58,19 @@ module Decidim::Admin
       end
     end
 
-    it "broadcasts ok" do
-      expect(subject.call).to broadcast(:ok)
-    end
-
-    it "enqueues a job for each present value" do
-      expect(ImportParticipatorySpacePrivateUserCsvJob).to receive(:perform_later).twice.with(kind_of(String), kind_of(String), private_users_to, current_user)
-
-      subject.call
-    end
-
-    context "when importing has no emails" do
+    context "when importing" do
       let(:file) { Rack::Test::UploadedFile.new(Rails.root.join("spec/fixtures/import_participatory_space_users_no_email.csv"), "text/csv") }
 
-      it "broadcasts invalid" do
-        expect(subject.call).to broadcast(:invalid, ["La primera columna ha de contenir emails vàlids!"])
-      end
+      context "when has no users and eamils" do
+        it "broadcasts invalid" do
+          expect(subject.call).to broadcast(:invalid, ["La primera columna ha de contenir emails vàlids!"])
+        end
 
-      it "does not enqueue any job" do
-        expect(ImportParticipatorySpacePrivateUserCsvJob).not_to receive(:perform_later)
+        it "does not enqueue any job" do
+          expect(ImportParticipatorySpacePrivateUserCsvJob).not_to receive(:perform_later)
 
-        subject.call
-      end
-    end
-
-    context "when importing has no users" do
-      let(:file) { Rack::Test::UploadedFile.new(Rails.root.join("spec/fixtures/import_participatory_space_users_no_email.csv"), "text/csv") }
-
-      it "broadcasts invalid" do
-        expect(subject.call).to broadcast(:invalid, ["La primera columna ha de contenir emails vàlids!"])
-      end
-
-      it "does not enqueue any job" do
-        expect(ImportParticipatorySpacePrivateUserCsvJob).not_to receive(:perform_later)
-
-        subject.call
+          subject.call
+        end
       end
     end
 
@@ -101,7 +89,7 @@ module Decidim::Admin
     end
 
     context "when importing invalid users" do
-      let(:file) { Rack::Test::UploadedFile.new(Decidim::Dev.asset("import_participatory_space_private_users_nok.csv"), "text/csv") }
+      let(:file) { Rack::Test::UploadedFile.new(Rails.root.join("spec/fixtures/import_participatory_space_private_users_nok.csv"), "text/csv") }
 
       it "broadcasts ok" do
         expect(subject.call).to broadcast(:ok)

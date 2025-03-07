@@ -1,0 +1,3 @@
+<!-- set_attributes '.login__modal-links'
+     attributes :class => 'login__modal-links login_toggle !hidden'
+      -->
