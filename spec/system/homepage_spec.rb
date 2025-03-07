@@ -13,5 +13,14 @@ describe "Homepage", perform_enqueued: true do
   it "renders the home page" do
     visit decidim.root_path
     expect(page).to have_content("Welcome")
+
+    within "#main-bar" do
+      expect(page).to have_css(".main-header__language-container")
+      within ".main-bar" do
+        click_on "English"
+        click_on "Català"
+      end
+    end
+    expect(page).to have_content("Benvinguda")
   end
 end
