@@ -15,17 +15,19 @@ gem "decidim-term_customizer", github: "mainio/decidim-module-term_customizer", 
 
 # Usability and UX tweaks for Decidim.
 # gem "decidim-action_delegator", github: "coopdevs/decidim-module-action_delegator"
-gem "decidim-decidim_awesome", github: "decidim-ice/decidim-module-decidim_awesome"
+gem "decidim-decidim_awesome", github: "decidim-ice/decidim-module-decidim_awesome", branch: "release/0.28-stable"
 gem "decidim-reporting_proposals", "~> 0.6.0"
 
-# https://stackoverflow.com/questions/79360526/uninitialized-constant-activesupportloggerthreadsafelevellogger-nameerror
 gem "bootsnap", "~> 1.7"
 gem "deface"
 gem "health_check"
 gem "omniauth-cas"
 gem "progressbar"
 gem "puma"
+gem "rails_semantic_logger"
 gem "rorvswild"
+gem "sentry-rails"
+gem "sentry-ruby"
 
 group :development, :test do
   gem "byebug", platform: :mri
