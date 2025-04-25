@@ -1,4 +1,4 @@
-_<% if tag_id = ENV.fetch("GOOGLE_TAG_MANAGER", nil) %>
+<% if tag_id = ENV.fetch("GOOGLE_TAG_MANAGER", nil) %>
   <!-- Global site tag (gtag.js) - Google Analytics -->
   <script type="text/plain" data-consent="marketing" async src="https://www.googletagmanager.com/gtag/js?id=<%= tag_id %>"></script>
   <script type="text/plain" data-consent="marketing">
