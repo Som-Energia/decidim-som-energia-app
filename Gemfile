@@ -24,6 +24,7 @@ gem "decidim-reporting_proposals", "~> 0.5.2"
 # https://stackoverflow.com/questions/79360526/uninitialized-constant-activesupportloggerthreadsafelevellogger-nameerror
 gem "bootsnap", "~> 1.7"
 gem "deface"
+gem "nokogiri", "~> 1.13.0"
 gem "puma"
 
 gem "progressbar"

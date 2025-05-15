@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2025_05_15_073238) do
+ActiveRecord::Schema.define(version: 2025_05_15_111725) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "ltree"
@@ -1689,6 +1689,7 @@ ActiveRecord::Schema.define(version: 2025_05_15_073238) do
     t.datetime "created_at"
     t.datetime "last_used_at"
     t.datetime "expires_at"
+    t.boolean "registered_only"
     t.index ["decidim_organization_id"], name: "index_decidim_share_tokens_on_decidim_organization_id"
     t.index ["decidim_user_id"], name: "index_decidim_share_tokens_on_decidim_user_id"
     t.index ["token_for_type", "token_for_id"], name: "decidim_share_tokens_token_for"
