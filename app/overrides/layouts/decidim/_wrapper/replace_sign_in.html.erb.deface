@@ -1,0 +1,7 @@
+<!-- replace "erb[loud]:contains('decidim.new_user_session_path')" -->
+
+<% if ENV["CAS_HOST"].present? %>
+  <%= link_to t("layouts.decidim.header.sign_in"), decidim.user_cas_omniauth_authorize_path, method: :post, class: "sign-in-link" %>
+<% else %>
+  <%= link_to t("layouts.decidim.header.sign_in"), decidim.new_user_session_path, class: "sign-in-link" %>
+<% end %>
