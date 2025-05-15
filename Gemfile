@@ -18,7 +18,7 @@ gem "decidim-term_customizer", github: "mainio/decidim-module-term_customizer", 
 
 # Usability and UX tweaks for Decidim.
 gem "decidim-action_delegator", github: "coopdevs/decidim-module-action_delegator"
-gem "decidim-decidim_awesome", github: "decidim-ice/decidim-module-decidim_awesome", branch: "release/0.27-stable"
+gem "decidim-decidim_awesome", github: "decidim-ice/decidim-module-decidim_awesome", branch: "0.27-backports"
 gem "decidim-reporting_proposals", "~> 0.5.2"
 
 # https://stackoverflow.com/questions/79360526/uninitialized-constant-activesupportloggerthreadsafelevellogger-nameerror
