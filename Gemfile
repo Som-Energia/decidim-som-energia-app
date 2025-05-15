@@ -4,7 +4,7 @@ source "https://rubygems.org"
 
 ruby RUBY_VERSION
 
-DECIDIM_VERSION = { github: "decidim/decidim", branch: "release/0.27-stable" }.freeze
+DECIDIM_VERSION = { github: "openpoke/decidim", branch: "0.27-backports" }.freeze
 
 gem "codit-devise-cas-authenticable", github: "Som-Energia/codit-devise-cas-authenticable"
 gem "decidim", DECIDIM_VERSION
