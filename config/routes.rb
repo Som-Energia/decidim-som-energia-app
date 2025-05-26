@@ -10,8 +10,9 @@ Rails.application.routes.draw do
   mount LetterOpenerWeb::Engine, at: "/letter_opener" if Rails.env.development?
 
   # manual logout via GET petition
+  # resource :cas_session, path: "users/cas" do
   devise_scope :user do
-    get "/logout", to: "decidim/devise/sessions#destroy", as: :logout
+    delete "/users/cas/sign_out", to: "som_energia/sessions#destroy", as: :cas_logout
   end
 
   namespace :admin do

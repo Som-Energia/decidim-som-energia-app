@@ -25,11 +25,11 @@ module DecidimSomenergiaApp
 
     # this middleware will detect by the URL if all calls to Assembly need to skip (or include) certain types
     # this is done here to be sure it is run after the Decidim gem own initializers
-    # initializer :scopers do |app|
-    #   # app.config.middleware.insert_after Decidim::StripXForwardedHost, AssembliesScoper
-    #   app.config.middleware.insert_after AssembliesScoper, ParticipatoryProcessesScoper
-    #   # this avoid to trap the error trace when debugging errors
-    #   Rails.backtrace_cleaner.add_silencer { |line| line =~ %r{app/middleware} }
-    # end
+    initializer :scopers do |app|
+      # app.config.middleware.insert_after Decidim::StripXForwardedHost, AssembliesScoper
+      app.config.middleware.insert_after AssembliesScoper, ParticipatoryProcessesScoper
+      # this avoid to trap the error trace when debugging errors
+      Rails.backtrace_cleaner.add_silencer { |line| line =~ %r{app/middleware} }
+    end
   end
 end
