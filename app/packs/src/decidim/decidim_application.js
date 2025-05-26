@@ -14,11 +14,26 @@ const bindCasClientRoutes = () => {
     element.setAttribute("data-method", "post");
   });
   document.querySelectorAll('a[href*="/users/sign_up"]').forEach((element) => {
-    element.setAttribute("href", `/users/cas/sign_in?locale=${locale}`);
+    element.setAttribute("href", `/users/auth/cas?locale=${locale}`);
   });
   document.querySelectorAll('a[href*="/users/sign_out"]').forEach((element) => {
     element.setAttribute("href", `/users/cas/sign_out?locale=${locale}`);
   });
+
+  if (!document.querySelector('a[href*="/account"]')) {    
+    // Replace vote buttons
+    document.querySelectorAll("button[type='submit']").forEach((element) => {
+      const link = document.createElement("a");
+      link.href = "/users/auth/cas";
+      link.className = element.className;
+      link.innerHTML = element.innerHTML;
+      link.style.cursor = "pointer";
+      link.setAttribute("data-method", "post");
+      element.style.display = "none";
+      element.parentNode.insertBefore(link, element.nextSibling);
+    });
+  }
+
   Rails.start();
 }
 

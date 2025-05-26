@@ -20,6 +20,8 @@ en:
     login:
       admin_login: Log in as admin
       sign_in_cas: Log in with Som Energia
+    sessions:
+      signed_out: You have been signed out successfully.
   decidim:
     authorization_handlers:
       cas_member:
