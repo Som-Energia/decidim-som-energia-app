@@ -20,7 +20,7 @@ const bindCasClientRoutes = () => {
     element.setAttribute("href", `/users/cas/sign_out?locale=${locale}`);
   });
 
-  if (!document.querySelector('a[href*="/account"]')) {    
+  if (!document.querySelector('a[href*="/account"]') && !location.pathname.startsWith("/users") ) {    
     // Replace vote buttons
     document.querySelectorAll("button[type='submit']").forEach((element) => {
       const link = document.createElement("a");
