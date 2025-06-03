@@ -3,9 +3,8 @@
 require_relative "script_helpers"
 
 namespace :som do
-
   desc "Export database"
-  task :export_database => :environment do
+  task export_database: :environment do
     puts "Going to export the folloding content of the database:"
     puts "- System administrators"
     puts "- Organizations"
@@ -20,12 +19,10 @@ namespace :som do
     export_organizations(export_dir)
 
     export_users(export_dir)
-
   end
 
   desc "Import database"
   task :import_database, :environment do
-
   end
 
   def export_system_admins(export_dir)
@@ -63,11 +60,11 @@ namespace :som do
   def export_users(export_dir)
     path = export_dir.join("users.csv")
     users = Decidim::User
-      .joins("INNER JOIN decidim_comments_comments c on c.decidim_author_id = decidim_users.id")
-      .joins("LEFT JOIN decidim_assemblies a ON a.id = decidim_participatory_space_id and decidim_participatory_space_type = 'Decidim::Assembly'")
-      .joins("LEFT JOIN decidim_participatory_processes p ON p.id = decidim_participatory_space_id and decidim_participatory_space_type = 'Decidim::ParticipatoryProcess'")
-      .where("decidim_participatory_space_id IS NOT NULL")
-      .uniq
+            .joins("INNER JOIN decidim_comments_comments c on c.decidim_author_id = decidim_users.id")
+            .joins("LEFT JOIN decidim_assemblies a ON a.id = decidim_participatory_space_id and decidim_participatory_space_type = 'Decidim::Assembly'")
+            .joins("LEFT JOIN decidim_participatory_processes p ON p.id = decidim_participatory_space_id and decidim_participatory_space_type = 'Decidim::ParticipatoryProcess'")
+            .where.not(decidim_participatory_space_id: nil)
+            .uniq
 
     puts "Exporting users: #{users.count}"
 
