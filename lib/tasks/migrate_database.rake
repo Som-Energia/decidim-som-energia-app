@@ -19,6 +19,10 @@ namespace :som do
     export_organizations(export_dir)
 
     export_users(export_dir)
+
+    export_participatory_process(export_dir)
+
+    export_assemblies(export_dir)
   end
 
   desc "Import database"
@@ -34,6 +38,7 @@ namespace :som do
       csv << Decidim::System::Admin.attribute_names
 
       system_admins.each do |admin|
+        admin.serializable_hash
         csv << admin.attributes.values
       end
     end
@@ -42,6 +47,22 @@ namespace :som do
   end
 
   def export_organizations(export_dir)
+    organizations = Decidim::Organization.all
+    puts "Exporting organizations: #{organizations.count}"
+    path = export_dir.join("organizations.json")
+    organizations.each do |o|
+      puts "Exporting organization: #{o.id} - #{o.name}"
+      # attributes = ["id", "name", "host", "default_locale", "available_locales", "created_at", "updated_at", "description",  "twitte
+      except_attributes = %w(logo favicon highlighted_content_banner_image official_img_header official_img_footer)
+      json_object = o.serializable_hash
+
+      data = JSON.pretty_generate(json_object)
+      File.write(path, data)
+    end
+    puts "Done exporting organizations. You can find them in #{path}"
+  end
+
+  def export_organizations_two(export_dir)
     organizations = Decidim::Organization.all
     puts "Exporting organizations: #{organizations.count}"
 
@@ -76,5 +97,66 @@ namespace :som do
     end
 
     puts "Done exporting users. You can find them in #{path}"
+  end
+
+  def export_participatory_process(export_dir)
+    path = export_dir.join("processes.csv")
+
+    participatory_processes_slugs = ["AGE2025",
+                                     "RedifinicioRRI",
+                                     "SomAG2024",
+                                     "granconversa",
+                                     "SomAG2023",
+                                     "SomAG2022",
+                                     "desempat",
+                                     "SomAG2021",
+                                     "SomAG2020",
+                                     "escola2019",
+                                     "ilustrabonaenergia",
+                                     "SomAG2019",
+                                     "redisseny-imatge-de-marca",
+                                     "somdebatxs",
+                                     "somescola2018",
+                                     "SomAG2018"]
+
+    processes = Decidim::ParticipatoryProcess.where(slug: participatory_processes_slugs)
+
+    puts "Exporting participatory processes: #{processes.count}"
+
+    CSV.open(path, "wb") do |csv|
+      csv << Decidim::ParticipatoryProcess.attribute_names
+      processes.each do |process|
+        csv << process.attributes.values
+      end
+    end
+
+    puts "Done exporting participatory processes. You can find them in #{path}"
+  end
+
+  def export_assemblies(export_dir)
+    path = export_dir.join("assemblies.csv")
+
+    assemblies_slugs = %w(impagaments
+                          monedasocial
+                          agrovoltaica
+                          ppcomunidadlocal
+                          ppPPPAs
+                          flexcoop
+                          GL
+                          et
+                          cr)
+
+    assemblies = Decidim::Assembly.where(slug: assemblies_slugs)
+    puts "Exporting assemblies: #{assemblies.count}"
+
+    CSV.open(path, "wb") do |csv|
+      csv << Decidim::Assembly.attribute_names
+
+      assemblies.each do |assembly|
+        csv << assembly.attributes.values
+      end
+    end
+
+    puts "Done exporting assemblies. You can find them in #{path}"
   end
 end
