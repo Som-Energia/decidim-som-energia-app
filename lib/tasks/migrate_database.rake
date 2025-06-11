@@ -11,7 +11,7 @@ namespace :som do
     puts "- Meetings inside the components of the processes"
     puts "- Comments inside the components of the processes"
 
-    export_dir = Rails.root.join("tmp", "decidim_export")
+    export_dir = Rails.root.join("tmp/decidim_export")
     Dir.mkdir export_dir unless Dir.exist?(export_dir)
 
     export_users(export_dir)
@@ -31,7 +31,7 @@ namespace :som do
     puts "- Proposals: tmp/decidim_export/proposals.csv"
     puts "- Comments: tmp/decidim_export/comments.csv"
 
-    import_dir = Rails.root.join("tmp", "decidim_export")
+    import_dir = Rails.root.join("tmp/decidim_export")
 
     import_users(import_dir)
 
@@ -171,9 +171,9 @@ namespace :som do
     count = 0
 
     csv.each do |row|
-      space_slug = row["space_slug"]
+      # space_slug = row["space_slug"]
       author_email = row["author_email"]
-      component_title = row["component_title"]
+      # component_title = row["component_title"]
       commentable_type = row["commentable_type"]
       commentable_id = row["commentable_id"]
 
@@ -184,23 +184,15 @@ namespace :som do
       row.delete("commentable_id")
 
       begin
-        commentable = commentable_type&.constantize.find(commentable_id)
+        commentable = commentable_type.constantize.find(commentable_id)
       rescue StandardError => e
         puts "Could not find commentable #{commentable_type} #{commentable_id}"
+        puts e
         next
       end
 
       author = Decidim::User.find_by(email: author_email)
       # component = Decidim::Component.find_by("name ->> 'ca' = ?", component_title)
-
-      if commentable_type != Decidim::Comments::Comment.class.name
-        space_type = row["decidim_participatory_space_type"]
-        begin
-          space = space_type.constantize.find_by(slug: space_slug)
-        rescue NoMethodError => e
-          puts "There is no space_type in comment #{row["id"]} #{row["component_title"]}"
-        end
-      end
 
       comment = Decidim::Comments::Comment.new(row.to_hash)
       comment.body = eval(row["body"])
@@ -257,6 +249,8 @@ namespace :som do
     path = import_dir.join("proposals.csv")
 
     csv = CSV.parse(File.read(path), headers: true)
+    imported = 0
+
     csv.each do |row|
       space_slug = row["space_slug"]
       space_type = row["space_type"]
@@ -276,7 +270,6 @@ namespace :som do
       proposal.component = component
       proposal.title = eval(row["title"])
       proposal.body = eval(row["body"])
-      byebug
 
       proposal.save!
 
