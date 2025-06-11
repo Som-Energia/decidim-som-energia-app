@@ -1,5 +1,8 @@
 # frozen_string_literal: true
 
+#
+# rubocop: disable Security/Eval
+
 require_relative "script_helpers"
 
 namespace :som do
@@ -216,7 +219,7 @@ namespace :som do
     imported = 0
     csv = CSV.parse(File.read(path), headers: true)
     csv.each do |row|
-      space_slug = row["space_slug"]
+      # space_slug = row["space_slug"]
       component_name = row["component_name"]
 
       component = Decidim::Component.find_by("name ->> 'ca' = ?", component_name)
@@ -309,4 +312,6 @@ namespace :som do
 
     assemblies_slugs + participatory_processes_slugs
   end
+
+  # rubocop: enable Security/Eval
 end
