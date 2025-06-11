@@ -903,7 +903,7 @@ GEM
       version_gem (~> 1.1, >= 1.1.1)
     social-share-button (1.2.4)
       coffee-rails
-    spring (4.3.0)
+    spring (4.2.1)
     spring-watcher-listen (2.1.0)
       listen (>= 2.7, < 4.0)
       spring (>= 4)
@@ -1026,7 +1026,7 @@ DEPENDENCIES
   sentry-ruby
   sidekiq
   sidekiq-cron
-  spring
+  spring (~> 4.2.1)
   spring-watcher-listen
   web-console
   wicked_pdf
