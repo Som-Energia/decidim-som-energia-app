@@ -232,7 +232,6 @@ namespace :som do
   def export_proposals(export_dir)
     path = export_dir.join("proposals.csv")
 
-    authors = []
     slugs = all_slugs
 
     count = 0
@@ -309,7 +308,7 @@ namespace :som do
       row.delete("commentable_id")
 
       begin
-        commentable_type = "Decidim::Debates::Debate" if commentable_type == "Decidim::Proposals::Proposal" and space_slug == "somdebatxs"
+        commentable_type = "Decidim::Debates::Debate" if commentable_type == "Decidim::Proposals::Proposal" && space_slug == "somdebatxs"
 
         commentable = if commentable_type == "Decidim::Consultations::Question"
                         Decidim::Consultations::Question.find_by("name ->> 'ca' = ?", component_title)
