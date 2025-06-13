@@ -497,34 +497,45 @@ namespace :som do
     path = import_dir.join("scopes_types.csv")
 
     imported = 0
+    could_not_import = 0
     csv = CSV.parse(File.read(path), headers: true)
     csv.each do |row|
       scope_types = Decidim::ScopeType.new(row.to_hash)
       scope_types.name = eval(row["name"])
       scope_types.plural = eval(row["plural"])
 
-      scope_types.save!
+      unless scope_types.save
+        puts scope_types.errors.full_messages
+        could_not_import += 1
+        next
+      end
 
       imported += 1
     end
-    puts "Imported #{imported} scope types"
+    puts "Imported #{imported} scope types. Could not import #{could_not_import}"
   end
 
   def import_scopes(import_dir)
     path = import_dir.join("scopes.csv")
 
     imported = 0
+    could_not_import = 0
+
     csv = CSV.parse(File.read(path), headers: true)
     csv.each do |row|
       scope = Decidim::Scope.new(row.to_hash)
       scope.name = eval(row["name"])
 
-      scope.save!
+      unless scope.save
+        puts scope.errors.full_messages
+        could_not_import += 1
+        next
+      end
 
       imported += 1
     end
 
-    puts "Imported #{imported} scopes"
+    puts "Imported #{imported} scopes. Could not import #{could_not_import}"
   end
 
   def import_posts(import_dir)
