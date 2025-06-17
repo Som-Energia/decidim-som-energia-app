@@ -519,6 +519,7 @@ namespace :som do
       proposal.component = component
       proposal.title = eval(row["title"])
       proposal.body = eval(row["body"])
+      proposa.answer = eval(row["answer"])
 
       proposal.coauthorships.build(author: author)
 
