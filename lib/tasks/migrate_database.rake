@@ -29,6 +29,8 @@ namespace :som do
 
     export_proposals(export_dir)
 
+    export_debates(export_dir)
+
     export_meetings(export_dir)
 
     export_comments(export_dir)
@@ -55,6 +57,8 @@ namespace :som do
 
     import_pages(import_dir)
 
+    import_debates(import_dir)
+
     import_proposals(import_dir)
 
     import_comments(import_dir)
@@ -74,6 +78,13 @@ namespace :som do
     import_proposals(import_dir)
   end
 
+  desc "Import Debates"
+  task import_debates: :environment do
+    import_dir = Rails.root.join("tmp/decidim_export")
+
+    import_debates(import_dir)
+  end
+
   desc "Import Pages"
   task import_pages: :environment do
     import_dir = Rails.root.join("tmp/decidim_export")
@@ -88,6 +99,7 @@ namespace :som do
     import_scope_types(import_dir)
     import_scopes(import_dir)
   end
+
   def export_meetings(export_dir)
     path = export_dir.join("meetings.csv")
 
@@ -105,7 +117,7 @@ namespace :som do
         next unless space.slug.in? slugs
 
         component = meeting.component
-        name = component.name
+        name = component.namepages
         csv << (meeting.attributes.values + [space.slug, space.class.name, name["ca"]])
         count += 1
       end
@@ -134,6 +146,30 @@ namespace :som do
     end
 
     puts "Exported #{count} pages. You can find them in #{path}"
+  end
+
+  def export_debates(export_dir)
+    path = export_dir.join("debates.csv")
+
+    debates = Decidim::Debates::Debate.all
+    puts "Exporting debates"
+
+    count = 0
+    CSV.open(path, "wb") do |csv|
+      csv << (Decidim::Debates::Debate.attribute_names + %w(component_name space_slug space_type))
+
+      debates.each do |debate|
+        next unless debate.component.participatory_space.slug.in? all_slugs
+
+        component_name = debate.component.name["ca"]
+        space_slug = debate.component.participatory_space.slug
+        space_type = debate.component.participatory_space.class.name
+        csv << (debate.attributes.values + [component_name, space_slug, space_type])
+        count += 1
+      end
+    end
+
+    puts "Exported #{count} debates. You can find them in #{path}"
   end
 
   def export_scopes_types(export_dir)
@@ -411,6 +447,52 @@ namespace :som do
     puts "Imported #{imported} meetings."
   end
 
+  def import_debates(import_dir)
+    path = import_dir.join("debates.csv")
+
+    csv = CSV.parse(File.read(path), headers: true)
+    imported = 0
+    could_not_import = 0
+
+    puts "Importing debates"
+    csv.each do |row|
+      space_slug = row["space_slug"]
+      space_type = row["space_type"]
+      space = space_type.constantize.find_by(slug: space_slug)
+
+      component_name = row["component_name"]
+      component = Decidim::Component.where("name ->> 'ca' = ?", component_name).where(participatory_space: space).first
+      puts "could not find component with name #{component_name}" unless component
+
+      unless component
+        could_not_import += 1
+        next
+      end
+
+      row.delete("component_name")
+      row.delete("space_slug")
+      row.delete("space_type")
+
+      debate = Decidim::Debates::Debate.new(row.to_hash)
+      debate.component = component
+      debate.title = eval(row["title"])
+      debate.description = eval(row["description"])
+      debate.instructions = eval(row["instructions"])
+      debate.information_updates = eval(row["information_updates"])
+
+      unless debate.save
+        puts "Could not import debate. #{debate.id} - #{debate.title}"
+        could_not_import += 1
+        puts debate.errors.full_messages
+        next
+      end
+
+      imported += 1
+    end
+
+    puts "Imported #{imported} debates. Could not import #{could_not_import}"
+  end
+
   def import_proposals(import_dir)
     path = import_dir.join("proposals.csv")
 
@@ -482,7 +564,7 @@ namespace :som do
         debate.author = author
 
         unless debate.save
-          puts "Could not import debate. #{debate.id} - #{debnate.title}"
+          puts "Could not import debate. #{debate.id} - #{debate.title}"
           could_not_import += 1
           puts debate.errors.full_messages
           next
@@ -519,7 +601,7 @@ namespace :som do
       proposal.component = component
       proposal.title = eval(row["title"])
       proposal.body = eval(row["body"])
-      proposa.answer = eval(row["answer"])
+      proposal.answer = eval(row["answer"]) if row["answer"]
 
       proposal.coauthorships.build(author: author)
 
