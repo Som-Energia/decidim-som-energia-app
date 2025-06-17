@@ -60,6 +60,34 @@ namespace :som do
     import_comments(import_dir)
   end
 
+  desc "Import Comments"
+  task import_comments: :environment do
+    import_dir = Rails.root.join("tmp/decidim_export")
+
+    import_comments(import_dir)
+  end
+
+  desc "Import Proposals"
+  task import_proposals: :environment do
+    import_dir = Rails.root.join("tmp/decidim_export")
+
+    import_proposals(import_dir)
+  end
+
+  desc "Import Pages"
+  task import_pages: :environment do
+    import_dir = Rails.root.join("tmp/decidim_export")
+
+    import_pages(import_dir)
+  end
+
+  desc "Import Scopes"
+  task import_scopes: :environment do
+    import_dir = Rails.root.join("tmp/decidim_export")
+
+    import_scope_types(import_dir)
+    import_scopes(import_dir)
+  end
   def export_meetings(export_dir)
     path = export_dir.join("meetings.csv")
 
@@ -311,7 +339,7 @@ namespace :som do
         commentable_type = "Decidim::Debates::Debate" if commentable_type == "Decidim::Proposals::Proposal" && space_slug == "somdebatxs"
 
         commentable = if commentable_type == "Decidim::Consultations::Question"
-                        Decidim::Consultations::Question.find_by("name ->> 'ca' = ?", component_title)
+                        Decidim::Consultations::Question.find_by("title ->> 'ca' = ?", component_title)
                       else
                         commentable_type.constantize.find(commentable_id)
                       end
@@ -407,6 +435,7 @@ namespace :som do
       if space_slug == "somdebatxs"
 
         if Decidim::Debates::Debate.find_by(id: row["id"])
+          puts "Debate #{row["id"]} already exists"
           imported += 1
           next
         end
@@ -438,9 +467,12 @@ namespace :som do
         row.delete("body")
         row.delete("valuation_assignments_count")
 
-        component = Decidim::Component.find_by("name ->> 'ca' = ?", component_name)
+        component = Decidim::Component.where("name ->> 'ca' = ?", component_name).where(participatory_space: space).first
         puts "could not find component with name #{component_name}" unless component
-        next unless component
+        unless component
+          could_not_import += 1
+          next
+        end
 
         debate = Decidim::Debates::Debate.new(row.to_hash)
 
@@ -450,6 +482,7 @@ namespace :som do
         debate.author = author
 
         unless debate.save
+          puts "Could not import debate. #{debate.id} - #{debnate.title}"
           could_not_import += 1
           puts debate.errors.full_messages
           next
@@ -462,11 +495,19 @@ namespace :som do
       space = space_type.constantize.find_by(slug: space_slug)
       space ||= Decidim::ParticipatoryProcess.find_by(slug: space_slug)
       puts "could not find space: #{space_slug}" unless space
-      next unless space
+      unless space
+        puts "Could not import Proposal. #{row["id"]} #{row["title"]}"
+        could_not_import += 1
+        next
+      end
 
-      component = Decidim::Component.find_by("name ->> 'ca' = ?", component_name)
+      component = Decidim::Component.where("name ->> 'ca' = ?", component_name).where(participatory_space: space).first
       puts "could not find component with name #{component_name}" unless component
-      next unless component
+      unless component
+        puts "Could not import Proposal. #{row["id"]} #{row["title"]}"
+        could_not_import += 1
+        next
+      end
 
       row.delete("space_slug")
       row.delete("space_type")
@@ -482,6 +523,7 @@ namespace :som do
       proposal.coauthorships.build(author: author)
 
       unless proposal.save
+        puts "Could not import Proposal. #{row["id"]} #{row["title"]}"
         puts proposal.errors.full_messages
         could_not_import += 1
         next
@@ -547,7 +589,7 @@ namespace :som do
       title = row["title"]
       body = row["body"]
       component_name = row["component_name"]
-      component = Decidim::Component.find_by("name ->> 'ca' = ?", component_name)
+      component = Decidim::Component.find_by("name ->> 'ca' = ?", component_name, participatory_space = space)
       author = Decidim::User.find_by(email: row["author_email"])
 
       row.delete("component_name")
