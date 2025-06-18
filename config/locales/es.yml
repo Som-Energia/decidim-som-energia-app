@@ -85,6 +85,8 @@ es:
     login:
       admin_login: Acceso administración
       sign_in_cas: Acceder con Som Energia
+    sessions:
+      signed_out: Has cerrado sesión correctamente.
     invitations:
       invitation_token_invalid: "¡El token de invitación proporcionado no es válido!"
   somenergia:

@@ -21,6 +21,7 @@ gem "decidim-reporting_proposals", "~> 0.6.0"
 gem "bootsnap", "~> 1.7"
 gem "deface"
 gem "health_check"
+gem "nokogiri", "~> 1.16.0"
 gem "omniauth-cas"
 gem "progressbar"
 gem "puma"
@@ -42,8 +43,6 @@ end
 group :development do
   gem "letter_opener_web"
   gem "listen"
-  gem "spring"
-  gem "spring-watcher-listen"
   gem "web-console"
 end
 

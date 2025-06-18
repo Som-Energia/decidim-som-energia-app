@@ -40,6 +40,8 @@ eu:
     login:
       admin_login: Administraziora sartu
       sign_in_cas: Som Energia-rekin sartu
+    sessions:
+      signed_out: Saioa itxi da arrakastaz.
     invitations:
       invitation_token_invalid: Gonbidapen token hori ez da baliozkoa!
   somenergia:

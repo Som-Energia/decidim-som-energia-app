@@ -82,6 +82,8 @@ ca:
     login:
       admin_login: Accés administració
       sign_in_cas: Accedeix amb Som Energia
+    sessions:
+      signed_out: Has tancat la sessió correctament.
     invitations:
       invitation_token_invalid: El token de invitació proporcionat no és vàlid!
   layouts:

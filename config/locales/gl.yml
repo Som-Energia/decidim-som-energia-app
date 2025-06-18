@@ -40,6 +40,8 @@ gl:
     login:
       admin_login: Acceder á administración
       sign_in_cas: Acceder con Som Energia
+    sessions:
+      signed_out: Saída realizada correctamente.
     invitations:
       invitation_token_invalid: O token de invitación proporcionado non é válido.
   somenergia:
