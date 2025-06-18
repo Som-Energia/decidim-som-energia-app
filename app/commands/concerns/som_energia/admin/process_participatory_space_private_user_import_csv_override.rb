@@ -7,7 +7,7 @@ module SomEnergia
 
       included do
         def call
-          return broadcast(:invalid, @form.errors.values.flatten) unless @form.valid?
+          return broadcast(:invalid, @form.errors.values.flatten) unless @form.valid? # rubocop:disable Rails/DeprecatedActiveModelErrorsMethods
 
           @errors = []
 

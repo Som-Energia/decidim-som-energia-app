@@ -3,16 +3,10 @@
   "private": true,
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "lint": "eslint -c .eslintrc.json --ext .js app/packs/",
+    "lint": "eslint -c .eslintrc.json --no-error-on-unmatched-pattern --ignore-pattern app/packs/vendor --ext .js app/packs",
     "lint-fix": "eslint -c .eslintrc.json --ext .js app/packs/ --fix",
-    "stylelint": "stylelint **/*.scss",
+    "stylelint": "stylelint app/packs/**/*.scss",
     "stylelint-fix": "stylelint **/*.scss --fix"
-  },
-  "stylelint": {
-    "extends": "@decidim/stylelint-config",
-    "rules": {
-      "block-opening-brace-space-before": "always"
-    }
   },
   "dependencies": {
     "@decidim/browserslist-config": "file:packages/browserslist-config",
@@ -20,52 +14,37 @@
     "@decidim/elections": "file:packages/elections",
     "@decidim/webpacker": "file:packages/webpacker",
     "@rails/actioncable": "^6.1.710",
-    "@rails/webpacker": "^6.0.0-rc.6",
     "codemirror": "^5.65.19",
-    "europa": "^4.0.0",
     "form-storage": "^1.3.5",
-    "formBuilder": "^3.19.13",
+    "formBuilder": "^3.19.15",
     "highlight.js": "^11.11.1",
-    "inline-attachment": "^2.0.3",
-    "inscrybmde": "^1.11.6",
-    "jquery-ui": "^1.14.1",
-    "jsrender": "^1.0.15",
+    "inline-attacher": "^0.0.7",
+    "jsrender": "^1.0.16",
     "leaflet.featuregroup.subgroup": "^1.0.2",
-    "marked": "^5.1.2",
-    "select2": "^4.1.0-rc.0",
-    "webpack": "^5.51.1",
-    "webpack-cli": "^4.8.0"
+    "tom-select": "^2.2.2"
+  },
+  "engines": {
+    "node": "18.17.1",
+    "npm": ">=9.6.7"
   },
   "version": "0.1.0",
-  "babel": {
-    "presets": [
-      "./node_modules/@rails/webpacker/package/babel/preset.js"
-    ]
-  },
   "browserslist": [
     "extends @decidim/browserslist-config"
   ],
   "devDependencies": {
-    "@babel/eslint-parser": "^7.27.0",
-    "@babel/plugin-proposal-class-properties": "^7.18.6",
-    "@babel/plugin-proposal-private-methods": "^7.18.6",
-    "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
-    "@babel/plugin-transform-classes": "^7.25.9",
-    "@babel/plugin-transform-regenerator": "^7.27.0",
-    "@babel/plugin-transform-runtime": "^7.26.10",
-    "@babel/preset-env": "^7.26.9",
-    "@babel/preset-react": "^7.26.3",
-    "@decidim/dev": "^0.27.9",
-    "@decidim/eslint-config": "^0.27.9",
-    "@decidim/stylelint-config": "^0.27.9",
-    "@webpack-cli/serve": "^1.7.0",
-    "eslint": "^7.32.0",
-    "eslint-config-prettier": "^8.10.0",
-    "eslint-config-standard": "^11.0.0",
-    "eslint-plugin-import": "^2.31.0",
-    "eslint-plugin-standard": "^3.1.0",
-    "sass-embedded": "^1.87.0",
-    "stylelint": "^13.11.0",
-    "webpack-dev-server": "^4.13.2"
+    "@babel/eslint-parser": "^7.27.1",
+    "@babel/plugin-transform-classes": "^7.27.1",
+    "@babel/plugin-transform-regenerator": "^7.27.1",
+    "@babel/plugin-transform-runtime": "^7.27.1",
+    "@babel/plugin-transform-class-properties": "^7.27.1",
+    "@babel/preset-env": "^7.27.2",
+    "@babel/preset-react": "^7.27.1",
+    "@decidim/dev": "^0.28.4",
+    "@decidim/eslint-config": "^0.28.4",
+    "@decidim/prettier-config": "^0.28.4",
+    "@decidim/stylelint-config": "^0.28.4",
+    "@tarekraafat/autocomplete.js": "^10.2.7",
+    "postcss-scss": "^4.0.9",
+    "sass-embedded": "~1.57.1"
   }
 }

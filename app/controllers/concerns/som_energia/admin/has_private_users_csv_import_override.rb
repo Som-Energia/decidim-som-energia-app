@@ -8,7 +8,7 @@ module SomEnergia
       included do
         def create
           enforce_permission_to :csv_import, :space_private_user
-          @form = form(Decidim::Admin::ParticipatorySpacePrivateUserCsvImportForm).from_params(params, privatable_to: privatable_to)
+          @form = form(Decidim::Admin::ParticipatorySpacePrivateUserCsvImportForm).from_params(params, privatable_to:)
 
           Decidim::Admin::ProcessParticipatorySpacePrivateUserImportCsv.call(@form, current_user, current_participatory_space) do
             on(:ok) do |errors|

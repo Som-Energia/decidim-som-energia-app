@@ -11,7 +11,7 @@ namespace :anonymize do
 
   def with_progress(collection, name:)
     total = collection.count
-    progressbar = create_progress_bar(total: total)
+    progressbar = create_progress_bar(total:)
 
     puts "Anonymizing #{total} #{name}...\n"
     skip_logs do
@@ -26,7 +26,7 @@ namespace :anonymize do
     ProgressBar.create(
       progress_mark: " ",
       remainder_mark: "\u{FF65}",
-      total: total,
+      total:,
       format: "%a %e %b\u{15E7}%i %p%% %t"
     )
   end
@@ -70,7 +70,7 @@ namespace :anonymize do
         identity.update_columns(uid: "anonymized-identity-#{identity.id}")
       end
 
-      Decidim::Authorization.where(user: user).find_each do |authorization|
+      Decidim::Authorization.where(user:).find_each do |authorization|
         authorization.update_columns(unique_id: authorization.id)
       end
     end

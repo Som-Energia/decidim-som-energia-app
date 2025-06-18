@@ -1,5 +1,0 @@
-<!-- replace "erb[loud]:contains('comments_for')" -->
-
-<% unless ENV["DISABLE_CONSULTATION_COMMENTS"].present? %>
-  <%= comments_for current_question if current_question.published? %>
-<% end %>

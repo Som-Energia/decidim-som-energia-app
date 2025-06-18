@@ -1,0 +1,7 @@
+<!-- replace "erb[loud]:contains('decidim_form_for')" -->
+
+<div class="flex justify-center mt-10">
+  <%= button_tag t("devise.login.admin_login"), type: "button", class: "button button__xs button__transparent-primary", onclick: "$('.login_toggle').toggleClass('hidden');return false;" %>
+</div>
+
+<%= decidim_form_for(resource, namespace: "session", as: resource_name, url: session_path(resource_name), html: { class: "new_user_ login_toggle hidden" }) do |f| %>

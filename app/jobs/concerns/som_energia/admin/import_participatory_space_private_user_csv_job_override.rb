@@ -14,9 +14,9 @@ module SomEnergia
             email: email.downcase.strip,
             cas_user: true
           }
-          private_user_form = Decidim::Admin::ParticipatorySpacePrivateUserForm.from_params(params, privatable_to: privatable_to)
+          private_user_form = Decidim::Admin::ParticipatorySpacePrivateUserForm.from_params(params, privatable_to:)
                                                                                .with_context(
-                                                                                 current_user: current_user,
+                                                                                 current_user:,
                                                                                  current_particiaptory_space: privatable_to
                                                                                )
 

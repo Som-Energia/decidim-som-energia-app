@@ -17,6 +17,7 @@
 
 # Ignore public uploads
 public/uploads
+tailwind.config.js
 # Ignore application configuration
 /RailsApplication1/nbproject/private/
 
@@ -43,6 +44,7 @@ decidim_dummy_app
 /public/packs-test
 /public/decidim-packs
 /node_modules
+/packages/*/node_modules
 /yarn-error.log
 yarn-debug.log*
 .yarn-integrity

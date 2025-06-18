@@ -23,7 +23,7 @@ namespace :som do
     mail = ActionMailer::Base.mail(to: args.email,
                                    from: Decidim.mailer_sender,
                                    subject: "A test mail from #{Decidim.application_name}",
-                                   body: "Sent by #{ENV.fetch("LOGNAME", nil)} in #{ENV.fetch("HOME", nil)} at #{Date.current}")
+                                   body: "Sent by #{ENV.fetch("LOGNAME", nil)} in #{Dir.home} at #{Date.current}")
     mail.deliver_now
   rescue ArgumentError
     puts mail_usage
@@ -39,19 +39,17 @@ export SMTP_SETTINGS='{address: \"stmp.example.org\", port: 25, enable_starttls_
 "
   end
 
-  # rubocop:disable Metrics/LineLength
   desc "import users from a CSV"
   task :import_users, [:organization_id, :csv] => :environment do |_task, args|
     process_csv(args) do |organization, line|
       user = normalize_user(line)
-      raise AlreadyProcessedError, "user #{user[:email]} already existing. SKIPPING" if Decidim::User.find_by(email: user[:email], username: user[:username], organization: organization)
+      raise AlreadyProcessedError, "user #{user[:email]} already existing. SKIPPING" if Decidim::User.find_by(email: user[:email], username: user[:username], organization:)
 
       user = Decidim::User.new(user)
       user.organization = organization
-      user.nickname = Decidim::UserBaseEntity.nicknamize(user.name, organization: organization)
+      user.nickname = Decidim::UserBaseEntity.nicknamize(user.name, organization:)
       user.save!(validate: false)
       puts "Created user #{user.email} #{user.extended_data}"
     end
   end
-  # rubocop:enable Metrics/LineLength
 end

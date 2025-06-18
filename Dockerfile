@@ -1,15 +1,14 @@
-FROM ruby:3.0 AS builder
+FROM ruby:3.1.6 AS builder
 
-RUN NODE_MAJOR=16 && \
-    apt-get update && apt-get upgrade -y && apt-get install -y ca-certificates curl gnupg && \
+RUN apt-get update && apt-get upgrade -y && apt-get install -y ca-certificates curl gnupg && \
     mkdir -p /etc/apt/keyrings && \
-    curl -fsSL https://deb.nodesource.com/gpgkey/nodesource-repo.gpg.key | gpg --dearmor -o /etc/apt/keyrings/nodesource.gpg && \
-    echo "deb [signed-by=/etc/apt/keyrings/nodesource.gpg] https://deb.nodesource.com/node_$NODE_MAJOR.x nodistro main" | tee /etc/apt/sources.list.d/nodesource.list && \
+    curl -fsSL https://deb.nodesource.com/setup_18.x | bash - && \
     curl -sL https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add - && \
     echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list && \
     apt-get update && apt-get install -y nodejs yarn \
     build-essential \
     postgresql-client \
+    p7zip \
     libpq-dev && \
     apt-get clean
 
@@ -35,11 +34,9 @@ RUN gem install bundler:$(grep -A 1 'BUNDLED WITH' Gemfile.lock | tail -n 1 | xa
     find /usr/local/bundle/ -name "*.o" -delete && \
     find /usr/local/bundle/ -name ".git" -exec rm -rf {} + && \
     find /usr/local/bundle/ -name ".github" -exec rm -rf {} + && \
-    # whkhtmltopdf has binaries for all platforms, we don't need them once uncompressed
-    rm -rf /usr/local/bundle/gems/wkhtmltopdf-binary-*/bin/*.gz && \
-    # Remove additional unneded decidim files
-    find /usr/local/bundle/ -name "decidim_app-design" -exec rm -rf {} + && \
-    find /usr/local/bundle/ -name "spec" -exec rm -rf {} +
+    # Remove additional unneeded decidim files
+    find /usr/local/bundle/ -name "spec" -exec rm -rf {} + && \
+    find /usr/local/bundle/ -wholename "*/decidim-dev/lib/decidim/dev/assets/*" -exec rm -rf {} +
 
 RUN npm ci
 
@@ -51,6 +48,8 @@ COPY ./db /app/db
 COPY ./lib /app/lib
 COPY ./packages /app/packages
 COPY ./public/*.* /app/public/
+COPY ./public/fonts /app/public/fonts
+COPY ./public/images /app/public/images
 COPY ./config.ru /app/config.ru
 COPY ./Rakefile /app/Rakefile
 COPY ./babel.config.json /app/babel.config.json
@@ -69,9 +68,9 @@ RUN mv config/credentials config/credentials.bak 2>/dev/null || true
 
 RUN RAILS_ENV=production \
     SECRET_KEY_BASE=dummy \
-    RAILS_MASTER_KEY=dummy \
+    RAILS_MASTER_KEY=0b809804a9de874fb0627b6cf5b6cada \
     DB_ADAPTER=nulldb \
-    bundle exec rails assets:precompile
+    bin/rails assets:precompile
 
 RUN mv config/credentials.yml.enc.bak config/credentials.yml.enc 2>/dev/null || true
 RUN mv config/credentials.bak config/credentials 2>/dev/null || true
@@ -79,12 +78,14 @@ RUN mv config/credentials.bak config/credentials 2>/dev/null || true
 RUN rm -rf node_modules tmp/cache vendor/bundle test spec app/packs .git
 
 # This image is for production env only
-FROM ruby:3.0-slim AS final
+FROM ruby:3.1.6-slim AS final
 
 RUN apt-get update && \
     apt-get install -y postgresql-client \
     imagemagick \
     curl \
+    p7zip \
+    wkhtmltopdf \
     supervisor && \
     apt-get clean
 
@@ -96,9 +97,6 @@ ENV APP_REVISION=${CAPROVER_GIT_COMMIT_SHA}
 ENV RAILS_LOG_TO_STDOUT true
 ENV RAILS_SERVE_STATIC_FILES true
 ENV RAILS_ENV production
-
-ARG RUN_RAILS
-ARG RUN_SIDEKIQ
 
 # Add user
 RUN addgroup --system --gid 1000 app && \

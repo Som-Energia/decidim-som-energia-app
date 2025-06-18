@@ -8,8 +8,8 @@ module Decidim::Admin
       described_class.from_params(
         attributes
       ).with_context(
-        current_user: current_user,
-        current_organization: current_organization
+        current_user:,
+        current_organization:
       )
     end
 
@@ -21,7 +21,7 @@ module Decidim::Admin
         "file" => file
       }
     end
-    let(:file) { Rack::Test::UploadedFile.new(Decidim::Dev.asset("import_participatory_space_private_users.csv"), "text/csv") }
+    let(:file) { Rack::Test::UploadedFile.new(Rails.root.join("spec/fixtures/import_participatory_space_private_users.csv"), "text/csv") }
 
     context "when everything is ok" do
       it { is_expected.to be_valid }
@@ -62,7 +62,7 @@ module Decidim::Admin
     end
 
     context "when user name contains invalid chars" do
-      let(:file) { Rack::Test::UploadedFile.new(Decidim::Dev.asset("import_participatory_space_private_users_nok.csv"), "text/csv") }
+      let(:file) { Rack::Test::UploadedFile.new(Rails.root.join("spec/fixtures/import_participatory_space_private_users_nok.csv"), "text/csv") }
 
       it { is_expected.to be_valid }
     end

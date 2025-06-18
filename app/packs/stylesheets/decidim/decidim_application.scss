@@ -5,26 +5,47 @@
 // To override CSS variables or Foundation settings use _decidim-settings.scss
 //
 // By default this is empty.
-
-@import "stylesheets/somenergia/global_styles";
-@import "stylesheets/consultation_overrides/question_multiple_votes";
-@import "stylesheets/consultation_overrides/consultations_question_requirements_validator";
-
 /* Decidim has a bug when using external_icon method that automatically adds a display:none inline css */
+.login__omniauth-button {
+  &.button--cas {
+    padding-top: 0.5rem !important;
+    padding-bottom: 0.5rem !important;
+  }
 
-.button--cas {
-  .button--social__icon {
-    padding: .3em .7rem;
+  img.icon.external-icon {
+    height: 36px;
+    width: auto;
+    padding: 2px;
+    display: inline-block !important;
+  }
+}
 
-    img.icon.external-icon {
-      height: 36px;
-      width: auto;
-      padding: 2px;
-      display: inline-block !important;
+.main-bar__links-desktop {
+  @media (min-width: 768px){
+    [data-target*=dropdown] {
+      @apply block;
+
+      div {
+        @apply block text-secondary text-sm text-center;
+
+        svg {
+          @apply inline-block;
+        }
+      }
     }
   }
 
-  .button--social__text {
-    text-align: center;
+  .main-header__language-chooser {
+    @apply relative z-10;
+      > ul {
+        @apply absolute left-0 bg-white p-4 shadow-md text-left;
+
+        >li {
+          @apply text-secondary text-md hover:underline hover:bg-secondary hover:text-white transition;
+        >a {
+          @apply p-2 w-full block;
+        }
+      }
+    }
   }
 }

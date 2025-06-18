@@ -1,0 +1,5 @@
+<!-- insert_before ".form__wrapper" -->
+
+<div class="flex justify-center mt-10">
+  <%= button_tag t("devise.login.admin_login"), type: "button", class: "button button__xs button__transparent-primary", onclick: "$('.login_toggle').toggleClass('!hidden');return false;" %>
+</div>
