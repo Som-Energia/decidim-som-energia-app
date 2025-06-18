@@ -27,6 +27,12 @@ namespace :som do
 
     export_users(export_dir)
 
+    export_storage_attachments(export_dir)
+
+    export_blobs(export_dir)
+
+    export_attachments(export_dir)
+
     export_proposals(export_dir)
 
     export_debates(export_dir)
@@ -60,6 +66,12 @@ namespace :som do
     import_debates(import_dir)
 
     import_proposals(import_dir)
+
+    import_blobs(import_dir)
+
+    import_storage_attachments(import_dir)
+
+    import_attachments(import_dir)
 
     import_comments(import_dir)
   end
@@ -100,6 +112,25 @@ namespace :som do
     import_scopes(import_dir)
   end
 
+  desc "Import blobs"
+  task import_blobs: :environment do
+    import_dir = Rails.root.join("tmp/decidim_export")
+    import_blobs(import_dir)
+  end
+
+  desc "Import attachment storage"
+  task import_attachment_storage: :environment do
+    import_dir = Rails.root.join("tmp/decidim_export")
+    import_attachment_storage(import_dir)
+  end
+
+  desc "Import attachments"
+  task import_attachments: :environment do
+    import_dir = Rails.root.join("tmp/decidim_export")
+
+    import_attachments(import_dir)
+  end
+
   def export_meetings(export_dir)
     path = export_dir.join("meetings.csv")
 
@@ -124,6 +155,94 @@ namespace :som do
 
       puts "Exported #{count} meetings. You can find them in #{path}"
     end
+  end
+
+  def export_storage_attachments(export_dir)
+    Rails.application.eager_load!
+    path = export_dir.join("storage_attachments.csv")
+
+    slugs = all_slugs
+
+    attachments = ActiveStorage::Attachment.all
+    CSV.open(path, "wb") do |csv|
+      csv << (ActiveStorage::Attachment.attribute_names + %w(blob_key))
+
+      attachments.each do |attachment|
+        next unless ["Decidim::Attachment", "Decidim::ParticipatoryProcess", "Decidim::Assembly"].include?(attachment.record_type)
+
+        if attachment.record.respond_to?(:attached_to) && attachment.record.attached_to&.respond_to?(:participatory_space)
+          space = attachment.record.attached_to.participatory_space
+        elsif attachment.record.instance_of?(Decidim::Attachment)
+          space = attachment.record.attached_to if attachment.record.instance_of?(Decidim::Attachment)
+        else
+          space = attachment.record
+        end
+
+        next unless space.slug.in? all_slugs
+
+        csv << (attachment.attributes.values + [attachment.blob.key])
+      end
+    end
+  end
+
+  def export_blobs(export_dir)
+    path = export_dir.join("blobs.csv")
+
+    slugs = all_slugs
+
+    blobs = ActiveStorage::Blob.all
+
+    CSV.open(path, "wb") do |csv|
+      csv << ActiveStorage::Blob.attribute_names
+
+      blobs.each do |blob|
+        attachments = blob.attachments
+
+        a = attachments.filter do |attachment|
+          next unless ["Decidim::Attachment", "Decidim::ParticipatoryProcess", "Decidim::Assembly"].include?(attachment.record_type)
+
+          if attachment.record.respond_to?(:attached_to) && attachment.record.attached_to&.respond_to?(:participatory_space)
+            space = attachment.record.attached_to.participatory_space
+          elsif attachment.record.instance_of?(Decidim::Attachment)
+            space = attachment.record.attached_to if attachment.record.instance_of?(Decidim::Attachment)
+          else
+            space = attachment.record
+          end
+
+          space.slug.in? all_slugs
+        end
+
+        next if a.empty?
+
+        csv << blob.attributes.values
+      end
+    end
+  end
+
+  def export_attachments(export_dir)
+    path = export_dir.join("attachments.csv")
+
+    slugs = all_slugs
+    count = 0
+
+    attachments = Decidim::Attachment.all
+
+    CSV.open(path, "wb") do |csv|
+      csv << Decidim::Attachment.attribute_names
+
+      attachments.each do |attachment|
+        attached_to = attachment.attached_to
+
+        space = attached_to.participatory_space if attached_to.respond_to?(:participatory_space)
+        space ||= attached_to
+        next unless space.slug.in? all_slugs
+
+        csv << attachment.attributes.values
+        count += 1
+      end
+    end
+
+    puts "Exported #{count} attachments. You can find them in #{path}"
   end
 
   def export_pages(export_dir)
@@ -711,6 +830,72 @@ namespace :som do
     end
 
     puts "Imported #{imported} posts."
+  end
+
+  def import_attachments(import_dir)
+    path = import_dir.join("attachments.csv")
+
+    imported = 0
+    csv = CSV.parse(File.read(path), headers: true)
+    csv.each do |row|
+      attachment = Decidim::Attachment.new(row.to_hash)
+      attachment.title = eval(row["title"])
+      attachment.description = eval(row["description"])
+
+      attachment.save
+      imported += 1
+    end
+
+    puts "Imported #{imported} attachments."
+  end
+
+  def import_blobs(import_dir)
+    path = import_dir.join("blobs.csv")
+
+    imported = 0
+    csv = CSV.parse(File.read(path), headers: true)
+
+    csv.each do |row|
+      row.delete("id")
+      next if ActiveStorage::Blob.find_by(key: row["key"])
+
+      blob = ActiveStorage::Blob.new(row.to_hash)
+      imported += 1 if blob.save
+    end
+
+    puts "Imported #{imported} blobs"
+  end
+
+  def import_attachment_storage(import_dir)
+    path = import_dir.join("storage_attachments.csv")
+
+    imported = 0
+    csv = CSV.parse(File.read(path), headers: true)
+
+    csv.each do |row|
+      blob_key = row["blob_key"]
+      row.delete("blob_key")
+      row.delete("id")
+
+      blob = ActiveStorage::Blob.find_by(key: blob_key)
+      attachment = ActiveStorage::Attachment.new(row.to_hash)
+      attachment.blob = blob
+
+      next if ActiveStorage::Attachment.exists?(
+        record_type: row["record_type"],
+        record_id: row["record_id"],
+        name: row["name"],
+        blob_id: blob.id
+      )
+
+      if attachment.save
+        imported += 1
+      else
+        puts "Could not imported Attachment Storage: #{attachment.id} - #{attachment.record_id} - #{attachment.blob.key}"
+      end
+    end
+
+    puts "Imported #{imported} attachment_storage"
   end
 
   def all_slugs
