@@ -45,7 +45,7 @@ end
 group :development do
   gem "letter_opener_web"
   gem "listen"
-  gem "spring"
+  gem "spring", "~> 4.2.1"
   gem "spring-watcher-listen"
   gem "web-console"
 end
