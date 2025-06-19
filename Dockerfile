@@ -1,4 +1,4 @@
-FROM ruby:3.1.6 AS builder
+FROM ruby:3.2.8 AS builder
 
 RUN apt-get update && apt-get upgrade -y && apt-get install -y ca-certificates curl gnupg && \
     mkdir -p /etc/apt/keyrings && \
@@ -22,6 +22,7 @@ COPY ./package-lock.json /app/package-lock.json
 COPY ./package.json /app/package.json
 COPY ./Gemfile /app/Gemfile
 COPY ./Gemfile.lock /app/Gemfile.lock
+COPY ./packages /app/packages
 
 RUN gem install bundler:$(grep -A 1 'BUNDLED WITH' Gemfile.lock | tail -n 1 | xargs) && \
     bundle config --local without 'development test' && \
@@ -46,7 +47,6 @@ COPY ./bin /app/bin
 COPY ./config /app/config
 COPY ./db /app/db
 COPY ./lib /app/lib
-COPY ./packages /app/packages
 COPY ./public/*.* /app/public/
 COPY ./public/fonts /app/public/fonts
 COPY ./public/images /app/public/images
@@ -75,10 +75,10 @@ RUN RAILS_ENV=production \
 RUN mv config/credentials.yml.enc.bak config/credentials.yml.enc 2>/dev/null || true
 RUN mv config/credentials.bak config/credentials 2>/dev/null || true
 
-RUN rm -rf node_modules tmp/cache vendor/bundle test spec app/packs .git
+RUN rm -rf node_modules packages/*/node_modules tmp/cache vendor/bundle test spec app/packs .git
 
 # This image is for production env only
-FROM ruby:3.1.6-slim AS final
+FROM ruby:3.2.8-slim AS final
 
 RUN apt-get update && \
     apt-get install -y postgresql-client \

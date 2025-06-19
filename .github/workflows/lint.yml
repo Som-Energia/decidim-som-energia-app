@@ -8,7 +8,7 @@ on:
   pull_request:
 
 env:
-  RUBY_VERSION: 3.1.6
+  RUBY_VERSION: 3.2.8
   NODE_VERSION: 18.17.1
 
 jobs:
@@ -22,7 +22,7 @@ jobs:
           fetch-depth: 1
 
       - run: |
-          sudo apt-get update; sudo apt-get -f install wkhtmltopdf imagemagick
+          sudo apt-get update; sudo apt-get -f install wkhtmltopdf imagemagick p7zip
 
       - uses: actions/setup-node@master
         with:
