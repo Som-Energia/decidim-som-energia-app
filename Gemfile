@@ -37,7 +37,7 @@ group :development, :test do
 
   gem "brakeman"
   gem "decidim-dev", DECIDIM_VERSION
-  gem "rubocop-rspec", "~> 2.20.0"
+  gem "rubocop-rspec", "~> 3.0.0"
 end
 
 group :development do
