@@ -8,7 +8,7 @@ on:
   pull_request:
 
 env:
-  RUBY_VERSION: 3.1.6
+  RUBY_VERSION: 3.2.8
   NODE_VERSION: 18.17.1
   CHROME_VERSION: "119.0.6045.105"
   RAILS_ENV: test
@@ -21,7 +21,7 @@ jobs:
     runs-on: ubuntu-latest
     services:
       postgres:
-        image: postgres:14
+        image: postgres:16
         ports: ["5432:5432"]
         options: >-
           --health-cmd pg_isready
@@ -37,7 +37,7 @@ jobs:
           fetch-depth: 1
 
       - name: Install additional tools
-        run: sudo apt-get update && sudo apt-get install -y libu2f-udev imagemagick 7zip wkhtmltopdf
+        run: sudo apt-get update && sudo apt-get install -y libu2f-udev imagemagick p7zip wkhtmltopdf
 
       - uses: nanasess/setup-chromedriver@v2
         with:
