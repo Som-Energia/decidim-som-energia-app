@@ -4,19 +4,19 @@ source "https://rubygems.org"
 
 ruby RUBY_VERSION
 
-DECIDIM_VERSION = { github: "decidim/decidim", branch: "release/0.28-stable" }.freeze
+DECIDIM_VERSION = { github: "decidim/decidim", branch: "release/0.29-stable" }.freeze
 
 gem "decidim", DECIDIM_VERSION
 gem "decidim-initiatives", DECIDIM_VERSION
 gem "decidim-templates", DECIDIM_VERSION
 
 # A Decidim module to customize the localized terms in the system.
-gem "decidim-term_customizer", github: "mainio/decidim-module-term_customizer", branch: "main"
+gem "decidim-term_customizer", github: "CodiTramuntana/decidim-module-term_customizer", branch: "upgrade/decidim_0.29"
 
 # Usability and UX tweaks for Decidim.
 # gem "decidim-action_delegator", github: "coopdevs/decidim-module-action_delegator"
-gem "decidim-decidim_awesome", github: "decidim-ice/decidim-module-decidim_awesome", branch: "release/0.28-stable"
-gem "decidim-reporting_proposals", "~> 0.6.0"
+gem "decidim-decidim_awesome", github: "decidim-ice/decidim-module-decidim_awesome", branch: "main"
+gem "decidim-reporting_proposals", "~> 0.7.0"
 
 gem "bootsnap", "~> 1.7"
 gem "deface"
