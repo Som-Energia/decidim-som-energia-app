@@ -22,7 +22,7 @@ module Decidim::Admin
     end
 
     it "enqueues a job for each present value" do
-      expect(ImportParticipatorySpacePrivateUserCsvJob).to receive(:perform_later).twice.with(kind_of(String), kind_of(String), private_users_to, current_user)
+      expect(ImportParticipatorySpacePrivateUserCsvJob).to receive(:perform_later).twice.with(kind_of(String), kind_of(String), private_users_to)
 
       subject.call
     end
@@ -52,7 +52,7 @@ module Decidim::Admin
       end
 
       it "enqueues a job for each present value without BOM" do
-        expect(ImportParticipatorySpacePrivateUserCsvJob).to receive(:perform_later).with(email, kind_of(String), private_users_to, current_user)
+        expect(ImportParticipatorySpacePrivateUserCsvJob).to receive(:perform_later).with(email, kind_of(String), private_users_to)
 
         subject.call
       end
@@ -63,7 +63,7 @@ module Decidim::Admin
 
       context "when has no users and eamils" do
         it "broadcasts invalid" do
-          expect(subject.call).to broadcast(:invalid, ["La primera columna ha de contenir emails vàlids!"])
+          expect(subject.call).to broadcast(:invalid, ["Email La primera columna ha de contenir emails vàlids!"])
         end
 
         it "does not enqueue any job" do
@@ -82,7 +82,7 @@ module Decidim::Admin
       end
 
       it "enqueues only one job" do
-        expect(ImportParticipatorySpacePrivateUserCsvJob).to receive(:perform_later).once.with(kind_of(String), kind_of(String), private_users_to, current_user)
+        expect(ImportParticipatorySpacePrivateUserCsvJob).to receive(:perform_later).once.with(kind_of(String), kind_of(String), private_users_to)
 
         subject.call
       end
@@ -96,7 +96,7 @@ module Decidim::Admin
       end
 
       it "enqueues all jobs" do
-        expect(ImportParticipatorySpacePrivateUserCsvJob).to receive(:perform_later).twice.with(kind_of(String), kind_of(String), private_users_to, current_user)
+        expect(ImportParticipatorySpacePrivateUserCsvJob).to receive(:perform_later).twice.with(kind_of(String), kind_of(String), private_users_to)
 
         subject.call
       end
