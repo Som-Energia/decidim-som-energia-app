@@ -10,7 +10,7 @@ module SomEnergia
           enforce_permission_to :csv_import, :space_private_user
           @form = form(Decidim::Admin::ParticipatorySpacePrivateUserCsvImportForm).from_params(params, privatable_to:)
 
-          Decidim::Admin::ProcessParticipatorySpacePrivateUserImportCsv.call(@form, current_user, current_participatory_space) do
+          Decidim::Admin::ProcessParticipatorySpacePrivateUserImportCsv.call(@form, current_participatory_space) do
             on(:ok) do |errors|
               flash[:notice] = I18n.t("participatory_space_private_users_csv_imports.create.success", scope: "decidim.admin")
               flash[:alert] = "#{errors.size} emails no s'han pogut processar: #{errors.take(50)}" if errors&.size

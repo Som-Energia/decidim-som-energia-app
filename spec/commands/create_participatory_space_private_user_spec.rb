@@ -4,14 +4,13 @@ require "rails_helper"
 
 module Decidim::Admin
   describe CreateParticipatorySpacePrivateUser do
-    subject { described_class.new(form, current_user, privatable_to, via_csv:) }
+    subject { described_class.new(form, privatable_to, via_csv:) }
 
     let(:via_csv) { false }
     let(:privatable_to) { create(:participatory_process) }
     let!(:email) { "my_email@example.org" }
     let!(:name) { "Weird Guy" }
     let!(:user) { create(:user, email: "my_email@example.org", organization: privatable_to.organization) }
-    let!(:current_user) { create(:user, email: "some_email@example.org", organization: privatable_to.organization) }
     let(:cas_user) { true }
     let(:form) do
       double(
