@@ -52,7 +52,6 @@ COPY ./public/fonts /app/public/fonts
 COPY ./public/images /app/public/images
 COPY ./config.ru /app/config.ru
 COPY ./Rakefile /app/Rakefile
-COPY ./babel.config.json /app/babel.config.json
 COPY ./postcss.config.js /app/postcss.config.js
 
 # Compile assets with Webpacker or Sprockets
