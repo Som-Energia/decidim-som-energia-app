@@ -38,7 +38,7 @@ module Decidim::Assemblies::Admin
         it "renders the form" do
           post(:create, params:)
 
-          expect(flash[:alert]).to eq("There was a problem reading the CSV file. Please make sure you have followed the instructions.: [\"La primera columna ha de contenir emails vàlids!\"]")
+          expect(flash[:alert]).to eq("There was a problem reading the CSV file. Please make sure you have followed the instructions.: [\"Email La primera columna ha de contenir emails vàlids!\"]")
           expect(response).to have_http_status(:ok)
         end
       end

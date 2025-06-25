@@ -13,7 +13,6 @@ module SomEnergia
           Decidim.traceability.perform_action!(
             action,
             Decidim::ParticipatorySpacePrivateUser,
-            current_user,
             resource: {
               title: user.name,
               cas_user: form.cas_user

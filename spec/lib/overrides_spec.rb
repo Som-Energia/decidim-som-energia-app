@@ -9,27 +9,26 @@ checksums = [
   {
     package: "decidim-core",
     files: {
-      "/app/controllers/decidim/devise/invitations_controller.rb" => "0cbb345ec888627a3a66cce00aba2c25",
-      "/app/commands/decidim/create_omniauth_registration.rb" => "5bca48c990c3b82d47119902c0a56ca1",
-      "/app/views/decidim/account/show.html.erb" => "a0647f1740d696018f73ec8db8c7587a",
+      "/app/controllers/decidim/devise/invitations_controller.rb" => "3f7224ebdf7eb3ad2d550344021c795f",
+      "/app/views/decidim/account/show.html.erb" => "f13218e2358a2d611996c2a197c0de25",
       "/app/views/decidim/devise/sessions/new.html.erb" => "a8fe60cd10c1636822c252d5488a979d",
       "/app/views/decidim/devise/shared/_omniauth_buttons.html.erb" => "de3f80dda35889bc1947d8e6eff3c19a",
-      "/app/views/decidim/shared/_login_modal.html.erb" => "a29d4fcebe8c689044e3c15f6144f3d1"
+      "/app/views/decidim/shared/_login_modal.html.erb" => "0d615603bb45f7b209032578dda9fc72"
     }
   },
   {
     package: "decidim-admin",
     files: {
 
-      "/app/jobs/decidim/admin/import_participatory_space_private_user_csv_job.rb" => "bd3c600bb488db10a3aeac3941b2cb26",
-      "/app/commands/decidim/admin/process_participatory_space_private_user_import_csv.rb" => "4e290b826af84d7cedebb1e6e9526f5b",
-      "/app/commands/decidim/admin/create_participatory_space_private_user.rb" => "5c354131b4bcd3deb74780595091c502",
-      "/app/controllers/decidim/admin/concerns/has_private_users_csv_import.rb" => "45d947412c056a07ef695a115bac1b82",
+      "/app/jobs/decidim/admin/import_participatory_space_private_user_csv_job.rb" => "5d3f6702aac75dd54ca19299e57a16c0",
+      "/app/commands/decidim/admin/process_participatory_space_private_user_import_csv.rb" => "c28a9a444df8adf4a87359e3e16ee5e5",
+      "/app/commands/decidim/admin/create_participatory_space_private_user.rb" => "81b2a47da331d70d8f530777b9b11dc2",
+      "/app/controllers/decidim/admin/concerns/has_private_users_csv_import.rb" => "a33ecdf482bbca6b34552440abcf0811",
       "/app/forms/decidim/admin/participatory_space_private_user_form.rb" => "3479f27dcc88f98267374490b446b24c",
       "/app/forms/decidim/admin/participatory_space_private_user_csv_import_form.rb" => "372bff11067a454e0bb4e51b3a93213b",
       # views
       "/app/views/decidim/admin/participatory_space_private_users/_form.html.erb" => "d4a044267fa1f4c261bdc65b3fa198df",
-      "/app/views/decidim/admin/participatory_space_private_users/index.html.erb" => "93e081c00098fc9e2cc2c23792ad68e2"
+      "/app/views/decidim/admin/participatory_space_private_users/index.html.erb" => "64b8ee5d19d4f8924da2d739ca693b25"
     }
   }
 ]

@@ -7,7 +7,7 @@ module SomEnergia
 
       included do
         def call
-          return broadcast(:invalid, @form.errors.values.flatten) unless @form.valid? # rubocop:disable Rails/DeprecatedActiveModelErrorsMethods
+          return broadcast(:invalid, @form.errors.full_messages) unless @form.valid?
 
           @errors = []
 
@@ -30,7 +30,7 @@ module SomEnergia
               next
             end
 
-            Decidim::Admin::ImportParticipatorySpacePrivateUserCsvJob.perform_later(email, user_name, @private_users_to, @current_user)
+            Decidim::Admin::ImportParticipatorySpacePrivateUserCsvJob.perform_later(email, user_name, @private_users_to)
           end
         end
 
