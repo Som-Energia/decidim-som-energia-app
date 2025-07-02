@@ -8,6 +8,7 @@ if ENV["CAS_HOST"].present?
                             organization = Decidim::Organization.find_by(host: request.host)
                             env["omniauth.strategy"].options["host"] = ENV.fetch("CAS_HOST", nil)
                             env["omniauth.strategy"].options["organization"] = organization
+                            ENV["CAS_LOGOUT_URL"] = "https://#{ENV.fetch("CAS_HOST", nil)}/logout" if ENV["CAS_LOGOUT_URL"].blank?
                           },
                    nickname_key: "nickname",
                    fetch_raw_info: proc { |_strategy, opts, _ticket, user_info, rawxml|
@@ -42,6 +43,7 @@ end
 # Override Decidim::OmniauthRegistration to use send and event when login and not only on registration
 Rails.application.config.to_prepare do
   Decidim::CreateOmniauthRegistration.include(SomEnergia::CreateOmniauthRegistrationOverride)
+  Decidim::Devise::SessionsController.include(SomEnergia::Devise::SessionsControllerOverride)
 end
 
 # Update user's extended_data when login

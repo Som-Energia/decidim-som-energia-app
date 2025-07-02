@@ -3,7 +3,6 @@
 
 class MoveOrganizationFieldsToHeroContentBlock < ActiveRecord::Migration[5.2]
   class ::Decidim::Organization < Decidim::ApplicationRecord
-    mount_uploader :homepage_image, ::Decidim::Cw::HomepageImageUploader
   end
 
   def change

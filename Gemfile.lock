@@ -1,13 +1,4 @@
 GIT
-  remote: https://github.com/CodiTramuntana/decidim-module-term_customizer.git
-  revision: e369bc933f06fd1e47d6987fa6e408f0a2549e73
-  branch: upgrade/decidim_0.29
-  specs:
-    decidim-term_customizer (0.29.0)
-      decidim-admin (~> 0.29.0)
-      decidim-core (~> 0.29.0)
-
-GIT
   remote: https://github.com/decidim-ice/decidim-module-decidim_awesome.git
   revision: b4c50032542f7295163645b04f494fd00f8c87bb
   branch: main
@@ -205,6 +196,15 @@ GIT
     decidim-verifications (0.29.4)
       decidim-core (= 0.29.4)
 
+GIT
+  remote: https://github.com/openpoke/decidim-module-term_customizer.git
+  revision: 1f61d02b13fada32b9b4e0a4adb716e6ed30bcd9
+  branch: main
+  specs:
+    decidim-term_customizer (0.29.1)
+      decidim-admin (~> 0.29.0)
+      decidim-core (~> 0.29.0)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -285,18 +285,18 @@ GEM
       public_suffix (>= 2.0.2, < 7.0)
     ast (2.4.3)
     aws-eventstream (1.4.0)
-    aws-partitions (1.1120.0)
-    aws-sdk-core (3.226.1)
+    aws-partitions (1.1124.0)
+    aws-sdk-core (3.226.2)
       aws-eventstream (~> 1, >= 1.3.0)
       aws-partitions (~> 1, >= 1.992.0)
       aws-sigv4 (~> 1.9)
       base64
       jmespath (~> 1, >= 1.6.1)
       logger
-    aws-sdk-kms (1.105.0)
+    aws-sdk-kms (1.106.0)
       aws-sdk-core (~> 3, >= 3.225.0)
       aws-sigv4 (~> 1.5)
-    aws-sdk-s3 (1.190.0)
+    aws-sdk-s3 (1.191.0)
       aws-sdk-core (~> 3, >= 3.225.0)
       aws-sdk-kms (~> 1)
       aws-sigv4 (~> 1.5)
@@ -423,7 +423,7 @@ GEM
     factory_bot_rails (6.5.0)
       factory_bot (~> 6.5)
       railties (>= 6.1.0)
-    faker (3.5.1)
+    faker (3.5.2)
       i18n (>= 1.8.11, < 2)
     faraday (2.13.1)
       faraday-net_http (>= 2.0, < 3.5)
@@ -518,7 +518,7 @@ GEM
     io-console (0.8.0)
     jmespath (1.6.2)
     json (2.12.2)
-    jwt (2.10.1)
+    jwt (3.1.2)
       base64
     kaminari (1.2.2)
       activesupport (>= 4.1.0)
@@ -562,7 +562,7 @@ GEM
     mime-types (3.7.0)
       logger
       mime-types-data (~> 3.2025, >= 3.2025.0507)
-    mime-types-data (3.2025.0624)
+    mime-types-data (3.2025.0701)
     mini_magick (4.13.2)
     mini_mime (1.1.5)
     minitest (5.25.5)
@@ -750,7 +750,7 @@ GEM
     rspec-cells (0.3.10)
       cells (>= 4.0.0, < 6.0.0)
       rspec-rails (>= 3.0.0)
-    rspec-core (3.13.4)
+    rspec-core (3.13.5)
       rspec-support (~> 3.13.0)
     rspec-expectations (3.13.5)
       diff-lcs (>= 1.2.0, < 2.0)
@@ -820,7 +820,7 @@ GEM
     rubyzip (2.3.2)
     sassc (2.4.0)
       ffi (~> 1.9)
-    selenium-webdriver (4.33.0)
+    selenium-webdriver (4.34.0)
       base64 (~> 0.2)
       logger (~> 1.4)
       rexml (~> 3.2, >= 3.2.5)
@@ -829,10 +829,10 @@ GEM
     semantic_logger (4.16.1)
       concurrent-ruby (~> 1.0)
     semantic_range (3.1.0)
-    sentry-rails (5.25.0)
+    sentry-rails (5.26.0)
       railties (>= 5.0)
-      sentry-ruby (~> 5.25.0)
-    sentry-ruby (5.25.0)
+      sentry-ruby (~> 5.26.0)
+    sentry-ruby (5.26.0)
       bigdecimal
       concurrent-ruby (~> 1.0, >= 1.0.2)
     shakapacker (7.1.0)
@@ -902,8 +902,8 @@ GEM
       activemodel (>= 6.0.0)
       bindex (>= 0.4.0)
       railties (>= 6.0.0)
-    web-push (3.0.1)
-      jwt (~> 2.0)
+    web-push (3.0.2)
+      jwt (~> 3.0)
       openssl (~> 3.0)
     webmock (3.25.1)
       addressable (>= 2.8.0)

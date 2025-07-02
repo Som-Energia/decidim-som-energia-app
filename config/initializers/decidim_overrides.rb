@@ -27,6 +27,7 @@ Rails.application.config.to_prepare do
   Decidim::Admin::ImportParticipatorySpacePrivateUserCsvJob.include(SomEnergia::Admin::ImportParticipatorySpacePrivateUserCsvJobOverride)
   Decidim::Devise::InvitationsController.include(SomEnergia::Devise::InvitationsControllerOverride)
   Decidim::Devise::RegistrationsController.include(SomEnergia::Devise::RegistrationsControllerOverride)
+  Decidim::Devise::SessionsController.include(SomEnergia::Devise::SessionsControllerOverride)
   Decidim::Assemblies::Admin::ParticipatorySpacePrivateUsersCsvImportsController.include(SomEnergia::Admin::HasPrivateUsersCsvImportOverride)
   Decidim::ParticipatoryProcesses::Admin::ParticipatorySpacePrivateUsersCsvImportsController.include(SomEnergia::Admin::HasPrivateUsersCsvImportOverride)
 end
