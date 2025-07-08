@@ -37,6 +37,10 @@ if ENV["CAS_HOST"].present?
   # Generic verification method for users logged with CAS
   Decidim::Verifications.register_workflow(:cas_member) do |workflow|
     workflow.form = "SomEnergia::CasMember"
+    workflow.action_authorizer = "SomEnergia::CasMemberActionAuthorizer"
+    workflow.options do |options|
+      options.attribute :member_type, type: :select, choices: %w(any member user), default: "any", required: false
+    end
   end
 end
 
@@ -44,6 +48,8 @@ end
 Rails.application.config.to_prepare do
   Decidim::CreateOmniauthRegistration.include(SomEnergia::CreateOmniauthRegistrationOverride)
   Decidim::Devise::SessionsController.include(SomEnergia::Devise::SessionsControllerOverride)
+  Decidim::AuthorizationModalCell.include(SomEnergia::AuthorizationModalCellOverride)
+  Decidim::Verifications::ApplicationHelper.include(SomEnergia::VerificationsApplicationHelperOverride)
 end
 
 # Update user's extended_data when login

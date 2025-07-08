@@ -27,6 +27,14 @@ en:
       cas_member:
         name: Som Energia member
         explanation: Authorization granted for being a Som Energia member (login through Som Energia CAS) 
+        fields:
+          member_type: Member type
+          member_type_options:
+            any: Any
+            member: Members
+            user: Users
+        only_for_member: Access for Som Energia members only.
+        only_for_user: Access for Som Energia users (non-members) only.
     admin:
       participatory_space_private_users:
         form:

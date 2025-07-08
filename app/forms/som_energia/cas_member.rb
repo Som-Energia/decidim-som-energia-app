@@ -16,13 +16,15 @@ module SomEnergia
     end
 
     def metadata
-      super.merge(**extended_data)
+      super.merge(username: extended_data["username"],
+                  member_type:,
+                  soci:)
     end
 
     def unique_id
       return if uid.blank?
 
-      extended_data["soci"]
+      uid
     end
 
     def to_partial_path
@@ -31,10 +33,21 @@ module SomEnergia
 
     protected
 
-    def uid
-      return unless extended_data && extended_data.respond_to?(:key?) && extended_data.has_key?("soci")
+    def soci
+      return unless extended_data && extended_data.respond_to?(:has_key?)
 
       extended_data["soci"].to_i
+    end
+
+    def member_type
+      soci.zero? ? "user" : "member"
+    end
+
+    def uid
+      return unless extended_data && extended_data.respond_to?(:has_key?)
+      return if extended_data["username"].blank?
+
+      extended_data["username"]
     end
 
     def valid_member

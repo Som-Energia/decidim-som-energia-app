@@ -9,8 +9,16 @@ gl:
   decidim:
     authorization_handlers:
       cas_member:
-        name: Socio de Som Energia
-        explanation: Autorización concedida por ser socio de Som Energia (es necesario hacer login a través del CAS de Som Energia)
+        name: Membro de Som Energia
+        explanation: Autorización concedida por ser membro de Som Energia (es necesario hacer login a través del CAS de Som Energia)
+        fields:
+          member_type: Tipo de membro
+          member_type_options:
+            any: Cualquera
+            member: Socios
+            user: Usuarios
+        only_for_member: Acceso exclusivo para socios de Som Energia.
+        only_for_user: Acceso exclusivo para usuarios (non socios) de Som Energia.
     admin:
       participatory_space_private_users:
         form:

@@ -14,8 +14,16 @@ es:
   decidim:
     authorization_handlers:
       cas_member:
-        name: Socio de Som Energia
-        explanation: Autorización concedida por ser socio de Som Energia (es necesario hacer login a través del CAS de Som Energia)
+        name: Miembro de Som Energia
+        explanation: Autorización concedida por ser miembro de Som Energia (es necesario hacer login a través del CAS de Som Energia)
+        fields:
+          member_type: Tipo de miembro
+          member_type_options:
+            any: Cualquiera
+            member: Socios
+            user: Usuarios
+        only_for_member: Acceso exclusivo para socios de Som Energia.
+        only_for_user: Acceso exclusivo para usuarios (no socios) de Som Energia.
     admin:
       cas_users_controller:
         email_already_registered: ¡El email ya está registrado!
