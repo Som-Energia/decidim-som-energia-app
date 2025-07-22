@@ -394,8 +394,8 @@ GEM
       devise (>= 4.6)
     diff-lcs (1.6.2)
     diffy (3.4.4)
-    doc2text (0.4.7)
-      nokogiri (>= 1.13.2, < 1.17.0)
+    doc2text (0.4.8)
+      nokogiri (>= 1.18.2)
       rubyzip (~> 2.3.0)
     docile (1.4.1)
     doorkeeper (5.8.2)
@@ -565,6 +565,7 @@ GEM
     mime-types-data (3.2025.0701)
     mini_magick (4.13.2)
     mini_mime (1.1.5)
+    mini_portile2 (2.8.9)
     minitest (5.25.5)
     msgpack (1.8.0)
     multi_xml (0.7.2)
@@ -581,17 +582,24 @@ GEM
     net-smtp (0.3.4)
       net-protocol
     nio4r (2.7.4)
-    nokogiri (1.16.8-aarch64-linux)
+    nokogiri (1.18.9)
+      mini_portile2 (~> 2.8.2)
       racc (~> 1.4)
-    nokogiri (1.16.8-arm-linux)
+    nokogiri (1.18.9-aarch64-linux-gnu)
       racc (~> 1.4)
-    nokogiri (1.16.8-arm64-darwin)
+    nokogiri (1.18.9-aarch64-linux-musl)
       racc (~> 1.4)
-    nokogiri (1.16.8-x86-linux)
+    nokogiri (1.18.9-arm-linux-gnu)
       racc (~> 1.4)
-    nokogiri (1.16.8-x86_64-darwin)
+    nokogiri (1.18.9-arm-linux-musl)
       racc (~> 1.4)
-    nokogiri (1.16.8-x86_64-linux)
+    nokogiri (1.18.9-arm64-darwin)
+      racc (~> 1.4)
+    nokogiri (1.18.9-x86_64-darwin)
+      racc (~> 1.4)
+    nokogiri (1.18.9-x86_64-linux-gnu)
+      racc (~> 1.4)
+    nokogiri (1.18.9-x86_64-linux-musl)
       racc (~> 1.4)
     oauth (1.1.0)
       oauth-tty (~> 1.0, >= 1.0.1)
@@ -955,7 +963,7 @@ DEPENDENCIES
   health_check
   letter_opener_web
   listen
-  nokogiri (~> 1.16.0)
+  nokogiri (~> 1.18.9)
   omniauth-cas
   progressbar
   puma
