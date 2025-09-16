@@ -52,7 +52,7 @@ en:
       invitation_token_invalid: The invitation token provided is not valid!
     login:
       admin_login: Administration access
-      sign_in_cas: Sign in with Som Energia
+      sign_in_cas: Log in with Som Energia
     sessions:
       signed_out: You have signed out successfully.
   layouts:
