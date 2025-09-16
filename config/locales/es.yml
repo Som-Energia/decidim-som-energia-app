@@ -1,107 +1,71 @@
 ---
 es:
-  activemodel:
-    attributes:
-      question:
-        enforce_special_requirements: Aplicar requisitos especiales (1 voto por pregunta)
-      response:
-        title: Título
-        weight: Orden
-  layouts:
-    decidim:
-      question_components:
-        unfold: Desplegar
+  admin:
+    cas_users_controller:
+      dni_already_registered: "¡El DNI ya está registrado!"
+      dni_required: "¡El DNI es obligatorio!"
+      email_already_registered: "¡El email ya está registrado!"
+      email_required: "¡El email es incorrecto!"
+      membership_number_already_registered: "¡El número de socio ya está registrado!"
+      membership_number_required: "¡El número de socio es obligatorio!"
+      name_required: "¡El nombre es obligatorio!"
+      user_created_successfully: "¡Usuario creado correctamente!"
+      user_creation_failed: "¡Error al crear el usuario! (%{error})"
   decidim:
+    admin:
+      participatory_space_private_users:
+        form:
+          cas_user: Es usuario del CAS
+          email: Email
+          name: Nombre
+    assemblies:
+      alternative_assembly_types:
+        local_groups: Grupos Locales
     authorization_handlers:
       cas_member:
-        name: Miembro de Som Energia
-        explanation: Autorización concedida por ser miembro de Som Energia (es necesario hacer login a través del CAS de Som Energia)
+        explanation: Autorización concedida por ser miembro de Som Energia (es necesario
+          iniciar sesión a través del CAS de Som Energia)
         fields:
           member_type: Tipo de miembro
           member_type_options:
             any: Cualquiera
             member: Socios
             user: Usuarios
-        only_for_member: Acceso exclusivo para socios de Som Energia.
-        only_for_user: Acceso exclusivo para usuarios (no socios) de Som Energia.
-    admin:
-      cas_users_controller:
-        email_already_registered: ¡El email ya está registrado!
-        dni_already_registered: ¡El DNI ya está registrado!
-        dni_required: ¡El DNI es obligatorio!
-        email_required: ¡El email es incorrecto!
-        membership_number_already_registered: ¡El Número de socio ya está registrado!
-        membership_number_required: ¡El Número de socio es obligatorio!
-        name_required: ¡El nombre es obligatorio!
-        user_created_successfully: ¡Usuario creado correctamente!
-        user_creation_failed: ¡Error al crear el usuario! (%{error})
-      participatory_space_private_users:
-        form:
-          name: "Nombre"
-          email: "Email"
-          cas_user: "Es usuario del CAS"
-    assemblies:
-      alternative_assembly_types:
-        local_groups: Grupos Locales
-    consultations:
-      question_multiple_votes:
-        show:
-          all_groups_need_answer:  Hay preguntas sin respuesta.
-    participatory_processes:
-      scoped_participatory_process_slug_prefixes:
-        general_assemblies: Asambleas generales
-    initiatives:
-      initiatives_mailer:
-        bottom:
-          greeting: "¡Gracias por participar!"
-          help: Si tienes alguna duda, puedes escribirnos a <a href="mailto:participa@somenergia.coop">participa@somenergia.coop</a>.
-        creation_subject: Ya has empezado a trabajar tu moción '%{title}'
-        default:
-          check_initiative_details: Puedes ver los detalles de la moción
-          here: aquí
-        discarted: La moción %{title} no ha pasado el trámite de validación técnica,
-          por lo tanto, ha quedado descartada.
-        more_information: Recuerda que para presentarla correctamente, tienes que
-          <a href="%{link}">acceder al menú de participante</a>, donde verás la moción
-          que estás trabajando y podrás <strong>enviarla a validación técnica para
-          que sea tramitada</strong>.
-        published: 'La moción %{title} ha pasado el trámite de validación técnica
-          con un resultado positivo y consta, por lo tanto, como: Publicada.'
-        status_change_body_for: 'La moción %{title} ha cambiado su estado a: %{state}'
-        status_change_for: La moción %{title} ha cambiado su estado
-        technical_validation_body_for: La moción %{title} ha solicitado validación
-          técnica.
-        technical_validation_for: La moción %{title} ha solicitado validación técnica.
-        top:
-          greeting: Hola %{name}!
+        name: Miembro de Som Energia
+        name_member: Socio de Som Energia
+        name_user: Usuario de Som Energia (no socio)
+        only_for_member: Acceso solo para socios de Som Energia.
+        only_for_user: Acceso solo para usuarios (no socios) de Som Energia.
     meetings:
       meetings:
         show:
-          going: Te has inscrito en este encuentro
+          going: Te has inscrito a este encuentro
           leave: Cancela tu registro
-          leave_confirmation: ¿Estás seguro que quieres cancelar tu asistencia a este encuentro?
+          leave_confirmation: "¿Seguro que quieres cancelar tu asistencia a este encuentro?"
       registration_mailer:
         confirmation:
-          confirmed_html: Su <a href="%{url}">%{title}</a> ha sido confirmada. Gracias
+          confirmed_html: Tu <a href="%{url}">%{title}</a> ha sido confirmada. Gracias
             por participar.
-    menu:
-        assemblies: menu_assemblies es
-    questions:
-      next_button: Pregunta siguiente
-      previous_button: Pregunta anterior
   devise:
-    login:
-      admin_login: Acceso administración
-      sign_in_cas: Acceder con Som Energia
-    sessions:
-      signed_out: Has cerrado sesión correctamente.
     invitations:
       invitation_token_invalid: "¡El token de invitación proporcionado no es válido!"
+    login:
+      admin_login: Acceso administración
+      sign_in_cas: Accede con Som Energia
+    sessions:
+      signed_out: Has cerrado la sesión correctamente.
+  layouts:
+    decidim:
+      footer:
+        help: Ayuda
+        social_media: Redes sociales
   somenergia:
     verifications:
+      cas_members_only: Esta verificación se otorga a los socios de Som Energia. Se
+        otorga automáticamente al iniciar sesión con el botón "Inicia sesión con Som
+        Energia"
+      login_with_cas: Si por algún motivo no la tienes activada, puedes intentar verificarte
+        pulsando el botón a continuación. Si este método no funciona, simplemente
+        cierra la sesión y vuelve a iniciarla usando el botón "Inicia sesión con Som
+        Energia"
       not_cas_user: No eres usuario del CAS
-      cas_members_only: Esta verificación se otorga a los socios de Som Energia. Se otorga automáticamente al iniciar sesión con el botón de "Inicia sesión con Som Energia"
-      login_with_cas: Si por algún motivo, no la tienes activada, puedes intentar verificarte presionando el botón a continuación. Si este método no funciona, simplemente cierra la sesión y vuelve a iniciarla usando el botón "Inicia sesión con Som Energia"
-    menu:
-      team_et: Equipo técnico
-      team_it: Equipo IT

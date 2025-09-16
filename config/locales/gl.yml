@@ -1,62 +1,70 @@
+---
 gl:
-  activemodel:
-    attributes:
-      question:
-        enforce_special_requirements: Aplicar requisitos especiais (1 voto por pregunta)
-      response:
-        title: Título
-        weight: Orde
+  admin:
+    cas_users_controller:
+      dni_already_registered: O DNI xa está rexistrado!
+      dni_required: O DNI é obrigatorio!
+      email_already_registered: O correo electrónico xa está rexistrado!
+      email_required: O correo electrónico é incorrecto!
+      membership_number_already_registered: O número de socio xa está rexistrado!
+      membership_number_required: O número de socio é obrigatorio!
+      name_required: O nome é obrigatorio!
+      user_created_successfully: Usuario creado correctamente!
+      user_creation_failed: Erro ao crear o usuario! (%{error})
   decidim:
-    authorization_handlers:
-      cas_member:
-        name: Membro de Som Energia
-        explanation: Autorización concedida por ser membro de Som Energia (es necesario hacer login a través del CAS de Som Energia)
-        fields:
-          member_type: Tipo de membro
-          member_type_options:
-            any: Cualquera
-            member: Socios
-            user: Usuarios
-        only_for_member: Acceso exclusivo para socios de Som Energia.
-        only_for_user: Acceso exclusivo para usuarios (non socios) de Som Energia.
     admin:
       participatory_space_private_users:
         form:
-          name: "Nombre"
-          email: "Email"
-          cas_user: "Es usuario de CAS "
+          cas_user: É usuario do CAS
+          email: Correo electrónico
+          name: Nome
     assemblies:
       alternative_assembly_types:
         local_groups: Grupos Locais
-    consultations:
-      question_multiple_votes:
-        show:
-          all_groups_need_answer: Hai preguntas sen resposta.
-    participatory_processes:
-      scoped_participatory_process_slug_prefixes:
-        general_assemblies: Asembleas Xerais
+    authorization_handlers:
+      cas_member:
+        explanation: Autorización concedida por ser membro de Som Energia (é necesario
+          iniciar sesión a través do CAS de Som Energia)
+        fields:
+          member_type: Tipo de membro
+          member_type_options:
+            any: Calquera
+            member: Socios
+            user: Usuarios
+        name: Membro de Som Energia
+        name_member: Socio de Som Energia
+        name_user: Usuario de Som Energia (non socio)
+        only_for_member: Acceso só para socios de Som Energia.
+        only_for_user: Acceso só para usuarios (non socios) de Som Energia.
     meetings:
+      meetings:
+        show:
+          going: Inscribícheste neste encontro
+          leave: Cancelar o teu rexistro
+          leave_confirmation: Seguro que queres cancelar a túa asistencia a este encontro?
       registration_mailer:
         confirmation:
-          confirmed_html: A súa <a href="%{url}">%{title}</a> foi confirmada. Grazas por participar
-    menu:
-      assemblies: menu_assemblies gl
-    questions:
-      next_button: "Pregunta seguinte"
-      previous_button: "Pregunta anterior"
+          confirmed_html: A túa <a href="%{url}">%{title}</a> foi confirmada. Grazas
+            por participar.
   devise:
-    login:
-      admin_login: Acceder á administración
-      sign_in_cas: Acceder con Som Energia
-    sessions:
-      signed_out: Saída realizada correctamente.
     invitations:
-      invitation_token_invalid: O token de invitación proporcionado non é válido.
+      invitation_token_invalid: O token de invitación proporcionado non é válido!
+    login:
+      admin_login: Acceso á administración
+      sign_in_cas: Accede con Som Energia
+    sessions:
+      signed_out: Pechaches a sesión correctamente.
+  layouts:
+    decidim:
+      footer:
+        help: Axuda
+        social_media: Redes sociais
   somenergia:
     verifications:
+      cas_members_only: Esta verificación dáselle aos socios de Som Energia. Concédese
+        automaticamente ao iniciar sesión co botón "Iniciar sesión con Som Energia"
+      login_with_cas: Se por algún motivo non a tes activada, podes intentar verificarte
+        premendo o botón a continuación. Se este método non funciona, simplemente
+        pecha a sesión e volve a iniciarla usando o botón "Iniciar sesión con Som
+        Energia"
       not_cas_user: Non es usuario do CAS
-      cas_members_only: Esta verificación concédese aos socios de Som Energia. Concédese automaticamente ao iniciar sesión co botón de "Inicia sesión con Som Energia"
-      login_with_cas: Se por algún motivo, non a tes activada podes probar a verificarte premendo o botón a continuación. Se este método non funciona, simplemente sae da sesión e volve a iniciarla empregando o botón "Inicia sesión con Som Energia"
-    menu:
-      team_et: Equipo técnico
-      team_it: Equipo IT

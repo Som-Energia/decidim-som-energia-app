@@ -1,62 +1,71 @@
+---
 eu:
-  activemodel:
-    attributes:
-      question:
-        enforce_special_requirements: Aplikatu baldintza bereziak (galdera bakoitzeko boto bat)
-      response:
-        title: Izenburua
-        weight: Agindu
+  admin:
+    cas_users_controller:
+      dni_already_registered: NAN dagoeneko erregistratuta dago!
+      dni_required: NAN derrigorrezkoa da!
+      email_already_registered: Emaila dagoeneko erregistratuta dago!
+      email_required: Emaila ez da zuzena!
+      membership_number_already_registered: Bazkide zenbakia dagoeneko erregistratuta
+        dago!
+      membership_number_required: Bazkide zenbakia derrigorrezkoa da!
+      name_required: Izena derrigorrezkoa da!
+      user_created_successfully: Erabiltzailea ongi sortu da!
+      user_creation_failed: Erabiltzailea sortzean errorea! (%{error})
   decidim:
+    admin:
+      participatory_space_private_users:
+        form:
+          cas_user: CAS erabiltzailea da
+          email: Emaila
+          name: Izena
+    assemblies:
+      alternative_assembly_types:
+        local_groups: Tokiko Taldeak
     authorization_handlers:
       cas_member:
-        name: Som Energia bazkidea
-        explanation: Autorizazioa eman da Som Energia bazkidea izateagatik (Som Energia CAS bidez saioa hasi behar da)
+        explanation: Som Energia-ko kide izateagatik baimena emanda (Som Energia-ren
+          CAS bidez saioa hasi behar da)
         fields:
-          member_type: Bazkide mota
+          member_type: Kide mota
           member_type_options:
             any: Edozein
             member: Bazkideak
             user: Erabiltzaileak
-        only_for_member: Sarbidea Som Energia bazkideentzat soilik.
-        only_for_user: Sarbidea Som Energia erabiltzaileentzat (bazkide ez direnak) soilik.
-    admin:
-      participatory_space_private_users:
-        form:
-          name: "Izena"
-          email: "Email"
-          cas_user: "CAS erabiltzailea zara "
-    assemblies:
-      alternative_assembly_types:
-        local_groups: Tokiko Taldeen
-    consultations:
-      question_multiple_votes:
-        show:
-          all_groups_need_answer: Erantzun gabeko galderak daude.
-    participatory_processes:
-      scoped_participatory_process_slug_prefixes:
-        general_assemblies: Batzar Orokorrak
+        name: Som Energia-ko kidea
+        name_member: Som Energia-ko bazkidea
+        name_user: Som Energia-ko erabiltzailea (ez bazkidea)
+        only_for_member: Sarbidea Som Energia-ko bazkideentzat soilik.
+        only_for_user: Sarbidea Som Energia-ko erabiltzaileentzat (ez bazkideak) soilik.
     meetings:
+      meetings:
+        show:
+          going: Topaketa honetan izena eman duzu
+          leave: Zure izen-ematea bertan behera utzi
+          leave_confirmation: Ziur zaude topaketa honetara joateari uko egin nahi
+            diozula?
       registration_mailer:
         confirmation:
-          confirmed_html: Bere <a href="%{url}">%{title}</a> egiaztatu da. Eskerrik asko parte hartzeagatik
-    questions:
-      next_button: "Hurrengo galdera"
-      previous_button: "Aurreko galdera"
-    menu:
-      assemblies: menu_assemblies eu
+          confirmed_html: Zure <a href="%{url}">%{title}</a> baieztatu da. Eskerrik
+            asko parte hartzeagatik.
   devise:
-    login:
-      admin_login: Administraziora sartu
-      sign_in_cas: Som Energia-rekin sartu
-    sessions:
-      signed_out: Saioa itxi da arrakastaz.
     invitations:
-      invitation_token_invalid: Gonbidapen token hori ez da baliozkoa!
+      invitation_token_invalid: Emandako gonbidapen tokena ez da baliozkoa!
+    login:
+      admin_login: Administrazio sarbidea
+      sign_in_cas: Hasi saioa Som Energia-rekin
+    sessions:
+      signed_out: Saioa behar bezala itxi duzu.
+  layouts:
+    decidim:
+      footer:
+        help: Laguntza
+        social_media: Sare sozialak
   somenergia:
     verifications:
+      cas_members_only: Egiaztapen hau Som Energia-ko bazkideei ematen zaie. Automatikoki
+        ematen da "Hasi saioa Som Energia-rekin" botoiarekin saioa hasita.
+      login_with_cas: Arrazoi batengatik aktibatuta ez baduzu, saiatu egiaztatzen
+        beheko botoia sakatuz. Metodo honek ez badu funtzionatzen, irten saioan eta
+        berriro hasi "Hasi saioa Som Energia-rekin" botoia erabiliz.
       not_cas_user: Ez zara CAS erabiltzailea
-      cas_members_only: Egiaztapen hau Som Energia bazkideei ematen zaie. Automatikoki ematen da "Som Energia-rekin hasi saioa" botoiarekin saioa hasten denean
-      login_with_cas: Arrazoi batengatik ez baduzu aktibatuta, egiaztatu zaitezke beheko botoia sakatuz. Metodo honek funtzionatzen ez badu, besterik gabe, saioa itxi eta berriro hasi "Som Energia-rekin hasi saioa" botoia erabiliz
-    menu:
-      team_et: Talde teknikoa
-      team_it: IT taldea
