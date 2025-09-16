@@ -1,60 +1,70 @@
 ---
 en:
-  activemodel:
-    attributes:
-      question:
-        enforce_special_requirements: Apply special requirements (1 vote per question)
-      response:
-        weight: Order
   admin:
     cas_users_controller:
-      dni_already_registered: DNI is already registered!
+      dni_already_registered: The DNI is already registered!
       dni_required: DNI is required!
-      email_required: Email is required!
-      membership_number_already_registered: Membership number is already registered!
-      membership_number_required: Membership number is required!
+      email_already_registered: The email is already registered!
+      email_required: The email is incorrect!
+      membership_number_already_registered: The membership number is already registered!
+      membership_number_required: The membership number is required!
       name_required: Name is required!
       user_created_successfully: User created successfully!
-      user_creation_failed: Error creating the user! (%{error})
-  devise:
-    login:
-      admin_login: Log in as admin
-      sign_in_cas: Log in with Som Energia
-    sessions:
-      signed_out: You have been signed out successfully.
+      user_creation_failed: Failed to create user! (%{error})
   decidim:
-    authorization_handlers:
-      cas_member:
-        name: Som Energia member
-        explanation: Authorization granted for being a Som Energia member (login through Som Energia CAS) 
     admin:
       participatory_space_private_users:
         form:
-          cas_user: CAS User
+          cas_user: Is CAS user
           email: Email
           name: Name
     assemblies:
       alternative_assembly_types:
         local_groups: Local Groups
-    consultations:
-      question_multiple_votes:
+    authorization_handlers:
+      cas_member:
+        explanation: Authorization granted for being a member of Som Energia (login
+          required through Som Energia's CAS)
+        fields:
+          member_type: Member type
+          member_type_options:
+            any: Any
+            member: Members
+            user: Users
+        name: Som Energia member
+        name_member: Member of Som Energia
+        name_user: Som Energia user (not a member)
+        only_for_member: Access for Som Energia members only.
+        only_for_user: Access for Som Energia users (not members) only.
+    meetings:
+      meetings:
         show:
-          all_groups_need_answer: There are unanswered questions.
-    participatory_processes:
-      scoped_participatory_process_slug_prefixes:
-        general_assemblies: General Assemblies
-    questions:
-      next_button: Next question
-      previous_button: Previous question
+          going: You have registered for this meeting
+          leave: Cancel your registration
+          leave_confirmation: Are you sure you want to cancel your attendance at this
+            meeting?
+      registration_mailer:
+        confirmation:
+          confirmed_html: Your <a href="%{url}">%{title}</a> has been confirmed. Thank
+            you for participating.
+  devise:
+    invitations:
+      invitation_token_invalid: The invitation token provided is not valid!
+    login:
+      admin_login: Administration access
+      sign_in_cas: Log in with Som Energia
+    sessions:
+      signed_out: You have signed out successfully.
   layouts:
     decidim:
-      question_components:
-        unfold: Deploy
+      footer:
+        help: Help
+        social_media: Social media
   somenergia:
     verifications:
+      cas_members_only: This verification is given to Som Energia members. It is granted
+        automatically when logging in with the "Sign in with Som Energia" button.
+      login_with_cas: If for some reason you do not have it activated, you can try
+        to verify yourself by pressing the button below. If this method does not work,
+        simply log out and log in again using the "Sign in with Som Energia" button.
       not_cas_user: You are not a CAS user
-      cas_members_only: This verification is given to Som Energia members. It is automatically granted when logging in with the "Log in with Som Energia" button
-      login_with_cas: If for some reason, you do not have it activated, you can try to verify yourself by pressing the button below. If this method does not work, simply log out and log back in using the "Log in with Som Energia" button
-    menu:
-      team_et: Technical team
-      team_it: IT team

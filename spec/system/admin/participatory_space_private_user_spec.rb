@@ -25,7 +25,7 @@ describe "Admin_checks_participatory_space_private_users" do
     end
 
     it "shows CAS User column" do
-      expect(page).to have_css("th", text: "CAS User")
+      expect(page).to have_css("th", text: "Is CAS user")
       within page.find(:xpath, "(//tbody/tr/td)[2]") do
         expect(page).to have_content("No")
       end
@@ -38,7 +38,7 @@ describe "Admin_checks_participatory_space_private_users" do
       end
 
       it "shows CAS User column" do
-        expect(page).to have_css("th", text: "CAS User")
+        expect(page).to have_css("th", text: "Is CAS user")
         within page.find(:xpath, "(//tbody/tr/td)[2]") do
           expect(page).to have_content("Yes")
         end

@@ -1,17 +1,10 @@
 ---
 ca:
-  activemodel:
-    attributes:
-      question:
-        enforce_special_requirements: Aplicar requisits especials (1 vot per pregunta)
-      response:
-        title: Títol
-        weight: Ordre
   admin:
     cas_users_controller:
-      email_already_registered: L'email ja està registrat!
       dni_already_registered: El DNI ja està registrat!
       dni_required: El DNI és obligatori!
+      email_already_registered: L'email ja està registrat!
       email_required: L'email és incorrecte!
       membership_number_already_registered: El Numero de soci ja està registrat!
       membership_number_required: El Numero de soci és obligatori!
@@ -19,10 +12,6 @@ ca:
       user_created_successfully: Usuari creat correctament!
       user_creation_failed: Error al crear l'usuari! (%{error})
   decidim:
-    authorization_handlers:
-      cas_member:
-        name: Soci de Som Energia
-        explanation: Autorizació concecidida per ser soci de Som Energia (cal fer login a través del CAS de Som Energia)
     admin:
       participatory_space_private_users:
         form:
@@ -32,33 +21,21 @@ ca:
     assemblies:
       alternative_assembly_types:
         local_groups: Grups Locals
-    consultations:
-      question_multiple_votes:
-        show:
-          all_groups_need_answer: Hi ha preguntes sense resposta.
-    initiatives:
-      initiatives_mailer:
-        bottom:
-          greeting: Gràcies per participar-hi!
-          help: Si tens cap dubte, pots escriure’ns a <a href="mailto:participa@somenergia.coop">participa@somenergia.coop</a>.
-        creation_subject: Ja has començat a treballar la teva moció '%{title}'
-        default:
-          check_initiative_details: Pots veure els detalls de la moció
-          here: aquí
-        discarted: La moció %{title} no ha passat el tràmit de validació tècnica,
-          per tant, ha quedat descartada.
-        more_information: Recorda que per presentar-la correctament, has d'<a href="%{link}">accedir
-          al menú de participant</a>, on veuràs la moció que estàs treballant i podràs
-          <strong>enviar-la a validació tècnica per tal que sigui tramitada</strong>.
-        published: 'La moció %{title} ha passat el tràmit de validació tècnica amb
-          un resultat positiu i consta, per tant, com a: Publicada.'
-        status_change_body_for: 'La moció %{title} ha canviat el seu estat a: %{state}'
-        status_change_for: La moció %{title} ha canviat el seu estat
-        technical_validation_body_for: La moció %{title}, ha sol·licitat validació
-          tècnica.
-        technical_validation_for: La moció %{title} ha sol·licitat validació tècnica.
-        top:
-          greeting: Hola %{name}!
+    authorization_handlers:
+      cas_member:
+        explanation: Autorizació concedida per ser membre de Som Energia (cal fer
+          login a través del CAS de Som Energia)
+        fields:
+          member_type: Tipus de membre
+          member_type_options:
+            any: Qualsevol
+            member: Socis
+            user: Usuaris
+        name: Membre de Som Energia
+        name_member: Soci de Som Energia
+        name_user: Usuari de Som Energia (no soci)
+        only_for_member: Accés per a socis de Som Energia exclusivament.
+        only_for_user: Access per a usuaris (no socis) de Som Energia exclusivament.
     meetings:
       meetings:
         show:
@@ -70,31 +47,25 @@ ca:
         confirmation:
           confirmed_html: La teva <a href="%{url}">%{title}</a> ha estat confirmada.
             Gràcies per participar.
-    menu:
-      assemblies: menu_assemblies ca
-    participatory_processes:
-      scoped_participatory_process_slug_prefixes:
-        general_assemblies: Assemblees Generals
-    questions:
-      next_button: Pregunta següent
-      previous_button: Pregunta anterior
   devise:
+    invitations:
+      invitation_token_invalid: El token de invitació proporcionat no és vàlid!
     login:
       admin_login: Accés administració
       sign_in_cas: Accedeix amb Som Energia
     sessions:
       signed_out: Has tancat la sessió correctament.
-    invitations:
-      invitation_token_invalid: El token de invitació proporcionat no és vàlid!
   layouts:
     decidim:
-      question_components:
-        unfold: Desplegar
+      footer:
+        help: Ajuda
+        social_media: Xarxes socials
   somenergia:
     verifications:
+      cas_members_only: Aquesta verificació es dona als socis de Som Energia. Es dóna
+        automàticament al fer login amb el botó de "Inicia sessió amb Som Energia"
+      login_with_cas: Si per algun motiu, no la tens activada pots provar de verificar-te
+        apretant el botó a continuació. Si aquest mètode no funciona, simplement surt
+        de la sessió i torna a iniciar-la fent servir el botó "Inicia sessió amb Som
+        Energia"
       not_cas_user: No ets usuari del CAS
-      cas_members_only: Aquesta verificació es dona als socis de Som Energia. Es dóna automàticament al fer login amb el botó de "Inicia sessió amb Som Energia"
-      login_with_cas: Si per algun motiu, no la tens activada pots provar de verificar-te apretant el botó a continuació. Si aquest mètode no funciona, simplement surt de la sessió i torna a iniciar-la fent servir el botó "Inicia sessió amb Som Energia"
-    menu:
-      team_et: Equip tècnic
-      team_it: Equip IT

@@ -21,9 +21,9 @@ describe "Login_page" do
   end
   let(:extra) do
     {
-      "soci" => "1234",
+      "soci" => 1234,
       "username" => "1234X",
-      "locale" => "ca"
+      "member_type" => "member"
     }
   end
   let(:tos_before) { nil }
@@ -50,11 +50,11 @@ describe "Login_page" do
 
   it "Admin can login and gets no authorization" do
     expect(page).to have_content "Log in with Som Energia"
-    expect(page).to have_content "Log in as admin"
+    expect(page).to have_content "Administration access"
     expect(page).to have_no_content "Email"
     expect(page).to have_no_content "Password"
 
-    click_on "Log in as admin"
+    click_on "Administration access"
 
     expect(page).to have_content "Email"
     expect(page).to have_content "Password"
@@ -82,7 +82,7 @@ describe "Login_page" do
 
     expect(last_authorization).not_to be_nil
     expect(last_authorization.name).to eq("cas_member")
-    expect(last_authorization.unique_id).to eq("1234")
+    expect(last_authorization.unique_id).to eq("1234X")
     expect(last_authorization.user).to eq(last_user)
     expect(last_authorization.metadata).to eq(extra)
 
@@ -109,7 +109,7 @@ describe "Login_page" do
 
       expect(last_authorization).not_to be_nil
       expect(last_authorization.name).to eq("cas_member")
-      expect(last_authorization.unique_id).to eq("1234")
+      expect(last_authorization.unique_id).to eq("1234X")
       expect(last_authorization.user).to eq(user)
       expect(last_authorization.metadata).to eq(extra)
 
@@ -137,7 +137,7 @@ describe "Login_page" do
 
       expect(last_authorization).not_to be_nil
       expect(last_authorization.name).to eq("cas_member")
-      expect(last_authorization.unique_id).to eq("1234")
+      expect(last_authorization.unique_id).to eq("1234X")
       expect(last_authorization.user).to eq(last_user)
       expect(last_authorization.metadata).to eq(extra)
     end
