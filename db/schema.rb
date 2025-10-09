@@ -796,7 +796,7 @@ ActiveRecord::Schema[7.0].define(version: 2025_06_19_145262) do
   end
 
   create_table "decidim_forms_answers", id: :serial, force: :cascade do |t|
-    t.jsonb "body", default: []
+    t.text "body"
     t.integer "decidim_user_id"
     t.integer "decidim_questionnaire_id"
     t.integer "decidim_question_id"
@@ -1117,6 +1117,10 @@ ActiveRecord::Schema[7.0].define(version: 2025_06_19_145262) do
     t.string "state"
     t.integer "iframe_access_level", default: 0
     t.integer "iframe_embed_type", default: 0
+    t.boolean "reminder_enabled"
+    t.integer "send_reminders_before_hours"
+    t.jsonb "reminder_message_custom_content"
+    t.boolean "waitlist_enabled", default: false, null: false
     t.integer "type_of_meeting", default: 0, null: false
     t.integer "registration_type", default: 0, null: false
     t.datetime "withdrawn_at", precision: nil
@@ -1163,10 +1167,12 @@ ActiveRecord::Schema[7.0].define(version: 2025_06_19_145262) do
     t.datetime "validated_at", precision: nil
     t.bigint "decidim_user_group_id"
     t.boolean "public_participation", default: false
+    t.string "status", default: "registered", null: false
     t.index ["decidim_meeting_id"], name: "index_decidim_meetings_registrations_on_decidim_meeting_id"
     t.index ["decidim_user_group_id"], name: "index_decidim_meetings_registrations_on_decidim_user_group_id"
     t.index ["decidim_user_id", "decidim_meeting_id"], name: "decidim_meetings_registrations_user_meeting_unique", unique: true
     t.index ["decidim_user_id"], name: "index_decidim_meetings_registrations_on_decidim_user_id"
+    t.index ["status"], name: "index_decidim_meetings_registrations_on_status"
   end
 
   create_table "decidim_meetings_services", force: :cascade do |t|
@@ -1717,6 +1723,7 @@ ActiveRecord::Schema[7.0].define(version: 2025_06_19_145262) do
     t.datetime "created_at", precision: nil
     t.datetime "last_used_at", precision: nil
     t.datetime "expires_at", precision: nil
+    t.boolean "registered_only"
     t.index ["decidim_organization_id"], name: "index_decidim_share_tokens_on_decidim_organization_id"
     t.index ["decidim_user_id"], name: "index_decidim_share_tokens_on_decidim_user_id"
     t.index ["token_for_type", "token_for_id"], name: "decidim_share_tokens_token_for"

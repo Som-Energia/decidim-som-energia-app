@@ -60,4 +60,5 @@ Rails.application.configure do
   config.hosts << "localhost"
   config.hosts << "staging.participa.somenergia.coop"
   config.hosts << "participa.somenergia.coop"
+  config.hosts << "participa.somenergia.coop:3000"
 end
