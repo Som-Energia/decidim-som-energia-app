@@ -1,6 +1,7 @@
-# This migration comes from decidim (originally 20170113150627)
 # frozen_string_literal: true
 
+# This migration comes from decidim (originally 20170113150627)
+# This file has been modified by `decidim upgrade:migrations` task on 2025-10-13 08:59:10 UTC
 class CreateResourceLinks < ActiveRecord::Migration[5.0]
   def change
     create_table :decidim_resource_links do |t|

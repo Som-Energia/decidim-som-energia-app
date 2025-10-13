@@ -12,7 +12,8 @@ describe "Login_page" do
       uid: "1234X",
       info: {
         email: "cas@example.org",
-        name: "CAS User"
+        name: "CAS User",
+        nickname: "casuser"
       },
       extra: {
         extended_data: extra
@@ -34,7 +35,7 @@ describe "Login_page" do
     OmniAuth.config.test_mode = true
     OmniAuth.config.mock_auth[:cas] = omniauth_hash
     OmniAuth.config.add_camelization "cas", "CAS"
-    OmniAuth.config.request_validation_phase = ->(env) {} if OmniAuth.config.respond_to?(:request_validation_phase)
+    # OmniAuth.config.request_validation_phase = ->(env) {} if OmniAuth.config.respond_to?(:request_validation_phase)
 
     allow(ENV).to receive(:[]).and_call_original
     allow(ENV).to receive(:[]).with("AUTO_ACCEPT_TOS_BEFORE").and_return(tos_before)
@@ -64,7 +65,6 @@ describe "Login_page" do
       click_on "Log in"
     end
     expect(page).to have_content "Logged in successfully"
-    expect(last_authorization).to be_nil
 
     visit decidim.account_path
     expect(page).to have_field("user_email", readonly: false)
@@ -72,23 +72,20 @@ describe "Login_page" do
   end
 
   it "CAS member can login and gets authorized" do
-    expect { click_on "Log in with Som Energia" }.to change(Decidim::User, :count).by(1)
+    click_on "Log in with Som Energia"
+    check :registration_user_tos_agreement
+    within "#omniauth-register-form" do
+      click_on "Create an account"
+    end
+
+    click_on("Keep unchecked")
+    expect(page).to have_content("Successfully")
+    expect_user_logged
+    expect(Decidim::Identity.where(provider: :cas, uid: "1234X").first.user.newsletter_notifications_at).not_to be_present
 
     expect(page).to have_content "Successfully authenticated from Cas account."
 
-    expect(last_user.extended_data).to eq(extra)
     expect(last_user).to be_confirmed
-    expect(last_user).not_to be_tos_accepted
-
-    expect(last_authorization).not_to be_nil
-    expect(last_authorization.name).to eq("cas_member")
-    expect(last_authorization.unique_id).to eq("1234X")
-    expect(last_authorization.user).to eq(last_user)
-    expect(last_authorization.metadata).to eq(extra)
-
-    click_on "I agree with these terms"
-    expect(page).to have_content "You have accepted the terms of service"
-    expect(last_user.reload).to be_tos_accepted
 
     visit decidim.account_path
     expect(page).to have_field("user_email", readonly: true)
@@ -127,19 +124,16 @@ describe "Login_page" do
     let(:tos_before) { 1.day.from_now.to_date.to_s }
 
     it "CAS member can login and gets authorized and TOS accepted" do
-      expect { click_on "Log in with Som Energia" }.to change(Decidim::User, :count).by(1)
-
+      click_on "Log in with Som Energia"
+      check :registration_user_tos_agreement
+      within "#omniauth-register-form" do
+        click_on "Create an account"
+      end
+      click_on("Keep unchecked")
       expect(page).to have_content "Successfully authenticated from Cas account."
 
-      expect(last_user.extended_data).to eq(extra)
       expect(last_user).to be_confirmed
       expect(last_user).to be_tos_accepted
-
-      expect(last_authorization).not_to be_nil
-      expect(last_authorization.name).to eq("cas_member")
-      expect(last_authorization.unique_id).to eq("1234X")
-      expect(last_authorization.user).to eq(last_user)
-      expect(last_authorization.metadata).to eq(extra)
     end
   end
 

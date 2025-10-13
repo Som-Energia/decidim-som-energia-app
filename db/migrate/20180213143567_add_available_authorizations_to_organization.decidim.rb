@@ -1,6 +1,7 @@
-# This migration comes from decidim (originally 20170313095436)
 # frozen_string_literal: true
 
+# This migration comes from decidim (originally 20170313095436)
+# This file has been modified by `decidim upgrade:migrations` task on 2025-10-13 08:59:10 UTC
 class AddAvailableAuthorizationsToOrganization < ActiveRecord::Migration[5.0]
   class Organization < ApplicationRecord
     self.table_name = :decidim_organizations
@@ -11,7 +12,7 @@ class AddAvailableAuthorizationsToOrganization < ActiveRecord::Migration[5.0]
 
     workflows = Decidim::Verifications.workflows.map(&:name)
     Organization.find_each do |org|
-      org.update_attributes!(available_authorizations: workflows)
+      org.update!(available_authorizations: workflows)
     end
   end
 end

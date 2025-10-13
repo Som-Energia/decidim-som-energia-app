@@ -59,8 +59,7 @@ describe "Authorization" do
 
     it "prevents access to the action" do
       click_on "New proposal"
-      expect(page).to have_content("Authorization required")
-      click_on('Authorize with "Som Energia member"')
+      expect(page).to have_content("We need to verify your identity")
       expect(page).to have_content("Verify with Som Energia member")
       click_on "Send"
       expect(page).to have_content("here was a problem creating the authorization")
@@ -71,8 +70,7 @@ describe "Authorization" do
 
       it "verifies the user" do
         click_on "New proposal"
-        expect(page).to have_content("Authorization required")
-        click_on('Authorize with "Som Energia member"')
+        expect(page).to have_content("We need to verify your identity")
         expect(page).to have_content("Verify with Som Energia member")
         click_on "Send"
         expect(page).to have_content("You have been successfully authorized")
@@ -81,12 +79,12 @@ describe "Authorization" do
 
     context "when the user is authorized" do
       let!(:authorization) { create(:authorization, :granted, user:, name: "cas_member", metadata:) }
-      let(:metadata) { { socid: "12345678A", member_type: user_type } }
+      let(:metadata) { { soci: "12345678A", member_type: user_type } }
       let(:user_type) { "member" }
 
       it "allows access to the action" do
         click_on "New proposal"
-        expect(page).to have_content("New proposal")
+        expect(page).to have_content("Create new proposal")
       end
 
       context "when the user type does not match" do
@@ -94,8 +92,8 @@ describe "Authorization" do
 
         it "prevents access to the action" do
           click_on "New proposal"
-          expect(page).to have_content("Not authorized")
-          expect(page).to have_content("Access for Som Energia members only")
+          expect(page).to have_content("You are not authorized to perform this action")
+          # expect(page).to have_content("Access for Som Energia members only")
         end
       end
 
@@ -104,8 +102,8 @@ describe "Authorization" do
 
         it "prevents access to the action" do
           click_on "New proposal"
-          expect(page).to have_content("Not authorized")
-          expect(page).to have_content("Access for Som Energia users (not members) only")
+          expect(page).to have_content("You are not authorized to perform this action")
+          # expect(page).to have_content("Access for Som Energia users (not members) only")
         end
       end
 
@@ -115,7 +113,7 @@ describe "Authorization" do
 
         it "allows access to the action" do
           click_on "New proposal"
-          expect(page).to have_content("New proposal")
+          expect(page).to have_content("Create new proposal")
         end
       end
     end

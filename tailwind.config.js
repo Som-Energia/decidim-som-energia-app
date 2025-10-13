@@ -5,7 +5,7 @@
 // https://docs.decidim.org/en/develop/customize/styles
 //
 
-const { inherit, current, transparent, white } = require("tailwindcss/colors")
+const { inherit, current, transparent, white, neutral } = require("tailwindcss/colors")
 
 const withOpacity =
   (variable) =>
@@ -18,7 +18,7 @@ module.exports = {
   // This content is generated automatically by decidim:webpacker:install task, it
   // should not be updated manually.
   // The array must contain all the decidim modules active in the application
-  content: ['/home/ivan/.rbenv/versions/3.2.8/lib/ruby/gems/3.2.0/bundler/gems/decidim-f09912abf8dc/decidim-core','/home/ivan/.rbenv/versions/3.2.8/lib/ruby/gems/3.2.0/bundler/gems/decidim-f09912abf8dc/decidim-comments','/home/ivan/.rbenv/versions/3.2.8/lib/ruby/gems/3.2.0/bundler/gems/decidim-f09912abf8dc/decidim-accountability','/home/ivan/.rbenv/versions/3.2.8/lib/ruby/gems/3.2.0/bundler/gems/decidim-f09912abf8dc/decidim-admin','/home/ivan/.rbenv/versions/3.2.8/lib/ruby/gems/3.2.0/bundler/gems/decidim-f09912abf8dc/decidim-api','/home/ivan/.rbenv/versions/3.2.8/lib/ruby/gems/3.2.0/bundler/gems/decidim-f09912abf8dc/decidim-assemblies','/home/ivan/.rbenv/versions/3.2.8/lib/ruby/gems/3.2.0/bundler/gems/decidim-f09912abf8dc/decidim-blogs','/home/ivan/.rbenv/versions/3.2.8/lib/ruby/gems/3.2.0/bundler/gems/decidim-f09912abf8dc/decidim-budgets','/home/ivan/.rbenv/versions/3.2.8/lib/ruby/gems/3.2.0/bundler/gems/decidim-f09912abf8dc/decidim-debates','/home/ivan/.rbenv/versions/3.2.8/lib/ruby/gems/3.2.0/bundler/gems/decidim-f09912abf8dc/decidim-forms','/home/ivan/.rbenv/versions/3.2.8/lib/ruby/gems/3.2.0/bundler/gems/decidim-f09912abf8dc/decidim-generators','/home/ivan/.rbenv/versions/3.2.8/lib/ruby/gems/3.2.0/bundler/gems/decidim-f09912abf8dc/decidim-meetings','/home/ivan/.rbenv/versions/3.2.8/lib/ruby/gems/3.2.0/bundler/gems/decidim-f09912abf8dc/decidim-pages','/home/ivan/.rbenv/versions/3.2.8/lib/ruby/gems/3.2.0/bundler/gems/decidim-f09912abf8dc/decidim-participatory_processes','/home/ivan/.rbenv/versions/3.2.8/lib/ruby/gems/3.2.0/bundler/gems/decidim-f09912abf8dc/decidim-proposals','/home/ivan/.rbenv/versions/3.2.8/lib/ruby/gems/3.2.0/bundler/gems/decidim-f09912abf8dc/decidim-sortitions','/home/ivan/.rbenv/versions/3.2.8/lib/ruby/gems/3.2.0/bundler/gems/decidim-f09912abf8dc/decidim-surveys','/home/ivan/.rbenv/versions/3.2.8/lib/ruby/gems/3.2.0/bundler/gems/decidim-f09912abf8dc/decidim-system','/home/ivan/.rbenv/versions/3.2.8/lib/ruby/gems/3.2.0/bundler/gems/decidim-f09912abf8dc/decidim-verifications','/home/ivan/.rbenv/versions/3.2.8/lib/ruby/gems/3.2.0/bundler/gems/decidim-module-decidim_awesome-f1eb032d3dbe','/home/ivan/.rbenv/versions/3.2.8/lib/ruby/gems/3.2.0/bundler/gems/decidim-f09912abf8dc/decidim-dev','/home/ivan/.rbenv/versions/3.2.8/lib/ruby/gems/3.2.0/bundler/gems/decidim-f09912abf8dc/decidim-initiatives','/home/ivan/.rbenv/versions/3.2.8/lib/ruby/gems/3.2.0/gems/decidim-reporting_proposals-0.7.1','/home/ivan/.rbenv/versions/3.2.8/lib/ruby/gems/3.2.0/bundler/gems/decidim-f09912abf8dc/decidim-templates','/home/ivan/.rbenv/versions/3.2.8/lib/ruby/gems/3.2.0/bundler/gems/decidim-module-term_customizer-12d3c4f09e0a','.'].flatMap(directory => [
+  content: ['/home/ivan/.rbenv/versions/3.3.9/lib/ruby/gems/3.3.0/bundler/gems/decidim-4c17aa20651d/decidim-core','/home/ivan/.rbenv/versions/3.3.9/lib/ruby/gems/3.3.0/bundler/gems/decidim-4c17aa20651d/decidim-comments','/home/ivan/.rbenv/versions/3.3.9/lib/ruby/gems/3.3.0/bundler/gems/decidim-4c17aa20651d/decidim-accountability','/home/ivan/.rbenv/versions/3.3.9/lib/ruby/gems/3.3.0/bundler/gems/decidim-4c17aa20651d/decidim-admin','/home/ivan/.rbenv/versions/3.3.9/lib/ruby/gems/3.3.0/bundler/gems/decidim-4c17aa20651d/decidim-api','/home/ivan/.rbenv/versions/3.3.9/lib/ruby/gems/3.3.0/bundler/gems/decidim-4c17aa20651d/decidim-assemblies','/home/ivan/.rbenv/versions/3.3.9/lib/ruby/gems/3.3.0/bundler/gems/decidim-4c17aa20651d/decidim-blogs','/home/ivan/.rbenv/versions/3.3.9/lib/ruby/gems/3.3.0/bundler/gems/decidim-4c17aa20651d/decidim-budgets','/home/ivan/.rbenv/versions/3.3.9/lib/ruby/gems/3.3.0/bundler/gems/decidim-4c17aa20651d/decidim-debates','/home/ivan/.rbenv/versions/3.3.9/lib/ruby/gems/3.3.0/bundler/gems/decidim-4c17aa20651d/decidim-forms','/home/ivan/.rbenv/versions/3.3.9/lib/ruby/gems/3.3.0/bundler/gems/decidim-4c17aa20651d/decidim-generators','/home/ivan/.rbenv/versions/3.3.9/lib/ruby/gems/3.3.0/bundler/gems/decidim-4c17aa20651d/decidim-meetings','/home/ivan/.rbenv/versions/3.3.9/lib/ruby/gems/3.3.0/bundler/gems/decidim-4c17aa20651d/decidim-pages','/home/ivan/.rbenv/versions/3.3.9/lib/ruby/gems/3.3.0/bundler/gems/decidim-4c17aa20651d/decidim-participatory_processes','/home/ivan/.rbenv/versions/3.3.9/lib/ruby/gems/3.3.0/bundler/gems/decidim-4c17aa20651d/decidim-proposals','/home/ivan/.rbenv/versions/3.3.9/lib/ruby/gems/3.3.0/bundler/gems/decidim-4c17aa20651d/decidim-sortitions','/home/ivan/.rbenv/versions/3.3.9/lib/ruby/gems/3.3.0/bundler/gems/decidim-4c17aa20651d/decidim-surveys','/home/ivan/.rbenv/versions/3.3.9/lib/ruby/gems/3.3.0/bundler/gems/decidim-4c17aa20651d/decidim-system','/home/ivan/.rbenv/versions/3.3.9/lib/ruby/gems/3.3.0/bundler/gems/decidim-4c17aa20651d/decidim-verifications','/home/ivan/.rbenv/versions/3.3.9/lib/ruby/gems/3.3.0/bundler/gems/decidim-module-decidim_awesome-b284f280e6cf','/home/ivan/.rbenv/versions/3.3.9/lib/ruby/gems/3.3.0/bundler/gems/decidim-4c17aa20651d/decidim-dev','/home/ivan/.rbenv/versions/3.3.9/lib/ruby/gems/3.3.0/bundler/gems/decidim-4c17aa20651d/decidim-initiatives','/home/ivan/.rbenv/versions/3.3.9/lib/ruby/gems/3.3.0/bundler/gems/decidim-4c17aa20651d/decidim-templates','/home/ivan/.rbenv/versions/3.3.9/lib/ruby/gems/3.3.0/bundler/gems/decidim-module-term_customizer-00d55ec218e8','.'].flatMap(directory => [
     `${directory}/app/views/**/*.html.erb`,
     `${directory}/app/cells/**/*.{rb,erb}`,
     `${directory}/app/helpers/**/*.rb`,
@@ -33,6 +33,7 @@ module.exports = {
       current,
       transparent,
       white,
+      neutral, 
       primary: withOpacity("--primary-rgb"),
       secondary: withOpacity("--secondary-rgb"),
       tertiary: withOpacity("--tertiary-rgb"),
@@ -51,7 +52,8 @@ module.exports = {
         DEFAULT: "#F3F4F7",
         2: "#FAFBFC",
         3: "#EFEFEF",
-        4: "#E4EEFF99" // 60% opacity
+        4: "#E4EEFF99", // 60% opacity
+        5: "#E9E9E9"
       }
     },
     container: {

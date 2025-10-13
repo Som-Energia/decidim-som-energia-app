@@ -6,8 +6,6 @@ module SomEnergia
       extend ActiveSupport::Concern
 
       included do
-        alias_method :destroy_without_cas, :destroy
-
         def after_sign_out_path_for(user)
           # Redirect to the CAS logout URL if the user is logged in via CAS
           cas_logout_url = ENV.fetch("CAS_LOGOUT_URL", nil)

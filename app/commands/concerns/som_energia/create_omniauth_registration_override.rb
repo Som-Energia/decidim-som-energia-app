@@ -26,6 +26,8 @@ module SomEnergia
           trigger_omniauth_registration
 
           broadcast(:ok, @user)
+        rescue Decidim::NeedTosAcceptance
+          broadcast(:add_tos_errors, @user)
         rescue ActiveRecord::RecordInvalid => e
           broadcast(:error, e.record)
         end

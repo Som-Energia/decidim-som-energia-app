@@ -55,7 +55,7 @@ end
 # Update user's extended_data when login
 ActiveSupport::Notifications.subscribe "decidim.user.omniauth_registration" do |_name, data|
   user = Decidim::User.find_by(id: data[:user_id])
-  extended_data = data.dig(:raw_data, :extra, "extended_data")
+  extended_data = data.dig(:raw_data, :extra, "extended_data") || {}
   if user.present?
     user.update(extended_data:)
     # Accept TOS if date before 2021-01-01
