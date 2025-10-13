@@ -21,6 +21,7 @@ module SomEnergia
             Decidim::ParticipatorySpacePrivateUser.find_or_create_by!(
               user:,
               privatable_to: @private_user_to,
+              role: form.role,
               cas_user: form.cas_user
             )
           end

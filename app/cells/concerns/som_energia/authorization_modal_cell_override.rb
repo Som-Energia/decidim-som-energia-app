@@ -8,6 +8,7 @@ module SomEnergia
       alias_method :original_status_fields, :status_fields
 
       def status_fields(status)
+        byebug
         return original_status_fields(status) unless status.handler_name == "cas_member" && status.data[:fields].present?
 
         status.data[:fields].map do |_field, value|
