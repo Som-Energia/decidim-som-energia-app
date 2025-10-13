@@ -7,14 +7,14 @@
 // By default this is empty.
 /* Decidim has a bug when using external_icon method that automatically adds a display:none inline css */
 .login__omniauth-button {
-  display: inline-flex;
-  align-items: center;
+  @apply inline-flex items-center;
+
+  span {
+    @apply block;
+  }
 
   img.icon.external-icon {
-    height: 36px;
-    width: auto;
-    padding: 2px;
-    display: inline-block !important;
+    @apply h-9 w-auto p-0.5 inline-block !important;
   }
 }
 
