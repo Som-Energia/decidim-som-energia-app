@@ -17,6 +17,7 @@ module Decidim::Admin
         invalid?: invalid,
         email:,
         name:,
+        role: { en: "participant" },
         cas_user:
       )
     end
