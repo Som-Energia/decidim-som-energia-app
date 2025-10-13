@@ -4,7 +4,9 @@
 # This file has been modified by `decidim upgrade:migrations` task on 2025-10-13 08:59:10 UTC
 class MakeFeaturesPolymorphic < ActiveRecord::Migration[5.1]
   def change
-    remove_index :decidim_components, name: "index_decidim_components_on_decidim_participatory_process_id"
+    if index_exists?(:decidim_components, "index_decidim_components_on_decidim_participatory_process_id")
+      remove_index :decidim_components, name: "index_decidim_components_on_decidim_participatory_process_id"
+    end
 
     add_column :decidim_components, :participatory_space_type, :string
 

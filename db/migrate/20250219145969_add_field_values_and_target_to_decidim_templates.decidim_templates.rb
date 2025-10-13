@@ -8,8 +8,12 @@ class AddFieldValuesAndTargetToDecidimTemplates < ActiveRecord::Migration[6.0]
   end
 
   def change
-    add_column :decidim_templates_templates, :field_values, :json, default: {}
-    add_column :decidim_templates_templates, :target, :string
+    unless ActiveRecord::Base.connection.column_exists?(:decidim_templates_templates, :field_values)
+      add_column :decidim_templates_templates, :field_values, :json, default: {}
+    end
+    unless ActiveRecord::Base.connection.column_exists?(:decidim_templates_templates, :target)
+      add_column :decidim_templates_templates, :target, :string
+    end
 
     reversible do |direction|
       direction.up do

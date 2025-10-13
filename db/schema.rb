@@ -590,6 +590,7 @@ ActiveRecord::Schema[7.0].define(version: 2025_10_13_080498) do
     t.datetime "deleted_at"
     t.index ["deleted_at"], name: "index_decidim_components_on_deleted_at"
     t.index ["participatory_space_id", "participatory_space_type"], name: "index_decidim_components_on_decidim_participatory_space"
+    t.index ["participatory_space_id"], name: "index_decidim_components_on_participatory_space_id"
   end
 
   create_table "decidim_consultations", force: :cascade do |t|
@@ -814,7 +815,7 @@ ActiveRecord::Schema[7.0].define(version: 2025_10_13_080498) do
   end
 
   create_table "decidim_forms_answers", id: :serial, force: :cascade do |t|
-    t.jsonb "body", default: []
+    t.text "body"
     t.integer "decidim_user_id"
     t.integer "decidim_questionnaire_id"
     t.integer "decidim_question_id"
@@ -2070,7 +2071,7 @@ ActiveRecord::Schema[7.0].define(version: 2025_10_13_080498) do
     t.boolean "email_on_assigned_proposals", default: true
     t.index ["confirmation_token"], name: "index_decidim_users_on_confirmation_token", unique: true
     t.index ["decidim_organization_id"], name: "index_decidim_users_on_decidim_organization_id"
-    t.index ["email", "nickname", "decidim_organization_id"], name: "index_decidim_users_on_email_nickname_decidim_organization_id", unique: true, where: "((deleted_at IS NULL) AND (managed = false) AND ((type)::text = 'Decidim::User'::text))"
+    t.index ["email", "decidim_organization_id"], name: "index_decidim_users_on_email_and_decidim_organization_id", unique: true, where: "((deleted_at IS NULL) AND (managed = false))"
     t.index ["id", "type"], name: "index_decidim_users_on_id_and_type"
     t.index ["invitation_token"], name: "index_decidim_users_on_invitation_token", unique: true
     t.index ["invitations_count"], name: "index_decidim_users_on_invitations_count"
