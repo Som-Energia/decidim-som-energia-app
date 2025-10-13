@@ -1,6 +1,7 @@
 # frozen_string_literal: true
-# This migration comes from decidim (originally 20230427105700)
 
+# This migration comes from decidim (originally 20230427105700)
+# This file has been modified by `decidim upgrade:migrations` task on 2025-10-13 08:59:10 UTC
 class ChangeStatesOnAmendments < ActiveRecord::Migration[6.1]
   class Amendment < ApplicationRecord
     self.table_name = :decidim_amendments

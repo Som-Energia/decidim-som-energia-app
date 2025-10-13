@@ -1,6 +1,7 @@
 # frozen_string_literal: true
-# This migration comes from decidim (originally 20181001124950)
 
+# This migration comes from decidim (originally 20181001124950)
+# This file has been modified by `decidim upgrade:migrations` task on 2025-10-13 08:59:10 UTC
 class MoveUsersGroupsToUsersTable < ActiveRecord::Migration[5.2]
   class Organization < ApplicationRecord
     self.table_name = "decidim_organizations"
@@ -39,9 +40,9 @@ class MoveUsersGroupsToUsersTable < ActiveRecord::Migration[5.2]
     remove_index :decidim_users, %w(email decidim_organization_id)
     add_index(
       :decidim_users,
-      %w(email nickname decidim_organization_id),
+      %w(email decidim_organization_id),
       where: "((deleted_at IS NULL)  AND (managed = false) AND (type = 'Decidim::User'))",
-      name: "index_decidim_users_on_email_nickname_decidim_organization_id",
+      name: "index_decidim_users_on_email_and_decidim_organization_id",
       unique: true
     )
 
@@ -65,8 +66,8 @@ class MoveUsersGroupsToUsersTable < ActiveRecord::Migration[5.2]
         verified_at: old_user_group.verified_at
       }
       new_attributes = clean_attributes.merge(
-        nickname: User.nicknamize(clean_attributes["name"]),
-        extended_data: extended_data
+        nickname: UserBaseEntity.nicknamize(clean_attributes["name"], old_user_group.decidim_organization_id),
+        extended_data:
       )
       new_user_group = NewUserGroup.create!(new_attributes)
       new_ids[old_user_group.id] = new_user_group.id
