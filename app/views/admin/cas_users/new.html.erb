@@ -5,7 +5,7 @@
 </div>
 
 <div class="callout warning">
-  <b>ATENCIÓ, no feu aquesta operació a menys que ho necessiteu per algun motiu de pes.</b> 
+  <b>ATENCIÓ, no feu aquesta operació a menys que ho necessiteu per algun motiu de pes.</b>
   <p>Si us plau, assegura't de que l'usuari que estàs creant és un soci de l'associació amb el correu electrònic correcte.</p>
   <p><b>Si s'introdueix un correu electrònic incorrecte o que no correspongui al soci i DNI indicats, l'usuari no podrà accedir a la plataforma.</b></p>
   <p>El fet d'introduir un usuari en aquest formulari només crearà l'usuari a la plataforma, no enviarà cap invitació.</p>
@@ -24,11 +24,11 @@
           </div>
           <div class="row column">
             <%= f.label "Numero de soci" %>
-            <%= text_field_tag "soci", f.object.extended_data["soci"], type: "number" %>
+            <%= text_field_tag "soci", f.object.extended_data["soci"], type: "number", autocomplete: "off" %>
           </div>
           <div class="row column">
             <%= f.label "DNI" %>
-            <%= text_field_tag "dni", f.object.extended_data["username"] %>
+            <%= text_field_tag "dni", f.object.extended_data["username"], autocomplete: "off" %>
           </div>
         </div>
       </div>
