@@ -1,7 +1,7 @@
 <% if tag_id = ENV.fetch("GOOGLE_TAG_MANAGER", nil) %>
   <!-- Global site tag (gtag.js) - Google Analytics -->
-  <script type="text/plain" data-consent="marketing" async src="https://www.googletagmanager.com/gtag/js?id=<%= tag_id %>"></script>
-  <script type="text/plain" data-consent="marketing">
+  <script type="text/javascript" data-consent="marketing" async src="https://www.googletagmanager.com/gtag/js?id=<%= tag_id %>"></script>
+  <script type="text/javascript" data-consent="marketing">
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
@@ -11,11 +11,11 @@
 <% end %>
 
 <% if tag_id = ENV.fetch("PLAUSIBLE_ANALYTICS", nil) %>
-  <script type="text/plain" data-consent="marketing" async defer data-domain="<%= tag_id %>" src="<%= ENV.fetch("PLAUSIBLE_URL", nil) %>"></script>
+  <script type="text/javascript" data-consent="marketing" async defer data-domain="<%= tag_id %>" src="<%= ENV.fetch("PLAUSIBLE_URL", nil) %>"></script>
 <% end %>
 
 <% if tag_id = ENV.fetch("MATOMO_ANALYTICS", nil) %>
-  <script type="text/plain" data-consent="marketing">
+  <script type="text/javascript" data-consent="marketing">
     var _paq = window._paq = window._paq || [];
     /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
     _paq.push(['trackPageView']);

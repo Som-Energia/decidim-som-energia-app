@@ -5,10 +5,11 @@ require "digest"
 module SomEnergia
   class CasMember < Decidim::AuthorizationHandler
     attribute :extended_data
+    attribute :role, String
     validate :valid_member
 
     def form_attributes
-      attributes.except("id", "user", "extended_data").keys
+      attributes.except("id", "user", "extended_data", "role", "tos_agreement").keys
     end
 
     def extended_data
@@ -40,12 +41,13 @@ module SomEnergia
     end
 
     def member_type
-      soci.zero? ? "user" : "member"
+      soci.zero? ? (role.presence || "user") : "member"
     end
 
     def uid
       return unless extended_data && extended_data.respond_to?(:has_key?)
-      return if extended_data["username"].blank?
+
+      return role.present? && "forced-#{user.id}" if extended_data["username"].blank?
 
       extended_data["username"]
     end

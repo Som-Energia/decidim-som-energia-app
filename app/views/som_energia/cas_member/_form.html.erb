@@ -2,4 +2,12 @@
   <p><%= t("somenergia.verifications.cas_members_only") %></p>
   <p><%= t("somenergia.verifications.login_with_cas") %></p>
 </div>
-<%= form.all_fields %>
+<div class="form__wrapper mt-0">
+  <%= form.all_fields %>
+
+  <% if defined?(with_override) && with_override %>
+    <%= form.select :role, options_for_select([[t("decidim.authorization_handlers.cas_member.name_user"), "user"],
+                                              [t("decidim.authorization_handlers.cas_member.name_member"), "member"]]),
+                    label: t("decidim.authorization_handlers.cas_member.fields.member_type") %>
+  <% end %>
+</div>
