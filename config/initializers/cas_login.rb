@@ -31,7 +31,7 @@ if ENV["CAS_HOST"].present?
   # Force Decidim to look at this provider if not defined in secrets.yml
   Rails.application.secrets[:omniauth][:cas] = {
     enabled: true,
-    icon_path: "media/images/somenergia-icon.png",
+    icon_path: "media/images/#{ENV.fetch("ICON", "somenergia-icon-sea.png")}",
     host: ENV.fetch("CAS_HOST", nil)
   }
   # Generic verification method for users logged with CAS
