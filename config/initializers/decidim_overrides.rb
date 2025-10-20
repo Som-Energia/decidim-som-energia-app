@@ -30,4 +30,6 @@ Rails.application.config.to_prepare do
   Decidim::Devise::SessionsController.include(SomEnergia::Devise::SessionsControllerOverride)
   Decidim::Assemblies::Admin::ParticipatorySpacePrivateUsersCsvImportsController.include(SomEnergia::Admin::HasPrivateUsersCsvImportOverride)
   Decidim::ParticipatoryProcesses::Admin::ParticipatorySpacePrivateUsersCsvImportsController.include(SomEnergia::Admin::HasPrivateUsersCsvImportOverride)
+  # temporary until https://github.com/decidim/decidim/pull/15390 is merged and backported
+  Decidim::ActivityCell.include(SomEnergia::ActivityCellOverride)
 end

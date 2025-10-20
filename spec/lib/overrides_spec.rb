@@ -17,7 +17,8 @@ checksums = [
       "/app/views/decidim/devise/sessions/new.html.erb" => "da0d18178c8dcead2774956e989527c5",
       "/app/views/decidim/devise/shared/_omniauth_buttons.html.erb" => "688a13e36af349a91e37b04c6caaa3a9",
       "/app/views/decidim/shared/_login_modal.html.erb" => "98bd2832be207d7abcd48d2a0ba40bd0",
-      "/app/cells/decidim/authorization_modal_cell.rb" => "c7c1d02f217c3885e38de513839bf92e"
+      "/app/cells/decidim/authorization_modal_cell.rb" => "c7c1d02f217c3885e38de513839bf92e",
+      "/app/cells/decidim/activity_cell.rb" => "1396f2caf558d833ccc6a21953154458"
     }
   },
   {
