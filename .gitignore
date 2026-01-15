@@ -7,53 +7,63 @@
 # Ignore bundler config.
 /.bundle
 
+# Ignore the default SQLite database.
+/db/*.sqlite3
+/db/*.sqlite3-*
+
 # Ignore all logfiles and tempfiles.
 /log/*
 /tmp/*
 !/log/.keep
 !/tmp/.keep
 
-.byebug_history
-
-# Ignore public uploads
-public/uploads
-tailwind.config.js
-# Ignore application configuration
-/RailsApplication1/nbproject/private/
-
-# Ignore .rbenv-vars
-.rbenv-vars
-
-# Ignore .rspec-failures
-.rspec-failures
-.s3cfg
-
-# Ignore capistrano
-Capfile
-config/application.yml
-config/deploy/*
-config/deploy
-config/deploy.rb
-
-decidim_dummy_app
-.vscode
-*.sql
-
-/public/assets
-/public/packs
-/public/packs-test
-/public/decidim-packs
-/node_modules
-/packages/*/node_modules
-/yarn-error.log
-yarn-debug.log*
-.yarn-integrity
+/tmp/pids/*
+!/tmp/pids/
+!/tmp/pids/.keep
 
 # Ignore uploaded files in development.
 /storage/*
 !/storage/.keep
+/tmp/storage/*
+!/tmp/storage/
+!/tmp/storage/.keep
+
+/public/assets
 
 # Ignore master key for decrypting credentials and more.
 /config/master.key
-/coverage
-public/sw.js*
+
+# Ignore env configuration files
+.env
+.envrc
+.rbenv-vars
+mise.toml
+
+# Others
+.vscode
+.byebug*
+*.gem
+*.sql
+.rubocop-http*
+/coverage/
+backups/*
+!backups/.keep
+
+# Ignore the files and folders generated through Webpack
+/public/packs
+/public/packs-test
+/public/decidim-packs
+/public/packs-test
+/public/sw.js*
+/public/sw.js.map*
+/app/views/static/api
+
+# Ignore node modules
+/node_modules
+/packages/*/node_modules
+npm_debug.log
+
+# Ignore Tailwind configuration
+tailwind.config.js
+.rspec-failures
+
