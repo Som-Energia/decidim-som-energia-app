@@ -9,6 +9,7 @@ DECIDIM_VERSION = { github: "decidim/decidim", branch: "release/0.31-stable" }.f
 gem "decidim", DECIDIM_VERSION
 gem "decidim-initiatives", DECIDIM_VERSION
 gem "decidim-templates", DECIDIM_VERSION
+gem "decidim-verifications", DECIDIM_VERSION
 
 # A Decidim module to customize the localized terms in the system.
 gem "decidim-term_customizer", github: "openpoke/decidim-module-term_customizer", branch: "release/0.31-stable"
@@ -25,12 +26,9 @@ gem "puma"
 
 group :development, :test do
   gem "byebug", platform: :mri
-  gem "faker", "~> 3.2"
-  gem "rubocop-faker"
 
   gem "brakeman"
   gem "decidim-dev", DECIDIM_VERSION
-  gem "rubocop-rspec"
 end
 
 group :development do

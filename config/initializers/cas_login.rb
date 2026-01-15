@@ -29,11 +29,11 @@ if ENV["CAS_HOST"].present?
                                    }
   end
   # Force Decidim to look at this provider if not defined in secrets.yml
-  Rails.application.secrets[:omniauth][:cas] = {
-    enabled: true,
-    icon_path: "media/images/#{ENV.fetch("ICON", "somenergia-icon-sea.png")}",
-    host: ENV.fetch("CAS_HOST", nil)
-  }
+  # Rails.application.secrets[:omniauth][:cas] = {
+  #   enabled: true,
+  #   icon_path: "media/images/#{ENV.fetch("ICON", "somenergia-icon-sea.png")}",
+  #   host: ENV.fetch("CAS_HOST", nil)
+  # }
   # Generic verification method for users logged with CAS
   Decidim::Verifications.register_workflow(:cas_member) do |workflow|
     workflow.form = "SomEnergia::CasMember"
