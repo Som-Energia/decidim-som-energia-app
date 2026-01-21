@@ -28,7 +28,7 @@ if ENV["CAS_HOST"].present?
                                      user_info
                                    }
   end
-  # Force Decidim to look at this provider if not defined in secrets.yml
+  # Force Decidim to look at this provider in the login page
   Decidim.omniauth_providers[:cas] = {
     enabled: true,
     icon_path: "media/images/#{ENV.fetch("ICON", "somenergia-icon-sea.png")}",
