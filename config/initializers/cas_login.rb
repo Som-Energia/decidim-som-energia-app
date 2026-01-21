@@ -28,12 +28,13 @@ if ENV["CAS_HOST"].present?
                                      user_info
                                    }
   end
-  # Force Decidim to look at this provider if not defined in secrets.yml
-  Rails.application.secrets[:omniauth][:cas] = {
+  # Force Decidim to look at this provider in the login page
+  Decidim.omniauth_providers[:cas] = {
     enabled: true,
     icon_path: "media/images/#{ENV.fetch("ICON", "somenergia-icon-sea.png")}",
     host: ENV.fetch("CAS_HOST", nil)
   }
+
   # Generic verification method for users logged with CAS
   Decidim::Verifications.register_workflow(:cas_member) do |workflow|
     workflow.form = "SomEnergia::CasMember"
@@ -46,14 +47,13 @@ end
 
 # Override Decidim::OmniauthRegistration to use send and event when login and not only on registration
 Rails.application.config.to_prepare do
-  Decidim::CreateOmniauthRegistration.include(SomEnergia::CreateOmniauthRegistrationOverride)
   Decidim::Devise::SessionsController.include(SomEnergia::Devise::SessionsControllerOverride)
   Decidim::AuthorizationModalCell.include(SomEnergia::AuthorizationModalCellOverride)
   Decidim::Verifications::ApplicationHelper.include(SomEnergia::VerificationsApplicationHelperOverride)
 end
 
 # Update user's extended_data when login
-ActiveSupport::Notifications.subscribe "decidim.user.omniauth_registration" do |_name, data|
+ActiveSupport::Notifications.subscribe(/decidim\.user\.omniauth_(registration|login)/) do |_name, data|
   user = Decidim::User.find_by(id: data[:user_id])
   extended_data = data.dig(:raw_data, :extra, "extended_data") || {}
   if user.present?

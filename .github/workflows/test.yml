@@ -8,8 +8,8 @@ on:
   pull_request:
 
 env:
-  RUBY_VERSION: 3.3.9
-  NODE_VERSION: 18.17.1
+  RUBY_VERSION: 3.3.10
+  NODE_VERSION: 22.14.0
   CHROME_VERSION: "119.0.6045.105"
   RAILS_ENV: test
   DATABASE_USERNAME: postgres
