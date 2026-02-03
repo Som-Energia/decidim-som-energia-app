@@ -12,15 +12,11 @@ en:
       user_created_successfully: User created successfully!
       user_creation_failed: Failed to create user! (%{error})
   decidim:
-    admin:
-      participatory_space_private_users:
-        form:
-          cas_user: Is CAS user
-          email: Email
-          name: Name
-    assemblies:
-      alternative_assembly_types:
-        local_groups: Local Groups
+    system:
+      organizations:
+        omniauth_settings:
+          cas:
+            host: Host
     authorization_handlers:
       cas_member:
         explanation: Authorization granted for being a member of Som Energia (login
@@ -36,30 +32,10 @@ en:
         name_user: Som Energia user (not a member)
         only_for_member: Access for Som Energia members only.
         only_for_user: Access for Som Energia users (not members) only.
-    meetings:
-      meetings:
-        show:
-          going: You have registered for this meeting
-          leave: Cancel your registration
-          leave_confirmation: Are you sure you want to cancel your attendance at this
-            meeting?
-      registration_mailer:
-        confirmation:
-          confirmed_html: Your <a href="%{url}">%{title}</a> has been confirmed. Thank
-            you for participating.
   devise:
-    invitations:
-      invitation_token_invalid: The invitation token provided is not valid!
     login:
       admin_login: Administration access
       sign_in_cas: Log in with Som Energia
-    sessions:
-      signed_out: You have signed out successfully.
-  layouts:
-    decidim:
-      footer:
-        help: Help
-        social_media: Social media
   somenergia:
     verifications:
       cas_members_only: This verification is given to Som Energia members. It is granted

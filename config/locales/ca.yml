@@ -12,15 +12,6 @@ ca:
       user_created_successfully: Usuari creat correctament!
       user_creation_failed: Error al crear l'usuari! (%{error})
   decidim:
-    admin:
-      participatory_space_private_users:
-        form:
-          cas_user: Es usuari del CAS
-          email: Email
-          name: Nom
-    assemblies:
-      alternative_assembly_types:
-        local_groups: Grups Locals
     authorization_handlers:
       cas_member:
         explanation: Autorizació concedida per ser membre de Som Energia (cal fer
@@ -35,31 +26,11 @@ ca:
         name_member: Soci de Som Energia
         name_user: Usuari de Som Energia (no soci)
         only_for_member: Accés per a socis de Som Energia exclusivament.
-        only_for_user: Access per a usuaris (no socis) de Som Energia exclusivament.
-    meetings:
-      meetings:
-        show:
-          going: T'has inscrit a aquesta trobada
-          leave: Cancel·la el teu registre
-          leave_confirmation: Segur que vols cancel·lar la teva assistència a aquesta
-            trobada?
-      registration_mailer:
-        confirmation:
-          confirmed_html: La teva <a href="%{url}">%{title}</a> ha estat confirmada.
-            Gràcies per participar.
+        only_for_user: Accés per a usuaris (no socis) de Som Energia exclusivament.
   devise:
-    invitations:
-      invitation_token_invalid: El token de invitació proporcionat no és vàlid!
     login:
       admin_login: Accés administració
       sign_in_cas: Accedeix amb Som Energia
-    sessions:
-      signed_out: Has tancat la sessió correctament.
-  layouts:
-    decidim:
-      footer:
-        help: Ajuda
-        social_media: Xarxes socials
   somenergia:
     verifications:
       cas_members_only: Aquesta verificació es dona als socis de Som Energia. Es dóna

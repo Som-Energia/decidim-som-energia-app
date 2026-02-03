@@ -13,15 +13,6 @@ eu:
       user_created_successfully: Erabiltzailea ongi sortu da!
       user_creation_failed: Erabiltzailea sortzean errorea! (%{error})
   decidim:
-    admin:
-      participatory_space_private_users:
-        form:
-          cas_user: CAS erabiltzailea da
-          email: Emaila
-          name: Izena
-    assemblies:
-      alternative_assembly_types:
-        local_groups: Tokiko Taldeak
     authorization_handlers:
       cas_member:
         explanation: Som Energia-ko kide izateagatik baimena emanda (Som Energia-ren
@@ -37,30 +28,10 @@ eu:
         name_user: Som Energia-ko erabiltzailea (ez bazkidea)
         only_for_member: Sarbidea Som Energia-ko bazkideentzat soilik.
         only_for_user: Sarbidea Som Energia-ko erabiltzaileentzat (ez bazkideak) soilik.
-    meetings:
-      meetings:
-        show:
-          going: Topaketa honetan izena eman duzu
-          leave: Zure izen-ematea bertan behera utzi
-          leave_confirmation: Ziur zaude topaketa honetara joateari uko egin nahi
-            diozula?
-      registration_mailer:
-        confirmation:
-          confirmed_html: Zure <a href="%{url}">%{title}</a> baieztatu da. Eskerrik
-            asko parte hartzeagatik.
   devise:
-    invitations:
-      invitation_token_invalid: Emandako gonbidapen tokena ez da baliozkoa!
     login:
       admin_login: Administrazio sarbidea
       sign_in_cas: Hasi saioa Som Energia-rekin
-    sessions:
-      signed_out: Saioa behar bezala itxi duzu.
-  layouts:
-    decidim:
-      footer:
-        help: Laguntza
-        social_media: Sare sozialak
   somenergia:
     verifications:
       cas_members_only: Egiaztapen hau Som Energia-ko bazkideei ematen zaie. Automatikoki

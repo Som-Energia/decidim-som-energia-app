@@ -12,15 +12,6 @@ es:
       user_created_successfully: "¡Usuario creado correctamente!"
       user_creation_failed: "¡Error al crear el usuario! (%{error})"
   decidim:
-    admin:
-      participatory_space_private_users:
-        form:
-          cas_user: Es usuario del CAS
-          email: Email
-          name: Nombre
-    assemblies:
-      alternative_assembly_types:
-        local_groups: Grupos Locales
     authorization_handlers:
       cas_member:
         explanation: Autorización concedida por ser miembro de Som Energia (es necesario
@@ -36,29 +27,10 @@ es:
         name_user: Usuario de Som Energia (no socio)
         only_for_member: Acceso solo para socios de Som Energia.
         only_for_user: Acceso solo para usuarios (no socios) de Som Energia.
-    meetings:
-      meetings:
-        show:
-          going: Te has inscrito a este encuentro
-          leave: Cancela tu registro
-          leave_confirmation: "¿Seguro que quieres cancelar tu asistencia a este encuentro?"
-      registration_mailer:
-        confirmation:
-          confirmed_html: Tu <a href="%{url}">%{title}</a> ha sido confirmada. Gracias
-            por participar.
   devise:
-    invitations:
-      invitation_token_invalid: "¡El token de invitación proporcionado no es válido!"
     login:
       admin_login: Acceso administración
       sign_in_cas: Accede con Som Energia
-    sessions:
-      signed_out: Has cerrado la sesión correctamente.
-  layouts:
-    decidim:
-      footer:
-        help: Ayuda
-        social_media: Redes sociales
   somenergia:
     verifications:
       cas_members_only: Esta verificación se otorga a los socios de Som Energia. Se
