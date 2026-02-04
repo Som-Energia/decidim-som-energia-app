@@ -40,3 +40,75 @@ gl:
         pecha a sesión e volve a iniciarla usando o botón "Iniciar sesión con Som
         Energia"
       not_cas_user: Non es usuario do CAS
+  layouts:
+    decidim:
+      data_consent:
+        details:
+          items:
+            _session_id:
+              description: Permite que os sitios web recorden o usuario dentro dun sitio web cando se move entre páxinas web.
+              service: Este sitio web
+            decidim-consent:
+              description: Almacena información sobre as cookies permitidas polo usuario neste sitio web.
+              service: Este sitio web
+            remember_user_token:
+              description: Permite manter a túa sesión aberta se fai clic en "Lembrarme" ao iniciar a sesión.
+              service: Este sitio web
+            "emojiPicker-recent":
+              description: Almacena os teus emojis seleccionados máis recentemente
+              service: Este sitio web
+            "graphiql:docExplorerOpen":
+              description: Garda se tes o panel de documentación aberto ao usar a API de GraphQL
+              service: Este sitio web
+            "graphiql:editorFlex":
+              description: Garda a túa preferencia de pestanas ao usar a API de GraphQL
+              service: Este sitio web
+            "graphiql:historyPaneOpen":
+              description: Garda se tes o panel de historial aberto ao usar a API de GraphQL
+              service: Este sitio web
+            "graphiql:queries":
+              description: Garda o historial das túas consultas ao usar a API de GraphQL
+              service: Este sitio web
+            "graphiql:query":
+              description: Garda a túa última consulta ao usar a API de GraphQL
+              service: Este sitio web
+            "graphiql:tabState":
+              description: Garda a túa configuración de pestanas ao usar a API de GraphQL
+              service: Este sitio web
+            YSC:
+              description: Usada para seguridade. Dura a duración da sesión de navegación dun usuario. Utilízase para garantir que as solicitudes dentro dunha sesión de navegación sexan realizadas polo usuario, e non por outros sitios. Esta cookie impide que sitios maliciosos actúen en nome dun usuario sen o seu coñecemento. Máis información en <a href="https://policies.google.com/technologies/cookies">Como utiliza Google as cookies</a>
+              service: Incrustacións de YouTube
+            VISITOR_INFO1_LIVE:
+              description: Utilízase para funcionalidade, analítica, publicidade e personalización. Máis información en <a href="https://policies.google.com/technologies/cookies">Como utiliza Google as cookies</a>
+              service: Incrustacións de YouTube
+            PREF:
+              description: Utilízase para funcionalidade. YouTube utiliza esta cookie para almacenar información como a túa configuración de páxina preferida e preferencias de reprodución como opcións de reprodución automática explícita, contido aleatorio e tamaño do reprodutor. Máis información en <a href="https://policies.google.com/technologies/cookies">Como utiliza Google as cookies</a>
+              service: Incrustacións de YouTube
+            CONSENT:
+              description: Utilízase para funcionalidade. Dura 2 anos, Google a utiliza para almacenar o estado dun usuario con respecto ás súas opcións de cookies. Máis información en <a href="https://policies.google.com/technologies/cookies">Como utiliza Google as cookies</a>
+              service: Incrustacións de YouTube
+            _pk_id:
+              description: Utilízase para almacenar un ID de usuario único. Esta cookie é utilizada pola analítica Matomo para identificar a usuarios individuais.
+              service: Matomo Analytics
+            _pk_ref:
+              description: Utilízase para almacenar a información do referidor. Esta cookie axuda á analítica Matomo a entender de onde procede o tráfico.
+              service: Matomo Analytics
+            _pk_ses:
+              description: Utilízase para almacenar información sobre a sesión actual. Esta cookie temporal é utilizada pola analítica Matomo para rastrexar as interaccións do usuario durante unha sesión.
+              service: Matomo Analytics
+          types:
+            localstorage: LocalStorage
+        modal:
+          analytics:
+            description: As cookies analíticas son cookies que rastrexan como os usuarios navegan e interactúan cun sitio web. A información recollida utilízase para axudar ao propietario do sitio web a mellorar o sitio web.
+            title: Analítica e estatísticas
+          description: Utilizamos cookies para garantir as funcionalidades básicas do sitio web e mellorar a túa experiencia en liña. Podes optar por cada categoría para consentir/rexeitar sempre que queiras.
+          essential:
+            description: Estas cookies son esenciais para o funcionamento adecuado do meu sitio web. Sen estas cookies, o sitio web non funcionaría correctamente.
+            title: Esencial
+          marketing:
+            description: Estas cookies recollen información sobre como utilizas o sitio web, que páxinas visitaches e en que ligazóns fai clic.
+            title: Marketing
+          preferences:
+            description: Estas cookies permiten que o sitio web recorde as opcións que realizaches no pasado
+            title: Preferencias

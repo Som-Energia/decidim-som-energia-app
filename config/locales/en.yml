@@ -44,3 +44,75 @@ en:
         to verify yourself by pressing the button below. If this method does not work,
         simply log out and log in again using the "Sign in with Som Energia" button.
       not_cas_user: You are not a CAS user
+  layouts:
+    decidim:
+      data_consent:
+        details:
+          items:
+            _session_id:
+              description: Allows websites to remember user within a website when they move between web pages.
+              service: This website
+            decidim-consent:
+              description: Stores information about the cookies allowed by the user on this website.
+              service: This website
+            remember_user_token:
+              description: Allows to keep your session open if you click on "Remember me" when logging in.
+              service: This website
+            "emojiPicker-recent":
+              description: Stores your most recent selected emojis
+              service: This website
+            "graphiql:docExplorerOpen":
+              description: Saves wheter you have the documentation panel open when using the GraphQL API
+              service: This website
+            "graphiql:editorFlex":
+              description: Saves your tab preference when using the GraphQL API
+              service: This website
+            "graphiql:historyPaneOpen":
+              description: Saves wheter you have the history panel open when using the GraphQL API
+              service: This website
+            "graphiql:queries":
+              description: Saves the history of your queries when using the GraphQL API
+              service: This website
+            "graphiql:query":
+              description: Saves your last query when using the GraphQL API
+              service: This website
+            "graphiql:tabState":
+              description: Saves your tab configuration when using the GraphQL API
+              service: This website
+            YSC:
+              description: Used for security. Lasts for the duration of a user's browsing session. Used to ensure that requests within a browsing session are made by the user, and not by other sites. This cookie prevent malicious sites from acting on behalf of a user without that user’s knowledge. Read more at <a href="https://policies.google.com/technologies/cookies">How Google uses cookies</a>
+              service: YouTube embeds
+            VISITOR_INFO1_LIVE:
+              description: Used for functionality, analytics, advertising, and personalization. Read more at <a href="https://policies.google.com/technologies/cookies">How Google uses cookies</a>
+              service: YouTube embeds
+            PREF:
+              description: Used for functionality. YouTube uses this cookie to store information such as your preferred page configuration and playback preferences like explicit autoplay choices, shuffle content, and player size. Read more at <a href="https://policies.google.com/technologies/cookies">How Google uses cookies</a>
+              service: YouTube embeds
+            CONSENT:
+              description: Used for functionality. Lasts for 2 years, Google uses it to store a user’s state regarding their cookies choices. Read more at <a href="https://policies.google.com/technologies/cookies">How Google uses cookies</a>
+              service: YouTube embeds
+            _pk_id:
+              description: Used to store a unique user ID. This cookie is used by Matomo analytics to identify individual users.
+              service: Matomo Analytics
+            _pk_ref:
+              description: Used to store the referrer information. This cookie helps Matomo analytics understand where traffic is coming from.
+              service: Matomo Analytics
+            _pk_ses:
+              description: Used to store information about the current session. This temporary cookie is used by Matomo analytics to track user interactions during a session.
+              service: Matomo Analytics
+          types:
+            localstorage: LocalStorage
+        modal:
+          analytics:
+            description: Analytics cookies are cookies that track how users navigate and interact with a website. The information collected is used to help the website owner improve the website.
+            title: Analytics and statistics
+          description: We use cookies to ensure the basic functionalities of the website and to enhance your online experience. You can choose for each category to opt-in/out whenever you want.
+          essential:
+            description: These cookies are essential for the proper functioning of my website. Without these cookies, the website would not work properly.
+            title: Essential
+          marketing:
+            description: These cookies collect information about how you use the website, which pages you visited and which links you clicked on.
+            title: Marketing
+          preferences:
+            description: These cookies allow the website to remember the choices you have made in the past
+            title: Preferences

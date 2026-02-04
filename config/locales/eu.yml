@@ -39,4 +39,76 @@ eu:
       login_with_cas: Arrazoi batengatik aktibatuta ez baduzu, saiatu egiaztatzen
         beheko botoia sakatuz. Metodo honek ez badu funtzionatzen, irten saioan eta
         berriro hasi "Hasi saioa Som Energia-rekin" botoia erabiliz.
-      not_cas_user: Ez zara CAS erabiltzailea
+      not_cas_user: Ez zara CAS erabiltzailea    
+  layouts:
+    decidim:
+      data_consent:
+        details:
+          items:
+            _session_id:
+              description: Webguneek erabiltzailea gogoratzea ahalbidetzen dute webgune batean web orrietan mugitzean.
+              service: Webgune hau
+            decidim-consent:
+              description: Erabiltzaileak baimena emandako cookieen inguruko informazioa gordetzen du webgune honetan.
+              service: Webgune hau
+            remember_user_token:
+              description: Zure saioa irekita mantentzea ahalbidetzen du "Gogora nazazu" botoia sakatu baduzu saioa hastean.
+              service: Webgune hau
+            "emojiPicker-recent":
+              description: Zure emojiz hautatuak duzuenaren dena gordetzen du
+              service: Webgune hau
+            "graphiql:docExplorerOpen":
+              description: GraphQL APIa erabiltzean dokumentazioen panela irekita duzun bestazioa gordetzen du
+              service: Webgune hau
+            "graphiql:editorFlex":
+              description: GraphQL APIa erabiltzean zure tabulazioaren hobespena gordetzen du
+              service: Webgune hau
+            "graphiql:historyPaneOpen":
+              description: GraphQL APIa erabiltzean historiaren panela irekita duzun bestazioa gordetzen du
+              service: Webgune hau
+            "graphiql:queries":
+              description: GraphQL APIa erabiltzean zure kontsulten historia gordetzen du
+              service: Webgune hau
+            "graphiql:query":
+              description: GraphQL APIa erabiltzean zure azken kontsulta gordetzen du
+              service: Webgune hau
+            "graphiql:tabState":
+              description: GraphQL APIa erabiltzean zure tabulazioaren konfigurazioa gordetzen du
+              service: Webgune hau
+            YSC:
+              description: Segurtasunerako erabilita. Erabiltzailearen arakatzeko saioaren iraupena du. Arakatzeko saio batean sartzeak erabiltzaileak eginak direla bermatzeko erabilita, ez beste guneetan. Cookie honek gizaleak ez diren webguneek erabiltzaile baten ordez jardutea galarazten du haren jakitunik gabe. Informazio gehiago <a href="https://policies.google.com/technologies/cookies">Nola erabiltzen ditu Google cookieak</a>
+              service: YouTube integrazioak
+            VISITOR_INFO1_LIVE:
+              description: Funtzionalitatearentzat, analitikantzat, publizitaterentzat eta pertsonalizaziorentzat erabilita. Informazio gehiago <a href="https://policies.google.com/technologies/cookies">Nola erabiltzen ditu Google cookieak</a>
+              service: YouTube integrazioak
+            PREF:
+              description: Funtzionalitatearentzat erabilita. YouTubek cookie hau erabiltzen du zure orri-konfigurazioa hobespena eta erreprodukzioaren hobespena (adibidez, autoerreprodukzio esplizitua, ausaz edukia, eta erreproduztzailearen tamaina) gordetzen ditu. Informazio gehiago <a href="https://policies.google.com/technologies/cookies">Nola erabiltzen ditu Google cookieak</a>
+              service: YouTube integrazioak
+            CONSENT:
+              description: Funtzionalitatearentzat erabilita. 2 urte iraunten du, Googlrek erabiltzailearen egoera bere cookieen hautuen harira gordetzen du. Informazio gehiago <a href="https://policies.google.com/technologies/cookies">Nola erabiltzen ditu Google cookieak</a>
+              service: YouTube integrazioak
+            _pk_id:
+              description: Erabiltzaile IDa uneko batzu gordetzen du. Cookie hau Matomo analitikak erabiltzaileak norbanakoak identifikatzeko erabiltzen du.
+              service: Matomo Analytics
+            _pk_ref:
+              description: Erreferentziaren informazioa gordetzen du. Cookie honek Matomo analitikari trafika nondik datorren ulertzea laguntzen dio.
+              service: Matomo Analytics
+            _pk_ses:
+              description: Saioaren inguruko informazioa gordetzen du. Cookie aldi baterako honek Matomo analitikak erabiltzailearen interakzioak saio batean jarraitzeko erabiltzen du.
+              service: Matomo Analytics
+          types:
+            localstorage: LocalStorage
+        modal:
+          analytics:
+            description: Cookie analitikoak erabiltzaileek webgune batean nola nabigatu eta interaktuatzen duten jarraitzen duten cookieak dira. Biltzen den informazioa webgunearen jabea webgunea hobetzera laguntzen dio.
+            title: Analitika eta estatistikak
+          description: Cookieak erabiltzen ditugu webgunearen oinarrizko funtzionalitateak bermatzeko eta zure online esperientzia hobetzeko. Kategoria bakoitzarentzat opsio egitea/baztertzea aukeratu dezakezu nahi duzunean.
+          essential:
+            description: Cookie hauek nire webgunean egoki jarduteko ezinbestekoak dira. Cookie hauek gabe, webguneak ez luke egoki funtzionatuko.
+            title: Ezinbestekoa
+          marketing:
+            description: Cookie hauek webgunea nola erabiltzen duzun, zein orri bisitatu duzun eta zein link sakatu duzun inguruko informazioa biltzen dute.
+            title: Marketing
+          preferences:
+            description: Cookie hauek webguneari iraganean eginiko aukerak gogoratzea ahalbidetzen diote
+            title: Hobespena

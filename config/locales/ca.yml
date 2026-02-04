@@ -40,3 +40,75 @@ ca:
         de la sessió i torna a iniciar-la fent servir el botó "Inicia sessió amb Som
         Energia"
       not_cas_user: No ets usuari del CAS
+  layouts:
+    decidim:
+      data_consent:
+        details:
+          items:
+            _session_id:
+              description: Permet als llocs web recordar l'usuari dins d'un lloc web quan es mou entre pàgines web.
+              service: Aquest lloc web
+            decidim-consent:
+              description: Emmagatzema informació sobre les galetes permeses per l'usuari en aquest lloc web.
+              service: Aquest lloc web
+            remember_user_token:
+              description: Permet mantenir la teva sessió oberta si feu clic a "Recorda'm" al iniciar la sessió.
+              service: Aquest lloc web
+            "emojiPicker-recent":
+              description: Emmagatzema els emojis seleccionats més recentment
+              service: Aquest lloc web
+            "graphiql:docExplorerOpen":
+              description: Guarda si teniu el panell de documentació obert quan s'utilitza l'API de GraphQL
+              service: Aquest lloc web
+            "graphiql:editorFlex":
+              description: Guarda la vostra preferència de pestanya quan s'utilitza l'API de GraphQL
+              service: Aquest lloc web
+            "graphiql:historyPaneOpen":
+              description: Guarda si teniu el panell d'historial obert quan s'utilitza l'API de GraphQL
+              service: Aquest lloc web
+            "graphiql:queries":
+              description: Guarda l'historial de les vostres consultes quan s'utilitza l'API de GraphQL
+              service: Aquest lloc web
+            "graphiql:query":
+              description: Guarda la vostra última consulta quan s'utilitza l'API de GraphQL
+              service: Aquest lloc web
+            "graphiql:tabState":
+              description: Guarda la vostra configuració de pestanya quan s'utilitza l'API de GraphQL
+              service: Aquest lloc web
+            YSC:
+              description: Utilitzat per a la seguretat. Dura la durada de la sessió de navegació d'un usuari. S'utilitza per garantir que les sol·licituds dins d'una sessió de navegació siguin realitzades per l'usuari, i no per altres llocs. Aquesta galeta impedeix que llocs maliciosos actuïn en nom d'un usuari sense el coneixement d'aquell usuari. Més informació a <a href="https://policies.google.com/technologies/cookies">Com utilitza Google les galetes</a>
+              service: Incrustacions de YouTube
+            VISITOR_INFO1_LIVE:
+              description: S'utilitza per a funcionalitat, analítica, publicitat i personalització. Més informació a <a href="https://policies.google.com/technologies/cookies">Com utilitza Google les galetes</a>
+              service: Incrustacions de YouTube
+            PREF:
+              description: Utilisat per a funcionalitat. YouTube utilitza aquesta galeta per emmagatzemar informació com ara la vostra configuració de pàgina preferida i les preferències de reproducció com ara les opcions de reproducció automàtica explícita, contingut aleatori i mida del reproductor. Més informació a <a href="https://policies.google.com/technologies/cookies">Com utilitza Google les galetes</a>
+              service: Incrustacions de YouTube
+            CONSENT:
+              description: S'utilitza per a funcionalitat. Dura 2 anys, Google l'utilitza per emmagatzemar l'estat d'un usuari respecte als seus consentiments de galetes. Més informació a <a href="https://policies.google.com/technologies/cookies">Com utilitza Google les galetes</a>
+              service: Incrustacions de YouTube
+            _pk_id:
+              description: S'utilitza per emmagatzemar un ID d'usuari únic. Aquesta galeta és utilitzada per l'analítica Matomo per identificar usuaris individuals.
+              service: Matomo Analytics
+            _pk_ref:
+              description: S'utilitza per emmagatzemar la informació del referidor. Aquesta galeta ajuda l'analítica Matomo a entendre d'on prové el tràfic.
+              service: Matomo Analytics
+            _pk_ses:
+              description: S'utilitza per emmagatzemar informació sobre la sessió actual. Aquesta galeta temporal és utilitzada per l'analítica Matomo per rastrejar les interaccions de l'usuari durant una sessió.
+              service: Matomo Analytics
+          types:
+            localstorage: LocalStorage
+        modal:
+          analytics:
+            description: Les galetes analítiques són galetes que rastregen com els usuaris naveguen i interactuen amb un lloc web. La informació recollida s'utilitza per ajudar al propietari del lloc web a millorar el lloc web.
+            title: Analítiques i estadístiques
+          description: Utilitzem galetes per garantir les funcionalitats bàsiques del lloc web i per millorar la vostra experiència en línia. Podeu optar per cada categoria per consentir/denegar sempre que vulgueu.
+          essential:
+            description: Aquestes galetes són essencials per al funcionament adequat del meu lloc web. Sense aquestes galetes, el lloc web no funcionaria correctament.
+            title: Essencial
+          marketing:
+            description: Aquestes galetes recopilen informació sobre com utilitzeu el lloc web, quines pàgines heu visitat i en quins enllaços heu fet clic.
+            title: Màrqueting
+          preferences:
+            description: Aquestes galetes permeten que el lloc web recordi les opcions que heu realitzat en el passat
+            title: Preferències
