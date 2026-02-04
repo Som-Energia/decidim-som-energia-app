@@ -1,3 +1,0 @@
-<!-- insert_after '.table-list tbody td[1]' -->
-
-<td><%= t("booleans.#{private_user.cas_user}") %><br></td>

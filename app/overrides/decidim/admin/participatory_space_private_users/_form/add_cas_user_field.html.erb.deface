@@ -1,5 +1,0 @@
-<!-- insert_after '.columns:last' -->
-
-<div class="columns">
-  <%= form.check_box :cas_user, label: t(".cas_user"), readonly: @form.persisted? %>
-</div>
