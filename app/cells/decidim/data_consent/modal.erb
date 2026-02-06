@@ -1,0 +1,38 @@
+<%= decidim_modal id: "dc-modal" do %>
+  <div style="display: block" data-dialog-container>
+    <h2 id="dialog-title-dc-modal" tabindex="-1" data-dialog-title><%= t("layouts.decidim.data_consent.modal.title") %></h2>
+    <div class="mt-4">
+      <p id="dialog-desc-dc-modal">
+        <%= t("layouts.decidim.data_consent.modal.description") %>
+      </p>
+      <p class="mt-4">
+        <%= t("layouts.decidim.data_consent.somenergia.modal_description_html") %>
+      </p>
+      <div class="mt-8" data-controller="accordion" data-multiselectable="false">
+        <% categories.each do |category| %>
+          <%= render(
+            {
+              view: :category,
+              locals: {
+                category:
+              }
+            }
+          ) %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+
+  <div data-dialog-actions>
+    <button id="dc-modal-accept" class="button button__sm md:button__lg button__transparent-secondary" data-dialog-close="dc-modal">
+      <%= t("layouts.decidim.data_consent.modal.accept_all") %>
+    </button>
+    <button id="dc-modal-reject" class="button button__sm md:button__lg button__transparent-secondary" data-dialog-close="dc-modal">
+      <%= t("layouts.decidim.data_consent.modal.accept_only_essential") %>
+    </button>
+    <button id="dc-modal-save" class="button button__sm md:button__lg button__secondary" data-dialog-close="dc-modal">
+      <span><%= t("layouts.decidim.data_consent.modal.save_settings") %></span>
+      <%= icon "save-line" %>
+    </button>
+  </div>
+<% end %>

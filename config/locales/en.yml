@@ -47,7 +47,8 @@ en:
   layouts:
     decidim:
       data_consent:
-        details:
+        somenergia:
+          modal_description_html: For more information you can check the <a target="_blank" class="text-secondary" href="https://www.somenergia.coop/ca/politica-de-cookies/">Som Energia cookie policy</a>.
           items:
             _session_id:
               description: Allows websites to remember user within a website when they move between web pages.

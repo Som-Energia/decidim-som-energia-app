@@ -44,6 +44,8 @@ es:
   layouts:
     decidim:
       data_consent:
+        somenergia:
+          modal_description_html: Para más información puede consultar la <a target="_blank" class="text-secondary" href="https://www.somenergia.coop/ca/politica-de-cookies/">política de cookies de Som Energia</a>.
         details:
           items:
             _session_id:
