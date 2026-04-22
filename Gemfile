@@ -17,7 +17,7 @@ gem "decidim-term_customizer", github: "openpoke/decidim-module-term_customizer"
 # Usability and UX tweaks for Decidim.
 # gem "decidim-action_delegator", github: "coopdevs/decidim-module-action_delegator"
 gem "decidim-decidim_awesome", github: "decidim-ice/decidim-module-decidim_awesome", branch: "main"
-gem "decidim-extra_censuses", github: "openpoke/decidim-module-extra_censuses", branch: "main"
+gem "decidim-extra_censuses", github: "openpoke/decidim-module-extra_censuses", branch: "feature/multi-option-group"
 gem "decidim-pokecode", github: "openpoke/decidim-module-pokecode", branch: "main"
 
 gem "bootsnap", "~> 1.7"
