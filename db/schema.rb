@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2026_04_22_104036) do
+ActiveRecord::Schema[7.2].define(version: 2026_05_04_151860) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "ltree"
   enable_extension "pg_trgm"
@@ -147,11 +147,16 @@ ActiveRecord::Schema[7.2].define(version: 2026_04_22_104036) do
 
   create_table "decidim_action_delegator_settings", force: :cascade do |t|
     t.integer "max_grants", limit: 2, default: 0, null: false
-    t.bigint "decidim_consultation_id", null: false
+    t.bigint "decidim_consultation_id"
     t.datetime "created_at", precision: nil, null: false
     t.datetime "updated_at", precision: nil, null: false
     t.integer "authorization_method", default: 0, null: false
+    t.jsonb "title"
+    t.jsonb "description"
+    t.boolean "active", default: false, null: false
+    t.bigint "decidim_organization_id", null: false
     t.index ["decidim_consultation_id"], name: "index_decidim_settings_on_decidim_consultation_id"
+    t.index ["decidim_organization_id"], name: "idx_on_decidim_organization_id_865f0ac0e3"
   end
 
   create_table "decidim_action_logs", force: :cascade do |t|
@@ -2257,6 +2262,7 @@ ActiveRecord::Schema[7.2].define(version: 2026_04_22_104036) do
   add_foreign_key "decidim_action_delegator_delegations", "decidim_action_delegator_settings"
   add_foreign_key "decidim_action_delegator_participants", "decidim_users"
   add_foreign_key "decidim_action_delegator_settings", "decidim_consultations"
+  add_foreign_key "decidim_action_delegator_settings", "decidim_organizations"
   add_foreign_key "decidim_area_types", "decidim_organizations"
   add_foreign_key "decidim_areas", "decidim_area_types", column: "area_type_id"
   add_foreign_key "decidim_areas", "decidim_organizations"
