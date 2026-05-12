@@ -14,6 +14,19 @@ module SomEnergia
           # Fallback to the referer or the default path
           request.referer || super
         end
+
+        private
+
+        def respond_to_on_destroy
+          respond_to do |format|
+            format.all { head :no_content }
+            format.any(*navigational_formats) do
+              redirect_to after_sign_out_path_for(resource_name),
+                          status: ::Devise.responder.redirect_status,
+                          allow_other_host: true
+            end
+          end
+        end
       end
     end
   end
