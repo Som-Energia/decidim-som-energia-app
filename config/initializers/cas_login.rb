@@ -78,10 +78,7 @@ ActiveSupport::Notifications.subscribe(/decidim\.user\.omniauth_(registration|lo
         Rails.logger.error "Error updating email from #{previous_email} to #{data[:email]} for user #{user.id}: #{user.errors.full_messages}"
       end
     end
-    # if user.email != data[:raw_data][:info][:email]
-    #   user
-    #   user.update(email: data[:raw_data][:info][:email])
-    # end
+
     # Verify if the user is a Som Energia member
     handler = Decidim::AuthorizationHandler.handler_for("cas_member", user:, extended_data:)
 
