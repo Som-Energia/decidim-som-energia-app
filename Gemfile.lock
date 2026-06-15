@@ -640,7 +640,7 @@ GEM
       rdoc (>= 4.0.0)
       reline (>= 0.4.2)
     jmespath (1.6.2)
-    json (2.19.8)
+    json (2.19.9)
     jwt (3.1.2)
       base64
     kaminari (1.2.2)
@@ -739,14 +739,14 @@ GEM
       auth-sanitizer (~> 0.1, >= 0.1.3)
       cgi
       version_gem (~> 1.1, >= 1.1.9)
-    oauth2 (2.0.22)
+    oauth2 (2.0.23)
       auth-sanitizer (~> 0.2, >= 0.2.1)
       faraday (>= 0.17.3, < 4.0)
       jwt (>= 1.0, < 4.0)
       logger (~> 1.2)
       multi_xml (~> 0.5)
       rack (>= 1.2, < 4)
-      snaky_hash (~> 2.0, >= 2.0.5)
+      snaky_hash (~> 2.0, >= 2.0.6)
       version_gem (~> 1.1, >= 1.1.11)
     omniauth (2.1.4)
       hashie (>= 3.4.6)
@@ -1067,7 +1067,7 @@ GEM
     simplecov-html (0.13.2)
     simplecov_json_formatter (0.1.4)
     smart_properties (1.17.0)
-    snaky_hash (2.0.5)
+    snaky_hash (2.0.6)
       hashie (>= 0.1.0, < 6)
       version_gem (>= 1.1.8, < 3)
     spring (4.6.0)
@@ -1102,7 +1102,7 @@ GEM
     valid_email2 (7.0.15)
       activemodel (>= 6.0)
       mail (~> 2.5)
-    version_gem (1.1.11)
+    version_gem (1.1.12)
     w3c_rspec_validators (0.3.0)
       rails
       rspec
@@ -1342,7 +1342,7 @@ CHECKSUMS
   io-console (0.8.2) sha256=d6e3ae7a7cc7574f4b8893b4fca2162e57a825b223a177b7afa236c5ef9814cc
   irb (1.18.0) sha256=de9454a0703a54704b9811a5ef31a60c86949fbf4013fcf244fabc7c775248e3
   jmespath (1.6.2) sha256=238d774a58723d6c090494c8879b5e9918c19485f7e840f2c1c7532cf84ebcb1
-  json (2.19.8) sha256=6354310fd76ef69b87d5bd1f38b40d730613baf90b6803d2d0a48f618d32dfaa
+  json (2.19.9) sha256=9b9025b7cdddafa38d316eca0b2358488e42d417045c1b90d216a9fefe46b79a
   jwt (3.1.2) sha256=af6991f19a6bb4060d618d9add7a66f0eeb005ac0bc017cd01f63b42e122d535
   kaminari (1.2.2) sha256=c4076ff9adccc6109408333f87b5c4abbda5e39dc464bd4c66d06d9f73442a3e
   kaminari-actionview (1.2.2) sha256=1330f6fc8b59a4a4ef6a549ff8a224797289ebf7a3a503e8c1652535287cc909
@@ -1385,7 +1385,7 @@ CHECKSUMS
   nori (2.7.1) sha256=6166cd336959854762073e2fbae888593809cac1b3e904f4fb009313d7226861
   oauth (1.1.6) sha256=19dd03e308e41f8237842e0c9e574a254e432f2556fd4104c4397a8a0538f180
   oauth-tty (1.0.8) sha256=d9a63b67af17c22517f868c59f12178e4ee19a367536d1a6dcb74d9d07a41e07
-  oauth2 (2.0.22) sha256=8f4669f0c8de69f6db7ed786bda20996eaf0003966b886f1c519efb1a5682fa6
+  oauth2 (2.0.23) sha256=e61160104ded11c4cd1b54bc0a7cb80212289e417a4652003bcf4c5a4344824c
   omniauth (2.1.4) sha256=42a05b0496f0d22e1dd85d42aaf602f064e36bb47a6826a27ab55e5ba608763c
   omniauth-cas (3.0.2) sha256=1838b15d63b9459a5b61d0e93ab1c73b160bae866735c2a8e3b2c8572319600d
   omniauth-facebook (5.0.0) sha256=d20317f8d9274e8b8f1ee2f26927b80d0fac85bf51eee62b28470c62f73694da
@@ -1498,7 +1498,7 @@ CHECKSUMS
   simplecov-html (0.13.2) sha256=bd0b8e54e7c2d7685927e8d6286466359b6f16b18cb0df47b508e8d73c777246
   simplecov_json_formatter (0.1.4) sha256=529418fbe8de1713ac2b2d612aa3daa56d316975d307244399fa4838c601b428
   smart_properties (1.17.0) sha256=f9323f8122e932341756ddec8e0ac9ec6e238408a7661508be99439ca6d6384b
-  snaky_hash (2.0.5) sha256=70e74137d6738aef067950a3bb9a4d2655778be4bc9725efc36e7607feb22cdd
+  snaky_hash (2.0.6) sha256=3663cae48cdef582b517025cf8a39d8789996eaf0b4ed89e2f0624836505654a
   spring (4.6.0) sha256=e9e41f9a56fa5f111df7c85110a7d606ca731dc116c906ba395fd74c9fd474e3
   spring-watcher-listen (2.1.0) sha256=e958bcd956d1026eb95d16b2ef0e241d1ca35a754628bd45040e3d9954a61949
   ssrf_filter (1.5.0) sha256=e03dcdb9d1730d7f6710532a606b3543df2a448a0293ce04a2d995523c5a97f6
@@ -1521,7 +1521,7 @@ CHECKSUMS
   uri (1.1.1) sha256=379fa58d27ffb1387eaada68c749d1426738bd0f654d812fcc07e7568f5c57c6
   useragent (0.16.11) sha256=700e6413ad4bb954bb63547fa098dddf7b0ebe75b40cc6f93b8d54255b173844
   valid_email2 (7.0.15) sha256=f3fe1c4b87b9a405bb2e8de060b736cce168e476e4c72725c5d05e11321ff4a1
-  version_gem (1.1.11) sha256=695df6464862b3dc976b4f6e0e089062517c8137ecd31078d8c378347f959c97
+  version_gem (1.1.12) sha256=b78f691677807997e63901e8aba1b96d4ae172ce5570ad9ceb0208eb3a0edb3d
   w3c_rspec_validators (0.3.0) sha256=c1a28642a91c81a8cdd603533b07dea2bc5e9436400e5762e1a0ad4fe6bfd39b
   w3c_validators (1.3.7) sha256=2785f8138ad4d6c2cf9f2a49693390cc55a815a51f1b0ff40e35eed4ff8be746
   warden (1.2.9) sha256=46684f885d35a69dbb883deabf85a222c8e427a957804719e143005df7a1efd0
