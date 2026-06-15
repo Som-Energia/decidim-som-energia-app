@@ -19,5 +19,9 @@ test:
   database: somenergia_test
 
 production:
-  <<: *default
-  url: <%= ENV['DATABASE_URL'] %>
+  primary:
+    <<: *default
+    url: <%= ENV['DATABASE_URL'] %>
+  legacy:
+    <<: *default
+    url: <%= ENV['LEGACY_DATABASE_URL'] %>
