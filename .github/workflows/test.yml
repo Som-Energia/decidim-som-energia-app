@@ -8,9 +8,8 @@ on:
   pull_request:
 
 env:
-  RUBY_VERSION: 3.3.10
+  RUBY_VERSION: 3.3.14
   NODE_VERSION: 22.14.0
-  CHROME_VERSION: "119.0.6045.105"
   RAILS_ENV: test
   DATABASE_USERNAME: postgres
   DATABASE_PASSWORD: postgres
@@ -38,17 +37,6 @@ jobs:
 
       - name: Install additional tools
         run: sudo apt-get update && sudo apt-get install -y imagemagick p7zip
-
-      - uses: nanasess/setup-chromedriver@v2
-        with:
-          chromedriver-version: ${{ env.CHROME_VERSION }}
-
-      - name: Remove Chrome
-        run: sudo apt remove google-chrome-stable
-
-      - uses: browser-actions/setup-chrome@v1
-        with:
-          chrome-version: ${{ env.CHROME_VERSION }}
 
       - uses: actions/setup-node@v4
         with:
