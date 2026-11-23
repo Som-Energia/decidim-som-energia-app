@@ -3,7 +3,7 @@
 # This contoller ensures that the user is logged out from the CAS server
 module SomEnergia
   class SessionsController < ::Devise::SessionsController
-    def destroy
+    def destroy # rubocop:disable Decidim/EnforcePermissionTo
       reset_session
 
       flash[:notice] = I18n.t("devise.sessions.signed_out", locale: params[:locale] || ::I18n.locale)

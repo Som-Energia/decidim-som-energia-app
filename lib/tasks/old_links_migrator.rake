@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 namespace :active_storage do
   desc "Migrate legacy Rails 6 ActiveStorage URLs to Rails 7 inside localized JSONB fields"
   task migrate_jsonb_urls: :environment do
@@ -88,7 +90,6 @@ namespace :active_storage do
         if changes_made
           record.save!(validate: false)
           puts "  [Saved] Record ##{record.id}"
-          byebug
         end
       end
     end
